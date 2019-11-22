@@ -8,10 +8,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 @SpringBootApplication
 public class ClinicalProjectApplication extends SpringBootServletInitializer {
 
-//	@Override
-//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-//		return application.sources(ClinicalProjectApplication.class);
-//	}
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(ClinicalProjectApplication.class);
+	}
 
 	public static void main(String[] args) {
 
