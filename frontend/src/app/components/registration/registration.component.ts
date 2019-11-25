@@ -27,13 +27,13 @@ export class RegistrationComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8),
         Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')]),
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
+      surname: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
       city: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
-      phoneNumber: new FormControl('', [Validators.required, Validators.minLength(9)]),
-      healthInsuranceID: new FormControl('', [Validators.required, Validators.minLength(13), Validators.maxLength(13)]),
+      number: new FormControl('', [Validators.required, Validators.minLength(9)]),
+      insuranceID: new FormControl('', [Validators.required, Validators.minLength(13), Validators.maxLength(13)]),
     });
   }
 
@@ -52,13 +52,13 @@ export class RegistrationComponent implements OnInit {
     this.patient = new Patient(
       this.f.email.value,
       this.f.password.value,
-      this.f.firstName.value,
-      this.f.lastName.value,
-      this.f.phoneNumber.value,
+      this.f.name.value,
+      this.f.surname.value,
+      this.f.number.value,
       this.f.address.value,
       this.f.city.value,
       this.f.country.value,
-      this.f.healthInsuranceID.value,
+      this.f.insuranceID.value,
       PatientStatus.AWAITING_APPROVAL
     );
 

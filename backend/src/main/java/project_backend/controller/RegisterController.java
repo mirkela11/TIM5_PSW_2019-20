@@ -33,8 +33,16 @@ public class RegisterController {
             newPatient.setInsuranceID(patient.getInsuranceID());
             newPatient.setStatus(PatientStatus.APPROVED);
 
-            patientService.addPatient(newPatient);
-            System.out.println("New account with email:" + newPatient.getEmail());
+
+            boolean uspesno = patientService.addPatient(newPatient);
+            if(uspesno == true){
+                System.out.println("New account with email: " + newPatient.getEmail());
+            }
+            else
+            {
+                System.out.println("Email already exists: " + newPatient.getEmail());
+            }
+
             return "";
         }
         else

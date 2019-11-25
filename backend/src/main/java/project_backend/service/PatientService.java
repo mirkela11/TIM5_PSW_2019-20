@@ -30,8 +30,26 @@ public class PatientService {
         return repo.findAll(page);
     }
 
-    public void addPatient(Patient p){
-        repo.save(p);
+    public boolean addPatient(Patient p){
+       List<Patient> tmp = findall();
+       if(tmp.size() == 0)
+       {
+           repo.save(p);
+           return true;
+       }
+       for(Patient p1 : tmp)
+           if(p1.getEmail().equals(p.getEmail()))
+           {
+               return  false;
+           }
+           else
+           {
+               repo.save(p);
+               return true;
+           }
+
+           return false;
+
     }
 
     public Patient getPatient(String email){
@@ -39,10 +57,10 @@ public class PatientService {
         if(tmp.size() == 0)
             return null;
 
-        for(Patient asd : tmp)
+        for(Patient p : tmp)
         {
-            if(asd.getEmail() == email)
-                return asd;
+            if(p.getEmail() == email)
+                return p;
         }
 
         return null;

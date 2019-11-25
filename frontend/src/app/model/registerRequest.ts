@@ -12,7 +12,7 @@ export class RegisterRequest {
       this.email = email;
       this.id = id;
       this.name = name;
-      this.id = id;
+      this.surname = surname;
     }
 
 

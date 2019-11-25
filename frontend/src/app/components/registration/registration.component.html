@@ -33,20 +33,20 @@
             </div>
 
             <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" id="firstName" formControlName="firstName" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && registerForm.get('firstName').errors }" />
-              <div *ngIf="submitted && registerForm.get('firstName').errors" class="invalid-feedback">
-                <div *ngIf=" registerForm.get('firstName').errors['required']">First Name is required</div>
+              <label for="name">First Name</label>
+              <input type="text" id="name" formControlName="name" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && registerForm.get('name').errors }" />
+              <div *ngIf="submitted && registerForm.get('name').errors" class="invalid-feedback">
+                <div *ngIf=" registerForm.get('name').errors['required']">First Name is required</div>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" formControlName="lastName" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && registerForm.get('lastName').errors }" />
-              <div *ngIf="submitted && registerForm.get('lastName').errors" class="invalid-feedback">
-                <div *ngIf="registerForm.get('lastName').errors['required']">Last Name is required</div>
+              <label for="surname">Last Name</label>
+              <input type="text" id="surname" formControlName="surname" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && registerForm.get('surname').errors }" />
+              <div *ngIf="submitted && registerForm.get('surname').errors" class="invalid-feedback">
+                <div *ngIf="registerForm.get('surname').errors['required']">Last Name is required</div>
               </div>
             </div>
 
@@ -78,26 +78,26 @@
             </div>
 
             <div class="form-group">
-              <label for="phoneNumber">Phone Number</label>
-              <input type="number" id="phoneNumber" formControlName="phoneNumber" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && registerForm.get('phoneNumber').errors }" />
-              <div *ngIf="submitted && registerForm.get('phoneNumber').errors" class="invalid-feedback">
-                <div *ngIf="registerForm.get('phoneNumber').errors['required']">Phone Number is required</div>
-                <div *ngIf="registerForm.get('phoneNumber').errors['minlength']">A phone number must have at least 9
+              <label for="number">Phone Number</label>
+              <input type="number" id="number" formControlName="number" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && registerForm.get('number').errors }" />
+              <div *ngIf="submitted && registerForm.get('number').errors" class="invalid-feedback">
+                <div *ngIf="registerForm.get('number').errors['required']">Phone Number is required</div>
+                <div *ngIf="registerForm.get('number').errors['minlength']">A phone number must have at least 9
                   digits
                 </div>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="healthInsuranceID">Health Insurance ID</label>
-              <input type="text" id="healthInsuranceID" formControlName="healthInsuranceID" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted &&  registerForm.get('healthInsuranceID').errors }" />
-              <div *ngIf="submitted && registerForm.get('healthInsuranceID').errors" class="invalid-feedback">
-                <div *ngIf="registerForm.get('healthInsuranceID').errors['required']">Health Insurance ID is required
+              <label for="insuranceID">Health Insurance ID</label>
+              <input type="text" id="insuranceID" formControlName="insuranceID" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted &&  registerForm.get('insuranceID').errors }" />
+              <div *ngIf="submitted && registerForm.get('insuranceID').errors" class="invalid-feedback">
+                <div *ngIf="registerForm.get('insuranceID').errors['required']">Health Insurance ID is required
                 </div>
                 <div
-                  *ngIf="registerForm.get('healthInsuranceID').errors['minlength'] ||registerForm.get('healthInsuranceID').errors['maxlength']">
+                  *ngIf="registerForm.get('insuranceID').errors['minlength'] ||registerForm.get('insuranceID').errors['maxlength']">
                   Health
                   Insurance ID must contain exactly 13 characters</div>
               </div>

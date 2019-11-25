@@ -36,11 +36,11 @@ public class PatientDTO{
     }
 
     public String getSurname() {
-        return name;
+        return surname;
     }
 
-    public void setSurname(String lastName) {
-        this.surname = lastName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getNumber() {
