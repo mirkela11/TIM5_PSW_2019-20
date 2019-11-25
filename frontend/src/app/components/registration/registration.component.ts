@@ -68,7 +68,10 @@ export class RegistrationComponent implements OnInit {
   private createPatient() {
     this.patientService.newPatient(this.patient).subscribe(
       data => {
-        this.router.navigate(['/patient/pending-approval']);
+        this.router.navigate(['/patient/login']);
+      },
+      error => {
+        alert('Error registration patient');
       }
     );
   }

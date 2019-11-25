@@ -5,8 +5,9 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:8080',
-  user: '/api/user',
-  clinicalCentreAdmin: '/api/clinical-centre-admin',
+  user: '/user',
+  patient: '/patient',
+  clinicalCentreAdmin: '/clinical-centre-admin',
 };
 
 /*
@@ -17,3 +18,4 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+

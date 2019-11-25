@@ -3,13 +3,13 @@ package project_backend.dtos;
 public class PatientDTO{
     private String email;
     private String password;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
+    private String name;
+    private String surname;
+    private String number;
     private String address;
     private String city;
     private String country;
-    private String healthInsuranceID;
+    private String InsuranceID;
 
     public String getEmail() {
         return email;
@@ -27,28 +27,28 @@ public class PatientDTO{
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String firstName) {
+        this.name = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurname() {
+        return name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSurname(String lastName) {
+        this.surname = lastName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getNumber() {
+        return number;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setNumber(String phoneNumber) {
+        this.number = phoneNumber;
     }
 
     public String getAddress() {
@@ -75,11 +75,11 @@ public class PatientDTO{
         this.country = country;
     }
 
-    public String getHealthInsuranceID() {
-        return healthInsuranceID;
+    public String getInsuranceID() {
+        return InsuranceID;
     }
 
-    public void setHealthInsuranceID(String healthInsuranceID) {
-        this.healthInsuranceID = healthInsuranceID;
+    public void setInsuranceID(String healthInsuranceID) {
+        this.InsuranceID = healthInsuranceID;
     }
 }
