@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatNativeDateModule } from '@angular/material/core';
 import {DemoMaterialModule} from './material-module';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { HomePagePatientComponent } from './components/home-page-patient/home-page-patient.component';
 
 
 @NgModule({
@@ -21,6 +22,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     LoginComponent,
 
     RegistrationComponent,
+
+    HomePagePatientComponent,
 
   ],
   imports: [

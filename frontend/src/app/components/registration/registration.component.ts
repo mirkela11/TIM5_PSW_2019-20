@@ -1,9 +1,12 @@
-import { Component, OnInit, Injectable} from '@angular/core';
-import { Patient} from '../../model/patient';
-import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {Patient} from '../../model/patient';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {PatientService} from '../../services/patient.service';
 import {PatientStatus} from '../../model/patientStatus';
+import {User} from '../../model/user';
+import {Role} from '../../model/role';
+import {UserServiceService} from '../../services/user-service.service';
 
 @Component({
   selector: 'app-registration',
@@ -15,11 +18,13 @@ export class RegistrationComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   patient: Patient;
+  user: User;
 
   constructor(
     private patientService: PatientService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private userService: UserServiceService
   ) { }
 
   ngOnInit() {
@@ -62,12 +67,19 @@ export class RegistrationComponent implements OnInit {
       PatientStatus.AWAITING_APPROVAL
     );
 
+    this.user = new User();
+    this.user.email = this.f.email.value;
+    this.user.password = this.f.password.value;
+    this.user.role = Role.PATIENT;
+
     this.createPatient();
   }
 
   private createPatient() {
     this.patientService.newPatient(this.patient).subscribe(
       data => {
+        this.userService.addUser(this.user);
+        this.patientService.addPatient(this.patient);
         this.router.navigate(['/patient/login']);
       },
       error => {

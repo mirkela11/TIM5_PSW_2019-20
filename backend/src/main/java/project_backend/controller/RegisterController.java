@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import project_backend.dtos.PatientDTO;
 import project_backend.model.Patient;
 import project_backend.model.PatientStatus;
+import project_backend.model.Role;
+import project_backend.model.User;
 import project_backend.service.PatientService;
+import project_backend.service.UserService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -14,6 +17,9 @@ public class RegisterController {
 
     @Autowired
     private PatientService patientService;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping(value = "/patient/register")
     public String Register(@RequestBody PatientDTO patient){
@@ -37,6 +43,8 @@ public class RegisterController {
             boolean uspesno = patientService.addPatient(newPatient);
             if(uspesno == true){
                 System.out.println("New account with email: " + newPatient.getEmail());
+                User u = new User(patient.getEmail(), patient.getPassword(), Role.PATIENT);
+                userService.save(u);
             }
             else
             {
