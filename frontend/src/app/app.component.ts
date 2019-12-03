@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
+import {UserServiceService} from './services/user-service.service';
+
 
 @Component({
   selector: 'app-root',
@@ -16,5 +18,37 @@ export class AppComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver, private userService: UserServiceService) { }
+
+  public isLoggedIn() {
+    return this.userService.isLoggedIn();
+  }
+
+  public isClinicalCentreAdmin() {
+    return this.userService.isClinicalCentreAdmin();
+  }
+
+  public isClinicAdmin() {
+    return this.userService.isClinicalAdmin();
+  }
+
+  public isPatient() {
+    return this.userService.isPatient();
+  }
+
+  public isDoctor() {
+    return this.userService.isDoctor();
+  }
+
+  public isNurse() {
+    return this.userService.isNurse();
+  }
+  public isNone() {
+    return this.userService.isNone();
+  }
+
+  public logOut() {
+    this.userService.logOut();
+  }
+
 }

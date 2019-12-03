@@ -67,10 +67,7 @@ export class RegistrationComponent implements OnInit {
       PatientStatus.AWAITING_APPROVAL
     );
 
-    this.user = new User();
-    this.user.email = this.f.email.value;
-    this.user.password = this.f.password.value;
-    this.user.role = Role.PATIENT;
+    this.user = new User(this.f.emal.value, this.f.password.value, Role.PATIENT);
 
     this.createPatient();
   }
