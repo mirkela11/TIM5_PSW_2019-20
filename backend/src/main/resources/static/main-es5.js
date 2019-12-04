@@ -28,7 +28,18 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\n<mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n               [mode]=\"(isHandset$ | async) ? 'over' : 'side'\" [opened]=\"(isHandset$ | async) === true\">\n    <mat-toolbar color=\"accent\">Menu</mat-toolbar>\n      <mat-nav-list>\n        <a mat-list-item routerLink=\"/patient/login\">Login</a>\n\n        <a mat-list-item routerLink=\"/patient/register\">Register</a>\n      </mat-nav-list>\n\n\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color = \"accent\" >\n      <button type=\"button\" aria-label=\"Toggle sidenav\" mat-icon-button (click)=\"drawer.toggle()\"\n              >\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Clinical Centre System</span>\n\n    </mat-toolbar>\n    <!-- Add Content Here -->\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("\n<mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n               [mode]=\"(isHandset$ | async) ? 'over' : 'side'\" [opened]=\"(isHandset$ | async) === true\">\n    <mat-toolbar color=\"accent\">Menu</mat-toolbar>\n      <mat-nav-list *ngIf = \"isLoggedIn()\">\n        <a mat-list-item routerLink=\"/login\">Login</a>\n        <a mat-list-item routerLink=\"/patient/register\">Register</a>\n      </mat-nav-list>\n\n      <mat-nav-list *ngIf=\"isPatient()\">\n        <a mat-list-item routerLink=\"/patient/profile\">Profile</a>\n        <a mat-list-item routerLink=\"/patient/medicalRecord\">Medical record</a>\n        <a mat-list-item routerLink=\"/patient/medicalHistory\">Medical history</a>\n        <a mat-list-item routerLink=\"/patient/clinics\">Clinics</a>\n        <a mat-list-item (click)=\"logOut()\">Logout</a>\n      </mat-nav-list>\n\n\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color = \"accent\" >\n      <button type=\"button\" aria-label=\"Toggle sidenav\" mat-icon-button (click)=\"drawer.toggle()\"\n              >\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Clinical Centre System</span>\n\n    </mat-toolbar>\n    <!-- Add Content Here -->\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/home-page-doctor/home-page-doctor.component.html": 
+        /*!*******************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/home-page-doctor/home-page-doctor.component.html ***!
+          \*******************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<p>home-page-doctor works!</p>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/home-page-patient/home-page-patient.component.html": 
@@ -39,7 +50,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<p>home-page-patient works!</p>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<p>home-page-patient works!</p>\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/login/login.component.html": 
@@ -379,6 +390,7 @@
             /* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/components/login/login.component.ts");
             /* harmony import */ var _components_registration_registration_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/registration/registration.component */ "./src/app/components/registration/registration.component.ts");
             /* harmony import */ var _components_home_page_patient_home_page_patient_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/home-page-patient/home-page-patient.component */ "./src/app/components/home-page-patient/home-page-patient.component.ts");
+            /* harmony import */ var _components_home_page_doctor_home_page_doctor_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/home-page-doctor/home-page-doctor.component */ "./src/app/components/home-page-doctor/home-page-doctor.component.ts");
             var routes = [
                 {
                     path: '',
@@ -389,12 +401,16 @@
                     component: _components_registration_registration_component__WEBPACK_IMPORTED_MODULE_4__["RegistrationComponent"],
                 },
                 {
-                    path: 'patient/login',
+                    path: 'login',
                     component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"],
                 },
                 {
                     path: 'patient/home',
                     component: _components_home_page_patient_home_page_patient_component__WEBPACK_IMPORTED_MODULE_5__["HomePagePatientComponent"],
+                },
+                {
+                    path: 'doctor/home',
+                    component: _components_home_page_doctor_home_page_doctor_component__WEBPACK_IMPORTED_MODULE_6__["HomePageDoctorComponent"],
                 },
             ];
             var AppRoutingModule = /** @class */ (function () {
@@ -434,16 +450,40 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm2015/layout.js");
             /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+            /* harmony import */ var _services_user_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./services/user-service.service */ "./src/app/services/user-service.service.ts");
             var AppComponent = /** @class */ (function () {
-                function AppComponent(breakpointObserver) {
+                function AppComponent(breakpointObserver, userService) {
                     this.breakpointObserver = breakpointObserver;
+                    this.userService = userService;
                     this.isHandset$ = this.breakpointObserver.observe(_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["Breakpoints"].Handset)
                         .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (result) { return result.matches; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["shareReplay"])());
                 }
+                AppComponent.prototype.isLoggedIn = function () {
+                    return this.userService.isLoggedIn();
+                };
+                AppComponent.prototype.isClinicalCentreAdmin = function () {
+                    return this.userService.isClinicalCentreAdmin();
+                };
+                AppComponent.prototype.isClinicAdmin = function () {
+                    return this.userService.isClinicalAdmin();
+                };
+                AppComponent.prototype.isPatient = function () {
+                    return this.userService.isPatient();
+                };
+                AppComponent.prototype.isDoctor = function () {
+                    return this.userService.isDoctor();
+                };
+                AppComponent.prototype.isNurse = function () {
+                    return this.userService.isNurse();
+                };
+                AppComponent.prototype.logOut = function () {
+                    this.userService.logOut();
+                };
                 return AppComponent;
             }());
             AppComponent.ctorParameters = function () { return [
-                { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["BreakpointObserver"] }
+                { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["BreakpointObserver"] },
+                { type: _services_user_service_service__WEBPACK_IMPORTED_MODULE_4__["UserServiceService"] }
             ]; };
             AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -478,6 +518,7 @@
             /* harmony import */ var _material_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./material-module */ "./src/app/material-module.ts");
             /* harmony import */ var _components_registration_registration_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/registration/registration.component */ "./src/app/components/registration/registration.component.ts");
             /* harmony import */ var _components_home_page_patient_home_page_patient_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/home-page-patient/home-page-patient.component */ "./src/app/components/home-page-patient/home-page-patient.component.ts");
+            /* harmony import */ var _components_home_page_doctor_home_page_doctor_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/home-page-doctor/home-page-doctor.component */ "./src/app/components/home-page-doctor/home-page-doctor.component.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -490,6 +531,7 @@
                         _components_login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"],
                         _components_registration_registration_component__WEBPACK_IMPORTED_MODULE_13__["RegistrationComponent"],
                         _components_home_page_patient_home_page_patient_component__WEBPACK_IMPORTED_MODULE_14__["HomePagePatientComponent"],
+                        _components_home_page_doctor_home_page_doctor_component__WEBPACK_IMPORTED_MODULE_15__["HomePageDoctorComponent"],
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -512,6 +554,44 @@
                     bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
                 })
             ], AppModule);
+            /***/ 
+        }),
+        /***/ "./src/app/components/home-page-doctor/home-page-doctor.component.css": 
+        /*!****************************************************************************!*\
+          !*** ./src/app/components/home-page-doctor/home-page-doctor.component.css ***!
+          \****************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaG9tZS1wYWdlLWRvY3Rvci9ob21lLXBhZ2UtZG9jdG9yLmNvbXBvbmVudC5jc3MifQ== */");
+            /***/ 
+        }),
+        /***/ "./src/app/components/home-page-doctor/home-page-doctor.component.ts": 
+        /*!***************************************************************************!*\
+          !*** ./src/app/components/home-page-doctor/home-page-doctor.component.ts ***!
+          \***************************************************************************/
+        /*! exports provided: HomePageDoctorComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageDoctorComponent", function () { return HomePageDoctorComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            var HomePageDoctorComponent = /** @class */ (function () {
+                function HomePageDoctorComponent() {
+                }
+                HomePageDoctorComponent.prototype.ngOnInit = function () {
+                };
+                return HomePageDoctorComponent;
+            }());
+            HomePageDoctorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-home-page-doctor',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./home-page-doctor.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/home-page-doctor/home-page-doctor.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./home-page-doctor.component.css */ "./src/app/components/home-page-doctor/home-page-doctor.component.css")).default]
+                })
+            ], HomePageDoctorComponent);
             /***/ 
         }),
         /***/ "./src/app/components/home-page-patient/home-page-patient.component.css": 
@@ -580,6 +660,7 @@
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             /* harmony import */ var _services_user_service_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/user-service.service */ "./src/app/services/user-service.service.ts");
             /* harmony import */ var _model_role__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../model/role */ "./src/app/model/role.ts");
+            /* harmony import */ var _services_doctor_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../services/doctor.service */ "./src/app/services/doctor.service.ts");
             var Patient = /** @class */ (function () {
                 function Patient(email, password) {
                     this.email = email;
@@ -588,11 +669,12 @@
                 return Patient;
             }());
             var LoginComponent = /** @class */ (function () {
-                function LoginComponent(patientService, formBuilder, router, userService) {
+                function LoginComponent(patientService, formBuilder, router, userService, doctorService) {
                     this.patientService = patientService;
                     this.formBuilder = formBuilder;
                     this.router = router;
                     this.userService = userService;
+                    this.doctorService = doctorService;
                     this.submitted = false;
                 }
                 LoginComponent.prototype.ngOnInit = function () {
@@ -623,12 +705,27 @@
                 LoginComponent.prototype.attemptPatientLogin = function () {
                     var _this = this;
                     if (this.user.role === _model_role__WEBPACK_IMPORTED_MODULE_6__["Role"].PATIENT) {
-                        console.log(this.patient);
-                        this.patientService.loginPatient(this.patient).subscribe(function (data) {
+                        console.log(this.user);
+                        this.patientService.loginPatient(this.user).subscribe(function (data) {
                             console.log(data);
                             if (data !== null) {
                                 console.log('Successful logged in');
                                 _this.router.navigate(['/patient/home']);
+                            }
+                            else {
+                                console.log('Login error');
+                            }
+                        }, function (error) {
+                            console.log(error);
+                        });
+                    }
+                    else if (this.user.role === _model_role__WEBPACK_IMPORTED_MODULE_6__["Role"].DOCTOR) {
+                        console.log(this.user);
+                        this.doctorService.loginDoctor(this.user).subscribe(function (data) {
+                            console.log(data);
+                            if (data !== null) {
+                                console.log('Successful logged in');
+                                _this.router.navigate(['/doctor/home']);
                             }
                             else {
                                 console.log('Login error');
@@ -644,7 +741,8 @@
                 { type: _services_patient_service__WEBPACK_IMPORTED_MODULE_3__["PatientService"] },
                 { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
                 { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
-                { type: _services_user_service_service__WEBPACK_IMPORTED_MODULE_5__["UserServiceService"] }
+                { type: _services_user_service_service__WEBPACK_IMPORTED_MODULE_5__["UserServiceService"] },
+                { type: _services_doctor_service__WEBPACK_IMPORTED_MODULE_7__["DoctorService"] }
             ]; };
             LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -721,10 +819,7 @@
                         return;
                     }
                     this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_2__["Patient"](this.f.email.value, this.f.password.value, this.f.name.value, this.f.surname.value, this.f.number.value, this.f.address.value, this.f.city.value, this.f.country.value, this.f.insuranceID.value, _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].AWAITING_APPROVAL);
-                    this.user = new _model_user__WEBPACK_IMPORTED_MODULE_7__["User"]();
-                    this.user.email = this.f.email.value;
-                    this.user.password = this.f.password.value;
-                    this.user.role = _model_role__WEBPACK_IMPORTED_MODULE_8__["Role"].PATIENT;
+                    this.user = new _model_user__WEBPACK_IMPORTED_MODULE_7__["User"](this.f.emal.value, this.f.password.value, _model_role__WEBPACK_IMPORTED_MODULE_8__["Role"].PATIENT);
                     this.createPatient();
                 };
                 RegistrationComponent.prototype.createPatient = function () {
@@ -918,6 +1013,9 @@
                 Role[Role["PATIENT"] = 0] = "PATIENT";
                 Role[Role["DOCTOR"] = 1] = "DOCTOR";
                 Role[Role["NURSE"] = 2] = "NURSE";
+                Role[Role["CLINIC_ADMINISTRATOR"] = 3] = "CLINIC_ADMINISTRATOR";
+                Role[Role["CLINICAL_CENTRE_ADMINISTRATOR"] = 4] = "CLINICAL_CENTRE_ADMINISTRATOR";
+                Role[Role["NONE"] = 5] = "NONE";
             })(Role || (Role = {}));
             /***/ 
         }),
@@ -932,10 +1030,56 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function () { return User; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             var User = /** @class */ (function () {
-                function User() {
+                function User(email, password, role) {
+                    this.email = email;
+                    this.password = password;
+                    this.role = role;
                 }
+                User.prototype.setAll = function (email, password, role) {
+                    this.email = email;
+                    this.password = password;
+                    this.role = role;
+                };
                 return User;
             }());
+            /***/ 
+        }),
+        /***/ "./src/app/services/doctor.service.ts": 
+        /*!********************************************!*\
+          !*** ./src/app/services/doctor.service.ts ***!
+          \********************************************/
+        /*! exports provided: DoctorService */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DoctorService", function () { return DoctorService; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _user_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user-service.service */ "./src/app/services/user-service.service.ts");
+            var DoctorService = /** @class */ (function () {
+                function DoctorService(http, userService) {
+                    this.http = http;
+                    this.userService = userService;
+                    this.urlDoctor = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].doctor;
+                    this.listDoctors = new Array();
+                }
+                DoctorService.prototype.loginDoctor = function (doctor) {
+                    this.userService.setToken(doctor);
+                    return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + '/login', doctor, { responseType: 'text' });
+                };
+                return DoctorService;
+            }());
+            DoctorService.ctorParameters = function () { return [
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
+                { type: _user_service_service__WEBPACK_IMPORTED_MODULE_4__["UserServiceService"] }
+            ]; };
+            DoctorService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+                    providedIn: 'root'
+                })
+            ], DoctorService);
             /***/ 
         }),
         /***/ "./src/app/services/patient.service.ts": 
@@ -952,10 +1096,12 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
             /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+            /* harmony import */ var _user_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user-service.service */ "./src/app/services/user-service.service.ts");
             var API_URL = 'http://localhost:8080';
             var PatientService = /** @class */ (function () {
-                function PatientService(http) {
+                function PatientService(http, userService) {
                     this.http = http;
+                    this.userService = userService;
                     this.urlPatient = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].patient;
                     this.listPatients = new Array();
                 }
@@ -963,7 +1109,8 @@
                     return this.http.post(this.urlPatient + '/register', patient);
                 };
                 PatientService.prototype.loginPatient = function (patient) {
-                    return this.http.post(this.urlPatient + '/login', patient, { responseType: 'text' });
+                    this.userService.setToken(patient);
+                    return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + '/login', patient, { responseType: 'text' });
                 };
                 PatientService.prototype.addPatient = function (p) {
                     this.listPatients.push(p);
@@ -982,7 +1129,8 @@
                 return PatientService;
             }());
             PatientService.ctorParameters = function () { return [
-                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+                { type: _user_service_service__WEBPACK_IMPORTED_MODULE_4__["UserServiceService"] }
             ]; };
             PatientService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -995,23 +1143,39 @@
         /*!**************************************************!*\
           !*** ./src/app/services/user-service.service.ts ***!
           \**************************************************/
-        /*! exports provided: UserServiceService */
+        /*! exports provided: TOKEN, UserServiceService */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOKEN", function () { return TOKEN; });
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserServiceService", function () { return UserServiceService; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _model_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model/user */ "./src/app/model/user.ts");
+            /* harmony import */ var _model_role__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/role */ "./src/app/model/role.ts");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            var TOKEN = 'LoggedInUser';
             var UserServiceService = /** @class */ (function () {
-                function UserServiceService() {
+                function UserServiceService(router, http) {
+                    this.router = router;
+                    this.http = http;
                     this.list = new Array();
+                    this.user = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('', '', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NONE);
+                    this.doctor = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('doctor@email.com', 'Doctor123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].DOCTOR);
+                    this.patient = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('patient@email.com', 'Patient123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].PATIENT);
+                    this.list.push(this.doctor);
+                    this.list.push(this.patient);
+                    localStorage.setItem(TOKEN, JSON.stringify(this.user));
                 }
                 UserServiceService.prototype.addUser = function (u) {
-                    this.list.push(u);
+                    if (this.getUser(u.email) === null) {
+                        this.list.push(u);
+                    }
                 };
                 UserServiceService.prototype.getUser = function (email) {
                     if (this.list.length === 0) {
-                        return;
+                        return null;
                     }
                     for (var _i = 0, _a = this.list; _i < _a.length; _i++) {
                         var u = _a[_i];
@@ -1019,9 +1183,57 @@
                             return u;
                         }
                     }
+                    return null;
+                };
+                UserServiceService.prototype.setToken = function (user) {
+                    localStorage.setItem(TOKEN, JSON.stringify(user));
+                    this.user = user;
+                };
+                UserServiceService.prototype.isLoggedIn = function () {
+                    if (localStorage.getItem(TOKEN) !== null) {
+                        console.log(localStorage.getItem(TOKEN));
+                        return localStorage.getItem(TOKEN);
+                    }
+                    else {
+                        return null;
+                    }
+                };
+                UserServiceService.prototype.logOut = function () {
+                    this.router.navigate(['/login']);
+                    return localStorage.removeItem(TOKEN);
+                    // return this.http.post(environment.baseUrl + '/logout', this.user);
+                };
+                UserServiceService.prototype.isPatient = function () {
+                    if (this.isLoggedIn()) {
+                        return this.user.role === _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].PATIENT;
+                    }
+                };
+                UserServiceService.prototype.isDoctor = function () {
+                    if (this.isLoggedIn()) {
+                        return this.user.role === _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].DOCTOR;
+                    }
+                };
+                UserServiceService.prototype.isNurse = function () {
+                    if (this.isLoggedIn()) {
+                        return this.user.role === _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NURSE;
+                    }
+                };
+                UserServiceService.prototype.isClinicalAdmin = function () {
+                    if (this.isLoggedIn()) {
+                        return this.user.role === _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].CLINIC_ADMINISTRATOR;
+                    }
+                };
+                UserServiceService.prototype.isClinicalCentreAdmin = function () {
+                    if (this.isLoggedIn()) {
+                        return this.user.role === _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].CLINICAL_CENTRE_ADMINISTRATOR;
+                    }
                 };
                 return UserServiceService;
             }());
+            UserServiceService.ctorParameters = function () { return [
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] }
+            ]; };
             UserServiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
                     providedIn: 'root'
@@ -1047,6 +1259,7 @@
                 baseUrl: 'http://localhost:8080',
                 user: '/user',
                 patient: '/patient',
+                doctor: '/doctor',
                 clinicalCentreAdmin: '/clinical-centre-admin',
             };
             /*

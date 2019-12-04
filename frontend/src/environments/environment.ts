@@ -7,6 +7,7 @@ export const environment = {
   baseUrl: 'http://localhost:8080',
   user: '/user',
   patient: '/patient',
+  doctor: '/doctor',
   clinicalCentreAdmin: '/clinical-centre-admin',
 };
 

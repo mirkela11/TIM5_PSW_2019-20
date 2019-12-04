@@ -6,6 +6,16 @@ export class User {
   password: string;
   role: Role;
 
-  constructor() {}
+  constructor(email: string, password: string, role: Role) {
+    this.email = email;
+    this.password = password;
+    this.role = role;
+  }
+
+  public setAll(email: string, password: string, role: Role) {
+    this.email = email;
+    this.password = password;
+    this.role = role;
+  }
 
 }
