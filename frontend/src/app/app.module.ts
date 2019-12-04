@@ -13,12 +13,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {DemoMaterialModule} from './material-module';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HomePagePatientComponent } from './components/home-page-patient/home-page-patient.component';
-<<<<<<< Updated upstream
-=======
-import { HomePageDoctorComponent } from './components/home-page-doctor/home-page-doctor.component';
 import { ClinicsListComponent } from './components/clinics-list/clinics-list.component';
 import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
->>>>>>> Stashed changes
 
 
 @NgModule({
@@ -31,15 +27,9 @@ import { PatientProfileComponent } from './components/patient-profile/patient-pr
 
     HomePagePatientComponent,
 
-<<<<<<< Updated upstream
-=======
-    HomePageDoctorComponent,
-
     ClinicsListComponent,
 
     PatientProfileComponent,
-
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

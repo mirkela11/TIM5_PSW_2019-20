@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
   public attemptPatientLogin() {
     if (this.user.role === Role.PATIENT) {
       console.log(this.patient);
-      this.patientService.loginPatient(this.patient).subscribe(
+      this.patientService.loginPatient(this.user).subscribe(
         data => {
           console.log(data);
           if (data !== null) {

@@ -1,45 +1,44 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {User} from '../model/user';
-<<<<<<< Updated upstream
-=======
 import {Role} from '../model/role';
 import {Router} from '@angular/router';
-import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {retry} from 'rxjs/operators';
-import {Patient} from '../model/patient';
 
 export const TOKEN = 'LoggedInUser';
->>>>>>> Stashed changes
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
 
-  list: Array<User>;
-
-  constructor() {
-    this.list = new Array<User>();
+  list: Array<User> = new Array<User>();
+  doctor: User;
+  patient: User;
+  user: User = new User('', '', Role.NONE);
+  constructor(private router: Router, private httpClient: HttpClient) {
+    this.doctor = new User('doctor@email.com', 'Doctor123', Role.DOCTOR);
+    this.patient = new User('patient@email.com', 'Patient123', Role.PATIENT);
+    this.list.push(this.doctor);
+    this.list.push(this.patient);
+    localStorage.setItem(TOKEN, JSON.stringify(this.user));
   }
 
   public addUser(u: User) {
-    this.list.push(u);
+    if (this.getUser(u.email) === null) {
+      this.list.push(u);
+    }
   }
 
   public getUser(email: string) {
     if ( this.list.length === 0) {
-      return;
+      return null;
     }
     for (const u of this.list) {
       if ( u.email === email) {
         return u;
       }
     }
-}
-
-<<<<<<< Updated upstream
-=======
     return null;
   }
 
@@ -108,5 +107,5 @@ export class UserServiceService {
       return this.user.role === Role.NONE;
     }
   }
->>>>>>> Stashed changes
+
 }

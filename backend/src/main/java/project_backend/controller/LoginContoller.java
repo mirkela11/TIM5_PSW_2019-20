@@ -27,7 +27,7 @@ public class LoginContoller{
     UserService userService;
 
 
-    @PostMapping(value = "/patient/login", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public String login(@RequestBody LoginDTO logindto)
     {
         User user = userService.findOneByemail(logindto.getEmail());
