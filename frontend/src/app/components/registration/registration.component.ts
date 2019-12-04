@@ -67,10 +67,14 @@ export class RegistrationComponent implements OnInit {
       PatientStatus.AWAITING_APPROVAL
     );
 
+<<<<<<< Updated upstream
     this.user = new User();
     this.user.email = this.f.email.value;
     this.user.password = this.f.password.value;
     this.user.role = Role.PATIENT;
+=======
+    this.user = new User(this.f.email.value, this.f.password.value, Role.PATIENT);
+>>>>>>> Stashed changes
 
     this.createPatient();
   }
@@ -80,7 +84,7 @@ export class RegistrationComponent implements OnInit {
       data => {
         this.userService.addUser(this.user);
         this.patientService.addPatient(this.patient);
-        this.router.navigate(['/patient/login']);
+        this.router.navigate(['/login']);
       },
       error => {
         alert('Error registration patient');

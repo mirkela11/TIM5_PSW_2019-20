@@ -3,6 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import {HomePagePatientComponent} from './components/home-page-patient/home-page-patient.component';
+<<<<<<< Updated upstream
+=======
+import {HomePageDoctorComponent} from './components/home-page-doctor/home-page-doctor.component';
+import {ClinicsListComponent} from './components/clinics-list/clinics-list.component';
+import {PatientProfileComponent} from './components/patient-profile/patient-profile.component';
+>>>>>>> Stashed changes
 
 const routes: Routes = [
   {
@@ -21,6 +27,21 @@ const routes: Routes = [
     path: 'patient/home',
     component: HomePagePatientComponent,
   },
+<<<<<<< Updated upstream
+=======
+  {
+    path: 'doctor/home',
+    component: HomePageDoctorComponent,
+  },
+  {
+    path: 'patient/clinics',
+    component: ClinicsListComponent,
+  },
+  {
+    path: 'patient/profile',
+    component: PatientProfileComponent,
+  },
+>>>>>>> Stashed changes
 
 ];
 

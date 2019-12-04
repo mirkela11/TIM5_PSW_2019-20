@@ -37,7 +37,7 @@ public class RegisterController {
             newPatient.setCountry(patient.getCountry());
             newPatient.setAddress(patient.getAddress());
             newPatient.setInsuranceID(patient.getInsuranceID());
-            newPatient.setStatus(PatientStatus.APPROVED);
+            newPatient.setStatus(PatientStatus.AWAITING_APPROVAL);
 
 
             boolean uspesno = patientService.addPatient(newPatient);
