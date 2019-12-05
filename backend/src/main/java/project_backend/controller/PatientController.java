@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import project_backend.dtos.PatientDTO;
 import project_backend.model.Patient;
 import project_backend.model.PatientStatus;
+import project_backend.model.User;
 import project_backend.service.PatientService;
+import project_backend.service.UserService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -17,10 +19,14 @@ public class PatientController{
     @Autowired
     private PatientService patientService;
 
+    @Autowired
+    private UserService userService;
+
     @PostMapping(value = "/patient/edit")
     public String editPatient(@RequestBody PatientDTO p)
     {
         Patient pat = patientService.getPatient(p.getEmail());
+        User u = userService.getUser(p.getEmail());
 
         if(pat != null)
         {
@@ -34,10 +40,12 @@ public class PatientController{
             pat.setAddress(p.getAddress());
             pat.setInsuranceID(p.getInsuranceID());
             pat.setStatus(PatientStatus.AWAITING_APPROVAL);
+            u.setPassword(p.getPassword());
 
             boolean uspesno = patientService.editPatient(pat);
+            boolean uspesno2 = userService.editUser(u);
 
-            if(uspesno == true) {
+            if(uspesno == true || uspesno2 == true) {
                 System.out.println("User with email: " + pat.getEmail() + " is edited");
                 return "Uspesno";
             }
