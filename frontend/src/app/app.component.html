@@ -15,7 +15,14 @@
       <a mat-list-item routerLink="/patient/clinics">Clinics</a>
       <a mat-list-item (click)="onLogout()">Logout</a>
     </mat-nav-list>
+
     <mat-nav-list *ngIf="isDoctor()">
+      <a mat-list-item routerLink="/doctor/list_of_patients">List of patients</a>
+      <a mat-list-item routerLink="/doctor/exemination">Exemination</a>
+      <a mat-list-item routerLink="/doctor/work_calendar">Work calendar</a>
+      <a mat-list-item routerLink="/doctor/requests">Requests</a>
+      <a mat-list-item routerLink="/doctor/operations">Operations</a>
+      <a mat-list-item routerLink="/doctor/profile">Profile</a>
       <a mat-list-item (click)="onLogout()">Logout</a>
     </mat-nav-list>
 

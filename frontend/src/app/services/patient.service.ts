@@ -6,8 +6,6 @@ import {UserServiceService} from './user-service.service';
 import {PatientStatus} from '../model/patientStatus';
 
 
-export const API_URL = 'http://localhost:8080';
-
 @Injectable({
   providedIn: 'root'
 })

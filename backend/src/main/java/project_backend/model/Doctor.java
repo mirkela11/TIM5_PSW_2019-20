@@ -27,11 +27,17 @@ public class Doctor {
     @Column(columnDefinition = "VARCHAR(11)", unique = true, nullable = false)
     private String phone;
 
-    @Column(nullable = false)
-    private LocalTime workHoursFrom;
+//    @Column(nullable = false)
+//    private LocalTime workHoursFrom;
+//
+//    @Column(nullable = false)
+//    private LocalTime workHoursTo;
 
     @Column(nullable = false)
-    private LocalTime workHoursTo;
+    private String workHoursFrom;
+
+    @Column(nullable = false)
+    private String workHoursTo;
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Clinic clinic;
@@ -75,13 +81,13 @@ public class Doctor {
         return phone;
     }
 
-    public LocalTime getWorkHoursFrom() {
-        return workHoursFrom;
-    }
-
-    public LocalTime getWorkHoursTo() {
-        return workHoursTo;
-    }
+//    public LocalTime getWorkHoursFrom() {
+//        return workHoursFrom;
+//    }
+//
+//    public LocalTime getWorkHoursTo() {
+//        return workHoursTo;
+//    }
 
     public Clinic getClinic() {
         return clinic;
@@ -127,13 +133,13 @@ public class Doctor {
         this.phone = phone;
     }
 
-    public void setWorkHoursFrom(LocalTime workHoursFrom) {
-        this.workHoursFrom = workHoursFrom;
-    }
-
-    public void setWorkHoursTo(LocalTime workHoursTo) {
-        this.workHoursTo = workHoursTo;
-    }
+//    public void setWorkHoursFrom(LocalTime workHoursFrom) {
+//        this.workHoursFrom = workHoursFrom;
+//    }
+//
+//    public void setWorkHoursTo(LocalTime workHoursTo) {
+//        this.workHoursTo = workHoursTo;
+//    }
 
     public void setClinic(Clinic clinic) {
         this.clinic = clinic;
@@ -153,5 +159,21 @@ public class Doctor {
 
     public void setStatus(DoctorStatus status) {
         this.status = status;
+    }
+
+    public String getWorkHoursFrom() {
+        return workHoursFrom;
+    }
+
+    public void setWorkHoursFrom(String workHoursFrom) {
+        this.workHoursFrom = workHoursFrom;
+    }
+
+    public String getWorkHoursTo() {
+        return workHoursTo;
+    }
+
+    public void setWorkHoursTo(String workHoursTo) {
+        this.workHoursTo = workHoursTo;
     }
 }
