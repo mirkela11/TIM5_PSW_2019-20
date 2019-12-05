@@ -1237,11 +1237,12 @@
             /* harmony import */ var _model_role__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/role */ "./src/app/model/role.ts");
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
             var TOKEN = 'LoggedInUser';
             var UserServiceService = /** @class */ (function () {
-                function UserServiceService(router, httpClient) {
+                function UserServiceService(router, http) {
                     this.router = router;
-                    this.httpClient = httpClient;
+                    this.http = http;
                     this.list = new Array();
                     this.user = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('', '', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NONE);
                     this.doctor = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('doctor@email.com', 'Doctor123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].DOCTOR);
@@ -1291,8 +1292,9 @@
                 UserServiceService.prototype.logOut = function () {
                     this.router.navigate(['']);
                     this.user = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('', '', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NONE);
-                    return localStorage.setItem(TOKEN, JSON.stringify(this.user));
-                    // return this.http.post(environment.baseUrl + '/logout', this.user);
+                    localStorage.removeItem(TOKEN);
+                    localStorage.setItem(TOKEN, JSON.stringify(this.user));
+                    return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl + '/logout', this.user);
                 };
                 UserServiceService.prototype.isPatient = function () {
                     if (this.isLoggedIn()) {

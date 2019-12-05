@@ -1323,6 +1323,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_role__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/role */ "./src/app/model/role.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
@@ -1331,9 +1333,9 @@ __webpack_require__.r(__webpack_exports__);
 
 const TOKEN = 'LoggedInUser';
 let UserServiceService = class UserServiceService {
-    constructor(router, httpClient) {
+    constructor(router, http) {
         this.router = router;
-        this.httpClient = httpClient;
+        this.http = http;
         this.list = new Array();
         this.user = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('', '', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NONE);
         this.doctor = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('doctor@email.com', 'Doctor123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].DOCTOR);
@@ -1381,8 +1383,9 @@ let UserServiceService = class UserServiceService {
     logOut() {
         this.router.navigate(['']);
         this.user = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('', '', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NONE);
-        return localStorage.setItem(TOKEN, JSON.stringify(this.user));
-        // return this.http.post(environment.baseUrl + '/logout', this.user);
+        localStorage.removeItem(TOKEN);
+        localStorage.setItem(TOKEN, JSON.stringify(this.user));
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl + '/logout', this.user);
     }
     isPatient() {
         if (this.isLoggedIn()) {

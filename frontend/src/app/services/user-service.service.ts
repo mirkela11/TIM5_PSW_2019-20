@@ -3,6 +3,7 @@ import {User} from '../model/user';
 import {Role} from '../model/role';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 export const TOKEN = 'LoggedInUser';
 
@@ -16,7 +17,7 @@ export class UserServiceService {
   doctor: User;
   patient: User;
   user: User = new User('', '', Role.NONE);
-  constructor(private router: Router, private httpClient: HttpClient) {
+  constructor(private router: Router, private http: HttpClient) {
     this.doctor = new User('doctor@email.com', 'Doctor123', Role.DOCTOR);
     this.patient = new User('patient@email.com', 'Patient123', Role.PATIENT);
     this.list.push(this.doctor);
@@ -68,8 +69,8 @@ export class UserServiceService {
   public logOut() {
     this.router.navigate(['']);
     this.user =  new User('', '', Role.NONE);
-    return localStorage.setItem(TOKEN, JSON.stringify(this.user));
-    // return this.http.post(environment.baseUrl + '/logout', this.user);
+    localStorage.removeItem(TOKEN);
+    localStorage.setItem(TOKEN, JSON.stringify(this.user));
   }
 
   public isPatient() {
