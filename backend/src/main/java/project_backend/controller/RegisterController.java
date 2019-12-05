@@ -25,7 +25,7 @@ public class RegisterController {
     public String Register(@RequestBody PatientDTO patient){
 
         Patient pat = patientService.getPatient(patient.getEmail());
-
+        System.out.println(patient.getCountry());
         if(pat == null){
             Patient newPatient = new Patient();
             newPatient.setEmail(patient.getEmail());
@@ -37,7 +37,7 @@ public class RegisterController {
             newPatient.setCountry(patient.getCountry());
             newPatient.setAddress(patient.getAddress());
             newPatient.setInsuranceID(patient.getInsuranceID());
-            newPatient.setStatus(PatientStatus.APPROVED);
+            newPatient.setStatus(PatientStatus.AWAITING_APPROVAL);
 
 
             boolean uspesno = patientService.addPatient(newPatient);

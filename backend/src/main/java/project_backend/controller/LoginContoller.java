@@ -13,10 +13,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import project_backend.dtos.LoginDTO;
 import project_backend.model.User;
 import project_backend.service.UserService;
-
-import javax.annotation.PostConstruct;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
@@ -36,6 +32,8 @@ public class LoginContoller{
         {
             if(logindto.getPassword().equals(user.getPassword()))
             {
+                System.out.println(logindto.getPassword());
+                System.out.println(user.getPassword());
                 ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
                 HttpSession session = attributes.getRequest().getSession(true);
                 session.setAttribute("user", user.getEmail());
@@ -61,4 +59,5 @@ public class LoginContoller{
         session.invalidate();
         return "Uspesan logout";
     }
+
 }

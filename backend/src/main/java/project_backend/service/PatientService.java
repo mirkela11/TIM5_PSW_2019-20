@@ -59,11 +59,28 @@ public class PatientService {
 
         for(Patient p : tmp)
         {
-            if(p.getEmail() == email)
+            if(p.getEmail().equals(email))
                 return p;
         }
 
         return null;
+    }
+
+    public boolean editPatient(Patient p) {
+        List<Patient> tmp = findall();
+        if(tmp.size() == 0)
+            return false;
+
+        for(Patient p1 : tmp)
+        {
+            if(p.getEmail().equals(p1.getEmail())) {
+                p1 = p;
+                repo.save(p1);
+                return true;
+            }
+        }
+
+        return false;
     }
 
 

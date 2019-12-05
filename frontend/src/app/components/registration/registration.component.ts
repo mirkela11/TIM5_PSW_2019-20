@@ -77,10 +77,11 @@ export class RegistrationComponent implements OnInit {
       data => {
         this.userService.addUser(this.user);
         this.patientService.addPatient(this.patient);
-        this.router.navigate(['/patient/login']);
+        this.router.navigate(['/login']);
       },
       error => {
         alert('Error registration patient');
+        console.log(error);
       }
     );
   }

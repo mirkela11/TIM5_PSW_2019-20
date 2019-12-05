@@ -2,26 +2,22 @@ import {Injectable} from '@angular/core';
 import {User} from '../model/user';
 import {Role} from '../model/role';
 import {Router} from '@angular/router';
-import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {retry} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
 
 export const TOKEN = 'LoggedInUser';
+
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class UserServiceService {
-
 
   list: Array<User> = new Array<User>();
   doctor: User;
   patient: User;
   user: User = new User('', '', Role.NONE);
   constructor(private router: Router, private http: HttpClient) {
-
     this.doctor = new User('doctor@email.com', 'Doctor123', Role.DOCTOR);
     this.patient = new User('patient@email.com', 'Patient123', Role.PATIENT);
     this.list.push(this.doctor);
@@ -44,8 +40,17 @@ export class UserServiceService {
         return u;
       }
     }
-
     return null;
+  }
+
+  public setUser(u: User) {
+
+    for (const p1 of this.list) {
+      if (p1.email === u.email) {
+        p1.password = u.password;
+        return;
+      }
+    }
   }
 
   public setToken(user) {
@@ -55,7 +60,6 @@ export class UserServiceService {
 
   public isLoggedIn() {
     if (localStorage.getItem(TOKEN) !== null) {
-      console.log(localStorage.getItem(TOKEN));
       return localStorage.getItem(TOKEN);
     } else {
       return null;
@@ -65,8 +69,8 @@ export class UserServiceService {
   public logOut() {
     this.router.navigate(['']);
     this.user =  new User('', '', Role.NONE);
-    return localStorage.setItem(TOKEN, JSON.stringify(this.user));
-    // return this.http.post(environment.baseUrl + '/logout', this.user);
+    localStorage.removeItem(TOKEN);
+    localStorage.setItem(TOKEN, JSON.stringify(this.user));
   }
 
   public isPatient() {
@@ -104,4 +108,5 @@ export class UserServiceService {
       return this.user.role === Role.NONE;
     }
   }
+
 }
