@@ -15,7 +15,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { HomePagePatientComponent } from './components/home-page-patient/home-page-patient.component';
 import { ClinicsListComponent } from './components/clinics-list/clinics-list.component';
 import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
-
+import {HomePageDoctorComponent} from './components/home-page-doctor/home-page-doctor.component';
 
 
 @NgModule({
@@ -31,6 +31,8 @@ import { PatientProfileComponent } from './components/patient-profile/patient-pr
     ClinicsListComponent,
 
     PatientProfileComponent,
+
+    HomePageDoctorComponent,
   ],
   imports: [
     BrowserModule,
