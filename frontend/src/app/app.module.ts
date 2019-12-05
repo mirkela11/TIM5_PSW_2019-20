@@ -17,6 +17,7 @@ import { ClinicsListComponent } from './components/clinics-list/clinics-list.com
 import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

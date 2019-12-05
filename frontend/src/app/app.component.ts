@@ -17,8 +17,8 @@ export class AppComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,
-              private userService: UserServiceService) { }
+  constructor(private breakpointObserver: BreakpointObserver, private userService: UserServiceService) { }
+
 
   public isLoggedIn() {
     return this.userService.isLoggedIn();
@@ -26,6 +26,14 @@ export class AppComponent {
 
   public isNone() {
     return this.userService.isNone();
+  }
+    
+  public isClinicalCentreAdmin() {
+    return this.userService.isClinicalCentreAdmin();
+  }
+
+  public isClinicAdmin() {
+    return this.userService.isClinicalAdmin();
   }
 
   public isPatient() {
@@ -43,4 +51,5 @@ export class AppComponent {
   public onLogout() {
     this.userService.logOut();
   }
+
 }

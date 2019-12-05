@@ -50,4 +50,14 @@ public class LoginContoller{
         return "";
     }
 
+    @PostMapping(value = "/logout", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String logout()
+    {
+        System.out.println("Logout uslo");
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attributes.getRequest().getSession(true);
+        session.invalidate();
+        return "Uspesan logout";
+    }
+
 }
