@@ -7,7 +7,7 @@ import {UserServiceService} from '../../services/user-service.service';
 import {Role} from '../../model/role';
 import {DoctorService} from '../../services/doctor.service';
 
-export class Patient {
+export class LoginUser {
   constructor(
     public email: string,
     public password: string
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
   private submitted = false;
   private user: User;
-  private patient: Patient;
+  private loginUser: LoginUser;
 
   constructor(
     private patientService: PatientService,
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.patient = new Patient(
+    this.loginUser = new LoginUser(
       this.f.email.value,
       this.f.password.value
     );
@@ -67,8 +67,7 @@ export class LoginComponent implements OnInit {
   }
 
   public attemptPatientLogin() {
-    if (this.user.role === Role.PATIENT) {
-      console.log(this.user);
+    if (this.user.role === Role.PATIENT && this.loginUser.password === this.user.password) {
       this.patientService.loginPatient(this.user).subscribe(
         data => {
           console.log(data);
@@ -83,8 +82,7 @@ export class LoginComponent implements OnInit {
           console.log(error);
         }
       );
-    } else if (this.user.role === Role.DOCTOR) {
-      console.log(this.user);
+    } else if (this.user.role === Role.DOCTOR && this.loginUser.password === this.user.password) {
       this.doctorService.loginDoctor(this.user).subscribe(
         data => {
           console.log(data);
