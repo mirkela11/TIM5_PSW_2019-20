@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
@@ -27,7 +26,7 @@ export class AppComponent {
   public isNone() {
     return this.userService.isNone();
   }
-    
+
   public isClinicalCentreAdmin() {
     return this.userService.isClinicalCentreAdmin();
   }
@@ -41,6 +40,7 @@ export class AppComponent {
   }
 
   public isDoctor() {
+
     return this.userService.isDoctor();
   }
 

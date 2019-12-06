@@ -6,6 +6,7 @@ import {User} from '../../model/user';
 import {UserServiceService} from '../../services/user-service.service';
 import {Role} from '../../model/role';
 import {DoctorService} from '../../services/doctor.service';
+import {NurseService} from '../../services/nurse-service.service';
 
 export class Patient {
   constructor(
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private userService: UserServiceService,
     private doctorService: DoctorService,
+    private nurseService: NurseService,
   ) { }
 
   ngOnInit() {
@@ -91,6 +93,22 @@ export class LoginComponent implements OnInit {
           if (data !== null) {
             console.log('Successful logged in');
             this.router.navigate(['/doctor/home']);
+          } else {
+            console.log('Login error');
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else if (this.user.role === Role.NURSE) {
+      console.log(this.user);
+      this.nurseService.loginNurse(this.user).subscribe(
+        data => {
+          console.log(data);
+          if (data !== null) {
+            console.log('Successful logged in');
+            this.router.navigate(['/nurse/home']);
           } else {
             console.log('Login error');
           }
