@@ -1,9 +1,12 @@
 .sidenav-container {
   height: 100%;
+  background-color: lightyellow;
+
 }
 
 .sidenav {
   width: 200px;
+  background-color: lightyellow;
 }
 
 .mat-nav-list{

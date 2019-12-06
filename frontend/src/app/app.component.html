@@ -2,7 +2,7 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === true">
 
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar color = "accent">Menu</mat-toolbar>
     <mat-nav-list *ngIf = "isNone()">
       <a mat-list-item routerLink="/login">Login</a>
       <a mat-list-item routerLink="/patient/register">Register</a>
@@ -27,7 +27,7 @@
 
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar>
+    <mat-toolbar color = "accent">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
