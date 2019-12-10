@@ -7,6 +7,8 @@ import {ClinicsListComponent} from './components/clinics-list/clinics-list.compo
 import {PatientProfileComponent} from './components/patient-profile/patient-profile.component';
 import {HomePageDoctorComponent} from './components/home-page-doctor/home-page-doctor.component';
 import {DoctorProfileComponent} from "./components/doctor-profile/doctor-profile.component";
+import {HomePageNurseComponent} from './components/home-page-nurse/home-page-nurse.component';
+import {NurseProfileComponent} from './components/nurse-profile/nurse-profile.component';
 
 const routes: Routes = [
   {
@@ -40,6 +42,14 @@ const routes: Routes = [
   {
     path: 'doctor/profile',
     component: DoctorProfileComponent,
+  },
+  {
+    path: 'nurse/home',
+    component: HomePageNurseComponent,
+  },
+  {
+    path: 'nurse/profile',
+    component: NurseProfileComponent,
   },
 
 ];

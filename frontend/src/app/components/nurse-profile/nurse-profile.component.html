@@ -1,0 +1,93 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <mat-card>
+          <h3>Profile</h3>
+          <hr>
+          <form [formGroup]="nurseProfileForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <mat-label for="email">Email</mat-label>
+              <input type="email" readonly="readonly" id="email" formControlName="email" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && nurseProfileForm.get('email').errors }">
+
+              <div *ngIf="submitted && nurseProfileForm.get('email').errors" class="invalid-feedback">
+                <div *ngIf="nurseProfileForm.get('email').errors['required']">Email is required</div>
+                <div *ngIf="nurseProfileForm.get('email').errors['email']">Email must be a valid email address</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="text" id="password" formControlName="password" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && nurseProfileForm.get('password').errors }">
+              <div *ngIf="submitted && nurseProfileForm.get('password').errors" class="invalid-feedback">
+                <div *ngIf="nurseProfileForm.get('password').errors['required']">Password is required</div>
+                <div *ngIf="nurseProfileForm.get('password').errors['minlength']">Password must be at least 8 characters
+                  long</div>
+                <div *ngIf="nurseProfileForm.get('password').errors['pattern']">Password must contain at least 1 lowercase,
+                  1 uppercase letter
+                  and 1 number</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="name">First Name</label>
+              <input type="text" id="name" formControlName="name" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && nurseProfileForm.get('name').errors }" />
+              <div *ngIf="submitted && nurseProfileForm.get('name').errors" class="invalid-feedback">
+                <div *ngIf=" nurseProfileForm.get('name').errors['required']">First Name is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="surname">Last Name</label>
+              <input type="text" id="surname" formControlName="surname" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && nurseProfileForm.get('surname').errors }" />
+              <div *ngIf="submitted && nurseProfileForm.get('surname').errors" class="invalid-feedback">
+                <div *ngIf="nurseProfileForm.get('surname').errors['required']">Last Name is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="workHoursFrom">WorkHoursFrom</label>
+              <input type="workHoursFrom" id="workHoursFrom" formControlName="workHoursFrom" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted &&  nurseProfileForm.get('workHoursFrom').errors }" />
+              <div *ngIf="submitted && nurseProfileForm.get('workHoursFrom').errors" class="invalid-feedback">
+                <div *ngIf="nurseProfileForm.get('workHoursFrom').errors['required']">Health Insurance ID is required
+                </div>
+
+              </div>
+
+              <div class="form-group">
+                <label for="workHoursTo">WorkHoursTo</label>
+                <input type="text" id="workHoursTo" formControlName="workHoursTo" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && nurseProfileForm.get('workHoursTo').errors }" />
+                <div *ngIf="submitted && nurseProfileForm.get('workHoursTo').errors" class="invalid-feedback">
+                  <div *ngIf="nurseProfileForm.get('workHoursTo').errors['required']">Address is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">PhoneNumber</label>
+                <input type="phone" id="phone" formControlName="phone" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && nurseProfileForm.get('phone').errors }" />
+                <div *ngIf="submitted && nurseProfileForm.get('phone').errors" class="invalid-feedback">
+                  <div *ngIf="nurseProfileForm.get('phone').errors['required']">Phone Number is required</div>
+                  <div *ngIf="nurseProfileForm.get('phone').errors['minlength']">A phone number must have at least 9
+                    digits
+                  </div>
+                </div>
+              </div>
+
+
+
+              <button mat-raised-button color="primary" class="pull-right">Save</button>
+            </div>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
