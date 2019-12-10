@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {Clinic} from '../../model/clinic';
 import {ClinicService} from '../../services/clinic.service';
 
@@ -13,6 +13,7 @@ export class ClinicsListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'address'];
   clinic: Clinic;
   dataSource = new MatTableDataSource<Clinic>();
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(
     private clinicService: ClinicService,
@@ -22,6 +23,7 @@ export class ClinicsListComponent implements OnInit {
 
   ngOnInit() {
     this.all();
+    this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(filterValue: string) {
