@@ -27,13 +27,13 @@ public class LoginContoller{
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public String login(@RequestBody LoginDTO logindto)
     {
+        System.out.println("Sifra je " + logindto.getPassword());
         User user = userService.findOneByemail(logindto.getEmail());
         System.out.println(user.getEmail());
         if(user != null)
         {
             if(logindto.getPassword().equals(user.getPassword()))
             {
-                System.out.println(logindto.getPassword());
                 System.out.println(user.getPassword());
                 ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
                 HttpSession session = attributes.getRequest().getSession(true);
