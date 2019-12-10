@@ -36,16 +36,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/clinics-list/clinics-list.component.html":
-/*!***********************************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/clinics-list/clinics-list.component.html ***!
-  \***********************************************************************************************************/
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/clinics-list-patient/clinics-list.component.html":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/clinics-list-patient/clinics-list.component.html ***!
+  \*******************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-table class=\"lessons-table mat-elevation-z8\" [dataSource]=\"clinicsData\">\r\n\r\n  <ng-container matColumnDef=\"Name\">\r\n    <div *matHeaderCellDef>#</div>\r\n    <div *matCellDef=\"let lesson\">{{lesson.seqNo}}</div>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"name\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>\r\n    <td mat-cell *matCellDef=\"let element\" class=\"text-in-table\">\r\n      {{element.name}}\r\n    </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"address\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>\r\n    <td mat-cell *matCellDef=\"let element\" class=\"text-in-table\"> {{element.address}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"description\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>\r\n    <td mat-cell *matCellDef=\"let element\" class=\"text-in-table\"> {{element.address}} </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"Columns sticky: true\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: Columns;\"></tr>\r\n\r\n</mat-table>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n\r\n<table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n\r\n  <!-- Name Column -->\r\n  <ng-container matColumnDef=\"name\">\r\n    <th mat-header-cell *matHeaderCellDef> Name </th>\r\n    <td mat-cell *matCellDef=\"let clinic\"> {{clinic.name}} </td>\r\n  </ng-container>\r\n\r\n  <!-- Weight Column -->\r\n  <ng-container matColumnDef=\"address\">\r\n    <th mat-header-cell *matHeaderCellDef> Address </th>\r\n    <td mat-cell *matCellDef=\"let clinic\"> {{clinic.address}} </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n");
 
 /***/ }),
 
@@ -372,7 +372,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/components/login/login.component.ts");
 /* harmony import */ var _components_registration_registration_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/registration/registration.component */ "./src/app/components/registration/registration.component.ts");
 /* harmony import */ var _components_home_page_patient_home_page_patient_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/home-page-patient/home-page-patient.component */ "./src/app/components/home-page-patient/home-page-patient.component.ts");
-/* harmony import */ var _components_clinics_list_clinics_list_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/clinics-list/clinics-list.component */ "./src/app/components/clinics-list/clinics-list.component.ts");
+/* harmony import */ var _components_clinics_list_patient_clinics_list_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/clinics-list-patient/clinics-list.component */ "./src/app/components/clinics-list-patient/clinics-list.component.ts");
 /* harmony import */ var _components_patient_profile_patient_profile_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/patient-profile/patient-profile.component */ "./src/app/components/patient-profile/patient-profile.component.ts");
 /* harmony import */ var _components_home_page_doctor_home_page_doctor_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/home-page-doctor/home-page-doctor.component */ "./src/app/components/home-page-doctor/home-page-doctor.component.ts");
 /* harmony import */ var _components_doctor_profile_doctor_profile_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/doctor-profile/doctor-profile.component */ "./src/app/components/doctor-profile/doctor-profile.component.ts");
@@ -405,7 +405,7 @@ const routes = [
     },
     {
         path: 'patient/clinics',
-        component: _components_clinics_list_clinics_list_component__WEBPACK_IMPORTED_MODULE_6__["ClinicsListComponent"],
+        component: _components_clinics_list_patient_clinics_list_component__WEBPACK_IMPORTED_MODULE_6__["ClinicsListComponent"],
     },
     {
         path: 'patient/profile',
@@ -539,7 +539,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./material-module */ "./src/app/material-module.ts");
 /* harmony import */ var _components_registration_registration_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/registration/registration.component */ "./src/app/components/registration/registration.component.ts");
 /* harmony import */ var _components_home_page_patient_home_page_patient_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/home-page-patient/home-page-patient.component */ "./src/app/components/home-page-patient/home-page-patient.component.ts");
-/* harmony import */ var _components_clinics_list_clinics_list_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/clinics-list/clinics-list.component */ "./src/app/components/clinics-list/clinics-list.component.ts");
+/* harmony import */ var _components_clinics_list_patient_clinics_list_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/clinics-list-patient/clinics-list.component */ "./src/app/components/clinics-list-patient/clinics-list.component.ts");
 /* harmony import */ var _components_patient_profile_patient_profile_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/patient-profile/patient-profile.component */ "./src/app/components/patient-profile/patient-profile.component.ts");
 /* harmony import */ var _components_home_page_doctor_home_page_doctor_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/home-page-doctor/home-page-doctor.component */ "./src/app/components/home-page-doctor/home-page-doctor.component.ts");
 /* harmony import */ var _components_doctor_profile_doctor_profile_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/doctor-profile/doctor-profile.component */ "./src/app/components/doctor-profile/doctor-profile.component.ts");
@@ -571,7 +571,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _components_login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"],
             _components_registration_registration_component__WEBPACK_IMPORTED_MODULE_13__["RegistrationComponent"],
             _components_home_page_patient_home_page_patient_component__WEBPACK_IMPORTED_MODULE_14__["HomePagePatientComponent"],
-            _components_clinics_list_clinics_list_component__WEBPACK_IMPORTED_MODULE_15__["ClinicsListComponent"],
+            _components_clinics_list_patient_clinics_list_component__WEBPACK_IMPORTED_MODULE_15__["ClinicsListComponent"],
             _components_patient_profile_patient_profile_component__WEBPACK_IMPORTED_MODULE_16__["PatientProfileComponent"],
             _components_home_page_doctor_home_page_doctor_component__WEBPACK_IMPORTED_MODULE_17__["HomePageDoctorComponent"],
             _components_doctor_profile_doctor_profile_component__WEBPACK_IMPORTED_MODULE_18__["DoctorProfileComponent"],
@@ -602,23 +602,23 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/components/clinics-list/clinics-list.component.css":
-/*!********************************************************************!*\
-  !*** ./src/app/components/clinics-list/clinics-list.component.css ***!
-  \********************************************************************/
+/***/ "./src/app/components/clinics-list-patient/clinics-list.component.css":
+/*!****************************************************************************!*\
+  !*** ./src/app/components/clinics-list-patient/clinics-list.component.css ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY2xpbmljcy1saXN0L2NsaW5pY3MtbGlzdC5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("table {\r\n  width: 100%;\r\n}\r\n\r\n.mat-form-field {\r\n  font-size: 14px;\r\n  width: 100%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jbGluaWNzLWxpc3QtcGF0aWVudC9jbGluaWNzLWxpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGVBQWU7RUFDZixXQUFXO0FBQ2IiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2NsaW5pY3MtbGlzdC1wYXRpZW50L2NsaW5pY3MtbGlzdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGFibGUge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4ubWF0LWZvcm0tZmllbGQge1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG4iXX0= */");
 
 /***/ }),
 
-/***/ "./src/app/components/clinics-list/clinics-list.component.ts":
-/*!*******************************************************************!*\
-  !*** ./src/app/components/clinics-list/clinics-list.component.ts ***!
-  \*******************************************************************/
+/***/ "./src/app/components/clinics-list-patient/clinics-list.component.ts":
+/*!***************************************************************************!*\
+  !*** ./src/app/components/clinics-list-patient/clinics-list.component.ts ***!
+  \***************************************************************************/
 /*! exports provided: ClinicsListComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -627,20 +627,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClinicsListComponent", function() { return ClinicsListComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var _services_clinic_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/clinic.service */ "./src/app/services/clinic.service.ts");
+
+
 
 
 let ClinicsListComponent = class ClinicsListComponent {
-    constructor() {
-        this.Columns = ['name', 'address'];
+    constructor(clinicService) {
+        this.clinicService = clinicService;
+        this.displayedColumns = ['name', 'address'];
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
+        this.all();
     }
     ngOnInit() {
+        this.all();
+    }
+    applyFilter(filterValue) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
+    all() {
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](this.clinicService.getAllClinics());
     }
 };
+ClinicsListComponent.ctorParameters = () => [
+    { type: _services_clinic_service__WEBPACK_IMPORTED_MODULE_3__["ClinicService"] }
+];
 ClinicsListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-clinics-list',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./clinics-list.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/clinics-list/clinics-list.component.html")).default,
-        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./clinics-list.component.css */ "./src/app/components/clinics-list/clinics-list.component.css")).default]
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./clinics-list.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/clinics-list-patient/clinics-list.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./clinics-list.component.css */ "./src/app/components/clinics-list-patient/clinics-list.component.css")).default]
     })
 ], ClinicsListComponent);
 
@@ -876,6 +893,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_user_service_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/user-service.service */ "./src/app/services/user-service.service.ts");
 /* harmony import */ var _model_role__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../model/role */ "./src/app/model/role.ts");
 /* harmony import */ var _services_doctor_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../services/doctor.service */ "./src/app/services/doctor.service.ts");
+/* harmony import */ var _services_clinic_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../services/clinic.service */ "./src/app/services/clinic.service.ts");
+
 
 
 
@@ -891,12 +910,13 @@ class LoginUser {
     }
 }
 let LoginComponent = class LoginComponent {
-    constructor(patientService, formBuilder, router, userService, doctorService) {
+    constructor(patientService, formBuilder, router, userService, doctorService, clinicalService) {
         this.patientService = patientService;
         this.formBuilder = formBuilder;
         this.router = router;
         this.userService = userService;
         this.doctorService = doctorService;
+        this.clinicalService = clinicalService;
         this.submitted = false;
     }
     ngOnInit() {
@@ -956,7 +976,8 @@ LoginComponent.ctorParameters = () => [
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
     { type: _services_user_service_service__WEBPACK_IMPORTED_MODULE_5__["UserServiceService"] },
-    { type: _services_doctor_service__WEBPACK_IMPORTED_MODULE_7__["DoctorService"] }
+    { type: _services_doctor_service__WEBPACK_IMPORTED_MODULE_7__["DoctorService"] },
+    { type: _services_clinic_service__WEBPACK_IMPORTED_MODULE_8__["ClinicService"] }
 ];
 LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1336,6 +1357,29 @@ DemoMaterialModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/model/clinic.ts":
+/*!*********************************!*\
+  !*** ./src/app/model/clinic.ts ***!
+  \*********************************/
+/*! exports provided: Clinic */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Clinic", function() { return Clinic; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class Clinic {
+    constructor(name, address, description) {
+        this.name = name;
+        this.address = address;
+        this.description = description;
+    }
+}
+
+
+/***/ }),
+
 /***/ "./src/app/model/doctor.ts":
 /*!*********************************!*\
   !*** ./src/app/model/doctor.ts ***!
@@ -1463,6 +1507,79 @@ class User {
         this.role = role;
     }
 }
+
+
+/***/ }),
+
+/***/ "./src/app/services/clinic.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/services/clinic.service.ts ***!
+  \********************************************/
+/*! exports provided: ClinicService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClinicService", function() { return ClinicService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _model_clinic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/clinic */ "./src/app/model/clinic.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
+
+
+
+let ClinicService = class ClinicService {
+    constructor(http) {
+        this.http = http;
+        this.urlClinic = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].clinic;
+        this.listClinics = new Array();
+        this.getAllClinics();
+    }
+    addClinic(c) {
+        if (this.getClinic(c.name) === null) {
+            this.listClinics.push(c);
+        }
+    }
+    getClinic(name) {
+        if (this.listClinics.length === 0) {
+            return null;
+        }
+        for (const u of this.listClinics) {
+            if (u.name === name) {
+                return u;
+            }
+        }
+        return null;
+    }
+    getClinicByName(name) {
+        return this.http.get(this.urlClinic + '/' + name);
+    }
+    getAllClinics() {
+        this.http.get(this.urlClinic + '/all').subscribe((data) => {
+            for (const c of data) {
+                this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description);
+                this.addClinic(this.clinic);
+            }
+            console.log(this.listClinics);
+            console.log(data);
+        }, error => {
+            console.log(error);
+        });
+        return this.listClinics;
+    }
+};
+ClinicService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] }
+];
+ClinicService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], ClinicService);
+
 
 
 /***/ }),
@@ -1775,6 +1892,7 @@ const environment = {
     user: '/user',
     patient: '/patient',
     doctor: '/doctor',
+    clinic: '/clinic',
     clinicalCentreAdmin: '/clinical-centre-admin',
 };
 /*

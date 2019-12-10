@@ -13,7 +13,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {DemoMaterialModule} from './material-module';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HomePagePatientComponent } from './components/home-page-patient/home-page-patient.component';
-import { ClinicsListComponent } from './components/clinics-list/clinics-list.component';
+import { ClinicsListComponent } from './components/clinics-list-patient/clinics-list.component';
 import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
 import {HomePageDoctorComponent} from './components/home-page-doctor/home-page-doctor.component';
 import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
