@@ -17,6 +17,8 @@ import { ClinicsListComponent } from './components/clinics-list/clinics-list.com
 import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
 import {HomePageDoctorComponent} from './components/home-page-doctor/home-page-doctor.component';
 import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
+import { NurseProfileComponent } from './components/nurse-profile/nurse-profile.component';
+import { HomePageNurseComponent } from './components/home-page-nurse/home-page-nurse.component';
 
 
 @NgModule({
@@ -36,6 +38,10 @@ import { DoctorProfileComponent } from './components/doctor-profile/doctor-profi
     HomePageDoctorComponent,
 
     DoctorProfileComponent,
+
+    NurseProfileComponent,
+
+    HomePageNurseComponent,
   ],
   imports: [
     BrowserModule,
