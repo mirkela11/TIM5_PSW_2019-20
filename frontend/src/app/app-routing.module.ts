@@ -9,6 +9,8 @@ import {HomePageDoctorComponent} from './components/home-page-doctor/home-page-d
 import {DoctorProfileComponent} from "./components/doctor-profile/doctor-profile.component";
 import {HomePageNurseComponent} from './components/home-page-nurse/home-page-nurse.component';
 import {NurseProfileComponent} from './components/nurse-profile/nurse-profile.component';
+import {HomePageAdminClinicComponent} from "./components/home-page-admin-clinic/home-page-admin-clinic.component";
+import {AdminClinicProfileComponent} from "./components/admin-clinic-profile/admin-clinic-profile.component";
 
 const routes: Routes = [
   {
@@ -50,6 +52,14 @@ const routes: Routes = [
   {
     path: 'nurse/profile',
     component: NurseProfileComponent,
+  },
+  {
+    path: 'admin_clinic/home',
+    component: HomePageAdminClinicComponent,
+  },
+  {
+    path: 'admin_clinic/profile',
+    component: AdminClinicProfileComponent,
   },
 
 ];
