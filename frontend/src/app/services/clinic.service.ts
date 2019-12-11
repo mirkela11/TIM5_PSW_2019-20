@@ -45,10 +45,6 @@ export class ClinicService {
         this.clinic = new Clinic(c.name, c.address, c.description);
         this.addClinic(this.clinic);
       }
-
-
-      console.log(this.listClinics);
-      console.log(data);
     },
       error => {
         console.log(error);
