@@ -19,6 +19,8 @@ import {HomePageDoctorComponent} from './components/home-page-doctor/home-page-d
 import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
 import { NurseProfileComponent } from './components/nurse-profile/nurse-profile.component';
 import { HomePageNurseComponent } from './components/home-page-nurse/home-page-nurse.component';
+import { HomePageClinicalCentreAdministratorComponent } from './components/home-page-clinical-centre-administrator/home-page-clinical-centre-administrator.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -42,6 +44,10 @@ import { HomePageNurseComponent } from './components/home-page-nurse/home-page-n
     NurseProfileComponent,
 
     HomePageNurseComponent,
+
+    HomePageClinicalCentreAdministratorComponent,
+
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
