@@ -21,6 +21,7 @@ import { NurseProfileComponent } from './components/nurse-profile/nurse-profile.
 import { HomePageNurseComponent } from './components/home-page-nurse/home-page-nurse.component';
 import { HomePageClinicalCentreAdministratorComponent } from './components/home-page-clinical-centre-administrator/home-page-clinical-centre-administrator.component';
 import { HomeComponent } from './components/home/home.component';
+import { AddClinicComponent } from './components/add-clinic/add-clinic.component';
 
 
 @NgModule({
@@ -48,6 +49,8 @@ import { HomeComponent } from './components/home/home.component';
     HomePageClinicalCentreAdministratorComponent,
 
     HomeComponent,
+
+    AddClinicComponent,
   ],
   imports: [
     BrowserModule,
