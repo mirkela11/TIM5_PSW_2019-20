@@ -16,12 +16,21 @@ export class UserServiceService {
   list: Array<User> = new Array<User>();
   doctor: User;
   patient: User;
+  nurse: User;
+  clinicAdmin: User;
+  clinicalCentreAdmin: User
   user: User = new User('', '', Role.NONE);
   constructor(private router: Router, private http: HttpClient) {
     this.doctor = new User('doctor@email.com', 'Doctor123', Role.DOCTOR);
     this.patient = new User('patient@email.com', 'Patient123', Role.PATIENT);
+    this.nurse = new User('nurse@email.com', 'Nurse123', Role.NURSE);
+    this.clinicAdmin = new User('nemanja@email.com', 'Mirkela97', Role.CLINIC_ADMINISTRATOR);
     this.list.push(this.doctor);
     this.list.push(this.patient);
+    this.list.push(this.nurse);
+    this.list.push(this.clinicAdmin);
+    this.clinicalCentreAdmin = new User('zejak@email.com', 'Zejake123', Role.CLINICAL_CENTRE_ADMINISTRATOR);
+    this.list.push(this.clinicalCentreAdmin);
     localStorage.setItem(TOKEN, JSON.stringify(this.user));
   }
 

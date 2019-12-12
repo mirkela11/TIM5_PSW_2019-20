@@ -2,7 +2,7 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === true">
 
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar color="accent">Menu</mat-toolbar>
     <mat-nav-list *ngIf = "isNone()">
       <a mat-list-item routerLink="/login">Login</a>
       <a mat-list-item routerLink="/patient/register">Register</a>
@@ -26,9 +26,27 @@
       <a mat-list-item (click)="onLogout()">Logout</a>
     </mat-nav-list>
 
+    <mat-nav-list *ngIf="isClinicAdmin()">
+      <a mat-list-item routerLink="/admin_clinic/profile">Profile</a>
+      <a mat-list-item (click)="onLogout()">Logout</a>
+    </mat-nav-list>
+
+    <mat-nav-list *ngIf="isNurse()">
+      <a mat-list-item routerLink="/nurse/profile">Profile</a>
+      <a mat-list-item routerLink="/nurse/WorkCalendar">WorkCalendar</a>
+      <a mat-list-item (click)="onLogout()">Logout</a>
+    </mat-nav-list>
+
+    <mat-nav-list *ngIf="isClinicalCentreAdmin()">
+      <a mat-list-item routerLink="/clinical-centre-admin/profile">Profile</a>
+      <a mat-list-item routerLink="/clinical-centre-admin/addClinic">Add Clinic</a>
+      <a mat-list-item routerLink="/clinical-centre-admin/addAdmins">Add Administrator</a>
+      <a mat-list-item (click)="onLogout()">Logout</a>
+    </mat-nav-list>
+
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar>
+    <mat-toolbar color="accent">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>

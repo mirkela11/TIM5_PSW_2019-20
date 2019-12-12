@@ -36,6 +36,9 @@ public class ClinicAdministrator {
     @OneToMany(mappedBy = "clinicAdministrator", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Examination> examinations = new HashSet<>();
 
+    @Enumerated(EnumType.STRING)
+    private ClinicAdminStatus status;
+
     public ClinicAdministrator()
     {
 
@@ -104,4 +107,8 @@ public class ClinicAdministrator {
     public void setExaminations(Set<Examination> examinations) {
         this.examinations = examinations;
     }
+
+    public ClinicAdminStatus getStatus() {return status;}
+
+    public void setStatus(ClinicAdminStatus status) {this.status = status;}
 }
