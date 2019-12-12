@@ -12,7 +12,6 @@ public class Clinic {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Long id;
 
     @Column(columnDefinition = "VARCHAR(50)",nullable = false)

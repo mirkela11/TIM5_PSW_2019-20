@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ClinicRepo extends JpaRepository<Clinic, Long>{
 
-    public Clinic findOneById(Long id);
-    public List<Clinic> findAll();
+     Clinic findOneById(Long id);
+     List<Clinic> findAll();
 }

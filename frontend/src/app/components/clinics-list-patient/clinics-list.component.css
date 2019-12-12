@@ -9,7 +9,6 @@ table {
   margin-left:300px;
 
 }
-
 .mat-form-field {
   font-size: 14px;
   margin-top:50px;
@@ -64,3 +63,4 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-description-attribution {
   opacity: 0.5;
 }
+
