@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Doctor} from "../../model/doctor";
-import {User} from "../../model/user";
-import {Router} from "@angular/router";
-import {UserServiceService} from "../../services/user-service.service";
-import {DoctorService} from "../../services/doctor.service";
-import {Role} from "../../model/role";
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Doctor} from '../../model/doctor';
+import {User} from '../../model/user';
+import {Router} from '@angular/router';
+import {UserServiceService} from '../../services/user-service.service';
+import {DoctorService} from '../../services/doctor.service';
+import {Role} from '../../model/role';
 
 @Component({
   selector: 'app-doctor-profile',
@@ -34,7 +34,7 @@ export class DoctorProfileComponent implements OnInit {
         Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')]),
       name: new FormControl(this.selectedDoctor.name, [Validators.required]),
       surname: new FormControl(this.selectedDoctor.surname, [Validators.required]),
-      number: new FormControl(this.selectedDoctor.number, [Validators.required, Validators.minLength(9)]),
+      number: new FormControl(this.selectedDoctor.phone, [Validators.required, Validators.minLength(9)]),
       workHoursFrom: new FormControl(this.selectedDoctor.workHoursFrom, [Validators.required, Validators.minLength(2),
         Validators.maxLength(2)]),
       workHoursTo: new FormControl(this.selectedDoctor.workHoursTo, [Validators.required, Validators.minLength(2),
@@ -68,12 +68,13 @@ export class DoctorProfileComponent implements OnInit {
     this.editDoctor();
   }
 
-  private editDoctor(){
+  private editDoctor() {
     this.doctorService.editDoctor(this.doctor).subscribe(
       data => {
         this.userService.setUser(this.user);
         this.doctorService.setDoctor(this.doctor);
         this.router.navigate(['/doctor/home']);
+        console.log('uspesno');
       },
       error => {
         alert('Error edit doctor');

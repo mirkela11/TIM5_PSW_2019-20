@@ -10,7 +10,6 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 })
 export class RegisterRequestService {
 
-  url = environment.baseUrl + environment.adminClinic;
   url = environment.baseUrl + environment.ClinicalCentreAdministrator;
   registerReqeusts: BehaviorSubject<RegisterRequest[]> = new BehaviorSubject<RegisterRequest[]>([]);
 

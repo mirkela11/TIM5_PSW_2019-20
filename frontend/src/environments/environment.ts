@@ -10,8 +10,8 @@ export const environment = {
   user: '/user',
   patient: '/patient',
   doctor: '/doctor',
+  clinic: '/clinic',
   nurse: '/nurse',
-  //clinicalCentreAdmin: '/clinical-centre-admin',
   adminClinic: '/admin_clinic',
   ClinicalCentreAdministrator: '/clinical-centre-admin',
 };

@@ -6,6 +6,7 @@ import {User} from '../../model/user';
 import {UserServiceService} from '../../services/user-service.service';
 import {Role} from '../../model/role';
 import {DoctorService} from '../../services/doctor.service';
+import {ClinicService} from '../../services/clinic.service';
 import {NurseServiceService} from '../../services/nurse-service.service';
 import {AdminClinicService} from "../../services/admin-clinic.service";
 import {HttpClientModule} from '@angular/common/http';
@@ -37,9 +38,9 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private userService: UserServiceService,
     private doctorService: DoctorService,
+    private clinicalService: ClinicService,
     private nurseService: NurseServiceService,
     private adminClinicService: AdminClinicService,
-
     private clinicalCentreAdministratorService: ClinicalCentreAdministratorService,
   ) {
   }
@@ -126,6 +127,19 @@ export class LoginComponent implements OnInit {
     } else if (this.user.role === Role.CLINIC_ADMINISTRATOR && this.loginUser.password === this.user.password) {
       console.log(this.user);
       this.adminClinicService.loginAdminClinic(this.user).subscribe(
+        data => {
+          console.log(data);
+          if (data !== null) {
+            console.log('Successful logged in');
+            this.router.navigate(['/admin_clinic/home']);
+          } else {
+            console.log('Login error');
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
 
     } else if (this.user.role === Role.CLINICAL_CENTRE_ADMINISTRATOR && this.loginUser.password === this.user.password) {
       console.log(this.user);
@@ -134,8 +148,6 @@ export class LoginComponent implements OnInit {
           console.log(data);
           if (data !== null) {
             console.log('Successful logged in');
-            this.router.navigate(['/admin_clinic/home']);
-
             this.router.navigate(['/clinical-centre-admin/home']);
           } else {
             console.log('Login error');

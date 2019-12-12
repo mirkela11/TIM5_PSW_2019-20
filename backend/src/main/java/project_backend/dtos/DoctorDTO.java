@@ -5,7 +5,7 @@ public class DoctorDTO {
     private String password;
     private String name;
     private String surname;
-    private String number;
+    private String phone;
     private String workHoursFrom;
     private String workHoursTo;
 
@@ -41,12 +41,12 @@ public class DoctorDTO {
         this.surname = surname;
     }
 
-    public String getNumber() {
-        return number;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setPhone(String number) {
+        this.phone = number;
     }
 
     public String getWorkHoursFrom() {
