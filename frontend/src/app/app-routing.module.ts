@@ -9,11 +9,15 @@ import {HomePageDoctorComponent} from './components/home-page-doctor/home-page-d
 import {DoctorProfileComponent} from "./components/doctor-profile/doctor-profile.component";
 import {HomePageNurseComponent} from './components/home-page-nurse/home-page-nurse.component';
 import {NurseProfileComponent} from './components/nurse-profile/nurse-profile.component';
+import {HomePageClinicalCentreAdministratorComponent} from './components/home-page-clinical-centre-administrator/home-page-clinical-centre-administrator.component';
+import {HomeComponent} from './components/home/home.component';
+import {AppComponent} from './app.component';
+import {AddClinicComponent} from './components/add-clinic/add-clinic.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: HomeComponent,
   },
   {
     path: 'patient/register',
@@ -51,6 +55,15 @@ const routes: Routes = [
     path: 'nurse/profile',
     component: NurseProfileComponent,
   },
+  {
+    path: 'clinical-centre-admin/home',
+    component: HomePageClinicalCentreAdministratorComponent,
+  },
+  {
+    path: 'clinical-centre-admin/addClinic',
+    component: AddClinicComponent,
+  },
+
 
 ];
 
