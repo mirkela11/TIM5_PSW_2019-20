@@ -19,10 +19,11 @@ import {HomePageDoctorComponent} from './components/home-page-doctor/home-page-d
 import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
 import { NurseProfileComponent } from './components/nurse-profile/nurse-profile.component';
 import { HomePageNurseComponent } from './components/home-page-nurse/home-page-nurse.component';
+import { HomePageAdminClinicComponent } from './components/home-page-admin-clinic/home-page-admin-clinic.component';
+import { AdminClinicProfileComponent } from './components/admin-clinic-profile/admin-clinic-profile.component';
 import { HomePageClinicalCentreAdministratorComponent } from './components/home-page-clinical-centre-administrator/home-page-clinical-centre-administrator.component';
 import { HomeComponent } from './components/home/home.component';
 import { AddClinicComponent } from './components/add-clinic/add-clinic.component';
-
 
 @NgModule({
   declarations: [
@@ -46,6 +47,10 @@ import { AddClinicComponent } from './components/add-clinic/add-clinic.component
 
     HomePageNurseComponent,
 
+    HomePageAdminClinicComponent,
+
+    AdminClinicProfileComponent,
+    
     HomePageClinicalCentreAdministratorComponent,
 
     HomeComponent,
