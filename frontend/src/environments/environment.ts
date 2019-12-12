@@ -2,6 +2,8 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import {ClinicalCentreAdministrator} from '../app/model/ClinicalCentreAdministrator';
+
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:8081',
@@ -11,6 +13,7 @@ export const environment = {
   nurse: '/nurse',
   //clinicalCentreAdmin: '/clinical-centre-admin',
   adminClinic: '/admin_clinic',
+  ClinicalCentreAdministrator: '/clinical-centre-admin',
 };
 
 /*

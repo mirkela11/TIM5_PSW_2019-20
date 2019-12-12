@@ -11,11 +11,15 @@ import {HomePageNurseComponent} from './components/home-page-nurse/home-page-nur
 import {NurseProfileComponent} from './components/nurse-profile/nurse-profile.component';
 import {HomePageAdminClinicComponent} from "./components/home-page-admin-clinic/home-page-admin-clinic.component";
 import {AdminClinicProfileComponent} from "./components/admin-clinic-profile/admin-clinic-profile.component";
+import {HomePageClinicalCentreAdministratorComponent} from './components/home-page-clinical-centre-administrator/home-page-clinical-centre-administrator.component';
+import {HomeComponent} from './components/home/home.component';
+import {AppComponent} from './app.component';
+import {AddClinicComponent} from './components/add-clinic/add-clinic.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: HomeComponent,
   },
   {
     path: 'patient/register',
@@ -54,12 +58,21 @@ const routes: Routes = [
     component: NurseProfileComponent,
   },
   {
+
     path: 'admin_clinic/home',
     component: HomePageAdminClinicComponent,
   },
   {
     path: 'admin_clinic/profile',
     component: AdminClinicProfileComponent,
+  },
+  {
+    path: 'clinical-centre-admin/home',
+    component: HomePageClinicalCentreAdministratorComponent,
+  },
+  {
+    path: 'clinical-centre-admin/addClinic',
+    component: AddClinicComponent,
   },
 
 ];

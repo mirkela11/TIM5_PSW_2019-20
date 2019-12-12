@@ -8,6 +8,9 @@ import {Role} from '../../model/role';
 import {DoctorService} from '../../services/doctor.service';
 import {NurseServiceService} from '../../services/nurse-service.service';
 import {AdminClinicService} from "../../services/admin-clinic.service";
+import {HttpClientModule} from '@angular/common/http';
+import {ClinicalCentreAdministrator} from '../../model/ClinicalCentreAdministrator';
+import {ClinicalCentreAdministratorService} from '../../services/clinical-centre-administrator.service';
 
 export class LoginUser {
   constructor(
@@ -36,6 +39,8 @@ export class LoginComponent implements OnInit {
     private doctorService: DoctorService,
     private nurseService: NurseServiceService,
     private adminClinicService: AdminClinicService,
+
+    private clinicalCentreAdministratorService: ClinicalCentreAdministratorService,
   ) {
   }
 
@@ -121,11 +126,17 @@ export class LoginComponent implements OnInit {
     } else if (this.user.role === Role.CLINIC_ADMINISTRATOR && this.loginUser.password === this.user.password) {
       console.log(this.user);
       this.adminClinicService.loginAdminClinic(this.user).subscribe(
+
+    } else if (this.user.role === Role.CLINICAL_CENTRE_ADMINISTRATOR && this.loginUser.password === this.user.password) {
+      console.log(this.user);
+      this.clinicalCentreAdministratorService.loginAdmin(this.user).subscribe(
         data => {
           console.log(data);
           if (data !== null) {
             console.log('Successful logged in');
             this.router.navigate(['/admin_clinic/home']);
+
+            this.router.navigate(['/clinical-centre-admin/home']);
           } else {
             console.log('Login error');
           }
