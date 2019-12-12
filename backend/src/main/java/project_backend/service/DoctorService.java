@@ -27,6 +27,7 @@ public class DoctorService {
         return repo.findAll(page);
     }
 
+
     public Doctor getDoctor(String email){
         List<Doctor> tmp = findall();
         if(tmp.size() == 0)

@@ -6,6 +6,7 @@ import {User} from '../../model/user';
 import {UserServiceService} from '../../services/user-service.service';
 import {Role} from '../../model/role';
 import {DoctorService} from '../../services/doctor.service';
+import {ClinicService} from '../../services/clinic.service';
 import {NurseServiceService} from '../../services/nurse-service.service';
 import {AdminClinicService} from "../../services/admin-clinic.service";
 import {HttpClientModule} from '@angular/common/http';
@@ -37,9 +38,9 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private userService: UserServiceService,
     private doctorService: DoctorService,
+    private clinicalService: ClinicService,
     private nurseService: NurseServiceService,
     private adminClinicService: AdminClinicService,
-
     private clinicalCentreAdministratorService: ClinicalCentreAdministratorService,
   ) {
   }

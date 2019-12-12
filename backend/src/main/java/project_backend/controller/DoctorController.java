@@ -1,10 +1,9 @@
 package project_backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import project_backend.dtos.DoctorDTO;
 import project_backend.model.Doctor;
 import project_backend.model.DoctorStatus;
@@ -13,7 +12,9 @@ import project_backend.service.DoctorService;
 import project_backend.service.UserService;
 
 import javax.jws.soap.SOAPBinding;
+import javax.print.Doc;
 import java.time.LocalTime;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -35,7 +36,7 @@ public class DoctorController {
             doct.setPassword(d.getPassword());
             doct.setName(d.getName());
             doct.setSurname(d.getSurname());
-            doct.setPhone(d.getNumber());
+            doct.setPhone(d.getPhone());
             doct.setWorkHoursFrom(d.getWorkHoursFrom());
             doct.setWorkHoursTo(d.getWorkHoursTo());
             u.setPassword(d.getPassword());
@@ -58,5 +59,10 @@ public class DoctorController {
         }
 
         return "Greska";
+    }
+
+    @GetMapping(value = "doctor/all")
+    public ResponseEntity<List<Doctor>> all() {
+        return new ResponseEntity<>(doctorService.findall(), HttpStatus.OK);
     }
 }
