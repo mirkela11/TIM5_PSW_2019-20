@@ -1,5 +1,7 @@
 package project_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -38,9 +40,11 @@ public class Patient {
     @Column(columnDefinition = "VARCHAR(13)", unique = true, nullable = false)
     private String InsuranceID;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "patient", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private MedicalRecord medialRecord;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Examination> examinations = new HashSet<>();
 

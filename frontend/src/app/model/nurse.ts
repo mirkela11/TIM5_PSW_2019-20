@@ -8,7 +8,7 @@ export class Nurse {
   workHoursTo: string;
   workHoursFrom: string;
 
-  constructor(email: string, password: string, name: string, surname: string, phone: string, worhHoursTo: string, worhHoursFrom: string){
+  constructor(email: string, password: string, name: string, surname: string, phone: string, worhHoursTo: string, worhHoursFrom: string) {
     this.email = email;
     this.password = password;
     this.name = name;
