@@ -8,7 +8,7 @@ import {Role} from '../../model/role';
 import {DoctorService} from '../../services/doctor.service';
 import {ClinicService} from '../../services/clinic.service';
 import {NurseServiceService} from '../../services/nurse-service.service';
-import {AdminClinicService} from "../../services/admin-clinic.service";
+import {AdminClinicService} from '../../services/admin-clinic.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ClinicalCentreAdministrator} from '../../model/ClinicalCentreAdministrator';
 import {ClinicalCentreAdministratorService} from '../../services/clinical-centre-administrator.service';

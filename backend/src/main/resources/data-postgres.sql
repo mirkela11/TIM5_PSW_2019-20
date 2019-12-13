@@ -8,7 +8,9 @@ insert into users(id, email, password, role) values (100,'nemanja@email.com', 'M
 insert into clinical_centre_administrator(id, email, name, password, phone, surname) values (1,'zejak@email.com', 'Nikola', 'Zejake123', '789456321', 'Zejak');
 insert into users(id, email, password, role) values (101,'zejak@email.com', 'Zejake123',4);
 insert into doctor(id, email, name, password, phone, status, surname, work_hours_from, work_hours_to,clinic_id, specialized_id) values (1,'doctor@email.com','Doctor','Doctor123','123467911','ACTIVE','Docic','08','16',1,1);
+insert into doctor(id, email, name, password, phone, status, surname, work_hours_from, work_hours_to,clinic_id, specialized_id) values (2,'doctor1@email.com','Doctor1','Doctor1234','123467900','ACTIVE','Docic1','08','16',2,1);
 insert into users(id, email, password, role) values (102, 'doctor@email.com', 'Doctor123', 1);
+insert into users(id, email, password, role) values (110, 'doctor1@email.com', 'Doctor1234', 1);
 insert into nurse(id, email, name, password, phone, surname, work_hours_from, work_hours_to, clinic_id) values (1,'nurse@email.com', 'Nurse', 'Nurse123','153426010', 'Nursic', '8:00', '16:00', 1);
 insert into users(id, email, password, role) values (103, 'nurse@email.com', 'Nurse123', 2);
 insert into patient(id, insuranceid, address, city, country, email, name, number, password, status, surname) values (100, 1111111111111, 'Adresa', 'Grad', 'Drzava', 'patient@email.com', 'Patient', '147258321', 'Patient123', 'APPROVED', 'Patientic');
