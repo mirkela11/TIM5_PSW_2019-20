@@ -44,14 +44,13 @@ export class ClinicService {
       for (const c of data) {
         this.clinic = new Clinic(c.name, c.address, c.description, c.id);
         this.addClinic(this.clinic);
-        console.log(this.clinic);
       }
     },
       error => {
         console.log(error);
       }
     );
-
+    console.log(this.listClinics);
     return this.listClinics;
   }
 }

@@ -2064,14 +2064,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 class AdminClinic {
-    constructor(email, password, name, surname, number) {
+    constructor(email, password, name, surname, number1, status) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.surname = surname;
-        this.number = number;
+        this.number = number1;
+        this.status = status;
     }
 }
+
+
+/***/ }),
+
+/***/ "./src/app/model/adminClinicStatus.ts":
+/*!********************************************!*\
+  !*** ./src/app/model/adminClinicStatus.ts ***!
+  \********************************************/
+/*! exports provided: AdminClinicStatus */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminClinicStatus", function() { return AdminClinicStatus; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+var AdminClinicStatus;
+(function (AdminClinicStatus) {
+    AdminClinicStatus[AdminClinicStatus["ACTIVE"] = 0] = "ACTIVE";
+    AdminClinicStatus[AdminClinicStatus["DELETED"] = 1] = "DELETED";
+})(AdminClinicStatus || (AdminClinicStatus = {}));
 
 
 /***/ }),
@@ -2275,6 +2297,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_adminClinic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/adminClinic */ "./src/app/model/adminClinic.ts");
 /* harmony import */ var _user_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user-service.service */ "./src/app/services/user-service.service.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _model_adminClinicStatus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../model/adminClinicStatus */ "./src/app/model/adminClinicStatus.ts");
+
 
 
 
@@ -2287,8 +2311,7 @@ let AdminClinicService = class AdminClinicService {
         this.userService = userService;
         this.urlAdminClinic = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].adminClinic;
         this.listAdminClinic = new Array();
-        this.adminClinic = new _model_adminClinic__WEBPACK_IMPORTED_MODULE_3__["AdminClinic"]('nemanja@email.com', 'Mirkela97', 'Nemanja', 'Mirkovic', '123456789');
-        this.listAdminClinic.push(this.adminClinic);
+        this.getAllClinicAdmins();
     }
     loginAdminClinic(adminClinic) {
         this.userService.setToken(adminClinic);
@@ -2317,6 +2340,31 @@ let AdminClinicService = class AdminClinicService {
                 ac1.number = ac.number;
             }
         }
+    }
+    addClinicAdmin(a) {
+        if (this.getAdminClinic(a.email) === null) {
+            this.listAdminClinic.push(a);
+        }
+    }
+    whichStatus(status) {
+        if (status === 'ACTIVE') {
+            return _model_adminClinicStatus__WEBPACK_IMPORTED_MODULE_6__["AdminClinicStatus"].ACTIVE;
+        }
+        else {
+            return _model_adminClinicStatus__WEBPACK_IMPORTED_MODULE_6__["AdminClinicStatus"].DELETED;
+        }
+    }
+    getAllClinicAdmins() {
+        this.http.get(this.urlAdminClinic + '/all').subscribe((data) => {
+            for (const c of data) {
+                console.log(c);
+                this.adminClinic = new _model_adminClinic__WEBPACK_IMPORTED_MODULE_3__["AdminClinic"](c.email, c.password, c.name, c.surname, c.number, this.whichStatus(c.status.toString()));
+                this.addClinicAdmin(this.adminClinic);
+            }
+        }, error => {
+            console.log(error);
+        });
+        return this.listAdminClinic;
     }
 };
 AdminClinicService.ctorParameters = () => [
@@ -2384,11 +2432,11 @@ let ClinicService = class ClinicService {
             for (const c of data) {
                 this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description, c.id);
                 this.addClinic(this.clinic);
-                console.log(this.clinic);
             }
         }, error => {
             console.log(error);
         });
+        console.log(this.listClinics);
         return this.listClinics;
     }
 };
@@ -2598,8 +2646,7 @@ let NurseServiceService = class NurseServiceService {
         this.userService = userService;
         this.urlNurse = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].nurse;
         this.listNurses = new Array();
-        this.nurse = new _model_nurse__WEBPACK_IMPORTED_MODULE_5__["Nurse"]('nurse@email.com', 'Nurse123', 'Nurse', 'Nursic', '153426010', '8:00', '16:00');
-        this.listNurses.push(this.nurse);
+        this.getAllNurses();
     }
     loginNurse(nurse) {
         this.userService.setToken(nurse);
@@ -2631,6 +2678,22 @@ let NurseServiceService = class NurseServiceService {
                 return;
             }
         }
+    }
+    addNurse(n) {
+        if (this.getNurse(n.email) === null) {
+            this.listNurses.push(n);
+        }
+    }
+    getAllNurses() {
+        this.http.get(this.urlNurse + '/all').subscribe((data) => {
+            for (const c of data) {
+                this.nurse = new _model_nurse__WEBPACK_IMPORTED_MODULE_5__["Nurse"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursTo, c.workHoursFrom);
+                this.addNurse(this.nurse);
+            }
+        }, error => {
+            console.log(error);
+        });
+        return this.listNurses;
     }
 };
 NurseServiceService.ctorParameters = () => [
@@ -2677,8 +2740,7 @@ let PatientService = class PatientService {
         this.userService = userService;
         this.urlPatient = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].patient;
         this.listPatients = new Array();
-        this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"]('patient@email.com', 'Patient123', 'Patient', 'Patientic', '147258321', 'Adresa', 'Grad', 'Drzava', '1111111111111', _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].AWAITING_APPROVAL);
-        this.listPatients.push(this.patient);
+        this.getAllPatients();
     }
     newPatient(patient) {
         return this.http.post(this.urlPatient + '/register', patient);
@@ -2720,6 +2782,25 @@ let PatientService = class PatientService {
             }
         }
     }
+    whichStatus(status) {
+        if (status === 'AWAITING_APPROVAL') {
+            return _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].AWAITING_APPROVAL;
+        }
+        else {
+            return _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].APPROVED;
+        }
+    }
+    getAllPatients() {
+        this.http.get(this.urlPatient + '/all').subscribe((data) => {
+            for (const c of data) {
+                this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, this.whichStatus(c.status.toString()));
+                this.addPatient(this.patient);
+            }
+        }, error => {
+            console.log(error);
+        });
+        return this.listPatients;
+    }
 };
 PatientService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
@@ -2752,6 +2833,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_role__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/role */ "./src/app/model/role.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
@@ -2764,17 +2847,9 @@ let UserServiceService = class UserServiceService {
         this.router = router;
         this.http = http;
         this.list = new Array();
+        this.urlUser = _environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].user;
         this.user = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('', '', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NONE);
-        this.doctor = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('doctor@email.com', 'Doctor123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].DOCTOR);
-        this.patient = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('patient@email.com', 'Patient123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].PATIENT);
-        this.nurse = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('nurse@email.com', 'Nurse123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NURSE);
-        this.clinicAdmin = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('nemanja@email.com', 'Mirkela97', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].CLINIC_ADMINISTRATOR);
-        this.list.push(this.doctor);
-        this.list.push(this.patient);
-        this.list.push(this.nurse);
-        this.list.push(this.clinicAdmin);
-        this.clinicalCentreAdmin = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('zejak@email.com', 'Zejake123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].CLINICAL_CENTRE_ADMINISTRATOR);
-        this.list.push(this.clinicalCentreAdmin);
+        this.getAllUsers();
         localStorage.setItem(TOKEN, JSON.stringify(this.user));
     }
     addUser(u) {
@@ -2848,6 +2923,38 @@ let UserServiceService = class UserServiceService {
         if (this.isLoggedIn()) {
             return this.user.role === _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NONE;
         }
+    }
+    whichRole(role) {
+        if (role === 'PATIENT') {
+            return _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].PATIENT;
+        }
+        else if (role === 'DOCTOR') {
+            return _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].DOCTOR;
+        }
+        else if (role === 'NURSE') {
+            return _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NURSE;
+        }
+        else if (role === 'CLINIC_ADMINISTRATOR') {
+            return _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].CLINIC_ADMINISTRATOR;
+        }
+        else if (role === 'CLINICAL_CENTRE_ADMINISTRATOR') {
+            return _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].CLINICAL_CENTRE_ADMINISTRATOR;
+        }
+        else {
+            return null;
+        }
+    }
+    getAllUsers() {
+        this.http.get(this.urlUser + '/all').subscribe((data) => {
+            for (const c of data) {
+                this.u = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"](c.email, c.password, this.whichRole(c.role.toString()));
+                this.addUser(this.u);
+            }
+        }, error => {
+            console.log(error);
+        });
+        console.log(this.list);
+        return this.list;
     }
 };
 UserServiceService.ctorParameters = () => [

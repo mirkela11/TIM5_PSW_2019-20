@@ -1886,15 +1886,33 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminClinic", function () { return AdminClinic; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             var AdminClinic = /** @class */ (function () {
-                function AdminClinic(email, password, name, surname, number) {
+                function AdminClinic(email, password, name, surname, number1, status) {
                     this.email = email;
                     this.password = password;
                     this.name = name;
                     this.surname = surname;
-                    this.number = number;
+                    this.number = number1;
+                    this.status = status;
                 }
                 return AdminClinic;
             }());
+            /***/ 
+        }),
+        /***/ "./src/app/model/adminClinicStatus.ts": 
+        /*!********************************************!*\
+          !*** ./src/app/model/adminClinicStatus.ts ***!
+          \********************************************/
+        /*! exports provided: AdminClinicStatus */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminClinicStatus", function () { return AdminClinicStatus; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            var AdminClinicStatus;
+            (function (AdminClinicStatus) {
+                AdminClinicStatus[AdminClinicStatus["ACTIVE"] = 0] = "ACTIVE";
+                AdminClinicStatus[AdminClinicStatus["DELETED"] = 1] = "DELETED";
+            })(AdminClinicStatus || (AdminClinicStatus = {}));
             /***/ 
         }),
         /***/ "./src/app/model/clinic.ts": 
@@ -2072,14 +2090,14 @@
             /* harmony import */ var _model_adminClinic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/adminClinic */ "./src/app/model/adminClinic.ts");
             /* harmony import */ var _user_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user-service.service */ "./src/app/services/user-service.service.ts");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _model_adminClinicStatus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../model/adminClinicStatus */ "./src/app/model/adminClinicStatus.ts");
             var AdminClinicService = /** @class */ (function () {
                 function AdminClinicService(http, userService) {
                     this.http = http;
                     this.userService = userService;
                     this.urlAdminClinic = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].adminClinic;
                     this.listAdminClinic = new Array();
-                    this.adminClinic = new _model_adminClinic__WEBPACK_IMPORTED_MODULE_3__["AdminClinic"]('nemanja@email.com', 'Mirkela97', 'Nemanja', 'Mirkovic', '123456789');
-                    this.listAdminClinic.push(this.adminClinic);
+                    this.getAllClinicAdmins();
                 }
                 AdminClinicService.prototype.loginAdminClinic = function (adminClinic) {
                     this.userService.setToken(adminClinic);
@@ -2110,6 +2128,33 @@
                             ac1.number = ac.number;
                         }
                     }
+                };
+                AdminClinicService.prototype.addClinicAdmin = function (a) {
+                    if (this.getAdminClinic(a.email) === null) {
+                        this.listAdminClinic.push(a);
+                    }
+                };
+                AdminClinicService.prototype.whichStatus = function (status) {
+                    if (status === 'ACTIVE') {
+                        return _model_adminClinicStatus__WEBPACK_IMPORTED_MODULE_6__["AdminClinicStatus"].ACTIVE;
+                    }
+                    else {
+                        return _model_adminClinicStatus__WEBPACK_IMPORTED_MODULE_6__["AdminClinicStatus"].DELETED;
+                    }
+                };
+                AdminClinicService.prototype.getAllClinicAdmins = function () {
+                    var _this = this;
+                    this.http.get(this.urlAdminClinic + '/all').subscribe(function (data) {
+                        for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
+                            var c = data_1[_i];
+                            console.log(c);
+                            _this.adminClinic = new _model_adminClinic__WEBPACK_IMPORTED_MODULE_3__["AdminClinic"](c.email, c.password, c.name, c.surname, c.number, _this.whichStatus(c.status.toString()));
+                            _this.addClinicAdmin(_this.adminClinic);
+                        }
+                    }, function (error) {
+                        console.log(error);
+                    });
+                    return this.listAdminClinic;
                 };
                 return AdminClinicService;
             }());
@@ -2168,15 +2213,15 @@
                 ClinicService.prototype.getAllClinics = function () {
                     var _this = this;
                     this.http.get(this.urlClinic + '/all').subscribe(function (data) {
-                        for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
-                            var c = data_1[_i];
+                        for (var _i = 0, data_2 = data; _i < data_2.length; _i++) {
+                            var c = data_2[_i];
                             _this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description, c.id);
                             _this.addClinic(_this.clinic);
-                            console.log(_this.clinic);
                         }
                     }, function (error) {
                         console.log(error);
                     });
+                    console.log(this.listClinics);
                     return this.listClinics;
                 };
                 return ClinicService;
@@ -2321,8 +2366,8 @@
                 DoctorService.prototype.getAllDoctors = function () {
                     var _this = this;
                     this.http.get(this.urlDoctor + '/all').subscribe(function (data) {
-                        for (var _i = 0, data_2 = data; _i < data_2.length; _i++) {
-                            var c = data_2[_i];
+                        for (var _i = 0, data_3 = data; _i < data_3.length; _i++) {
+                            var c = data_3[_i];
                             _this.doctor = new _model_doctor__WEBPACK_IMPORTED_MODULE_3__["Doctor"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.clinic);
                             _this.addDoctor(_this.doctor);
                         }
@@ -2365,8 +2410,7 @@
                     this.userService = userService;
                     this.urlNurse = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].nurse;
                     this.listNurses = new Array();
-                    this.nurse = new _model_nurse__WEBPACK_IMPORTED_MODULE_5__["Nurse"]('nurse@email.com', 'Nurse123', 'Nurse', 'Nursic', '153426010', '8:00', '16:00');
-                    this.listNurses.push(this.nurse);
+                    this.getAllNurses();
                 }
                 NurseServiceService.prototype.loginNurse = function (nurse) {
                     this.userService.setToken(nurse);
@@ -2400,6 +2444,24 @@
                             return;
                         }
                     }
+                };
+                NurseServiceService.prototype.addNurse = function (n) {
+                    if (this.getNurse(n.email) === null) {
+                        this.listNurses.push(n);
+                    }
+                };
+                NurseServiceService.prototype.getAllNurses = function () {
+                    var _this = this;
+                    this.http.get(this.urlNurse + '/all').subscribe(function (data) {
+                        for (var _i = 0, data_4 = data; _i < data_4.length; _i++) {
+                            var c = data_4[_i];
+                            _this.nurse = new _model_nurse__WEBPACK_IMPORTED_MODULE_5__["Nurse"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursTo, c.workHoursFrom);
+                            _this.addNurse(_this.nurse);
+                        }
+                    }, function (error) {
+                        console.log(error);
+                    });
+                    return this.listNurses;
                 };
                 return NurseServiceService;
             }());
@@ -2436,8 +2498,7 @@
                     this.userService = userService;
                     this.urlPatient = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].patient;
                     this.listPatients = new Array();
-                    this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"]('patient@email.com', 'Patient123', 'Patient', 'Patientic', '147258321', 'Adresa', 'Grad', 'Drzava', '1111111111111', _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].AWAITING_APPROVAL);
-                    this.listPatients.push(this.patient);
+                    this.getAllPatients();
                 }
                 PatientService.prototype.newPatient = function (patient) {
                     return this.http.post(this.urlPatient + '/register', patient);
@@ -2481,6 +2542,27 @@
                         }
                     }
                 };
+                PatientService.prototype.whichStatus = function (status) {
+                    if (status === 'AWAITING_APPROVAL') {
+                        return _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].AWAITING_APPROVAL;
+                    }
+                    else {
+                        return _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].APPROVED;
+                    }
+                };
+                PatientService.prototype.getAllPatients = function () {
+                    var _this = this;
+                    this.http.get(this.urlPatient + '/all').subscribe(function (data) {
+                        for (var _i = 0, data_5 = data; _i < data_5.length; _i++) {
+                            var c = data_5[_i];
+                            _this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, _this.whichStatus(c.status.toString()));
+                            _this.addPatient(_this.patient);
+                        }
+                    }, function (error) {
+                        console.log(error);
+                    });
+                    return this.listPatients;
+                };
                 return PatientService;
             }());
             PatientService.ctorParameters = function () { return [
@@ -2510,23 +2592,16 @@
             /* harmony import */ var _model_role__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/role */ "./src/app/model/role.ts");
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
             var TOKEN = 'LoggedInUser';
             var UserServiceService = /** @class */ (function () {
                 function UserServiceService(router, http) {
                     this.router = router;
                     this.http = http;
                     this.list = new Array();
+                    this.urlUser = _environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].user;
                     this.user = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('', '', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NONE);
-                    this.doctor = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('doctor@email.com', 'Doctor123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].DOCTOR);
-                    this.patient = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('patient@email.com', 'Patient123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].PATIENT);
-                    this.nurse = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('nurse@email.com', 'Nurse123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NURSE);
-                    this.clinicAdmin = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('nemanja@email.com', 'Mirkela97', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].CLINIC_ADMINISTRATOR);
-                    this.list.push(this.doctor);
-                    this.list.push(this.patient);
-                    this.list.push(this.nurse);
-                    this.list.push(this.clinicAdmin);
-                    this.clinicalCentreAdmin = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]('zejak@email.com', 'Zejake123', _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].CLINICAL_CENTRE_ADMINISTRATOR);
-                    this.list.push(this.clinicalCentreAdmin);
+                    this.getAllUsers();
                     localStorage.setItem(TOKEN, JSON.stringify(this.user));
                 }
                 UserServiceService.prototype.addUser = function (u) {
@@ -2602,6 +2677,40 @@
                     if (this.isLoggedIn()) {
                         return this.user.role === _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NONE;
                     }
+                };
+                UserServiceService.prototype.whichRole = function (role) {
+                    if (role === 'PATIENT') {
+                        return _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].PATIENT;
+                    }
+                    else if (role === 'DOCTOR') {
+                        return _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].DOCTOR;
+                    }
+                    else if (role === 'NURSE') {
+                        return _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].NURSE;
+                    }
+                    else if (role === 'CLINIC_ADMINISTRATOR') {
+                        return _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].CLINIC_ADMINISTRATOR;
+                    }
+                    else if (role === 'CLINICAL_CENTRE_ADMINISTRATOR') {
+                        return _model_role__WEBPACK_IMPORTED_MODULE_3__["Role"].CLINICAL_CENTRE_ADMINISTRATOR;
+                    }
+                    else {
+                        return null;
+                    }
+                };
+                UserServiceService.prototype.getAllUsers = function () {
+                    var _this = this;
+                    this.http.get(this.urlUser + '/all').subscribe(function (data) {
+                        for (var _i = 0, data_6 = data; _i < data_6.length; _i++) {
+                            var c = data_6[_i];
+                            _this.u = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"](c.email, c.password, _this.whichRole(c.role.toString()));
+                            _this.addUser(_this.u);
+                        }
+                    }, function (error) {
+                        console.log(error);
+                    });
+                    console.log(this.list);
+                    return this.list;
                 };
                 return UserServiceService;
             }());

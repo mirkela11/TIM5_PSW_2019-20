@@ -1,16 +1,17 @@
 package project_backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import project_backend.dtos.PatientDTO;
 import project_backend.model.Patient;
 import project_backend.model.PatientStatus;
 import project_backend.model.User;
 import project_backend.service.PatientService;
 import project_backend.service.UserService;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -62,6 +63,11 @@ public class PatientController{
         }
 
         return "Greska";
+    }
+
+    @GetMapping(value = "/patient/all")
+    public ResponseEntity<List<Patient>> all() {
+        return new ResponseEntity<>(patientService.findall(), HttpStatus.OK);
     }
 
 }

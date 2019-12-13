@@ -1,5 +1,7 @@
 package project_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,12 +29,14 @@ public class ClinicAdministrator {
     private String number;
 
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Clinic clinic;
 
     // @Enumerated(EnumType.STRING)
     //  private UserStatus status;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "clinicAdministrator", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Examination> examinations = new HashSet<>();
 

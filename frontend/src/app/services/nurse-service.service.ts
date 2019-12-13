@@ -3,6 +3,7 @@ import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {UserServiceService} from './user-service.service';
 import {Nurse} from '../model/nurse';
+import {Patient} from '../model/patient';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,7 @@ export class NurseServiceService {
     private http: HttpClient,
     private userService: UserServiceService) {
 
-    this.nurse = new Nurse('nurse@email.com', 'Nurse123', 'Nurse', 'Nursic', '153426010', '8:00', '16:00');
-    this.listNurses.push(this.nurse);
+    this.getAllNurses();
   }
 
   public loginNurse(nurse) {
@@ -57,6 +57,27 @@ export class NurseServiceService {
         return;
       }
     }
+  }
+
+  public addNurse(n: Nurse) {
+    if (this.getNurse(n.email) === null) {
+      this.listNurses.push(n);
+    }
+  }
+
+  public getAllNurses(): Array<Nurse> {
+    this.http.get(this.urlNurse + '/all').subscribe((data: Nurse[]) => {
+        for (const c of data) {
+          this.nurse = new Nurse(c.email, c.password, c.name, c.surname, c.phone, c.workHoursTo, c.workHoursFrom);
+          this.addNurse(this.nurse);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    return this.listNurses;
   }
 
 }
