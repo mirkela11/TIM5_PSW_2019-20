@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import project_backend.dtos.ClinicalAdministratorDTO;
 import project_backend.model.ClinicAdministrator;
 import project_backend.repository.AdminClinicRepo;
 
@@ -57,5 +58,28 @@ public class ClinicAdminService {
         }
 
         return false;
+    }
+
+    public boolean addClinicAdmin(ClinicAdministrator ca){
+
+        List<ClinicAdministrator> tmp = findall();
+        if(tmp.size() == 0)
+        {
+            repo.save(ca);
+            return true;
+        }
+        for(ClinicAdministrator c1 : tmp)
+            if(c1.getName().equals(ca.getName()))
+            {
+                return  false;
+            }
+            else
+            {
+                repo.save(ca);
+                return true;
+            }
+
+        return false;
+
     }
 }

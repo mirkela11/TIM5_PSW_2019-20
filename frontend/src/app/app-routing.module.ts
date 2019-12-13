@@ -15,6 +15,7 @@ import {HomePageClinicalCentreAdministratorComponent} from './components/home-pa
 import {HomeComponent} from './components/home/home.component';
 import {AppComponent} from './app.component';
 import {AddClinicComponent} from './components/add-clinic/add-clinic.component';
+import {AddClinicAdministratorComponent} from './components/add-clinic-administrator/add-clinic-administrator.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,10 @@ const routes: Routes = [
   {
     path: 'clinical-centre-admin/addClinic',
     component: AddClinicComponent,
+  },
+  {
+    path: 'clinical-centre-admin/addAdmins',
+    component: AddClinicAdministratorComponent,
   },
 
 ];

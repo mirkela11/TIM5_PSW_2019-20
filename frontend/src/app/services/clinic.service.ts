@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {Clinic} from '../model/clinic';
 import {HttpClient} from '@angular/common/http';
-import {Patient} from '../model/patient';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +52,10 @@ export class ClinicService {
     );
 
     return this.listClinics;
+  }
+
+  public newClinic(clinic) {
+    return this.http.post(this.urlClinic + '/clinical-centre-admin/addClinic', clinic);
   }
 }
 

@@ -26,4 +26,41 @@ public class ClinicService{
     {
         return clinicRepo.findOneById(id);
     }
+
+    public boolean addClinic(Clinic c){
+
+        List<Clinic> tmp = findAll();
+        if(tmp.size() == 0)
+        {
+            clinicRepo.save(c);
+            return true;
+        }
+        for(Clinic c1 : tmp)
+            if(c1.getName().equals(c.getName()))
+            {
+                return  false;
+            }
+            else
+            {
+                clinicRepo.save(c);
+                return true;
+            }
+
+        return false;
+
+    }
+
+    public Clinic getClinic(String name){
+        List<Clinic> tmp = findAll();
+        if(tmp.size() == 0)
+            return null;
+
+        for(Clinic c : tmp)
+        {
+            if(c.getName().equals(name))
+                return c;
+        }
+
+        return null;
+    }
 }

@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment";
 import {AdminClinic} from "../model/adminClinic";
 import {UserServiceService} from "./user-service.service";
 import {HttpClient} from "@angular/common/http";
+import {Clinic} from '../model/clinic';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,16 @@ export class AdminClinicService {
         ac1.surname = ac.surname;
         ac1. number = ac.number;
       }
+    }
+  }
+
+  public newAdminClinic(adminClinic) {
+    return this.http.post(this.urlAdminClinic + '/clinical-centre-admin/addAdmins', adminClinic);
+  }
+
+  public addAdminClinic(ac: AdminClinic) {
+    if (this.getAdminClinic(ac.email) === null) {
+      this.listAdminClinic.push(ac);
     }
   }
 }

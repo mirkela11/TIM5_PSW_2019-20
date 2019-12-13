@@ -3,9 +3,8 @@ package project_backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import project_backend.dtos.ClinicDTO;
 import project_backend.model.Clinic;
 import project_backend.service.ClinicService;
 
@@ -22,4 +21,32 @@ public class ClinicController{
     public ResponseEntity<List<Clinic>> all() {
         return new ResponseEntity<>(clinicService.findAll(), HttpStatus.OK);
     }
+
+
+    @PostMapping(value = "clinic/clinical-centre-admin/addClinic")
+    public String AddAdministrator(@RequestBody ClinicDTO clinics){
+
+        Clinic clinic = clinicService.getClinic(clinics.getName());
+        if(clinic == null){
+            Clinic newClinic = new Clinic();
+            newClinic.setName(clinics.getName());
+            newClinic.setAddress(clinics.getAddress());
+            newClinic.setDescription(clinics.getDescription());
+
+
+            boolean uspesno = clinicService.addClinic(newClinic);
+            if(uspesno == true){
+                System.out.println("New clinic with name " + newClinic.getName() + "is added.");
+            }
+            else
+            {
+                System.out.println("Name already exists: " + newClinic.getName());
+            }
+
+            return "";
+        }
+        else
+            return "Name already exists";
+        }
 }
+

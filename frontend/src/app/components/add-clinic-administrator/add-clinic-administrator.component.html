@@ -1,0 +1,73 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <mat-card>
+          <h3>Profile</h3>
+          <hr>
+          <form [formGroup]="addClinicAdministratorForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <mat-label for="email">Email</mat-label>
+              <input type="email"  id="email" formControlName="email" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && addClinicAdministratorForm.get('email').errors }">
+
+              <div *ngIf="submitted && addClinicAdministratorForm.get('email').errors" class="invalid-feedback">
+                <div *ngIf="addClinicAdministratorForm.get('email').errors['required']">Email is required</div>
+                <div *ngIf="addClinicAdministratorForm.get('email').errors['email']">Email must be a valid email address</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="text" id="password" formControlName="password" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && addClinicAdministratorForm.get('password').errors }">
+              <div *ngIf="submitted && addClinicAdministratorForm.get('password').errors" class="invalid-feedback">
+                <div *ngIf="addClinicAdministratorForm.get('password').errors['required']">Password is required</div>
+                <div *ngIf="addClinicAdministratorForm.get('password').errors['minlength']">Password must be at least 8 characters
+                  long</div>
+                <div *ngIf="addClinicAdministratorForm.get('password').errors['pattern']">Password must contain at least 1 lowercase,
+                  1 uppercase letter
+                  and 1 number</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="name">First Name</label>
+              <input type="text" id="name" formControlName="name" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && addClinicAdministratorForm.get('name').errors }" />
+              <div *ngIf="submitted && addClinicAdministratorForm.get('name').errors" class="invalid-feedback">
+                <div *ngIf=" addClinicAdministratorForm.get('name').errors['required']">First Name is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="surname">Last Name</label>
+              <input type="text" id="surname" formControlName="surname" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && addClinicAdministratorForm.get('surname').errors }" />
+              <div *ngIf="submitted && addClinicAdministratorForm.get('surname').errors" class="invalid-feedback">
+                <div *ngIf="addClinicAdministratorForm.get('surname').errors['required']">Last Name is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="number">Phone Number</label>
+              <input type="number" id="number" formControlName="number" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && addClinicAdministratorForm.get('number').errors }" />
+              <div *ngIf="submitted && addClinicAdministratorForm.get('number').errors" class="invalid-feedback">
+                <div *ngIf="addClinicAdministratorForm.get('number').errors['required']">Phone Number is required</div>
+                <div *ngIf="addClinicAdministratorForm.get('number').errors['minlength']">A phone number must have at least 9
+                  digits
+                </div>
+              </div>
+            </div>
+
+
+            <button mat-raised-button color="primary" class="pull-right">Save</button>
+
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

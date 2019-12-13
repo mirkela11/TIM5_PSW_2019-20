@@ -53,4 +53,33 @@ public class ClinicalAdministratorController {
 
         return "Greska";
     }
+
+
+    @PostMapping(value = "admin_clinic/clinical-centre-admin/addAdmins")
+    public String AddAdministrator(@RequestBody ClinicalAdministratorDTO clinicAdmins){
+
+        ClinicAdministrator clinicAdmin = clinicAdminService.getClinicalAdministrator(clinicAdmins.getName());
+        if(clinicAdmin == null){
+            ClinicAdministrator newClinicAdministrator = new ClinicAdministrator();
+            newClinicAdministrator.setEmail(clinicAdmins.getEmail());
+            newClinicAdministrator.setPassword(clinicAdmins.getPassword());
+            newClinicAdministrator.setName(clinicAdmins.getName());
+            newClinicAdministrator.setSurname(clinicAdmins.getSurname());
+            newClinicAdministrator.setNumber(clinicAdmins.getNumber());
+
+
+            boolean uspesno = clinicAdminService.addClinicAdmin(newClinicAdministrator);
+            if(uspesno == true){
+                System.out.println("New administrator of clinic with name " + newClinicAdministrator.getName() + "is added.");
+            }
+            else
+            {
+                System.out.println("Name already exists: " + newClinicAdministrator.getName());
+            }
+
+            return "";
+        }
+        else
+            return "Name already exists";
+    }
 }
