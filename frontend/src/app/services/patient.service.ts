@@ -4,6 +4,7 @@ import {environment} from '../../environments/environment';
 import {Patient} from '../model/patient';
 import {UserServiceService} from './user-service.service';
 import {PatientStatus} from '../model/patientStatus';
+import {Clinic} from '../model/clinic';
 
 
 @Injectable({
@@ -19,10 +20,7 @@ export class PatientService {
     private http: HttpClient,
     private userService: UserServiceService
   ) {
-    this.patient = new Patient('patient@email.com', 'Patient123', 'Patient', 'Patientic', '147258321',
-      'Adresa', 'Grad', 'Drzava', '1111111111111', PatientStatus.AWAITING_APPROVAL);
-    this.listPatients.push(this.patient);
-
+    this.getAllPatients();
   }
 
   public newPatient(patient) {
@@ -71,6 +69,30 @@ export class PatientService {
         return;
       }
     }
+  }
+
+  public whichStatus(status: string) {
+    if (status === 'AWAITING_APPROVAL') {
+      return PatientStatus.AWAITING_APPROVAL;
+    } else {
+      return PatientStatus.APPROVED;
+    }
+
+  }
+
+  public getAllPatients(): Array<Patient> {
+    this.http.get(this.urlPatient + '/all').subscribe((data: Patient[]) => {
+        for (const c of data) {
+          this.patient = new Patient(c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, this.whichStatus(c.status.toString()));
+          this.addPatient(this.patient);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    return this.listPatients;
   }
 
 

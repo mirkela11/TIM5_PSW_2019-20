@@ -3,7 +3,7 @@ insert into diagnose(id, title, description) values (6, 'Nikola', 'Zejak');
 insert into clinic(id, address, description, name) values (1, 'Novi sad 123', 'Odlicna', 'MediaGroup');
 insert into clinic(id, address, description, name) values (2, 'Sabac', 'Super', 'Bolnica');
 insert into examination_type(id, label, price, clinic_id) values (1,'Hirurg', '1000', 1);
-insert into clinic_administrator(id, email, name, number, password, surname, clinic_id) values (1, 'nemanja@email.com', 'Nemanja', '123456789', 'Mirkela97', 'Mirkovic', 1);
+insert into clinic_administrator(id, email, name, number, password, status, surname, clinic_id) values (1, 'nemanja@email.com', 'Nemanja', '123456789', 'Mirkela97','ACTIVE', 'Mirkovic', 1);
 insert into users(id, email, password, role) values (100,'nemanja@email.com', 'Mirkela97',3);
 insert into clinical_centre_administrator(id, email, name, password, phone, surname) values (1,'zejak@email.com', 'Nikola', 'Zejake123', '789456321', 'Zejak');
 insert into users(id, email, password, role) values (101,'zejak@email.com', 'Zejake123',4);

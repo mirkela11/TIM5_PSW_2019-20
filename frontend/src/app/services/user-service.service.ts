@@ -4,6 +4,7 @@ import {Role} from '../model/role';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {Clinic} from '../model/clinic';
 
 export const TOKEN = 'LoggedInUser';
 
@@ -14,23 +15,11 @@ export const TOKEN = 'LoggedInUser';
 export class UserServiceService {
 
   list: Array<User> = new Array<User>();
-  doctor: User;
-  patient: User;
-  nurse: User;
-  clinicAdmin: User;
-  clinicalCentreAdmin: User
+  u: User;
+  urlUser = environment.baseUrl + environment.user;
   user: User = new User('', '', Role.NONE);
   constructor(private router: Router, private http: HttpClient) {
-    this.doctor = new User('doctor@email.com', 'Doctor123', Role.DOCTOR);
-    this.patient = new User('patient@email.com', 'Patient123', Role.PATIENT);
-    this.nurse = new User('nurse@email.com', 'Nurse123', Role.NURSE);
-    this.clinicAdmin = new User('nemanja@email.com', 'Mirkela97', Role.CLINIC_ADMINISTRATOR);
-    this.list.push(this.doctor);
-    this.list.push(this.patient);
-    this.list.push(this.nurse);
-    this.list.push(this.clinicAdmin);
-    this.clinicalCentreAdmin = new User('zejak@email.com', 'Zejake123', Role.CLINICAL_CENTRE_ADMINISTRATOR);
-    this.list.push(this.clinicalCentreAdmin);
+    this.getAllUsers();
     localStorage.setItem(TOKEN, JSON.stringify(this.user));
   }
 
@@ -116,6 +105,38 @@ export class UserServiceService {
     if (this.isLoggedIn()) {
       return this.user.role === Role.NONE;
     }
+  }
+
+  public whichRole(role: string) {
+    if (role === 'PATIENT') {
+      return Role.PATIENT;
+    } else if (role === 'DOCTOR') {
+      return  Role.DOCTOR;
+    } else if (role === 'NURSE') {
+      return  Role.NURSE;
+    } else if (role === 'CLINIC_ADMINISTRATOR') {
+      return  Role.CLINIC_ADMINISTRATOR;
+    } else if (role === 'CLINICAL_CENTRE_ADMINISTRATOR') {
+      return  Role.CLINICAL_CENTRE_ADMINISTRATOR;
+    } else {
+      return null;
+    }
+
+  }
+
+  public getAllUsers(): Array<User> {
+    this.http.get(this.urlUser + '/all').subscribe((data: User[]) => {
+        for (const c of data) {
+            this.u = new User(c.email, c.password, this.whichRole(c.role.toString()));
+            this.addUser(this.u);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    console.log(this.list);
+    return this.list;
   }
 
 }

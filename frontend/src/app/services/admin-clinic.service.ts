@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../environments/environment";
-import {AdminClinic} from "../model/adminClinic";
-import {UserServiceService} from "./user-service.service";
-import {HttpClient} from "@angular/common/http";
+import {environment} from '../../environments/environment';
+import {AdminClinic} from '../model/adminClinic';
+import {UserServiceService} from './user-service.service';
+import {HttpClient} from '@angular/common/http';
+import {Patient} from '../model/patient';
+import {AdminClinicStatus} from '../model/adminClinicStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +19,8 @@ export class AdminClinicService {
   constructor(
     private http: HttpClient,
     private userService: UserServiceService
-  ){
-    this.adminClinic = new AdminClinic('nemanja@email.com', 'Mirkela97', 'Nemanja', 'Mirkovic', '123456789');
-    this.listAdminClinic.push(this.adminClinic);
+  ) {
+    this.getAllClinicAdmins();
   }
 
   public loginAdminClinic(adminClinic) {
@@ -44,14 +45,43 @@ export class AdminClinicService {
     return null;
   }
 
-  public setAdminClinic(ac: AdminClinic){
-    for(const ac1 of this.listAdminClinic){
-      if(ac1.email === ac.email){
+  public setAdminClinic(ac: AdminClinic) {
+    for (const ac1 of this.listAdminClinic) {
+      if (ac1.email === ac.email) {
         ac1.password = ac.password;
         ac1.name = ac.name;
         ac1.surname = ac.surname;
         ac1. number = ac.number;
       }
     }
+  }
+
+  public addClinicAdmin(a: AdminClinic) {
+    if (this.getAdminClinic(a.email) === null) {
+      this.listAdminClinic.push(a);
+    }
+  }
+
+  public whichStatus(status: string) {
+    if (status === 'ACTIVE') {
+      return AdminClinicStatus.ACTIVE;
+    } else {
+      return  AdminClinicStatus.DELETED;
+    }
+  }
+
+  public getAllClinicAdmins(): Array<AdminClinic> {
+    this.http.get(this.urlAdminClinic + '/all').subscribe((data: AdminClinic[]) => {
+        for (const c of data) {
+          this.adminClinic = new AdminClinic(c.email, c.password, c.name, c.surname, c.number, this.whichStatus(c.status.toString()));
+          this.addClinicAdmin(this.adminClinic);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    return this.listAdminClinic;
   }
 }
