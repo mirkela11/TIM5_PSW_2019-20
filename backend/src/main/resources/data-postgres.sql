@@ -15,3 +15,4 @@ insert into nurse(id, email, name, password, phone, surname, work_hours_from, wo
 insert into users(id, email, password, role) values (103, 'nurse@email.com', 'Nurse123', 2);
 insert into patient(id, insuranceid, address, city, country, email, name, number, password, status, surname) values (100, 1111111111111, 'Adresa', 'Grad', 'Drzava', 'patient@email.com', 'Patient', '147258321', 'Patient123', 'APPROVED', 'Patientic');
 insert into users(id, email, password, role) values (104, 'patient@email.com', 'Patient123', 0);
+insert into room(id,kind, name, number ,clinic_id) values (100,'EXAMINATION','Room 1','1', 1)

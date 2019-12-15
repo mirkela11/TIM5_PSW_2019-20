@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../environments/environment";
-import {Room} from "../model/Room";
-import {HttpClient} from "@angular/common/http";
-import {Clinic} from "../model/clinic";
+import {environment} from '../../environments/environment';
+import {Room} from '../model/Room';
+import {HttpClient} from '@angular/common/http';
+import {Clinic} from '../model/clinic';
+import {ExaminationKind} from '../model/examinationKind';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +18,13 @@ export class RoomService {
     this.getAllRooms();
   }
 
-  public addRoom(r: Room){
-    if(this.getRoom(r.name) === null){
+  public addRoom(r: Room) {
+    if (this.getRoom(r.name) === null) {
       this.listRooms.push(r);
     }
   }
 
-  public getRoom(name: String) {
+  public getRoom(name: string) {
     if ( this.listRooms.length === 0) {
       return null;
     }
@@ -36,10 +37,19 @@ export class RoomService {
     return null;
   }
 
-  public getAllRooms(): Array<Room>{
-    this.http.get(this.urlRoom + '/all').subscribe((data: Room[]) =>{
+  whichKind(kind: string) {
+    if (kind === 'EXAMINATION') {
+      return ExaminationKind.EXAMINATION;
+    } else {
+      return ExaminationKind.OPERATION;
+    }
+  }
+
+
+  public getAllRooms(): Array<Room> {
+    this.http.get(this.urlRoom + '/all').subscribe((data: Room[]) => {
       for (const r of data) {
-        this.room = new Room(r.name, r.number);
+        this.room = new Room(r.name, r.number, r.clinic, this.whichKind(r.kind.toString()));
         this.addRoom(this.room);
       }
     },

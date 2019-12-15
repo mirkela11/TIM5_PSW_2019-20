@@ -22,6 +22,20 @@ public class ClinicService{
         return  clinicRepo.save(c);
     }
 
+    public Clinic findByName(String name) {
+        List<Clinic> tmp = findAll();
+        if(tmp.size() == 0)
+            return null;
+
+        for(Clinic u : tmp)
+        {
+            if(u.getName().equals(name))
+                return u;
+        }
+
+        return null;
+    }
+
     public Clinic findOneById(Long id)
     {
         return clinicRepo.findOneById(id);

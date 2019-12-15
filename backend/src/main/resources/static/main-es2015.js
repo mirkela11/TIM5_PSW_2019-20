@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8 offset-md-2\">\r\n        <mat-card>\r\n          <h3>Add room</h3>\r\n          <hr>\r\n          <form [formGroup]=\"addRoomForm\" (ngSubmit)=\"onSubmit()\">\r\n            <div class=\"form-group\">\r\n              <label for=\"name\">Name</label>\r\n              <input type=\"name\" id=\"name\" formControlName=\"name\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addRoomForm.get('name').errors }\">\r\n\r\n              <div *ngIf=\"submitted && addRoomForm.get('name').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addRoomForm.get('name').errors['required']\">Name is required</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"number\">Number</label>\r\n              <input type=\"text\" id=\"number\" formControlName=\"number\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addRoomForm.get('number').errors }\" />\r\n              <div *ngIf=\"submitted && addRoomForm.get('number').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addRoomForm.get('number').errors['required']\">Number is required</div>\r\n              </div>\r\n            </div>\r\n            <button mat-raised-button style=\"position: center\" color=\"primary\" class=\"pull-right\">Save</button>\r\n          </form>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8 offset-md-2\">\r\n        <mat-card>\r\n          <h3>Add room</h3>\r\n          <hr>\r\n          <form [formGroup]=\"addRoomForm\" (ngSubmit)=\"onSubmit()\">\r\n            <div class=\"form-group\">\r\n              <label for=\"name\">Name</label>\r\n              <input type=\"name\" id=\"name\" formControlName=\"name\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addRoomForm.get('name').errors }\">\r\n\r\n              <div *ngIf=\"submitted && addRoomForm.get('name').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addRoomForm.get('name').errors['required']\">Name is required</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"number\">Number</label>\r\n              <input type=\"text\" id=\"number\" formControlName=\"number\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addRoomForm.get('number').errors }\" />\r\n              <div *ngIf=\"submitted && addRoomForm.get('number').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addRoomForm.get('number').errors['required']\">Number is required</div>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <mat-form-field>\r\n                <mat-label>Clinics</mat-label>\r\n                <mat-select>\r\n                  <mat-option id=\"clinic\" *ngFor=\"let clinic of clinics\" [value]=\"clinic.name\">\r\n                    {{clinic.name}}\r\n                  </mat-option>\r\n                </mat-select>\r\n              </mat-form-field>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <mat-form-field>\r\n                <mat-label>Kind</mat-label>\r\n                <select id=\"kind\" matNativeControl required>\r\n                  <option value=\"examination\">Examination</option>\r\n                  <option value=\"operation\">Operation</option>\r\n                </select>\r\n              </mat-form-field>\r\n            </div>\r\n            <button mat-raised-button style=\"position: center\" color=\"primary\" class=\"pull-right\">Save</button>\r\n          </form>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -854,7 +854,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _model_Room__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../model/Room */ "./src/app/model/Room.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _services_room_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/room.service */ "./src/app/services/room.service.ts");
+/* harmony import */ var _services_clinic_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/clinic.service */ "./src/app/services/clinic.service.ts");
+/* harmony import */ var _services_room_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../services/room.service */ "./src/app/services/room.service.ts");
+/* harmony import */ var _model_examinationKind__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../model/examinationKind */ "./src/app/model/examinationKind.ts");
+
+
 
 
 
@@ -863,17 +867,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AddRoomsComponent = class AddRoomsComponent {
-    constructor(dialog, formBuilder, router, roomService) {
+    constructor(dialog, formBuilder, router, roomService, clinicService) {
         this.dialog = dialog;
         this.formBuilder = formBuilder;
         this.router = router;
         this.roomService = roomService;
+        this.clinicService = clinicService;
         this.submitted = false;
+        this.clinics = this.clinicService.getAllClinics();
     }
     ngOnInit() {
         this.addRoomForm = this.formBuilder.group({
             name: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
-            number: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required])
+            number: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            clinic: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            kind: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
         });
     }
     get f() {
@@ -885,8 +893,13 @@ let AddRoomsComponent = class AddRoomsComponent {
         if (this.addRoomForm.invalid) {
             return;
         }
-        this.room = new _model_Room__WEBPACK_IMPORTED_MODULE_4__["Room"](this.f.name.value, this.f.number.value);
-        this.room = new _model_Room__WEBPACK_IMPORTED_MODULE_4__["Room"](this.f.name.value, this.f.number.value);
+        this.room = new _model_Room__WEBPACK_IMPORTED_MODULE_4__["Room"](this.f.name.value, this.f.number.value, this.f.clinic.value);
+        if (this.f.kind.value === 'Examination') {
+            this.room.kind = _model_examinationKind__WEBPACK_IMPORTED_MODULE_8__["ExaminationKind"].EXAMINATION;
+        }
+        else {
+            this.room.kind = _model_examinationKind__WEBPACK_IMPORTED_MODULE_8__["ExaminationKind"].OPERATION;
+        }
         this.createRoom();
     }
     createRoom() {
@@ -903,7 +916,8 @@ AddRoomsComponent.ctorParameters = () => [
     { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] },
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
-    { type: _services_room_service__WEBPACK_IMPORTED_MODULE_6__["RoomService"] }
+    { type: _services_room_service__WEBPACK_IMPORTED_MODULE_7__["RoomService"] },
+    { type: _services_clinic_service__WEBPACK_IMPORTED_MODULE_6__["ClinicService"] }
 ];
 AddRoomsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2178,9 +2192,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 class Room {
-    constructor(name, number) {
+    constructor(name, number1, clinic, kind) {
         this.name = name;
-        this.number = number;
+        this.number = number1;
+        this.kind = kind;
+        this.clinic = clinic;
     }
 }
 
@@ -2282,6 +2298,27 @@ class Doctor {
         this.clinic = clinic;
     }
 }
+
+
+/***/ }),
+
+/***/ "./src/app/model/examinationKind.ts":
+/*!******************************************!*\
+  !*** ./src/app/model/examinationKind.ts ***!
+  \******************************************/
+/*! exports provided: ExaminationKind */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExaminationKind", function() { return ExaminationKind; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+var ExaminationKind;
+(function (ExaminationKind) {
+    ExaminationKind[ExaminationKind["EXAMINATION"] = 0] = "EXAMINATION";
+    ExaminationKind[ExaminationKind["OPERATION"] = 1] = "OPERATION";
+})(ExaminationKind || (ExaminationKind = {}));
 
 
 /***/ }),
@@ -2966,6 +3003,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _model_Room__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/Room */ "./src/app/model/Room.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _model_examinationKind__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../model/examinationKind */ "./src/app/model/examinationKind.ts");
+
 
 
 
@@ -2994,10 +3033,18 @@ let RoomService = class RoomService {
         }
         return null;
     }
+    whichKind(kind) {
+        if (kind === 'EXAMINATION') {
+            return _model_examinationKind__WEBPACK_IMPORTED_MODULE_5__["ExaminationKind"].EXAMINATION;
+        }
+        else {
+            return _model_examinationKind__WEBPACK_IMPORTED_MODULE_5__["ExaminationKind"].OPERATION;
+        }
+    }
     getAllRooms() {
         this.http.get(this.urlRoom + '/all').subscribe((data) => {
             for (const r of data) {
-                this.room = new _model_Room__WEBPACK_IMPORTED_MODULE_3__["Room"](r.name, r.number);
+                this.room = new _model_Room__WEBPACK_IMPORTED_MODULE_3__["Room"](r.name, r.number, r.clinic, this.whichKind(r.kind.toString()));
                 this.addRoom(this.room);
             }
         }, error => {
@@ -3252,7 +3299,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! F:\TIM5_PSW_2019-20\frontend\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\Veljko\TIM5_PSW_2019-20\frontend\src\main.ts */"./src/main.ts");
 
 
 /***/ })

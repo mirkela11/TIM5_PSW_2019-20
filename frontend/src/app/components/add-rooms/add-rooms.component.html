@@ -24,6 +24,25 @@
                 <div *ngIf="addRoomForm.get('number').errors['required']">Number is required</div>
               </div>
             </div>
+            <div class="form-group">
+              <mat-form-field>
+                <mat-label>Clinics</mat-label>
+                <mat-select>
+                  <mat-option id="clinic" *ngFor="let clinic of clinics" [value]="clinic.name">
+                    {{clinic.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field>
+                <mat-label>Kind</mat-label>
+                <select id="kind" matNativeControl required>
+                  <option value="examination">Examination</option>
+                  <option value="operation">Operation</option>
+                </select>
+              </mat-form-field>
+            </div>
             <button mat-raised-button style="position: center" color="primary" class="pull-right">Save</button>
           </form>
         </mat-card>

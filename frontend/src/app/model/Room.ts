@@ -1,9 +1,16 @@
-export class Room{
-  name: String;
-  number: String;
+import {ExaminationKind} from './examinationKind';
+import {Clinic} from './clinic';
 
-  constructor(name: String, number: String){
+export class Room {
+
+  name: string;
+  number: string;
+  kind: ExaminationKind;
+  clinic: Clinic;
+  constructor(name: string, number1: string, clinic?: Clinic, kind?: ExaminationKind) {
     this.name = name;
-    this.number = number;
+    this.number = number1;
+    this.kind = kind;
+    this.clinic = clinic;
   }
 }
