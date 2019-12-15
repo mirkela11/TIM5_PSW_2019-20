@@ -6,15 +6,16 @@ import {HomePagePatientComponent} from './components/home-page-patient/home-page
 import {ClinicsListComponent} from './components/clinics-list-patient/clinics-list.component';
 import {PatientProfileComponent} from './components/patient-profile/patient-profile.component';
 import {HomePageDoctorComponent} from './components/home-page-doctor/home-page-doctor.component';
-import {DoctorProfileComponent} from "./components/doctor-profile/doctor-profile.component";
+import {DoctorProfileComponent} from './components/doctor-profile/doctor-profile.component';
 import {HomePageNurseComponent} from './components/home-page-nurse/home-page-nurse.component';
 import {NurseProfileComponent} from './components/nurse-profile/nurse-profile.component';
-import {HomePageAdminClinicComponent} from "./components/home-page-admin-clinic/home-page-admin-clinic.component";
-import {AdminClinicProfileComponent} from "./components/admin-clinic-profile/admin-clinic-profile.component";
+import {HomePageAdminClinicComponent} from './components/home-page-admin-clinic/home-page-admin-clinic.component';
+import {AdminClinicProfileComponent} from './components/admin-clinic-profile/admin-clinic-profile.component';
 import {HomePageClinicalCentreAdministratorComponent} from './components/home-page-clinical-centre-administrator/home-page-clinical-centre-administrator.component';
 import {HomeComponent} from './components/home/home.component';
 import {AppComponent} from './app.component';
 import {AddClinicComponent} from './components/add-clinic/add-clinic.component';
+import {RegisterRequestsComponent} from './components/register-requests/register-requests.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,10 @@ const routes: Routes = [
   {
     path: 'clinical-centre-admin/addClinic',
     component: AddClinicComponent,
+  },
+  {
+    path: 'clinical-centre-admin/requests',
+    component: RegisterRequestsComponent,
   },
 
 ];

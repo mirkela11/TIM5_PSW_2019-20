@@ -9,9 +9,9 @@ import {DoctorService} from '../../services/doctor.service';
 import {ClinicService} from '../../services/clinic.service';
 import {NurseServiceService} from '../../services/nurse-service.service';
 import {AdminClinicService} from '../../services/admin-clinic.service';
-import {HttpClientModule} from '@angular/common/http';
-import {ClinicalCentreAdministrator} from '../../model/ClinicalCentreAdministrator';
 import {ClinicalCentreAdministratorService} from '../../services/clinical-centre-administrator.service';
+import {Patient} from "../../model/patient";
+import {PatientStatus} from "../../model/patientStatus";
 
 export class LoginUser {
   constructor(
@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   private submitted = false;
   private user: User;
   private loginUser: LoginUser;
+  private patient: Patient;
 
   constructor(
     private patientService: PatientService,
@@ -73,20 +74,20 @@ export class LoginComponent implements OnInit {
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value));
 
     this.user = this.userService.getUser(this.f.email.value);
-
+    this.patient = this.patientService.getPatient(this.f.email.value);
     this.attemptPatientLogin();
   }
 
   public attemptPatientLogin() {
-    if (this.user.role === Role.PATIENT && this.loginUser.password === this.user.password) {
+    if (this.user.role === Role.PATIENT && this.loginUser.password === this.user.password && this.patient.status === PatientStatus.APPROVED) {
       this.patientService.loginPatient(this.user).subscribe(
         data => {
           console.log(data);
           if (data !== null) {
-            console.log('Successful logged in');
+            alert('Successful logged in');
             this.router.navigate(['/patient/home']);
           } else {
-            console.log('Login error');
+            alert('Login error');
           }
         },
         error => {
@@ -98,10 +99,10 @@ export class LoginComponent implements OnInit {
         data => {
           console.log(data);
           if (data !== null) {
-            console.log('Successful logged in');
+            alert('Successful logged in');
             this.router.navigate(['/doctor/home']);
           } else {
-            console.log('Login error');
+            alert('Login error');
           }
         },
         error => {
@@ -114,10 +115,10 @@ export class LoginComponent implements OnInit {
         data => {
           console.log(data);
           if (data !== null) {
-            console.log('Successful logged in');
+            alert('Successful logged in');
             this.router.navigate(['/nurse/home']);
           } else {
-            console.log('Login error');
+            alert('Login error');
           }
         },
         error => {
@@ -130,10 +131,10 @@ export class LoginComponent implements OnInit {
         data => {
           console.log(data);
           if (data !== null) {
-            console.log('Successful logged in');
+            alert('Successful logged in');
             this.router.navigate(['/admin_clinic/home']);
           } else {
-            console.log('Login error');
+            alert('Login error');
           }
         },
         error => {
@@ -147,10 +148,10 @@ export class LoginComponent implements OnInit {
         data => {
           console.log(data);
           if (data !== null) {
-            console.log('Successful logged in');
+            alert('Successful logged in');
             this.router.navigate(['/clinical-centre-admin/home']);
           } else {
-            console.log('Login error');
+            alert('Login error');
           }
         },
         error => {
