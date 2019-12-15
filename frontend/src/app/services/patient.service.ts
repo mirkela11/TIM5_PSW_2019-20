@@ -4,7 +4,6 @@ import {environment} from '../../environments/environment';
 import {Patient} from '../model/patient';
 import {UserServiceService} from './user-service.service';
 import {PatientStatus} from '../model/patientStatus';
-import {Clinic} from '../model/clinic';
 
 
 @Injectable({
@@ -16,11 +15,13 @@ export class PatientService {
   listPatients: Array<Patient> = new Array<Patient>();
   patient: Patient;
   editP: Patient;
+  tmp: Array<Patient>;
   constructor(
     private http: HttpClient,
     private userService: UserServiceService
   ) {
     this.getAllPatients();
+    this.getAllRequests();
   }
 
   public newPatient(patient) {
@@ -95,5 +96,21 @@ export class PatientService {
     return this.listPatients;
   }
 
+  public getAllRequests(): Array<Patient> {
+    this.http.get(this.urlPatient + '/requests').subscribe((data: Patient[]) => {
+        this.tmp = new Array<Patient>();
+        for (const c of data) {
+            this.patient = new Patient(c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, PatientStatus.AWAITING_APPROVAL);
+            this.tmp.push(this.patient);
+            console.log(this.patient);
+          }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    console.log(this.tmp);
+    return this.tmp;
+  }
 
 }

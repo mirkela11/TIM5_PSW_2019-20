@@ -78,9 +78,10 @@ export class RegistrationComponent implements OnInit {
         this.userService.addUser(this.user);
         this.patientService.addPatient(this.patient);
         this.router.navigate(['/login']);
+        alert('Successful register');
       },
       error => {
-        alert('Error registration patient');
+        alert('Error registration');
         console.log(error);
       }
     );

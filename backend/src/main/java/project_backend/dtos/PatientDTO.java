@@ -1,5 +1,7 @@
 package project_backend.dtos;
 
+import project_backend.model.PatientStatus;
+
 public class PatientDTO{
     private String email;
     private String password;
@@ -10,6 +12,7 @@ public class PatientDTO{
     private String city;
     private String country;
     private String InsuranceID;
+    private PatientStatus status;
 
     public String getEmail() {
         return email;
@@ -81,5 +84,13 @@ public class PatientDTO{
 
     public void setInsuranceID(String healthInsuranceID) {
         this.InsuranceID = healthInsuranceID;
+    }
+
+    public PatientStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(PatientStatus status) {
+        this.status = status;
     }
 }

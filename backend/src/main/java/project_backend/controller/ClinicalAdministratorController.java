@@ -6,10 +6,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project_backend.dtos.ClinicalAdministratorDTO;
 import project_backend.model.ClinicAdministrator;
+import project_backend.model.Patient;
+import project_backend.model.PatientStatus;
 import project_backend.model.User;
 import project_backend.service.ClinicAdminService;
 import project_backend.service.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -59,4 +62,6 @@ public class ClinicalAdministratorController {
     public ResponseEntity<List<ClinicAdministrator>> all() {
         return new ResponseEntity<>(clinicAdminService.findall(), HttpStatus.OK);
     }
+
+
 }

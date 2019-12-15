@@ -11,6 +11,7 @@ import project_backend.model.User;
 import project_backend.service.PatientService;
 import project_backend.service.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -40,7 +41,7 @@ public class PatientController{
             pat.setCountry(p.getCountry());
             pat.setAddress(p.getAddress());
             pat.setInsuranceID(p.getInsuranceID());
-            pat.setStatus(PatientStatus.AWAITING_APPROVAL);
+            pat.setStatus(p.getStatus());
             u.setPassword(p.getPassword());
 
             boolean uspesno = patientService.editPatient(pat);
@@ -68,6 +69,19 @@ public class PatientController{
     @GetMapping(value = "/patient/all")
     public ResponseEntity<List<Patient>> all() {
         return new ResponseEntity<>(patientService.findall(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/patient/requests")
+    public ResponseEntity<ArrayList<Patient>> allRequests() {
+        List<Patient> tmp = patientService.findall();
+        ArrayList<Patient> returnList = new ArrayList<Patient>();
+        for(Patient p : tmp) {
+            System.out.println(p.getStatus());
+            if(p.getStatus() == PatientStatus.AWAITING_APPROVAL) {
+                returnList.add(p);
+            }
+        }
+        return new ResponseEntity<>(returnList, HttpStatus.OK);
     }
 
 }
