@@ -24,6 +24,7 @@ import { AdminClinicProfileComponent } from './components/admin-clinic-profile/a
 import { HomePageClinicalCentreAdministratorComponent } from './components/home-page-clinical-centre-administrator/home-page-clinical-centre-administrator.component';
 import { HomeComponent } from './components/home/home.component';
 import { AddClinicComponent } from './components/add-clinic/add-clinic.component';
+import { AddRoomsComponent } from './components/add-rooms/add-rooms.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,8 @@ import { AddClinicComponent } from './components/add-clinic/add-clinic.component
     HomeComponent,
 
     AddClinicComponent,
+
+    AddRoomsComponent,
   ],
   imports: [
     BrowserModule,

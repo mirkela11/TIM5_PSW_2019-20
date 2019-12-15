@@ -23,6 +23,12 @@ public class Room {
     @OneToMany(mappedBy = "room", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Examination> examinations = new HashSet<>();
 
+    @Column(columnDefinition = "VARCHAR(50)",nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String number;
+
     public Room()
     {
 
@@ -66,5 +72,21 @@ public class Room {
 
     public void setExaminations(Set<Examination> examinations) {
         this.examinations = examinations;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 }
