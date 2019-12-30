@@ -1,5 +1,7 @@
 package project_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,6 +11,7 @@ import java.util.Set;
 public class Examination {
 
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -34,6 +37,7 @@ public class Examination {
     @JoinTable(name = "examining", joinColumns = @JoinColumn(name = "examination_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "doctor_id", referencedColumnName = "id"))
     private Set<Doctor> doctors = new HashSet<Doctor>();
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Room room;
 
@@ -47,9 +51,11 @@ public class Examination {
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Patient patient;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "examination",cascade = CascadeType.ALL)
     private ExaminationReport examinationReport;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     private ClinicAdministrator clinicAdministrator;
 
