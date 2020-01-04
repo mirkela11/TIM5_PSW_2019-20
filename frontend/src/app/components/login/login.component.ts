@@ -10,8 +10,9 @@ import {ClinicService} from '../../services/clinic.service';
 import {NurseServiceService} from '../../services/nurse-service.service';
 import {AdminClinicService} from '../../services/admin-clinic.service';
 import {ClinicalCentreAdministratorService} from '../../services/clinical-centre-administrator.service';
-import {Patient} from "../../model/patient";
-import {PatientStatus} from "../../model/patientStatus";
+import {Patient} from '../../model/patient';
+import {PatientStatus} from '../../model/patientStatus';
+import {ExaminationService} from "../../services/examination.service";
 
 export class LoginUser {
   constructor(
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
     private nurseService: NurseServiceService,
     private adminClinicService: AdminClinicService,
     private clinicalCentreAdministratorService: ClinicalCentreAdministratorService,
+    private examinationService: ExaminationService,
   ) {
   }
 

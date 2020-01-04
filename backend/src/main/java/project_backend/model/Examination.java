@@ -1,6 +1,8 @@
 package project_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -11,7 +13,6 @@ import java.util.Set;
 public class Examination {
 
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -37,7 +38,6 @@ public class Examination {
     @JoinTable(name = "examining", joinColumns = @JoinColumn(name = "examination_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "doctor_id", referencedColumnName = "id"))
     private Set<Doctor> doctors = new HashSet<Doctor>();
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Room room;
 
@@ -59,7 +59,11 @@ public class Examination {
     @ManyToOne(fetch = FetchType.EAGER)
     private ClinicAdministrator clinicAdministrator;
 
-    Examination() {}
+    Examination(
+    ) {
+        this.doctorRating = 0;
+        this.clinicRating = 0;
+    }
 
     public Long getId() {
         return id;

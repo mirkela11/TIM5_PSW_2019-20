@@ -52,7 +52,7 @@ import { MedicalHistoryPatientComponent } from './components/medical-history-pat
     HomePageAdminClinicComponent,
 
     AdminClinicProfileComponent,
-    
+
     HomePageClinicalCentreAdministratorComponent,
 
     HomeComponent,

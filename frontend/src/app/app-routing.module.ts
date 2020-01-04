@@ -16,7 +16,7 @@ import {HomeComponent} from './components/home/home.component';
 import {AppComponent} from './app.component';
 import {AddClinicComponent} from './components/add-clinic/add-clinic.component';
 import {RegisterRequestsComponent} from './components/register-requests/register-requests.component';
-import {MedicalHistoryPatientComponent} from "./components/medical-history-patient/medical-history-patient.component";
+import {MedicalHistoryPatientComponent} from './components/medical-history-patient/medical-history-patient.component';
 
 const routes: Routes = [
   {
@@ -36,16 +36,16 @@ const routes: Routes = [
     component: HomePagePatientComponent,
   },
   {
+    path: 'patient/medicalHistory',
+    component: MedicalHistoryPatientComponent,
+  },
+  {
     path: 'patient/clinics',
     component: ClinicsListComponent,
   },
   {
     path: 'patient/profile',
     component: PatientProfileComponent,
-  },
-  {
-    path: 'patient/medicalHistory',
-    component: MedicalHistoryPatientComponent,
   },
   {
     path: 'doctor/home',
@@ -64,7 +64,6 @@ const routes: Routes = [
     component: NurseProfileComponent,
   },
   {
-
     path: 'admin_clinic/home',
     component: HomePageAdminClinicComponent,
   },

@@ -1,10 +1,10 @@
-import {ExaminationKind} from "./examinationKind";
-import {ExaminationStatus} from "./examinationStatus";
-import {ExaminationType} from "./examinationType";
-import {Doctor} from "./doctor";
-import {Nurse} from "./nurse";
-import {Clinic} from "./clinic";
-import {Patient} from "./patient";
+import {ExaminationKind} from './examinationKind';
+import {ExaminationStatus} from './examinationStatus';
+import {ExaminationType} from './examinationType';
+import {Doctor} from './doctor';
+import {Nurse} from './nurse';
+import {Clinic} from './clinic';
+import {Patient} from './patient';
 
 export class Examination {
 
@@ -14,13 +14,14 @@ export class Examination {
   discount: number;
   doctorRating: number;
   clinicRating: number;
-  doctors: Array<Doctor>;
+  doctors: Array<Doctor> = new Array<Doctor>();
   nurse: Nurse;
   clinic: Clinic;
   patient: Patient;
-
-  constructor(kind: ExaminationKind,status: ExaminationStatus, type: ExaminationType,discount: number,
-              doctorRating: number,clinicRating: number, nurse: Nurse, clinic: Clinic, patient: Patient,doctors: Array<Doctor>) {
+  id: number;
+  constructor(kind: ExaminationKind, status: ExaminationStatus, type: ExaminationType, discount: number,
+              doctorRating: number, clinicRating: number, nurse: Nurse,
+              clinic: Clinic, patient: Patient, doctors: Array<Doctor>, id: number) {
     this.kind = kind;
     this.status = status;
     this.type = type;
@@ -31,6 +32,7 @@ export class Examination {
     this.clinic = clinic;
     this.patient = patient;
     this.doctors = doctors;
+    this.id = id;
   }
 
 }

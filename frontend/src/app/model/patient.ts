@@ -1,5 +1,5 @@
 import {PatientStatus} from './patientStatus';
-import {Examination} from "./examination";
+import {Examination} from './examination';
 
 export class Patient {
 
@@ -13,11 +13,9 @@ export class Patient {
   country: string;
   insuranceID: string;
   status: PatientStatus;
-  examinations: Array<Examination> = new Array<Examination>();
-
 
   constructor(email: string, password: string, name: string, surname: string, number1: string, address: string, city: string,
-              country: string, insuranceId: string, status: PatientStatus, examinations?: Array<Examination>) {
+              country: string, insuranceId: string, status: PatientStatus) {
 
       this.email = email;
       this.password = password;
@@ -29,7 +27,6 @@ export class Patient {
       this.city = city;
       this.insuranceID = insuranceId;
       this.status = status;
-      this.examinations = examinations;
   }
 }
 
