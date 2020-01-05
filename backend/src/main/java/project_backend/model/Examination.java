@@ -31,7 +31,7 @@ public class Examination {
     @Column
     private Integer clinicRating;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private ExaminationType examinationType;
 
     @ManyToMany
@@ -40,7 +40,6 @@ public class Examination {
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Room room;
-
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Nurse nurse;

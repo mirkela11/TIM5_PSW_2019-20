@@ -5,6 +5,8 @@ import {Patient} from '../../model/patient';
 import {Router} from '@angular/router';
 import {PatientService} from '../../services/patient.service';
 import {ExaminationService} from '../../services/examination.service';
+import {User} from '../../model/user';
+import {UserServiceService} from '../../services/user-service.service';
 
 @Component({
   selector: 'app-medical-history-patient',
@@ -15,8 +17,15 @@ export class MedicalHistoryPatientComponent implements OnInit {
 
   displayedColumns: string[] = ['kind', 'clinic', 'doctor'];
   medicalDataSource = new MatTableDataSource<Examination>();
-  constructor(private patientService: PatientService, private examinationService: ExaminationService) {
-    this.all();
+  examinations: Array<Examination> = this.examinationService.getAllExaminations();
+  tmp: Array<Examination> = new Array<Examination>();
+  loggedUser: string = this.userService.isLoggedIn();
+  user: User;
+  tmpStr = this.loggedUser.split(',');
+  tmpStr1 = this.tmpStr[0].split(':');
+  constructor(private patientService: PatientService, private examinationService: ExaminationService,
+              private userService: UserServiceService) {
+    this.user = JSON.parse(this.loggedUser);
   }
 
   ngOnInit() {
@@ -24,7 +33,12 @@ export class MedicalHistoryPatientComponent implements OnInit {
   }
 
   all() {
-    this.medicalDataSource = new MatTableDataSource(this.examinationService.getAllExaminations());
+    for (const c of this.examinations) {
+      if (c.patient.email === this.user.email) {
+        this.tmp.push(c);
+      }
+    }
+    this.medicalDataSource = new MatTableDataSource(this.tmp);
   }
 
 }

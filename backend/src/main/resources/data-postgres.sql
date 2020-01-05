@@ -18,5 +18,7 @@ insert into patient(id, insuranceid, address, city, country, email, name, number
 insert into users(id, email, password, role) values (104, 'patient@email.com', 'Patient123', 0);
 insert into users(id, email, password, role) values (105, 'patient1@email.com', 'Patient1234', 0);
 insert into room(id,kind,label,clinic_id) values (100,'OPERATION','Room 2',101);
-/*insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,nurse_id,patient_id,room_id) values (100,4,100,5,'OPERATION','APPROVED',101,100,100,100,100,100);
-insert into examining(examination_id,doctor_id) values (100,101);*/
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,nurse_id,patient_id,room_id) values (100,4,100,5,'OPERATION','APPROVED',101,100,100,100,100,100);
+insert into examining(examination_id,doctor_id) values (100,101);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,nurse_id,patient_id,room_id) values (101,2,100,4,'EXAMINATION','APPROVED',102,100,100,100,101,100);
+insert into examining(examination_id,doctor_id) values (101,102);
