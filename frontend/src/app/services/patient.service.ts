@@ -4,6 +4,9 @@ import {environment} from '../../environments/environment';
 import {Patient} from '../model/patient';
 import {UserServiceService} from './user-service.service';
 import {PatientStatus} from '../model/patientStatus';
+import {Examination} from '../model/examination';
+import {ExaminationKind} from '../model/examinationKind';
+import {ExaminationStatus} from '../model/examinationStatus';
 
 
 @Injectable({
@@ -16,6 +19,9 @@ export class PatientService {
   patient: Patient;
   editP: Patient;
   tmp: Array<Patient>;
+  listExaminations: Array<Examination>;
+  examination: Examination;
+
   constructor(
     private http: HttpClient,
     private userService: UserServiceService

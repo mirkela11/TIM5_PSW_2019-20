@@ -1,4 +1,5 @@
 import {PatientStatus} from './patientStatus';
+import {Examination} from './examination';
 
 export class Patient {
 
@@ -12,7 +13,6 @@ export class Patient {
   country: string;
   insuranceID: string;
   status: PatientStatus;
-
 
   constructor(email: string, password: string, name: string, surname: string, number1: string, address: string, city: string,
               country: string, insuranceId: string, status: PatientStatus) {

@@ -25,6 +25,7 @@ import { HomePageClinicalCentreAdministratorComponent } from './components/home-
 import { HomeComponent } from './components/home/home.component';
 import { AddClinicComponent } from './components/add-clinic/add-clinic.component';
 import { RegisterRequestsComponent } from './components/register-requests/register-requests.component';
+import { MedicalHistoryPatientComponent } from './components/medical-history-patient/medical-history-patient.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { RegisterRequestsComponent } from './components/register-requests/regist
     HomePageAdminClinicComponent,
 
     AdminClinicProfileComponent,
-    
+
     HomePageClinicalCentreAdministratorComponent,
 
     HomeComponent,
@@ -59,6 +60,8 @@ import { RegisterRequestsComponent } from './components/register-requests/regist
     AddClinicComponent,
 
     RegisterRequestsComponent,
+
+    MedicalHistoryPatientComponent,
   ],
   imports: [
     BrowserModule,

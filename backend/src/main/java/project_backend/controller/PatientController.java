@@ -5,9 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project_backend.dtos.PatientDTO;
+import project_backend.model.Examination;
 import project_backend.model.Patient;
 import project_backend.model.PatientStatus;
 import project_backend.model.User;
+import project_backend.service.ExaminationService;
 import project_backend.service.PatientService;
 import project_backend.service.UserService;
 

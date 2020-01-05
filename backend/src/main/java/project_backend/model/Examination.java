@@ -1,5 +1,9 @@
 package project_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 import javax.persistence.Entity;
 import javax.persistence.*;
 import java.util.HashSet;
@@ -27,7 +31,7 @@ public class Examination {
     @Column
     private Integer clinicRating;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private ExaminationType examinationType;
 
     @ManyToMany
@@ -36,7 +40,6 @@ public class Examination {
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Room room;
-
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Nurse nurse;
@@ -47,13 +50,19 @@ public class Examination {
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Patient patient;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "examination",cascade = CascadeType.ALL)
     private ExaminationReport examinationReport;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     private ClinicAdministrator clinicAdministrator;
 
-    Examination() {}
+    Examination(
+    ) {
+        this.doctorRating = 0;
+        this.clinicRating = 0;
+    }
 
     public Long getId() {
         return id;
