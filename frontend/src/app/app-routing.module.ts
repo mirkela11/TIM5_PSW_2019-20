@@ -17,6 +17,7 @@ import {AppComponent} from './app.component';
 import {AddClinicComponent} from './components/add-clinic/add-clinic.component';
 import {RegisterRequestsComponent} from './components/register-requests/register-requests.component';
 import {MedicalHistoryPatientComponent} from './components/medical-history-patient/medical-history-patient.component';
+import {MedicalRecordPatientComponent} from './components/medical-record-patient/medical-record-patient.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'patient/profile',
     component: PatientProfileComponent,
+  },
+  {
+    path: 'patient/medicalRecord',
+    component: MedicalRecordPatientComponent,
   },
   {
     path: 'doctor/home',
