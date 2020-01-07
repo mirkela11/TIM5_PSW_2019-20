@@ -1,5 +1,7 @@
 package project_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -12,24 +14,30 @@ public class ExaminationReport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @Column(nullable = false)
     private LocalDateTime timeCreated;
 
     @Column(nullable = false)
     private String comment;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private MedicalRecord medicalRecord;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Diagnose diagnose;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "examinationReport", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Prescription> prescriptions = new HashSet<>();
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Doctor doctor;
 
+    @JsonIgnore
     @OneToOne()
     private Examination examination;
 
