@@ -1,5 +1,5 @@
-insert into diagnose(id, title, description) values (5, 'Marko', 'Marković');
-insert into diagnose(id, title, description) values (6, 'Nikola', 'Zejak');
+insert into diagnose(id, title, description) values (120, 'Marko', 'Marković');
+insert into diagnose(id, title, description) values (121, 'Nikola', 'Zejak');
 insert into clinic(id, address, description, name) values (101, 'Novi sad 123', 'Odlicna', 'MediaGroup');
 insert into clinic(id, address, description, name) values (102, 'Sabac', 'Super', 'Bolnica');
 insert into examination_type(id, label, price, clinic_id) values (100,'Hirurg', '1000', 101);
@@ -22,3 +22,7 @@ insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clin
 insert into examining(examination_id,doctor_id) values (100,101);
 insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,nurse_id,patient_id,room_id) values (101,2,100,4,'EXAMINATION','APPROVED',102,100,100,100,101,100);
 insert into examining(examination_id,doctor_id) values (101,102);
+insert into medical_record(id, allergies, blood_type, height, weight, patient_id) values (100, 'Alergija na med', 'AB+', 178, 80, 100);
+insert into medical_record(id, allergies, blood_type, height, weight, patient_id) values (101, 'Alergija na jagode', 'B-', 185, 82, 101);
+insert into examination_report(id,comment, time_created, diagnose_id, doctor_id, examination_id, medical_record_id) values (100,'Odradjen izvestaj','01.01.2020. 12:30', 120, 101, 100,100);
+insert into examination_report(id,comment, time_created, diagnose_id, doctor_id, examination_id, medical_record_id) values (101,'Izvestaj 2','02.01.2020. 08:30', 121, 102, 100,100);
