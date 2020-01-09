@@ -1,0 +1,39 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <mat-card>
+          <h3>Medical Record</h3>
+          <hr>
+            <form class="medicalRecordForm">
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <input readonly="readonly" matInput placeholder="Height" value="{{height}}">
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <input readonly="readonly" matInput placeholder="Weight" value="{{weight}}">
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <input readonly="readonly" matInput placeholder="Blood type" value="{{bloodType}}">
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field class="toast-top-full-width">
+                  <textarea readonly="readonly" matInput placeholder="Allergies" value="{{allergies}}"></textarea>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field class="toast-top-full-width">
+                  <textarea readonly="readonly" matInput placeholder="Examination reports" value="{{reports}}"></textarea>
+                </mat-form-field>
+              </div>
+            </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

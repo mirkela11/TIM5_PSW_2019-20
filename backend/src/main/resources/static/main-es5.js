@@ -163,6 +163,17 @@
             /* harmony default export */ __webpack_exports__["default"] = ("<table mat-table [dataSource]=\"medicalDataSource\" matSort class=\"mat-elevation-z8\">\r\n\r\n  <ng-container matColumnDef=\"kind\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Kind </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <div *ngIf=\"element.kind === 1; else elseBlock\">Operation</div>\r\n      <ng-template #elseBlock>Examination</ng-template>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"clinic\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Clinic </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinic.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"doctor\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Doctor </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <div *ngFor=\"let doctor of element.doctors\">{{doctor.name}}</div>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n");
             /***/ 
         }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/medical-record-patient/medical-record-patient.component.html": 
+        /*!*******************************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/medical-record-patient/medical-record-patient.component.html ***!
+          \*******************************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8 offset-md-2\">\n        <mat-card>\n          <h3>Medical Record</h3>\n          <hr>\n            <form class=\"medicalRecordForm\">\n              <div class=\"form-group\">\n                <mat-form-field class=\"example-full-width\">\n                  <input readonly=\"readonly\" matInput placeholder=\"Height\" value=\"{{height}}\">\n                </mat-form-field>\n              </div>\n              <div class=\"form-group\">\n                <mat-form-field class=\"example-full-width\">\n                  <input readonly=\"readonly\" matInput placeholder=\"Weight\" value=\"{{weight}}\">\n                </mat-form-field>\n              </div>\n              <div class=\"form-group\">\n                <mat-form-field class=\"example-full-width\">\n                  <input readonly=\"readonly\" matInput placeholder=\"Blood type\" value=\"{{bloodType}}\">\n                </mat-form-field>\n              </div>\n              <div class=\"form-group\">\n                <mat-form-field class=\"toast-top-full-width\">\n                  <textarea readonly=\"readonly\" matInput placeholder=\"Allergies\" value=\"{{allergies}}\"></textarea>\n                </mat-form-field>\n              </div>\n              <div class=\"form-group\">\n                <mat-form-field class=\"toast-top-full-width\">\n                  <textarea readonly=\"readonly\" matInput placeholder=\"Examination reports\" value=\"{{reports}}\"></textarea>\n                </mat-form-field>\n              </div>\n            </form>\n        </mat-card>\n      </div>\n    </div>\n  </div>\n</div>\n");
+            /***/ 
+        }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/nurse-profile/nurse-profile.component.html": 
         /*!*************************************************************************************************************!*\
           !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/nurse-profile/nurse-profile.component.html ***!
@@ -535,6 +546,7 @@
             /* harmony import */ var _components_add_clinic_add_clinic_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/add-clinic/add-clinic.component */ "./src/app/components/add-clinic/add-clinic.component.ts");
             /* harmony import */ var _components_register_requests_register_requests_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/register-requests/register-requests.component */ "./src/app/components/register-requests/register-requests.component.ts");
             /* harmony import */ var _components_medical_history_patient_medical_history_patient_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/medical-history-patient/medical-history-patient.component */ "./src/app/components/medical-history-patient/medical-history-patient.component.ts");
+            /* harmony import */ var _components_medical_record_patient_medical_record_patient_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/medical-record-patient/medical-record-patient.component */ "./src/app/components/medical-record-patient/medical-record-patient.component.ts");
             var routes = [
                 {
                     path: '',
@@ -563,6 +575,10 @@
                 {
                     path: 'patient/profile',
                     component: _components_patient_profile_patient_profile_component__WEBPACK_IMPORTED_MODULE_7__["PatientProfileComponent"],
+                },
+                {
+                    path: 'patient/medicalRecord',
+                    component: _components_medical_record_patient_medical_record_patient_component__WEBPACK_IMPORTED_MODULE_19__["MedicalRecordPatientComponent"],
                 },
                 {
                     path: 'doctor/home',
@@ -722,6 +738,7 @@
             /* harmony import */ var _components_add_clinic_add_clinic_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/add-clinic/add-clinic.component */ "./src/app/components/add-clinic/add-clinic.component.ts");
             /* harmony import */ var _components_register_requests_register_requests_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/register-requests/register-requests.component */ "./src/app/components/register-requests/register-requests.component.ts");
             /* harmony import */ var _components_medical_history_patient_medical_history_patient_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/medical-history-patient/medical-history-patient.component */ "./src/app/components/medical-history-patient/medical-history-patient.component.ts");
+            /* harmony import */ var _components_medical_record_patient_medical_record_patient_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/medical-record-patient/medical-record-patient.component */ "./src/app/components/medical-record-patient/medical-record-patient.component.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -747,6 +764,7 @@
                         _components_add_clinic_add_clinic_component__WEBPACK_IMPORTED_MODULE_25__["AddClinicComponent"],
                         _components_register_requests_register_requests_component__WEBPACK_IMPORTED_MODULE_26__["RegisterRequestsComponent"],
                         _components_medical_history_patient_medical_history_patient_component__WEBPACK_IMPORTED_MODULE_27__["MedicalHistoryPatientComponent"],
+                        _components_medical_record_patient_medical_record_patient_component__WEBPACK_IMPORTED_MODULE_28__["MedicalRecordPatientComponent"],
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1348,6 +1366,7 @@
             /* harmony import */ var _services_clinical_centre_administrator_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../services/clinical-centre-administrator.service */ "./src/app/services/clinical-centre-administrator.service.ts");
             /* harmony import */ var _model_patientStatus__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../model/patientStatus */ "./src/app/model/patientStatus.ts");
             /* harmony import */ var _services_examination_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../services/examination.service */ "./src/app/services/examination.service.ts");
+            /* harmony import */ var _services_medical_record_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../services/medical-record.service */ "./src/app/services/medical-record.service.ts");
             var LoginUser = /** @class */ (function () {
                 function LoginUser(email, password) {
                     this.email = email;
@@ -1356,7 +1375,7 @@
                 return LoginUser;
             }());
             var LoginComponent = /** @class */ (function () {
-                function LoginComponent(patientService, formBuilder, router, userService, doctorService, clinicalService, nurseService, adminClinicService, clinicalCentreAdministratorService, examinationService) {
+                function LoginComponent(patientService, formBuilder, router, userService, doctorService, clinicalService, nurseService, adminClinicService, clinicalCentreAdministratorService, examinationService, medicalRecordService) {
                     this.patientService = patientService;
                     this.formBuilder = formBuilder;
                     this.router = router;
@@ -1367,6 +1386,7 @@
                     this.adminClinicService = adminClinicService;
                     this.clinicalCentreAdministratorService = clinicalCentreAdministratorService;
                     this.examinationService = examinationService;
+                    this.medicalRecordService = medicalRecordService;
                     this.submitted = false;
                 }
                 LoginComponent.prototype.ngOnInit = function () {
@@ -1483,7 +1503,8 @@
                 { type: _services_nurse_service_service__WEBPACK_IMPORTED_MODULE_9__["NurseServiceService"] },
                 { type: _services_admin_clinic_service__WEBPACK_IMPORTED_MODULE_10__["AdminClinicService"] },
                 { type: _services_clinical_centre_administrator_service__WEBPACK_IMPORTED_MODULE_11__["ClinicalCentreAdministratorService"] },
-                { type: _services_examination_service__WEBPACK_IMPORTED_MODULE_13__["ExaminationService"] }
+                { type: _services_examination_service__WEBPACK_IMPORTED_MODULE_13__["ExaminationService"] },
+                { type: _services_medical_record_service__WEBPACK_IMPORTED_MODULE_14__["MedicalRecordService"] }
             ]; };
             LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1560,6 +1581,80 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./medical-history-patient.component.css */ "./src/app/components/medical-history-patient/medical-history-patient.component.css")).default]
                 })
             ], MedicalHistoryPatientComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/components/medical-record-patient/medical-record-patient.component.css": 
+        /*!****************************************************************************************!*\
+          !*** ./src/app/components/medical-record-patient/medical-record-patient.component.css ***!
+          \****************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = (".mat-input-placeholder {\r\n  size: auto;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tZWRpY2FsLXJlY29yZC1wYXRpZW50L21lZGljYWwtcmVjb3JkLXBhdGllbnQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbWVkaWNhbC1yZWNvcmQtcGF0aWVudC9tZWRpY2FsLXJlY29yZC1wYXRpZW50LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWF0LWlucHV0LXBsYWNlaG9sZGVyIHtcclxuICBzaXplOiBhdXRvO1xyXG59XHJcbiJdfQ== */");
+            /***/ 
+        }),
+        /***/ "./src/app/components/medical-record-patient/medical-record-patient.component.ts": 
+        /*!***************************************************************************************!*\
+          !*** ./src/app/components/medical-record-patient/medical-record-patient.component.ts ***!
+          \***************************************************************************************/
+        /*! exports provided: MedicalRecordPatientComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MedicalRecordPatientComponent", function () { return MedicalRecordPatientComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _services_medical_record_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/medical-record.service */ "./src/app/services/medical-record.service.ts");
+            /* harmony import */ var _services_user_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/user-service.service */ "./src/app/services/user-service.service.ts");
+            var MedicalRecordPatientComponent = /** @class */ (function () {
+                function MedicalRecordPatientComponent(medicalRecordService, userService) {
+                    this.medicalRecordService = medicalRecordService;
+                    this.userService = userService;
+                    this.height = 0;
+                    this.weight = 0;
+                    this.bloodType = '';
+                    this.allergies = '';
+                    this.reports = '';
+                    this.records = new Array();
+                    this.loggedUser = this.userService.isLoggedIn();
+                    this.records = medicalRecordService.getAllMedicalRecords();
+                    this.user = JSON.parse(this.loggedUser);
+                    this.setAll();
+                }
+                MedicalRecordPatientComponent.prototype.ngOnInit = function () {
+                    this.records = this.medicalRecordService.getAllMedicalRecords();
+                    this.setAll();
+                };
+                MedicalRecordPatientComponent.prototype.setAll = function () {
+                    for (var _i = 0, _a = this.records; _i < _a.length; _i++) {
+                        var c = _a[_i];
+                        if (c.patient.email === this.user.email) {
+                            this.mr = c;
+                            this.height = this.mr.height;
+                            this.weight = this.mr.weight;
+                            this.bloodType = this.mr.bloodType;
+                            this.allergies = this.mr.allergies;
+                            // Ovde da se otkomentarise kad se doda reports iz baza u klasu medicalRecord
+                            // for (const r of this.mr.reports) {
+                            // this.reports = r.comment + ' ';
+                            // }
+                        }
+                    }
+                };
+                return MedicalRecordPatientComponent;
+            }());
+            MedicalRecordPatientComponent.ctorParameters = function () { return [
+                { type: _services_medical_record_service__WEBPACK_IMPORTED_MODULE_2__["MedicalRecordService"] },
+                { type: _services_user_service_service__WEBPACK_IMPORTED_MODULE_3__["UserServiceService"] }
+            ]; };
+            MedicalRecordPatientComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-medical-record-patient',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./medical-record-patient.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/medical-record-patient/medical-record-patient.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./medical-record-patient.component.css */ "./src/app/components/medical-record-patient/medical-record-patient.component.css")).default]
+                })
+            ], MedicalRecordPatientComponent);
             /***/ 
         }),
         /***/ "./src/app/components/nurse-profile/nurse-profile.component.css": 
@@ -2214,6 +2309,31 @@
             })(ExaminationStatus || (ExaminationStatus = {}));
             /***/ 
         }),
+        /***/ "./src/app/model/medicalRecord.ts": 
+        /*!****************************************!*\
+          !*** ./src/app/model/medicalRecord.ts ***!
+          \****************************************/
+        /*! exports provided: MedicalRecord */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MedicalRecord", function () { return MedicalRecord; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            var MedicalRecord = /** @class */ (function () {
+                function MedicalRecord(id, height, weight, bloodType, allergies, patient, reports) {
+                    this.reports = new Array();
+                    this.id = id;
+                    this.height = height;
+                    this.weight = weight;
+                    this.bloodType = bloodType;
+                    this.allergies = allergies;
+                    this.patient = patient;
+                    this.reports = reports;
+                }
+                return MedicalRecord;
+            }());
+            /***/ 
+        }),
         /***/ "./src/app/model/nurse.ts": 
         /*!********************************!*\
           !*** ./src/app/model/nurse.ts ***!
@@ -2752,6 +2872,72 @@
             ], ExaminationService);
             /***/ 
         }),
+        /***/ "./src/app/services/medical-record.service.ts": 
+        /*!****************************************************!*\
+          !*** ./src/app/services/medical-record.service.ts ***!
+          \****************************************************/
+        /*! exports provided: MedicalRecordService */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MedicalRecordService", function () { return MedicalRecordService; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+            /* harmony import */ var _model_medicalRecord__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/medicalRecord */ "./src/app/model/medicalRecord.ts");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            var MedicalRecordService = /** @class */ (function () {
+                function MedicalRecordService(http) {
+                    this.http = http;
+                    this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].medicalRecord;
+                    this.listMedicalRecord = new Array();
+                    this.getAllMedicalRecords();
+                }
+                MedicalRecordService.prototype.addMedicalRecord = function (mr) {
+                    if (this.getMedicalRecord(mr.id) === null) {
+                        this.listMedicalRecord.push(mr);
+                    }
+                };
+                MedicalRecordService.prototype.getAllMedicalRecords = function () {
+                    var _this = this;
+                    this.http.get(this.url + '/all').subscribe(function (data) {
+                        _this.listMedicalRecord = new Array();
+                        for (var _i = 0, data_6 = data; _i < data_6.length; _i++) {
+                            var c = data_6[_i];
+                            // Ostalo je da se doda examinaton_report u konstruktoru
+                            _this.medicalRecord = new _model_medicalRecord__WEBPACK_IMPORTED_MODULE_3__["MedicalRecord"](c.id, c.height, c.weight, c.bloodType, c.allergies, c.patient);
+                            _this.listMedicalRecord.push(_this.medicalRecord);
+                            console.log(_this.medicalRecord);
+                        }
+                    }, function (error) {
+                        console.log(error);
+                    });
+                    console.log(this.listMedicalRecord);
+                    return this.listMedicalRecord;
+                };
+                MedicalRecordService.prototype.getMedicalRecord = function (id) {
+                    if (this.listMedicalRecord.length === 0) {
+                        return null;
+                    }
+                    for (var _i = 0, _a = this.listMedicalRecord; _i < _a.length; _i++) {
+                        var e = _a[_i];
+                        if (e.id === id) {
+                            return e;
+                        }
+                    }
+                };
+                return MedicalRecordService;
+            }());
+            MedicalRecordService.ctorParameters = function () { return [
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] }
+            ]; };
+            MedicalRecordService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+                    providedIn: 'root'
+                })
+            ], MedicalRecordService);
+            /***/ 
+        }),
         /***/ "./src/app/services/nurse-service.service.ts": 
         /*!***************************************************!*\
           !*** ./src/app/services/nurse-service.service.ts ***!
@@ -2816,8 +3002,8 @@
                 NurseServiceService.prototype.getAllNurses = function () {
                     var _this = this;
                     this.http.get(this.urlNurse + '/all').subscribe(function (data) {
-                        for (var _i = 0, data_6 = data; _i < data_6.length; _i++) {
-                            var c = data_6[_i];
+                        for (var _i = 0, data_7 = data; _i < data_7.length; _i++) {
+                            var c = data_7[_i];
                             _this.nurse = new _model_nurse__WEBPACK_IMPORTED_MODULE_5__["Nurse"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursTo, c.workHoursFrom);
                             _this.addNurse(_this.nurse);
                         }
@@ -2917,8 +3103,8 @@
                 PatientService.prototype.getAllPatients = function () {
                     var _this = this;
                     this.http.get(this.urlPatient + '/all').subscribe(function (data) {
-                        for (var _i = 0, data_7 = data; _i < data_7.length; _i++) {
-                            var c = data_7[_i];
+                        for (var _i = 0, data_8 = data; _i < data_8.length; _i++) {
+                            var c = data_8[_i];
                             _this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, _this.whichStatus(c.status.toString()));
                             _this.addPatient(_this.patient);
                         }
@@ -2931,8 +3117,8 @@
                     var _this = this;
                     this.http.get(this.urlPatient + '/requests').subscribe(function (data) {
                         _this.tmp = new Array();
-                        for (var _i = 0, data_8 = data; _i < data_8.length; _i++) {
-                            var c = data_8[_i];
+                        for (var _i = 0, data_9 = data; _i < data_9.length; _i++) {
+                            var c = data_9[_i];
                             _this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].AWAITING_APPROVAL);
                             _this.tmp.push(_this.patient);
                             console.log(_this.patient);
@@ -3081,8 +3267,8 @@
                 UserServiceService.prototype.getAllUsers = function () {
                     var _this = this;
                     this.http.get(this.urlUser + '/all').subscribe(function (data) {
-                        for (var _i = 0, data_9 = data; _i < data_9.length; _i++) {
-                            var c = data_9[_i];
+                        for (var _i = 0, data_10 = data; _i < data_10.length; _i++) {
+                            var c = data_10[_i];
                             _this.u = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"](c.email, c.password, _this.whichRole(c.role.toString()));
                             _this.addUser(_this.u);
                         }
@@ -3129,6 +3315,7 @@
                 adminClinic: '/admin_clinic',
                 ClinicalCentreAdministrator: '/clinical-centre-admin',
                 examination: '/examination',
+                medicalRecord: '/medicalRecord',
             };
             /*
              * For easier debugging in development mode, you can import the following file

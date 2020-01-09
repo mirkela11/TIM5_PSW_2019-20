@@ -44,7 +44,7 @@ export class ExaminationService {
         this.listExaminations = new Array<Examination>();
         for (const c of data) {
           this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.type, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id);
-          this.listExaminations.push(this.examination);
+          this.listExaminations.push(this.examination)
           console.log(this.examination);
         }
       },
