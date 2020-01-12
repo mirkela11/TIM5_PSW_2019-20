@@ -53,5 +53,9 @@ export class ClinicService {
     console.log(this.listClinics);
     return this.listClinics;
   }
+
+  public newClinic(clinic) {
+    return this.http.post(this.urlClinic + '/clinical-centre-admin/addClinic', clinic);
+  }
 }
 

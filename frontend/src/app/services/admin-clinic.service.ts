@@ -84,4 +84,14 @@ export class AdminClinicService {
 
     return this.listAdminClinic;
   }
+
+  public newAdminClinic(adminClinic) {
+    return this.http.post(this.urlAdminClinic + '/clinical-centre-admin/addAdmins', adminClinic);
+  }
+
+  public addAdminClinic(ac: AdminClinic) {
+    if (this.getAdminClinic(ac.email) === null) {
+      this.listAdminClinic.push(ac);
+    }
+  }
 }

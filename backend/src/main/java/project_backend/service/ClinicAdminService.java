@@ -58,4 +58,27 @@ public class ClinicAdminService {
 
         return false;
     }
+
+    public boolean addClinicAdmin(ClinicAdministrator ca){
+
+        List<ClinicAdministrator> tmp = findall();
+        if(tmp.size() == 0)
+        {
+            repo.save(ca);
+            return true;
+        }
+        for(ClinicAdministrator c1 : tmp)
+            if(c1.getName().equals(ca.getName()))
+            {
+                return  false;
+            }
+            else
+            {
+                repo.save(ca);
+                return true;
+            }
+
+        return false;
+
+    }
 }

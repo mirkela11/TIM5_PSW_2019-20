@@ -1,6 +1,6 @@
 import {AdminClinicStatus} from './adminClinicStatus';
 
-export class AdminClinic{
+export class AdminClinic {
 
   email: string;
   password: string;
