@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AdminClinic} from '../../model/adminClinic';
 import {AdminClinicService} from '../../services/admin-clinic.service';
 import {Router} from '@angular/router';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {Doctor} from '../../model/doctor';
+import {Clinic} from '../../model/clinic';
 
 @Component({
   selector: 'app-add-clinic-administrator',
@@ -14,12 +17,21 @@ export class AddClinicAdministratorComponent implements OnInit {
   addClinicAdministratorForm: FormGroup;
   submitted = false;
   adminClinic: AdminClinic;
+  displayedColumns: string[] = ['name', 'surname', 'number' ];
+  dataSource = new MatTableDataSource<AdminClinic>();
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  expandedElement: AdminClinic;
+  admins: Array<AdminClinic> = new Array<AdminClinic>();
 
   constructor(
     private formBuilder: FormBuilder,
     private adminClinicService: AdminClinicService,
     private router: Router,
-  ) { }
+  ) {
+    this.admins = this.adminClinicService.getAllClinicAdmins();
+    this.all();
+
+  }
 
   ngOnInit() {
     this.addClinicAdministratorForm = this.formBuilder.group({
@@ -31,6 +43,8 @@ export class AddClinicAdministratorComponent implements OnInit {
       surname: new FormControl('', [Validators.required]),
       number: new FormControl('', [Validators.required, Validators.minLength(9)]),
     });
+    this.all();
+    this.dataSource.paginator = this.paginator;
   }
 
   get f() {
@@ -71,5 +85,15 @@ export class AddClinicAdministratorComponent implements OnInit {
       }
     );
   }
+
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  all() {
+    this.dataSource = new MatTableDataSource<AdminClinic>(this.adminClinicService.getAllClinicAdmins());
+  }
+
 
 }

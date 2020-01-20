@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatDialog, MatPaginator, MatTableDataSource} from '@angular/material';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Clinic} from '../../model/clinic';
 import {ClinicService} from '../../services/clinic.service';
+import {AdminClinic} from '../../model/adminClinic';
 
 @Component({
   selector: 'app-add-clinic',
@@ -12,19 +13,28 @@ import {ClinicService} from '../../services/clinic.service';
 })
 export class AddClinicComponent implements OnInit {
 
+  addClinicForm: FormGroup;
+  submitted = false;
+  clinic: Clinic;
+  displayedColumns: string[] = ['name', 'address', 'description' ];
+  dataSource = new MatTableDataSource<Clinic>();
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  expandedElement: Clinic;
+  clinics: Array<Clinic> = new Array<Clinic>();
+
   constructor(public dialog: MatDialog,
               private formBuilder: FormBuilder,
               private router: Router,
-              private clinicService: ClinicService) { }
+              private clinicService: ClinicService) {
+
+    this.clinics = this.clinicService.getAllClinics();
+    this.all();
+  }
 
   address: string;
   name: string;
   description: string;
   grade: string;
-  addClinicForm: FormGroup;
-  submitted = false;
-  clinic: Clinic;
-
 
   ngOnInit() {
     this.addClinicForm = this.formBuilder.group({
@@ -34,6 +44,9 @@ export class AddClinicComponent implements OnInit {
       description: new FormControl('', [Validators.required]),
       grade: new FormControl('', [Validators.required]),
     });
+
+    this.all();
+    this.dataSource.paginator = this.paginator;
   }
 
 
@@ -73,4 +86,13 @@ export class AddClinicComponent implements OnInit {
       }
     );
   }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  all() {
+    this.dataSource = new MatTableDataSource<Clinic>(this.clinicService.getAllClinics());
+  }
+
 }
