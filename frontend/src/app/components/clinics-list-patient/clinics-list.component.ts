@@ -1,10 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatTableDataSource} from '@angular/material';
 import {Clinic} from '../../model/clinic';
 import {ClinicService} from '../../services/clinic.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Doctor} from '../../model/doctor';
 import {DoctorService} from '../../services/doctor.service';
+import {ClinicSearchDialogComponent} from '../clinic-search-dialog/clinic-search-dialog.component';
 
 
 @Component({
@@ -34,6 +35,7 @@ export class ClinicsListComponent implements OnInit {
   constructor(
     private clinicService: ClinicService,
     private doctorService: DoctorService,
+    public dialog: MatDialog,
   ) {
     this.doctors = this.doctorService.getAllDoctors();
     this.clinics = this.clinicService.getAllClinics();
@@ -53,6 +55,10 @@ export class ClinicsListComponent implements OnInit {
   all() {
       this.dataSource = new MatTableDataSource(this.clinicService.getAllClinics());
       this.doctordataSource = new MatTableDataSource<Doctor>(this.doctorService.getAllDoctors());
+  }
+
+  openDialog() {
+    this.dialog.open(ClinicSearchDialogComponent);
   }
 
 }

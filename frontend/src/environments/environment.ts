@@ -15,7 +15,8 @@ export const environment = {
   adminClinic: '/admin_clinic',
   ClinicalCentreAdministrator: '/clinical-centre-admin',
   examination: '/examination',
-    medicalRecord: '/medicalRecord',
+  medicalRecord: '/medicalRecord',
+  examinationType: '/examinationType',
 };
 
 /*
