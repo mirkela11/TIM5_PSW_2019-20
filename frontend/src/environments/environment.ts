@@ -14,6 +14,9 @@ export const environment = {
   nurse: '/nurse',
   adminClinic: '/admin_clinic',
   ClinicalCentreAdministrator: '/clinical-centre-admin',
+  examination: '/examination',
+  medicalRecord: '/medicalRecord',
+  examinationType: '/examinationType',
 };
 
 /*

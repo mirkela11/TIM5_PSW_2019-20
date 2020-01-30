@@ -4,6 +4,13 @@ insert into clinic(id, address, description, name) values (1, 'Novi sad 123', 'O
 insert into clinic(id, address, description, name) values (2, 'Sabac', 'Super', 'Bolnica');
 insert into examination_type(id, label, price, clinic_id) values (1,'Hirurg', '1000', 1);
 insert into clinic_administrator(id, email, name, number, password, status, surname, clinic_id) values (1, 'nemanja@email.com', 'Nemanja', '123456789', 'Mirkela97','ACTIVE', 'Mirkovic', 1);
+insert into diagnose(id, title, description) values (120, 'Marko', 'Marković');
+insert into diagnose(id, title, description) values (121, 'Nikola', 'Zejak');
+insert into clinic(id, address, description, name) values (101, 'Novi sad 123', 'Odlicna', 'MediaGroup');
+insert into clinic(id, address, description, name) values (102, 'Sabac', 'Super', 'Bolnica');
+insert into examination_type(id, label, price, clinic_id) values (100,'Ocni pregled', '1000', 101);
+insert into examination_type(id, label, price, clinic_id) values (101,'Pregled sluha', '800', 102);
+insert into clinic_administrator(id, email, name, number, password, status, surname, clinic_id) values (100, 'nemanja@email.com', 'Nemanja', '123456789', 'Mirkela97','ACTIVE', 'Mirkovic', 101);
 insert into users(id, email, password, role) values (100,'nemanja@email.com', 'Mirkela97',3);
 insert into clinical_centre_administrator(id, email, name, password, phone, surname) values (1,'zejak@email.com', 'Nikola', 'Zejake123', '789456321', 'Zejak');
 insert into users(id, email, password, role) values (101,'zejak@email.com', 'Zejake123',4);
@@ -15,3 +22,14 @@ insert into nurse(id, email, name, password, phone, surname, work_hours_from, wo
 insert into users(id, email, password, role) values (103, 'nurse@email.com', 'Nurse123', 2);
 insert into patient(id, insuranceid, address, city, country, email, name, number, password, status, surname) values (100, 1111111111111, 'Adresa', 'Grad', 'Drzava', 'patient@email.com', 'Patient', '147258321', 'Patient123', 'APPROVED', 'Patientic');
 insert into users(id, email, password, role) values (104, 'patient@email.com', 'Patient123', 0);
+insert into users(id, email, password, role) values (105, 'patient1@email.com', 'Patient1234', 0);
+insert into room(id,kind,label,clinic_id) values (100,'OPERATION','Room 2',101);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,nurse_id,patient_id,room_id) values (100,4,100,5,'OPERATION','APPROVED',101,100,100,100,100,100);
+insert into examining(examination_id,doctor_id) values (100,101);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,nurse_id,patient_id,room_id) values (101,2,100,4,'EXAMINATION','APPROVED',102,100,100,100,101,100);
+insert into examining(examination_id,doctor_id) values (101,102);
+insert into medical_record(id, allergies, blood_type, height, weight, patient_id) values (100, 'Alergija na med', 'AB+', 178, 80, 100);
+insert into medical_record(id, allergies, blood_type, height, weight, patient_id) values (101, 'Alergija na jagode', 'B-', 185, 82, 101);
+insert into examination_report(id,comment, time_created, diagnose_id, doctor_id, examination_id, medical_record_id) values (100,'Odradjen izvestaj','01.01.2020. 12:30', 120, 101, 100,100);
+insert into examination_report(id,comment, time_created, diagnose_id, doctor_id, examination_id, medical_record_id) values (101,'Izvestaj 2','02.01.2020. 08:30', 121, 102, 100,100);
+

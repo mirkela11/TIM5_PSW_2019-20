@@ -12,6 +12,12 @@ import {AdminClinicService} from '../../services/admin-clinic.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ClinicalCentreAdministrator} from '../../model/ClinicalCentreAdministrator';
 import {ClinicalCentreAdministratorService} from '../../services/clinical-centre-administrator.service';
+import {Patient} from '../../model/patient';
+import {PatientStatus} from '../../model/patientStatus';
+import {ExaminationService} from '../../services/examination.service';
+import {MedicalRecordService} from '../../services/medical-record.service';
+import {ExaminationTypeService} from '../../services/examination-type.service';
+
 
 export class LoginUser {
   constructor(
@@ -42,6 +48,10 @@ export class LoginComponent implements OnInit {
     private nurseService: NurseServiceService,
     private adminClinicService: AdminClinicService,
     private clinicalCentreAdministratorService: ClinicalCentreAdministratorService,
+    private examinationService: ExaminationService,
+    private medicalRecordService: MedicalRecordService,
+    private examinationExaminationTypeService: ExaminationTypeService,
+
   ) {
   }
 
