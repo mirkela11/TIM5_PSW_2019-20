@@ -24,10 +24,6 @@ import { AdminClinicProfileComponent } from './components/admin-clinic-profile/a
 import { HomePageClinicalCentreAdministratorComponent } from './components/home-page-clinical-centre-administrator/home-page-clinical-centre-administrator.component';
 import { HomeComponent } from './components/home/home.component';
 import { AddClinicComponent } from './components/add-clinic/add-clinic.component';
-import { RegisterRequestsComponent } from './components/register-requests/register-requests.component';
-import { MedicalHistoryPatientComponent } from './components/medical-history-patient/medical-history-patient.component';
-import { MedicalRecordPatientComponent } from './components/medical-record-patient/medical-record-patient.component';
-import {AddClinicAdministratorComponent} from './components/add-clinic-administrator/add-clinic-administrator.component';
 import { ClinicSearchComponent } from './components/clinic-search/clinic-search.component';
 
 @NgModule({
@@ -61,14 +57,6 @@ import { ClinicSearchComponent } from './components/clinic-search/clinic-search.
     HomeComponent,
 
     AddClinicComponent,
-
-    RegisterRequestsComponent,
-
-    MedicalHistoryPatientComponent,
-
-    MedicalRecordPatientComponent,
-
-    AddClinicAdministratorComponent,
 
     ClinicSearchComponent,
 
