@@ -29,6 +29,7 @@ import { MedicalHistoryPatientComponent } from './components/medical-history-pat
 import { MedicalRecordPatientComponent } from './components/medical-record-patient/medical-record-patient.component';
 import {AddClinicAdministratorComponent} from './components/add-clinic-administrator/add-clinic-administrator.component';
 import { ClinicSearchDialogComponent } from './components/clinic-search-dialog/clinic-search-dialog.component';
+import { DoctorListPatientComponent } from './components/doctor-list-patient/doctor-list-patient.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,8 @@ import { ClinicSearchDialogComponent } from './components/clinic-search-dialog/c
     AddClinicAdministratorComponent,
 
     ClinicSearchDialogComponent,
+
+    DoctorListPatientComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,6 +95,7 @@ import { ClinicSearchDialogComponent } from './components/clinic-search-dialog/c
   ],
   entryComponents: [
     ClinicSearchDialogComponent,
+    DoctorListPatientComponent,
 
   ],
   providers: [],

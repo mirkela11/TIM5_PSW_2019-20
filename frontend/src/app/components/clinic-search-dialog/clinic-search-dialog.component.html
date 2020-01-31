@@ -1,18 +1,17 @@
 <h2 mat-dialog-title>Clinic search</h2>
 
 <mat-dialog-content [formGroup]="SearchClinicsGroup">
-
   <div>
     <mat-form-field class="example-full-width">
-      <input matInput id="date" [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Choose a date">
+      <input required="required" matInput id="date" formControlName = "date" [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Choose a date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
-      <mat-select id="type" placeholder="Select examination type">
-        <mat-option *ngFor="let examination_type of types" value="option">{{examination_type.label}}</mat-option>
+      <mat-select required="required" id="type" formControlName = "type" placeholder="Select examination type">
+        <mat-option *ngFor="let examination_type of types" value="{{examination_type.label}}">{{examination_type.label}}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>

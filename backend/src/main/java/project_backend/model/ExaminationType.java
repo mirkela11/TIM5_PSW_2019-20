@@ -18,12 +18,9 @@ public class ExaminationType {
     @Column(nullable = false, scale = 2)
     private Double price;
 
-
-    @JsonIgnore
     @OneToMany(mappedBy = "specialized", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<Doctor> doctors = new HashSet<>();
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Clinic clinic;
 

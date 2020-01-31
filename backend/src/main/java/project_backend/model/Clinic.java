@@ -27,7 +27,6 @@ public class Clinic {
     @OneToMany(mappedBy = "clinic", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Examination> examinations=new HashSet<>();
 
-    @JsonIgnore
     @OneToMany(mappedBy = "clinic", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Doctor> doctors=new HashSet<>();
 

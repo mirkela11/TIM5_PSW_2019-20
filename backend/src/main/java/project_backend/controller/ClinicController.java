@@ -6,8 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project_backend.dtos.ClinicDTO;
 import project_backend.model.Clinic;
+import project_backend.model.ExaminationType;
 import project_backend.service.ClinicService;
+import project_backend.service.ExaminationTypeService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -16,6 +19,9 @@ public class ClinicController{
 
     @Autowired
     ClinicService clinicService;
+
+    @Autowired
+    ExaminationTypeService examinationTypeService;
 
     @GetMapping(value = "/clinic/all")
     public ResponseEntity<List<Clinic>> all() {
@@ -47,4 +53,21 @@ public class ClinicController{
         else
             return "Name already exists";
     }
+
+    @GetMapping(value = "/clinic/allWithTypes")
+    public ResponseEntity<List<Clinic>> allWithType(@RequestParam(value = "type", required = true) String type) {
+        List<Clinic> tmp = new ArrayList<>();
+        List<ExaminationType> types = examinationTypeService.findAll();
+        for (ExaminationType t : types) {
+
+            if(t.getLabel().equals(type)) {
+                System.out.println("Ovde sam");
+                tmp.add(t.getClinic());
+            }
+
+        }
+
+        return new ResponseEntity<>(tmp, HttpStatus.OK);
+    }
+
 }

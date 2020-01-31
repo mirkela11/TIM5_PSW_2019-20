@@ -42,6 +42,7 @@ public class Doctor {
     private String workHoursTo;
 
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Clinic clinic;
 

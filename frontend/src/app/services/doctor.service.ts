@@ -15,6 +15,7 @@ export class DoctorService {
   listDoctors: Array<Doctor> = new Array<Doctor>();
   doctor: Doctor;
   editD: Doctor;
+  doctorss: Array<Doctor> = new Array<Doctor>();
   constructor(
     private http: HttpClient,
     private userService: UserServiceService
@@ -76,4 +77,13 @@ export class DoctorService {
     );
     return this.listDoctors;
   }
+
+  public getDoctorss() {
+    return this.doctorss;
+  }
+
+  public setDoctorss(doctorss: Array<Doctor>) {
+    this.doctorss = doctorss;
+  }
+
 }

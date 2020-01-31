@@ -17,7 +17,7 @@ export class ExaminationsTypeService {
   public getAllTypes(): Array<ExaminationType> {
     this.http.get(this.urlExaminationType + '/all').subscribe((data: ExaminationType[]) => {
         for (const c of data) {
-          this.type = new ExaminationType(c.label, c.price);
+          this.type = new ExaminationType(c.label, c.price, c.clinic);
           this.addType(this.type);
         }
       },
@@ -25,7 +25,7 @@ export class ExaminationsTypeService {
         console.log(error);
       }
     );
-    console.log(this.type);
+    console.log(this.examinationTypes);
     return this.examinationTypes;
   }
 
