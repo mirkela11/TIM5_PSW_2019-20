@@ -1,7 +1,7 @@
 insert into diagnose(id, title, description) values (120, 'Marko', 'Marković');
 insert into diagnose(id, title, description) values (121, 'Nikola', 'Zejak');
-insert into clinic(id, address, description, name) values (101, 'Novi sad 123', 'Odlicna', 'MediaGroup');
-insert into clinic(id, address, description, name) values (102, 'Sabac', 'Super', 'Bolnica');
+insert into clinic(id, address,clinic_rating, description, name) values (101, 'Novi sad 123', 4.2, 'Odlicna', 'MediaGroup');
+insert into clinic(id, address,clinic_rating, description, name) values (102, 'Sabac',3.9, 'Super', 'Bolnica');
 insert into examination_type(id, label, price, clinic_id) values (100,'Ocni pregled', '2000', 101);
 insert into examination_type(id, label, price, clinic_id) values (101,'Pregled sluha', '1000', 102);
 insert into clinic_administrator(id, email, name, number, password, status, surname, clinic_id) values (100, 'nemanja@email.com', 'Nemanja', '123456789', 'Mirkela97','ACTIVE', 'Mirkovic', 101);

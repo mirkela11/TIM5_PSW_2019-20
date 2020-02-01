@@ -17,7 +17,7 @@ import {filter} from 'rxjs/operators';
 })
 export class ClinicsListComponent implements OnInit {
 
-  displayedColumns: string[] = ['Name', 'Address', 'Doctors'];
+  displayedColumns: string[] = ['Name', 'Address', 'ClinicRating', 'Doctors'];
   clinic: Clinic;
   @Input() doctorListComponent: DoctorListPatientComponent;
   doctor: Doctor;
@@ -50,7 +50,13 @@ export class ClinicsListComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(ClinicSearchDialogComponent);
+    const dialog = this.dialog.open(ClinicSearchDialogComponent);
+    dialog.afterClosed().subscribe(data => {
+       this.clinics = data;
+       this.dataSource = new MatTableDataSource(data);
+       console.log(data);
+      }
+    );
   }
 
   applyFilter(filterValue: string) {
@@ -64,11 +70,6 @@ export class ClinicsListComponent implements OnInit {
   doctorList(element: Clinic) {
     this.doctorService.setDoctorss(element.doctors);
     const dialog = this.doctorsDialog.open(DoctorListPatientComponent);
-    dialog.afterClosed().pipe().subscribe(data => {
-      this.clinics = data;
-      this.dataSource = new MatTableDataSource(data);
-      console.log(data);
-    });
 
   }
 

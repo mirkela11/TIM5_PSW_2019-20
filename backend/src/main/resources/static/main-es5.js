@@ -83,7 +83,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" class=\"mat-elevation-z8\" matSort>\r\n\r\n  <ng-container matColumnDef=\"Name\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic name </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Address\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic address </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.address}} </td>\r\n  </ng-container>\r\n  <ng-container matColumnDef=\"Doctors\">\r\n    <th mat-header-cell *matHeaderCellDef> Doctors </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-flat-button color=\"warn\" (click)=\"doctorList(element)\"> Doctors </button>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n<button mat-raised-button color=\"primary\" (click)=\"openDialog()\">Making an appointment</button>\r\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" class=\"mat-elevation-z8\" matSort>\r\n\r\n  <ng-container matColumnDef=\"Name\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic name </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Address\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic address </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.address}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"ClinicRating\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic rating </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinicRating}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Doctors\">\r\n    <th mat-header-cell *matHeaderCellDef> Doctors </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-flat-button color=\"warn\" (click)=\"doctorList(element)\"> Doctors </button>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n<button mat-raised-button color=\"primary\" (click)=\"openDialog()\">Making an appointment</button>\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/doctor-list-patient/doctor-list-patient.component.html": 
@@ -1254,7 +1254,7 @@
                     this.doctorService = doctorService;
                     this.dialog = dialog;
                     this.doctorsDialog = doctorsDialog;
-                    this.displayedColumns = ['Name', 'Address', 'Doctors'];
+                    this.displayedColumns = ['Name', 'Address', 'ClinicRating', 'Doctors'];
                     // displayedColumnsDoctor: string[] = ['name', 'surname', 'scheduling'];
                     // doctordataSource = new MatTableDataSource<Doctor>();
                     this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
@@ -1273,7 +1273,13 @@
                     // this.doctordataSource = new MatTableDataSource<Doctor>(this.doctorService.getAllDoctors());
                 };
                 ClinicsListComponent.prototype.openDialog = function () {
-                    this.dialog.open(_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_5__["ClinicSearchDialogComponent"]);
+                    var _this = this;
+                    var dialog = this.dialog.open(_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_5__["ClinicSearchDialogComponent"]);
+                    dialog.afterClosed().subscribe(function (data) {
+                        _this.clinics = data;
+                        _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
+                        console.log(data);
+                    });
                 };
                 ClinicsListComponent.prototype.applyFilter = function (filterValue) {
                     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -1282,14 +1288,8 @@
                     }
                 };
                 ClinicsListComponent.prototype.doctorList = function (element) {
-                    var _this = this;
                     this.doctorService.setDoctorss(element.doctors);
                     var dialog = this.doctorsDialog.open(_doctor_list_patient_doctor_list_patient_component__WEBPACK_IMPORTED_MODULE_6__["DoctorListPatientComponent"]);
-                    dialog.afterClosed().pipe().subscribe(function (data) {
-                        _this.clinics = data;
-                        _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
-                        console.log(data);
-                    });
                 };
                 return ClinicsListComponent;
             }());
@@ -2576,12 +2576,13 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Clinic", function () { return Clinic; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             var Clinic = /** @class */ (function () {
-                function Clinic(name, address, description, doctors, id) {
+                function Clinic(name, address, description, doctors, clinicRating, id) {
                     this.doctors = new Array();
                     this.name = name;
                     this.address = address;
                     this.description = description;
                     this.doctors = doctors;
+                    this.clinicRating = clinicRating;
                     this.id = id;
                 }
                 return Clinic;
@@ -2987,9 +2988,12 @@
                 ClinicService.prototype.getAllClinics = function () {
                     var _this = this;
                     this.http.get(this.urlClinic + '/all').subscribe(function (data) {
+                        console.log('Ovde');
+                        console.log(data);
+                        console.log('izmedju');
                         for (var _i = 0, data_2 = data; _i < data_2.length; _i++) {
                             var c = data_2[_i];
-                            _this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description, c.doctors, c.id);
+                            _this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description, c.doctors, c.clinicRating, c.id);
                             _this.addClinic(_this.clinic);
                             console.log(_this.clinic);
                         }
@@ -3009,7 +3013,7 @@
                     this.http.get(this.urlClinic + '/allWithTypes', { params: params }).subscribe(function (data) {
                         for (var _i = 0, data_3 = data; _i < data_3.length; _i++) {
                             var c = data_3[_i];
-                            _this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description, c.doctors, c.id);
+                            _this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description, c.doctors, c.clinicRating, c.id);
                             _this.clinicsTypes.push(_this.clinic);
                         }
                     }, function (error) {

@@ -1,6 +1,8 @@
 package project_backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonMerge;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -22,6 +24,9 @@ public class Clinic {
 
     @Column(nullable = false)
     private String description;
+
+    @Column(nullable = false)
+    private double clinicRating;
 
     @JsonIgnore
     @OneToMany(mappedBy = "clinic", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
@@ -49,6 +54,19 @@ public class Clinic {
     public Clinic()
     {
 
+    }
+
+    public Clinic(String name, String address, String description, Set<Examination> examinations, Set<Doctor> doctors, Set<Nurse> nurses, Set<Room> rooms, Set<ClinicAdministrator> clinicAdministrators, Set<ExaminationType> examinationTypes) {
+        this.name = name;
+        this.address = address;
+        this.description = description;
+        this.examinations = examinations;
+        this.doctors = doctors;
+        this.nurses = nurses;
+        this.rooms = rooms;
+        this.clinicAdministrators = clinicAdministrators;
+        this.examinationTypes = examinationTypes;
+        this.clinicRating = 0.0;
     }
 
     public Long getId() {

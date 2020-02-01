@@ -13,6 +13,12 @@
     <th mat-header-cell *matHeaderCellDef> Clinic address </th>
     <td mat-cell *matCellDef="let element"> {{element.address}} </td>
   </ng-container>
+
+  <ng-container matColumnDef="ClinicRating">
+    <th mat-header-cell *matHeaderCellDef> Clinic rating </th>
+    <td mat-cell *matCellDef="let element"> {{element.clinicRating}} </td>
+  </ng-container>
+
   <ng-container matColumnDef="Doctors">
     <th mat-header-cell *matHeaderCellDef> Doctors </th>
     <td mat-cell *matCellDef="let element">
