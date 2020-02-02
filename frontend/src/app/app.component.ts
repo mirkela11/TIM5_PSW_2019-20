@@ -27,7 +27,7 @@ export class AppComponent {
   public isNone() {
     return this.userService.isNone();
   }
-    
+
   public isClinicalCentreAdmin() {
     return this.userService.isClinicalCentreAdmin();
   }

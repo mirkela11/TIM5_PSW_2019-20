@@ -19,6 +19,7 @@ import {RegisterRequestsComponent} from './components/register-requests/register
 import {MedicalHistoryPatientComponent} from './components/medical-history-patient/medical-history-patient.component';
 import {MedicalRecordPatientComponent} from './components/medical-record-patient/medical-record-patient.component';
 import {AddClinicAdministratorComponent} from './components/add-clinic-administrator/add-clinic-administrator.component';
+import {NurseDatePickerComponent} from './components/nurse-date-picker/nurse-date-picker.component';
 
 const routes: Routes = [
   {
@@ -93,6 +94,11 @@ const routes: Routes = [
   {
     path: 'clinical-centre-admin/addAdmins',
     component: AddClinicAdministratorComponent,
+  },
+
+  {
+    path: 'nurse/WorkCalendar',
+    component: NurseDatePickerComponent,
   },
 
 ];

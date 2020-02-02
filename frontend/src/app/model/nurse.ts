@@ -1,3 +1,6 @@
+import {TimeInterval} from 'rxjs';
+import {Time} from '@angular/common';
+
 export class Nurse {
 
   email: string;
@@ -5,10 +8,10 @@ export class Nurse {
   name: string;
   surname: string;
   phone: string;
-  workHoursTo: string;
-  workHoursFrom: string;
+  workHoursTo: Time;
+  workHoursFrom: Time;
 
-  constructor(email: string, password: string, name: string, surname: string, phone: string, worhHoursTo: string, worhHoursFrom: string) {
+  constructor(email: string, password: string, name: string, surname: string, phone: string, worhHoursTo: Time, worhHoursFrom: Time) {
     this.email = email;
     this.password = password;
     this.name = name;

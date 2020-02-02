@@ -28,6 +28,7 @@ import { RegisterRequestsComponent } from './components/register-requests/regist
 import { MedicalHistoryPatientComponent } from './components/medical-history-patient/medical-history-patient.component';
 import { MedicalRecordPatientComponent } from './components/medical-record-patient/medical-record-patient.component';
 import {AddClinicAdministratorComponent} from './components/add-clinic-administrator/add-clinic-administrator.component';
+import {NurseDatePickerComponent} from './components/nurse-date-picker/nurse-date-picker.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,8 @@ import {AddClinicAdministratorComponent} from './components/add-clinic-administr
     MedicalRecordPatientComponent,
 
     AddClinicAdministratorComponent,
+
+    NurseDatePickerComponent,
   ],
   imports: [
     BrowserModule,
