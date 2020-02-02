@@ -1,3 +1,5 @@
+import {Clinic} from './clinic';
+
 export class ExaminationType {
 
   label: string;

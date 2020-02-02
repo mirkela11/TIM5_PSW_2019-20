@@ -2,57 +2,46 @@
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field>
 <table mat-table
-       [dataSource]="dataSource" multiTemplateDataRows
-       class="mat-elevation-z8">
-  <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
-    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+       [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef> Clinic name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
-  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-  <ng-container matColumnDef="expandedDetail">
-    <td mat-cell *matCellDef="let clinic" [attr.colspan]="displayedColumns.length">
-      <div class="example-element-detail"
-           [@detailExpand]="clinic == expandedElement ? 'expanded' : 'collapsed'">
-             <table mat-table [dataSource]="doctordataSource" class="mat-elevation-z8">
-               <ng-container matColumnDef="name">
-                 <th mat-header-cell *matHeaderCellDef> Doctor name </th>
-                 <td  mat-cell *matCellDef="let doctor">
-                   <ng-template [ngIf]="clinic.id == doctor.clinic.id">
-                     {{doctor.name}}
-                   </ng-template>
-                 </td>
-               </ng-container>
-                <ng-container matColumnDef="surname">
-                 <th mat-header-cell *matHeaderCellDef> Doctor surname </th>
-                  <td mat-cell *matCellDef="let doctor">
-                    <ng-template [ngIf]="clinic.id == doctor.clinic.id">
-                      {{doctor.surname}}
-                    </ng-template>
-                     </td>
-                </ng-container>
-                <ng-container matColumnDef="scheduling">
-                  <th mat-header-cell *matHeaderCellDef>Scheduling</th>
-                  <td mat-cell *matCellDef="let doctor">
-                    <ng-template [ngIf]="clinic.id == doctor.clinic.id">
-                      <button mat-raised-button color="primary" class="pull-right">Make an appointment</button>
-                    </ng-template>
-                  </td>
-                </ng-container>
-               <tr mat-header-row *matHeaderRowDef="displayedColumnsDoctor"></tr>
-               <tr mat-row *matRowDef="let row; columns: displayedColumnsDoctor;"></tr>
-             </table>
-      </div>
+  <ng-container matColumnDef="Address">
+    <th mat-header-cell *matHeaderCellDef> Clinic address </th>
+    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+  </ng-container>
 
+  <ng-container matColumnDef="ClinicRating">
+    <th mat-header-cell *matHeaderCellDef> Clinic rating </th>
+    <td mat-cell *matCellDef="let element"> {{element.clinicRating}} </td>
+  </ng-container>
+  <div *ngIf="condition; then thenBlock else elseBlock"></div>
+  <ng-template #elseBlock>
+    <ng-container matColumnDef="Price">
+      <th  mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let element"> 0 </td>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #thenBlock>
+    <ng-container matColumnDef="Price">
+      <th  mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let element"> 0 </td>
+    </ng-container>
+  </ng-template>
+
+  <ng-container matColumnDef="Doctors">
+    <th mat-header-cell *matHeaderCellDef> Doctors </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-flat-button color="warn" (click)="doctorList(element)"> Doctors </button>
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let element; columns: displayedColumns;"
-      class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
-  </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+<button mat-raised-button color="primary" (click)="openDialog()">Making an appointment</button>

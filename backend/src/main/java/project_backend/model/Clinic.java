@@ -1,6 +1,8 @@
 package project_backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonMerge;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -23,11 +25,13 @@ public class Clinic {
     @Column(nullable = false)
     private String description;
 
+    @Column(nullable = false)
+    private double clinicRating;
+
     @JsonIgnore
     @OneToMany(mappedBy = "clinic", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Examination> examinations=new HashSet<>();
 
-    @JsonIgnore
     @OneToMany(mappedBy = "clinic", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Doctor> doctors=new HashSet<>();
 
@@ -43,13 +47,25 @@ public class Clinic {
     @OneToMany(mappedBy = "clinic", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<ClinicAdministrator> clinicAdministrators=new HashSet<>();
 
-    @JsonIgnore
     @OneToMany(mappedBy = "clinic", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<ExaminationType> examinationTypes=new HashSet<>();
 
     public Clinic()
     {
+        this.clinicRating = 0.0;
+    }
 
+    public Clinic(String name, String address, String description, Set<Examination> examinations, Set<Doctor> doctors, Set<Nurse> nurses, Set<Room> rooms, Set<ClinicAdministrator> clinicAdministrators, Set<ExaminationType> examinationTypes) {
+        this.name = name;
+        this.address = address;
+        this.description = description;
+        this.examinations = examinations;
+        this.doctors = doctors;
+        this.nurses = nurses;
+        this.rooms = rooms;
+        this.clinicAdministrators = clinicAdministrators;
+        this.examinationTypes = examinationTypes;
+        this.clinicRating = 0.0;
     }
 
     public Long getId() {
@@ -130,5 +146,13 @@ public class Clinic {
 
     public void setExaminationTypes(Set<ExaminationType> examinationTypes) {
         this.examinationTypes = examinationTypes;
+    }
+
+    public double getClinicRating() {
+        return clinicRating;
+    }
+
+    public void setClinicRating(double clinicRating) {
+        this.clinicRating = clinicRating;
     }
 }

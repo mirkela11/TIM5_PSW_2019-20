@@ -1,6 +1,7 @@
 package project_backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -18,8 +19,6 @@ public class ExaminationType {
     @Column(nullable = false, scale = 2)
     private Double price;
 
-
-    @JsonIgnore
     @OneToMany(mappedBy = "specialized", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<Doctor> doctors = new HashSet<>();
 

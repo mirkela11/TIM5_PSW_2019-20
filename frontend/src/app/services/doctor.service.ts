@@ -15,6 +15,7 @@ export class DoctorService {
   listDoctors: Array<Doctor> = new Array<Doctor>();
   doctor: Doctor;
   editD: Doctor;
+  doctorss: Array<Doctor> = new Array<Doctor>();
   constructor(
     private http: HttpClient,
     private userService: UserServiceService
@@ -66,7 +67,7 @@ export class DoctorService {
   public getAllDoctors(): Array<Doctor> {
     this.http.get(this.urlDoctor + '/all').subscribe((data: Doctor[]) => {
         for (const c of data) {
-          this.doctor = new Doctor(c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.clinic);
+          this.doctor = new Doctor(c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo,c.doctorRating, c.clinic);
           this.addDoctor(this.doctor);
         }
       },
@@ -76,4 +77,13 @@ export class DoctorService {
     );
     return this.listDoctors;
   }
+
+  public getDoctorss() {
+    return this.doctorss;
+  }
+
+  public setDoctorss(doctorss: Array<Doctor>) {
+    this.doctorss = doctorss;
+  }
+
 }
