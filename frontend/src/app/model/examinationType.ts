@@ -4,11 +4,9 @@ export class ExaminationType {
 
   label: string;
   price: number;
-  clinic: Clinic;
 
-  constructor(label: string, price: number, clinic: Clinic) {
+  constructor(label: string, price: number) {
     this.label = label;
     this.price = price;
-    this.clinic = clinic;
   }
 }

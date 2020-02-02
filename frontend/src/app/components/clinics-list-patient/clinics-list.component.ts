@@ -17,10 +17,11 @@ import {filter} from 'rxjs/operators';
 })
 export class ClinicsListComponent implements OnInit {
 
-  displayedColumns: string[] = ['Name', 'Address', 'ClinicRating', 'Doctors'];
+  displayedColumns: string[] = ['Name', 'Address', 'ClinicRating', 'Price', 'Doctors'];
   clinic: Clinic;
   @Input() doctorListComponent: DoctorListPatientComponent;
   doctor: Doctor;
+  condition: boolean;
   // displayedColumnsDoctor: string[] = ['name', 'surname', 'scheduling'];
   // doctordataSource = new MatTableDataSource<Doctor>();
   dataSource = new MatTableDataSource<Clinic>();
@@ -36,6 +37,7 @@ export class ClinicsListComponent implements OnInit {
     // this.doctors = this.doctorService.getAllDoctors();
     this.clinics = this.clinicService.getAllClinics();
     this.all();
+    this.condition = true;
   }
 
   ngOnInit() {
@@ -54,7 +56,7 @@ export class ClinicsListComponent implements OnInit {
     dialog.afterClosed().subscribe(data => {
        this.clinics = data;
        this.dataSource = new MatTableDataSource(data);
-       console.log(data);
+       this.condition = false;
       }
     );
   }

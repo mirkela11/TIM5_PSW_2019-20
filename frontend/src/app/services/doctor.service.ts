@@ -67,7 +67,7 @@ export class DoctorService {
   public getAllDoctors(): Array<Doctor> {
     this.http.get(this.urlDoctor + '/all').subscribe((data: Doctor[]) => {
         for (const c of data) {
-          this.doctor = new Doctor(c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.clinic);
+          this.doctor = new Doctor(c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo,c.doctorRating, c.clinic);
           this.addDoctor(this.doctor);
         }
       },

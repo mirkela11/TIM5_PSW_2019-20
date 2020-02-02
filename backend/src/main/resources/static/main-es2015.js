@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" class=\"mat-elevation-z8\" matSort>\r\n\r\n  <ng-container matColumnDef=\"Name\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic name </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Address\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic address </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.address}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"ClinicRating\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic rating </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinicRating}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Doctors\">\r\n    <th mat-header-cell *matHeaderCellDef> Doctors </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-flat-button color=\"warn\" (click)=\"doctorList(element)\"> Doctors </button>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n<button mat-raised-button color=\"primary\" (click)=\"openDialog()\">Making an appointment</button>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" class=\"mat-elevation-z8\" matSort>\r\n\r\n  <ng-container matColumnDef=\"Name\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic name </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Address\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic address </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.address}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"ClinicRating\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic rating </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinicRating}} </td>\r\n  </ng-container>\r\n  <div *ngIf=\"condition; then thenBlock else elseBlock\"></div>\r\n  <ng-template #elseBlock>\r\n    <ng-container matColumnDef=\"Price\">\r\n      <th  mat-header-cell *matHeaderCellDef> Price </th>\r\n      <td mat-cell *matCellDef=\"let element\"> 0 </td>\r\n    </ng-container>\r\n  </ng-template>\r\n\r\n  <ng-template #thenBlock>\r\n    <ng-container matColumnDef=\"Price\">\r\n      <th  mat-header-cell *matHeaderCellDef> Price </th>\r\n      <td mat-cell *matCellDef=\"let element\"> 0 </td>\r\n    </ng-container>\r\n  </ng-template>\r\n\r\n  <ng-container matColumnDef=\"Doctors\">\r\n    <th mat-header-cell *matHeaderCellDef> Doctors </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-flat-button color=\"warn\" (click)=\"doctorList(element)\"> Doctors </button>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n<button mat-raised-button color=\"primary\" (click)=\"openDialog()\">Making an appointment</button>\r\n");
 
 /***/ }),
 
@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n    <mat-form-field>\n      <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\n    </mat-form-field>\n    <table mat-table\n           [dataSource]=\"doctorDataSource\" class=\"mat-elevation-z8\" matSort>\n\n      <ng-container matColumnDef=\"Name\">\n        <th mat-header-cell *matHeaderCellDef> Doctor name </th>\n        <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n      </ng-container>\n\n      <ng-container matColumnDef=\"Surname\">\n        <th mat-header-cell *matHeaderCellDef> Doctor surname </th>\n        <td mat-cell *matCellDef=\"let element\"> {{element.surname}} </td>\n      </ng-container>\n\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n    </table>\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n    <mat-form-field>\n      <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\n    </mat-form-field>\n    <table mat-table\n           [dataSource]=\"doctorDataSource\" class=\"mat-elevation-z8\" matSort>\n\n      <ng-container matColumnDef=\"Name\">\n        <th mat-header-cell *matHeaderCellDef> Doctor name </th>\n        <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n      </ng-container>\n\n      <ng-container matColumnDef=\"Surname\">\n        <th mat-header-cell *matHeaderCellDef> Doctor surname </th>\n        <td mat-cell *matCellDef=\"let element\"> {{element.surname}} </td>\n      </ng-container>\n\n      <ng-container matColumnDef=\"DoctorRating\">\n        <th mat-header-cell *matHeaderCellDef> Doctor rating </th>\n        <td mat-cell *matCellDef=\"let element\"> {{element.doctorRating}} </td>\n      </ng-container>\n\n\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n    </table>\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\n");
 
 /***/ }),
 
@@ -1333,7 +1333,7 @@ let ClinicsListComponent = class ClinicsListComponent {
         this.doctorService = doctorService;
         this.dialog = dialog;
         this.doctorsDialog = doctorsDialog;
-        this.displayedColumns = ['Name', 'Address', 'ClinicRating', 'Doctors'];
+        this.displayedColumns = ['Name', 'Address', 'ClinicRating', 'Price', 'Doctors'];
         // displayedColumnsDoctor: string[] = ['name', 'surname', 'scheduling'];
         // doctordataSource = new MatTableDataSource<Doctor>();
         this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
@@ -1342,6 +1342,7 @@ let ClinicsListComponent = class ClinicsListComponent {
         // this.doctors = this.doctorService.getAllDoctors();
         this.clinics = this.clinicService.getAllClinics();
         this.all();
+        this.condition = true;
     }
     ngOnInit() {
         this.all();
@@ -1356,7 +1357,7 @@ let ClinicsListComponent = class ClinicsListComponent {
         dialog.afterClosed().subscribe(data => {
             this.clinics = data;
             this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
-            console.log(data);
+            this.condition = false;
         });
     }
     applyFilter(filterValue) {
@@ -1428,7 +1429,7 @@ __webpack_require__.r(__webpack_exports__);
 let DoctorListPatientComponent = class DoctorListPatientComponent {
     constructor(doctorService) {
         this.doctorService = doctorService;
-        this.displayedColumns = ['Name', 'Surname'];
+        this.displayedColumns = ['Name', 'Surname', 'DoctorRating'];
         this.doctors = doctorService.getDoctorss();
         this.doctorDataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](this.doctors);
     }
@@ -2837,13 +2838,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 class Clinic {
-    constructor(name, address, description, doctors, clinicRating, id) {
+    constructor(name, address, description, doctors, types, clinicRating, id) {
         this.doctors = new Array();
+        this.types = new Array();
         this.name = name;
         this.address = address;
         this.description = description;
         this.doctors = doctors;
         this.clinicRating = clinicRating;
+        this.types = types;
         this.id = id;
     }
 }
@@ -2864,7 +2867,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 class Doctor {
-    constructor(email, password, name, surname, number1, workHoursFrom, workHoursTo, clinic) {
+    constructor(email, password, name, surname, number1, workHoursFrom, workHoursTo, doctorRating, clinic) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -2872,6 +2875,7 @@ class Doctor {
         this.phone = number1;
         this.workHoursFrom = workHoursFrom;
         this.workHoursTo = workHoursTo;
+        this.doctorRating = doctorRating;
         this.clinic = clinic;
     }
 }
@@ -2968,10 +2972,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 class ExaminationType {
-    constructor(label, price, clinic) {
+    constructor(label, price) {
         this.label = label;
         this.price = price;
-        this.clinic = clinic;
     }
 }
 
@@ -3302,7 +3305,7 @@ let ClinicService = class ClinicService {
             console.log(data);
             console.log('izmedju');
             for (const c of data) {
-                this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description, c.doctors, c.clinicRating, c.id);
+                this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description, c.doctors, c.types, c.clinicRating, c.id);
                 this.addClinic(this.clinic);
                 console.log(this.clinic);
             }
@@ -3320,7 +3323,7 @@ let ClinicService = class ClinicService {
         this.clinicsTypes = new Array();
         this.http.get(this.urlClinic + '/allWithTypes', { params }).subscribe((data) => {
             for (const c of data) {
-                this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description, c.doctors, c.clinicRating, c.id);
+                this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description, c.doctors, c.types, c.clinicRating, c.id);
                 this.clinicsTypes.push(this.clinic);
             }
         }, error => {
@@ -3511,7 +3514,7 @@ let DoctorService = class DoctorService {
     getAllDoctors() {
         this.http.get(this.urlDoctor + '/all').subscribe((data) => {
             for (const c of data) {
-                this.doctor = new _model_doctor__WEBPACK_IMPORTED_MODULE_3__["Doctor"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.clinic);
+                this.doctor = new _model_doctor__WEBPACK_IMPORTED_MODULE_3__["Doctor"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.doctorRating, c.clinic);
                 this.addDoctor(this.doctor);
             }
         }, error => {
@@ -3569,7 +3572,7 @@ let ExaminationsTypeService = class ExaminationsTypeService {
     getAllTypes() {
         this.http.get(this.urlExaminationType + '/all').subscribe((data) => {
             for (const c of data) {
-                this.type = new _model_examinationType__WEBPACK_IMPORTED_MODULE_2__["ExaminationType"](c.label, c.price, c.clinic);
+                this.type = new _model_examinationType__WEBPACK_IMPORTED_MODULE_2__["ExaminationType"](c.label, c.price);
                 this.addType(this.type);
             }
         }, error => {

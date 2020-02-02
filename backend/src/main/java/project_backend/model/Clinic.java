@@ -47,13 +47,12 @@ public class Clinic {
     @OneToMany(mappedBy = "clinic", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<ClinicAdministrator> clinicAdministrators=new HashSet<>();
 
-    @JsonIgnore
     @OneToMany(mappedBy = "clinic", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<ExaminationType> examinationTypes=new HashSet<>();
 
     public Clinic()
     {
-
+        this.clinicRating = 0.0;
     }
 
     public Clinic(String name, String address, String description, Set<Examination> examinations, Set<Doctor> doctors, Set<Nurse> nurses, Set<Room> rooms, Set<ClinicAdministrator> clinicAdministrators, Set<ExaminationType> examinationTypes) {
@@ -147,5 +146,13 @@ public class Clinic {
 
     public void setExaminationTypes(Set<ExaminationType> examinationTypes) {
         this.examinationTypes = examinationTypes;
+    }
+
+    public double getClinicRating() {
+        return clinicRating;
+    }
+
+    public void setClinicRating(double clinicRating) {
+        this.clinicRating = clinicRating;
     }
 }

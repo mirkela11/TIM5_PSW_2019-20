@@ -10,7 +10,7 @@ import {DoctorService} from '../../services/doctor.service';
 })
 export class DoctorListPatientComponent implements OnInit {
 
-  displayedColumns: string[] = ['Name', 'Surname'];
+  displayedColumns: string[] = ['Name', 'Surname', 'DoctorRating'];
   doctorDataSource: MatTableDataSource<Doctor>;
   doctors: Array<Doctor>;
   constructor(private doctorService: DoctorService) {
