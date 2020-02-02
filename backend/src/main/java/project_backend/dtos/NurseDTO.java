@@ -1,5 +1,7 @@
 package project_backend.dtos;
 
+import java.time.LocalTime;
+
 public class NurseDTO {
 
     private String email;
@@ -7,8 +9,8 @@ public class NurseDTO {
     private String name;
     private String surname;
     private String phone;
-    private String WorkHoursTo;
-    private String WorkHoursFrom;
+    private LocalTime WorkHoursTo;
+    private LocalTime WorkHoursFrom;
 
     public String getEmail() {
         return email;
@@ -50,19 +52,19 @@ public class NurseDTO {
         this.phone = phone;
     }
 
-    public String getWorkHoursTo() {
+    public LocalTime getWorkHoursTo() {
         return WorkHoursTo;
     }
 
-    public void setWorkHoursTo(String workHoursTo) {
+    public void setWorkHoursTo(LocalTime workHoursTo) {
         WorkHoursTo = workHoursTo;
     }
 
-    public String getWorkHoursFrom() {
+    public LocalTime getWorkHoursFrom() {
         return WorkHoursFrom;
     }
 
-    public void setWorkHoursFrom(String workHoursFrom) {
+    public void setWorkHoursFrom(LocalTime workHoursFrom) {
         WorkHoursFrom = workHoursFrom;
     }
 }

@@ -30,6 +30,8 @@ import { MedicalRecordPatientComponent } from './components/medical-record-patie
 import {AddClinicAdministratorComponent} from './components/add-clinic-administrator/add-clinic-administrator.component';
 import { ClinicSearchDialogComponent } from './components/clinic-search-dialog/clinic-search-dialog.component';
 import { DoctorListPatientComponent } from './components/doctor-list-patient/doctor-list-patient.component';
+import {NurseDatePickerComponent} from './components/nurse-date-picker/nurse-date-picker.component';
+
 
 @NgModule({
   declarations: [
@@ -74,6 +76,8 @@ import { DoctorListPatientComponent } from './components/doctor-list-patient/doc
     ClinicSearchDialogComponent,
 
     DoctorListPatientComponent,
+    
+    NurseDatePickerComponent,
   ],
   imports: [
     BrowserModule,
