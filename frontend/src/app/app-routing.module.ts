@@ -21,6 +21,7 @@ import {MedicalRecordPatientComponent} from './components/medical-record-patient
 import {AddClinicAdministratorComponent} from './components/add-clinic-administrator/add-clinic-administrator.component';
 import {NurseDatePickerComponent} from './components/nurse-date-picker/nurse-date-picker.component';
 import {NurseListPatientComponent} from './components/nurse-list-patient/nurse-list-patient.component';
+import {NurseVacationRequestComponent} from './components/nurse-vacation-request/nurse-vacation-request.component';
 
 const routes: Routes = [
   {
@@ -105,6 +106,10 @@ const routes: Routes = [
   {
     path: 'nurse/ListOfPatient',
     component: NurseListPatientComponent,
+  },
+  {
+    path: 'nurse/VacationRequest',
+    component: NurseVacationRequestComponent,
   },
 
 ];
