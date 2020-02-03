@@ -5,6 +5,7 @@ import {Doctor} from './doctor';
 import {Nurse} from './nurse';
 import {Clinic} from './clinic';
 import {Patient} from './patient';
+import {Interval} from './interval';
 
 export class Examination {
 
@@ -19,9 +20,10 @@ export class Examination {
   clinic: Clinic;
   patient: Patient;
   id: number;
+  interval: Interval;
   constructor(kind: ExaminationKind, status: ExaminationStatus, type: ExaminationType, discount: number,
               doctorRating: number, clinicRating: number, nurse: Nurse,
-              clinic: Clinic, patient: Patient, doctors: Array<Doctor>, id: number) {
+              clinic: Clinic, patient: Patient, doctors: Array<Doctor>, id: number, interval?: Interval) {
     this.kind = kind;
     this.status = status;
     this.type = type;
@@ -33,6 +35,7 @@ export class Examination {
     this.patient = patient;
     this.doctors = doctors;
     this.id = id;
+    this.interval = interval;
   }
 
 }
