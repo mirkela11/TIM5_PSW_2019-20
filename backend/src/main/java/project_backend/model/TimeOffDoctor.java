@@ -1,31 +1,38 @@
 package project_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
-public class TimeOffDoctor {
+public class TimeOffDoctor{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, columnDefinition = "VARCHAR(30)", nullable = false)
-    private String label;
+    @Enumerated(EnumType.STRING)
+    private OffType type;
 
     @Enumerated(EnumType.STRING)
-    private ExaminationKind kind;
+    private OffStatus status;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Clinic clinic;
+    // @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Doctor doctor;
 
-    @OneToMany(mappedBy = "room", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<Examination> examinations = new HashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Interval interval;
 
-    public TimeOffDoctor()
-    {
+    public TimeOffDoctor(OffType type, OffStatus status, Doctor doctor, Interval interval) {
+        this.type = type;
+        this.status = status;
+        this.doctor = doctor;
+        this.interval = interval;
+    }
 
+    public TimeOffDoctor() {
     }
 
     public Long getId() {
@@ -36,35 +43,35 @@ public class TimeOffDoctor {
         this.id = id;
     }
 
-    public String getLabel() {
-        return label;
+    public OffType getType() {
+        return type;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setType(OffType type) {
+        this.type = type;
     }
 
-    public ExaminationKind getKind() {
-        return kind;
+    public OffStatus getStatus() {
+        return status;
     }
 
-    public void setKind(ExaminationKind kind) {
-        this.kind = kind;
+    public void setStatus(OffStatus status) {
+        this.status = status;
     }
 
-    public Clinic getClinic() {
-        return clinic;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setClinic(Clinic clinic) {
-        this.clinic = clinic;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
-    public Set<Examination> getExaminations() {
-        return examinations;
-    }
+     public Interval getInterval() {
+         return interval;
+     }
 
-    public void setExaminations(Set<Examination> examinations) {
-        this.examinations = examinations;
-    }
+     public void setInterval(Interval interval) {
+         this.interval = interval;
+     }
 }
