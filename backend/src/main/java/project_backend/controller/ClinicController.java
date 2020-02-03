@@ -64,8 +64,6 @@ public class ClinicController{
         for (ExaminationType t : types) {
 
             if(t.getLabel().equals(type)) {
-                System.out.println("Ovde sam");
-                System.out.println(type);
                 tmp.add(t.getClinic());
             }
 
@@ -80,7 +78,6 @@ public class ClinicController{
             }
         }
 
-        System.out.println(tmp.size());
 
         return new ResponseEntity<>(tmp, HttpStatus.OK);
     }

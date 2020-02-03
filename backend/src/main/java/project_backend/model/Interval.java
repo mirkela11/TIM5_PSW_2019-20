@@ -1,6 +1,7 @@
 package project_backend.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -23,9 +24,11 @@ public class Interval{
     @JsonFormat(pattern = "yyyy-mm-dd hh:mm")
     private LocalDateTime endTime;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "interval", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<TimeOffDoctor> timeOffDoctorset = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "interval", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Examination> examinations = new HashSet<>();
 

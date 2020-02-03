@@ -69,8 +69,6 @@ export class DoctorService {
         for (const c of data) {
           this.doctor = new Doctor(c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.specialized, c.doctorRating, c.clinic);
           this.addDoctor(this.doctor);
-          console.log('Doctor ispod');
-          console.log(this.doctor);
         }
       },
       error => {

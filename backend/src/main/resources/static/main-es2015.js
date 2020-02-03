@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n    <mat-form-field>\r\n      <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n    </mat-form-field>\r\n    <table mat-table\r\n           [dataSource]=\"doctorDataSource\" class=\"mat-elevation-z8\" matSort>\r\n\r\n      <ng-container matColumnDef=\"Name\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor name </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"Surname\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor surname </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.surname}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"DoctorRating\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor rating </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.doctorRating}} </td>\r\n      </ng-container>\r\n\r\n\r\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n    </table>\r\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n    <mat-form-field>\r\n      <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n    </mat-form-field>\r\n    <table mat-table\r\n           [dataSource]=\"doctorDataSource\" class=\"mat-elevation-z8\" matSort>\r\n\r\n      <ng-container matColumnDef=\"Name\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor name </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"Surname\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor surname </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.surname}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"DoctorRating\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor rating </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.doctorRating}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"Price\">\r\n        <th mat-header-cell *matHeaderCellDef> Price </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.specialized.price}} </td>\r\n      </ng-container>\r\n\r\n\r\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n    </table>\r\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n");
 
 /***/ }),
 
@@ -1451,7 +1451,7 @@ __webpack_require__.r(__webpack_exports__);
 let DoctorListPatientComponent = class DoctorListPatientComponent {
     constructor(doctorService) {
         this.doctorService = doctorService;
-        this.displayedColumns = ['Name', 'Surname', 'DoctorRating'];
+        this.displayedColumns = ['Name', 'Surname', 'DoctorRating', 'Price'];
         this.doctors = doctorService.getDoctorss();
         this.doctorDataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](this.doctors);
     }
@@ -2964,7 +2964,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 class Examination {
-    constructor(kind, status, type, discount, doctorRating, clinicRating, nurse, clinic, patient, doctors, id) {
+    constructor(kind, status, type, discount, doctorRating, clinicRating, nurse, clinic, patient, doctors, id, interval) {
         this.doctors = new Array();
         this.kind = kind;
         this.status = status;
@@ -2977,6 +2977,7 @@ class Examination {
         this.patient = patient;
         this.doctors = doctors;
         this.id = id;
+        this.interval = interval;
     }
 }
 
@@ -3584,8 +3585,6 @@ let DoctorService = class DoctorService {
             for (const c of data) {
                 this.doctor = new _model_doctor__WEBPACK_IMPORTED_MODULE_3__["Doctor"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.specialized, c.doctorRating, c.clinic);
                 this.addDoctor(this.doctor);
-                console.log('Doctor ispod');
-                console.log(this.doctor);
             }
         }, error => {
             console.log(error);
@@ -3738,7 +3737,8 @@ let ExaminationService = class ExaminationService {
         this.http.get(this.url + '/all').subscribe((data) => {
             this.listExaminations = new Array();
             for (const c of data) {
-                this.examination = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.type, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id);
+                console.log(c);
+                this.examination = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.type, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
                 this.listExaminations.push(this.examination);
                 console.log(this.examination);
             }

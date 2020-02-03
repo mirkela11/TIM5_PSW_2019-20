@@ -10,5 +10,4 @@ export class Interval {
     this.endTime = endTime;
   }
 
-
 }

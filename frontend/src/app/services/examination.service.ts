@@ -43,7 +43,8 @@ export class ExaminationService {
     this.http.get(this.url + '/all').subscribe((data: Examination[]) => {
         this.listExaminations = new Array<Examination>();
         for (const c of data) {
-          this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.type, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id);
+          console.log(c);
+          this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.type, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
           this.listExaminations.push(this.examination)
           console.log(this.examination);
         }
