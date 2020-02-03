@@ -50,6 +50,9 @@ public class Examination {
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Patient patient;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Interval interval;
+
     @JsonIgnore
     @OneToOne(mappedBy = "examination",cascade = CascadeType.ALL)
     private ExaminationReport examinationReport;
@@ -62,6 +65,23 @@ public class Examination {
     ) {
         this.doctorRating = 0;
         this.clinicRating = 0;
+    }
+
+    public Examination(ExaminationKind kind, ExaminationStatus status, Integer discount, ExaminationType examinationType, Room room, Nurse nurse, Clinic clinic, Patient patient, Interval interval, ExaminationReport examinationReport, ClinicAdministrator clinicAdministrator) {
+        this.kind = kind;
+        this.status = status;
+        this.discount = discount;
+        this.examinationType = examinationType;
+        this.room = room;
+        this.nurse = nurse;
+        this.clinic = clinic;
+        this.patient = patient;
+        this.interval = interval;
+        this.examinationReport = examinationReport;
+        this.clinicAdministrator = clinicAdministrator;
+        this.doctorRating = 0;
+        this.clinicRating = 0;
+        this.doctors = new HashSet<>();
     }
 
     public Long getId() {
@@ -174,5 +194,13 @@ public class Examination {
 
     public void setClinicAdministrator(ClinicAdministrator clinicAdministrator) {
         this.clinicAdministrator = clinicAdministrator;
+    }
+
+    public Interval getInterval() {
+        return interval;
+    }
+
+    public void setInterval(Interval interval) {
+        this.interval = interval;
     }
 }

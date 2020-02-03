@@ -50,7 +50,8 @@ export class ClinicService {
       console.log(data);
       console.log('izmedju');
       for (const c of data) {
-        this.clinic = new Clinic(c.name, c.address, c.description, c.doctors ,c.types, c.clinicRating, c.id);
+        this.clinic = new Clinic(c.name, c.address, c.description, c.doct
+        ors ,c.types, c.clinicRating, c.id);
         this.addClinic(this.clinic);
         console.log(this.clinic);
       }
