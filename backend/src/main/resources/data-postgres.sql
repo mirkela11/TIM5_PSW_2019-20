@@ -13,7 +13,6 @@ insert into interval(id,end_time,start_time) values (154, '2020.02.22 11:00', '2
 insert into interval(id,end_time,start_time) values (155, '2020.02.22 14:00', '2020.02.22 13:00');
 insert into interval(id,end_time,start_time) values (156, '2020.02.22 16:00', '2020.02.22 15:00');
 
-insert into interval(id,end_time,start_time) values (200, )
 insert into interval(id,end_time,start_time) values (157, '2020.02.20 08:00', '2020.02.10 16:00');
 insert into interval(id,end_time,start_time) values (158, '2020.03.02 08:00', '2020.02.22 15:00');
 
