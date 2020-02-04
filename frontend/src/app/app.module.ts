@@ -32,6 +32,10 @@ import { ClinicSearchDialogComponent } from './components/clinic-search-dialog/c
 import { DoctorListPatientComponent } from './components/doctor-list-patient/doctor-list-patient.component';
 import {NurseDatePickerComponent} from './components/nurse-date-picker/nurse-date-picker.component';
 import { NurseListPatientComponent } from './components/nurse-list-patient/nurse-list-patient.component';
+import { NurseVacationRequestComponent } from './components/nurse-vacation-request/nurse-vacation-request.component';
+import { VacationRequestRegisterComponent } from './components/vacation-request-register/vacation-request-register.component';
+import { DoctorVacationRequestComponent } from './components/doctor-vacation-request/doctor-vacation-request.component';
+import { DoctorSearchDialogComponent } from './components/doctor-search-dialog/doctor-search-dialog.component';
 
 
 @NgModule({
@@ -77,10 +81,18 @@ import { NurseListPatientComponent } from './components/nurse-list-patient/nurse
     ClinicSearchDialogComponent,
 
     DoctorListPatientComponent,
-    
+
     NurseDatePickerComponent,
 
     NurseListPatientComponent,
+
+    NurseVacationRequestComponent,
+
+    VacationRequestRegisterComponent,
+
+    DoctorVacationRequestComponent,
+    
+    DoctorSearchDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,6 +115,7 @@ import { NurseListPatientComponent } from './components/nurse-list-patient/nurse
   entryComponents: [
     ClinicSearchDialogComponent,
     DoctorListPatientComponent,
+    DoctorSearchDialogComponent,
 
   ],
   providers: [],

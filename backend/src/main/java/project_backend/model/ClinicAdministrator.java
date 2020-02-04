@@ -34,7 +34,7 @@ public class ClinicAdministrator {
     private Clinic clinic;
 
     // @Enumerated(EnumType.STRING)
-    //  private UserStatus status;
+   //  private UserStatus status;
 
     @JsonIgnore
     @OneToMany(mappedBy = "clinicAdministrator", fetch = FetchType.LAZY,cascade = CascadeType.ALL)

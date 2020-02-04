@@ -22,11 +22,10 @@ export class ClinicsListComponent implements OnInit {
   @Input() doctorListComponent: DoctorListPatientComponent;
   doctor: Doctor;
   condition: boolean;
-  // displayedColumnsDoctor: string[] = ['name', 'surname', 'scheduling'];
-  // doctordataSource = new MatTableDataSource<Doctor>();
+  tmp: string;
+  tmp1: string;
   dataSource = new MatTableDataSource<Clinic>();
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  // doctors: Array<Doctor> = new Array<Doctor>();
   clinics: Array<Clinic> = new Array<Clinic>();
   constructor(
     private clinicService: ClinicService,
@@ -54,9 +53,12 @@ export class ClinicsListComponent implements OnInit {
   openDialog() {
     const dialog = this.dialog.open(ClinicSearchDialogComponent);
     dialog.afterClosed().subscribe(data => {
-       this.clinics = data;
-       this.dataSource = new MatTableDataSource(data);
-       this.condition = false;
+       if (data !== undefined) {
+         this.clinics = data.clinics;
+         this.dataSource = new MatTableDataSource(this.clinics);
+         this.condition = false;
+         this.tmp = data.date;
+       }
       }
     );
   }
@@ -71,6 +73,10 @@ export class ClinicsListComponent implements OnInit {
 
   doctorList(element: Clinic) {
     this.doctorService.setDoctorss(element.doctors);
+    for (const d of element.doctors) {
+      // this.tmp1 = this.doctorService.getDoctorsTermins(this.tmp, d.email);
+      // console.log(this.tmp1);
+    }
     const dialog = this.doctorsDialog.open(DoctorListPatientComponent);
 
   }
