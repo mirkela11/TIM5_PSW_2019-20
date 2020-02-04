@@ -33,6 +33,8 @@ import { DoctorListPatientComponent } from './components/doctor-list-patient/doc
 import {NurseDatePickerComponent} from './components/nurse-date-picker/nurse-date-picker.component';
 import { NurseListPatientComponent } from './components/nurse-list-patient/nurse-list-patient.component';
 import { NurseVacationRequestComponent } from './components/nurse-vacation-request/nurse-vacation-request.component';
+import { VacationRequestRegisterComponent } from './components/vacation-request-register/vacation-request-register.component';
+import { DoctorVacationRequestComponent } from './components/doctor-vacation-request/doctor-vacation-request.component';
 
 
 @NgModule({
@@ -84,6 +86,10 @@ import { NurseVacationRequestComponent } from './components/nurse-vacation-reque
     NurseListPatientComponent,
 
     NurseVacationRequestComponent,
+
+    VacationRequestRegisterComponent,
+
+    DoctorVacationRequestComponent,
   ],
   imports: [
     BrowserModule,

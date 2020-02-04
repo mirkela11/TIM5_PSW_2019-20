@@ -17,7 +17,7 @@ export const environment = {
   examination: '/examination',
   medicalRecord: '/medicalRecord',
   examinationType: '/examinationType',
-  zahtev: 'zahtev',
+  zahtev: '/zahtev',
 };
 
 /*

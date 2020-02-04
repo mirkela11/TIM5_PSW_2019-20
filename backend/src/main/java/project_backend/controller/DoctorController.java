@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project_backend.dtos.DoctorDTO;
 import project_backend.model.Doctor;
-import project_backend.model.DoctorStatus;
 import project_backend.model.User;
 import project_backend.service.DoctorService;
 import project_backend.service.UserService;

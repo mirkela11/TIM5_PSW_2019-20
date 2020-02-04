@@ -1,17 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Zahtev} from '../../model/Zahtev';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
-import {Zahtev} from '../../model/Zahtev';
 import {VacationService} from '../../services/vacation.service';
 import {ZahtevStatus} from '../../model/ZahtevStatus';
 
 @Component({
-  selector: 'app-nurse-vacation-request',
-  templateUrl: './nurse-vacation-request.component.html',
-  styleUrls: ['./nurse-vacation-request.component.css']
+  selector: 'app-doctor-vacation-request',
+  templateUrl: './doctor-vacation-request.component.html',
+  styleUrls: ['./doctor-vacation-request.component.css']
 })
-export class NurseVacationRequestComponent implements OnInit {
+export class DoctorVacationRequestComponent implements OnInit {
 
   vacationRequestForm: FormGroup;
   submitted = false;
@@ -21,7 +21,7 @@ export class NurseVacationRequestComponent implements OnInit {
               private formBuilder: FormBuilder,
               private router: Router,
               private vacationService: VacationService,
-              ) {}
+  ) {}
 
 
   ngOnInit() {
@@ -58,7 +58,6 @@ export class NurseVacationRequestComponent implements OnInit {
       ZahtevStatus.AWAITING_APPROVAL
     );
 
-    // tslint:disable-next-line:max-line-length
     this.zahtev = new Zahtev(this.f.email.value, this.f.name.value, this.f.surname.value, this.f.startingDate.value, this.f.finishDate.value, ZahtevStatus.AWAITING_APPROVAL);
 
     this.createVacation();
@@ -68,12 +67,12 @@ export class NurseVacationRequestComponent implements OnInit {
   private createVacation() {
     console.log('ovde sam');
 
-    this.vacationService.newVacation(this.zahtev).subscribe(
+    this.vacationService.newVacation1(this.zahtev).subscribe(
       data => {
         console.log('unutra sam');
 
-        this.vacationService.addVacation(this.zahtev);
-        this.router.navigate(['/nurse/home']);
+        this.vacationService.addVacation1(this.zahtev);
+        this.router.navigate(['/doctor/home']);
       },
       error => {
         console.log(error);

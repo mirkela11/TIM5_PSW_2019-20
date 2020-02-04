@@ -4,16 +4,16 @@ import {ZahtevStatus} from './ZahtevStatus';
 
 export class Zahtev {
 
-  id: string;
+  email: string;
   name: string;
   surname: string;
   startingDate: string;
   finishDate: string;
  // doctor: Doctor;
   status: ZahtevStatus;
-  constructor(id: string, name: string, surname: string, startingDate: string, finishDate: string, status: ZahtevStatus) {
+  constructor(email: string, name: string, surname: string, startingDate: string, finishDate: string, status: ZahtevStatus) {
 
-    this.id = id;
+    this.email = email;
     this.name = name;
     this.surname = surname;
     this.startingDate = startingDate;
