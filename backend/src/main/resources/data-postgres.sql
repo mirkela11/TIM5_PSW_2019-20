@@ -4,6 +4,8 @@ insert into clinic(id, address,clinic_rating, description, name) values (101, 'N
 insert into clinic(id, address,clinic_rating, description, name) values (102, 'Sabac',3.9, 'Super', 'Bolnica');
 insert into examination_type(id, label, price, clinic_id) values (100,'Ocni pregled', '2000', 101);
 insert into examination_type(id, label, price, clinic_id) values (101,'Pregled sluha', '1000', 102);
+insert into examination_type(id, label, price, clinic_id) values (102,'Operacija ociju', '1000', 101);
+insert into examination_type(id, label, price, clinic_id) values (103,'Operacija usiju', '1000', 102);
 
 insert into interval(id,end_time,start_time) values (150, '2020.02.20 10:00', '2020.02.20 09:00');
 insert into interval(id,end_time,start_time) values (151, '2020.02.20 12:00', '2020.02.20 11:00');
@@ -11,7 +13,11 @@ insert into interval(id,end_time,start_time) values (152, '2020.02.21 14:00', '2
 insert into interval(id,end_time,start_time) values (153, '2020.02.21 09:00', '2020.02.21 08:00');
 insert into interval(id,end_time,start_time) values (154, '2020.02.22 11:00', '2020.02.22 10:00');
 insert into interval(id,end_time,start_time) values (155, '2020.02.06 10:00', '2020.02.06 09:00');
-insert into interval(id,end_time,start_time) values (156, '2020.02.22 16:00', '2020.02.22 15:00');
+insert into interval(id,end_time,start_time) values (156, '2020.02.27 10:00', '2020.02.27 09:00');
+insert into interval(id,end_time,start_time) values (160, '2020.02.27 13:00', '2020.02.27 12:00');
+insert into interval(id,end_time,start_time) values (161, '2020.02.28 16:00', '2020.02.28 15:00');
+insert into interval(id,end_time,start_time) values (162, '2020.02.28 11:00', '2020.02.28 10:00');
+insert into interval(id,end_time,start_time) values (163, '2020.02.28 09:00', '2020.02.28 08:00');
 
 insert into interval(id,end_time,start_time) values (157, '2020.02.20 08:00', '2020.02.10 16:00');
 insert into interval(id,end_time,start_time) values (158, '2020.03.02 08:00', '2020.02.22 15:00');
@@ -35,6 +41,9 @@ insert into patient(id, insuranceid, address, city, country, email, name, number
 insert into users(id, email, password, role) values (104, 'patient@email.com', 'Patient123', 0);
 insert into users(id, email, password, role) values (105, 'patient1@email.com', 'Patient1234', 0);
 insert into room(id,kind,label,clinic_id) values (100,'OPERATION','Room 2',101);
+insert into room(id,kind,label,clinic_id) values (101,'OPERATION','Room 1',102);
+insert into room(id,kind,label,clinic_id) values (102,'EXAMINATION','Room 3',101);
+insert into room(id,kind,label,clinic_id) values (103,'EXAMINATION','Room 4',102);
 insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,patient_id,room_id) values (100,4,100,5,'OPERATION','APPROVED',101,100,100,155,100,100,100);
 insert into examining(examination_id,doctor_id) values (100,101);
 insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,patient_id,room_id) values (101,2,100,4,'EXAMINATION','APPROVED',102,100,100,151,100,101,100);
@@ -43,3 +52,24 @@ insert into medical_record(id, allergies, blood_type, height, weight, patient_id
 insert into medical_record(id, allergies, blood_type, height, weight, patient_id) values (101, 'Alergija na jagode', 'B-', 185, 82, 101);
 insert into examination_report(id,comment, time_created, diagnose_id, doctor_id, examination_id, medical_record_id) values (100,'Odradjen izvestaj','01.01.2020. 12:30', 120, 101, 100,100);
 insert into examination_report(id,comment, time_created, diagnose_id, doctor_id, examination_id, medical_record_id) values (101,'Izvestaj 2','02.01.2020. 08:30', 121, 102, 100,100);
+
+
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,room_id) values (200,4,20,5,'OPERATION','PREDEF_AVAILABLE',101,100,100,150,100,100);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,room_id) values (201,4,10,5,'EXAMINATION','PREDEF_AVAILABLE',101,100,102,152,100,102);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,room_id) values (202,4,15,5,'OPERATION','PREDEF_AVAILABLE',102,100,101,153,100,101);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,room_id) values (203,4,30,5,'EXAMINATION','PREDEF_AVAILABLE',102,100,103,154,100,103);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,room_id) values (204,4,15,5,'OPERATION','PREDEF_AVAILABLE',101,100,100,156,100,100);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,room_id) values (205,4,10,5,'EXAMINATION','PREDEF_AVAILABLE',101,100,102,160,100,102);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,room_id) values (206,4,25,5,'OPERATION','PREDEF_AVAILABLE',102,100,101,161,100,101);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,room_id) values (207,4,30,5,'EXAMINATION','PREDEF_AVAILABLE',102,100,103,162,100,103);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,room_id) values (208,4,10,5,'OPERATION','PREDEF_AVAILABLE',101,100,101,163,100,100);
+insert into examining(examination_id,doctor_id) values (200,101);
+insert into examining(examination_id,doctor_id) values (201,102);
+insert into examining(examination_id,doctor_id) values (202,103);
+insert into examining(examination_id,doctor_id) values (203,101);
+insert into examining(examination_id,doctor_id) values (204,102);
+insert into examining(examination_id,doctor_id) values (205,103);
+insert into examining(examination_id,doctor_id) values (206,101);
+insert into examining(examination_id,doctor_id) values (207,102);
+insert into examining(examination_id,doctor_id) values (208,103);
+

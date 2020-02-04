@@ -11,7 +11,7 @@ export class Examination {
 
   kind: ExaminationKind;
   status: ExaminationStatus;
-  type: ExaminationType;
+  examinationType: ExaminationType;
   discount: number;
   doctorRating: number;
   clinicRating: number;
@@ -21,12 +21,12 @@ export class Examination {
   patient: Patient;
   id: number;
   interval: Interval;
-  constructor(kind: ExaminationKind, status: ExaminationStatus, type: ExaminationType, discount: number,
+  constructor(kind: ExaminationKind, status: ExaminationStatus, examinationType: ExaminationType, discount: number,
               doctorRating: number, clinicRating: number, nurse: Nurse,
               clinic: Clinic, patient: Patient, doctors: Array<Doctor>, id: number, interval?: Interval) {
     this.kind = kind;
     this.status = status;
-    this.type = type;
+    this.examinationType = examinationType;
     this.discount = discount;
     this.doctorRating = doctorRating;
     this.clinicRating = clinicRating;

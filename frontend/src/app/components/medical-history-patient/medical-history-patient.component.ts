@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {Examination} from '../../model/examination';
-import {Patient} from '../../model/patient';
-import {Router} from '@angular/router';
 import {PatientService} from '../../services/patient.service';
 import {ExaminationService} from '../../services/examination.service';
 import {User} from '../../model/user';
 import {UserServiceService} from '../../services/user-service.service';
+import {ExaminationStatus} from '../../model/examinationStatus';
 
 @Component({
   selector: 'app-medical-history-patient',
@@ -34,8 +33,10 @@ export class MedicalHistoryPatientComponent implements OnInit {
 
   all() {
     for (const c of this.examinations) {
-      if (c.patient.email === this.user.email) {
-        this.tmp.push(c);
+      if (c.status !== ExaminationStatus.PREDEF_AVAILABLE) {
+        if (c.patient.email === this.user.email) {
+          this.tmp.push(c);
+        }
       }
     }
     this.medicalDataSource = new MatTableDataSource(this.tmp);

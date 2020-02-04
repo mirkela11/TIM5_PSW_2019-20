@@ -32,6 +32,8 @@ import { ClinicSearchDialogComponent } from './components/clinic-search-dialog/c
 import { DoctorListPatientComponent } from './components/doctor-list-patient/doctor-list-patient.component';
 import {NurseDatePickerComponent} from './components/nurse-date-picker/nurse-date-picker.component';
 import { DoctorSearchDialogComponent } from './components/doctor-search-dialog/doctor-search-dialog.component';
+import {PredefExaminationDialogComponent} from './components/predef-examination-dialog/predef-examination-dialog.component';
+
 
 
 @NgModule({
@@ -77,10 +79,12 @@ import { DoctorSearchDialogComponent } from './components/doctor-search-dialog/d
     ClinicSearchDialogComponent,
 
     DoctorListPatientComponent,
-    
+
     NurseDatePickerComponent,
-    
+
     DoctorSearchDialogComponent,
+
+    PredefExaminationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +108,7 @@ import { DoctorSearchDialogComponent } from './components/doctor-search-dialog/d
     ClinicSearchDialogComponent,
     DoctorListPatientComponent,
     DoctorSearchDialogComponent,
+    PredefExaminationDialogComponent,
 
   ],
   providers: [],

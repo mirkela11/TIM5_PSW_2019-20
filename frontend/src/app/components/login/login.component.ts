@@ -92,6 +92,7 @@ export class LoginComponent implements OnInit {
           console.log(data);
           if (data !== null) {
             alert('Successful logged in');
+            this.userService.setLoggedUser(this.user);
             this.router.navigate(['/patient/home']);
           } else {
             alert('Login error');
