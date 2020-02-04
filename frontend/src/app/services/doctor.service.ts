@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {Doctor} from '../model/doctor';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {UserServiceService} from './user-service.service';
 import {Clinic} from '../model/clinic';
 
@@ -16,6 +16,9 @@ export class DoctorService {
   doctor: Doctor;
   editD: Doctor;
   doctorss: Array<Doctor> = new Array<Doctor>();
+  termins: Array<string> = new Array<string>();
+  doctorsWithSearch: Array<Doctor> = new Array<Doctor>();
+  termin: string;
   constructor(
     private http: HttpClient,
     private userService: UserServiceService
@@ -67,7 +70,7 @@ export class DoctorService {
   public getAllDoctors(): Array<Doctor> {
     this.http.get(this.urlDoctor + '/all').subscribe((data: Doctor[]) => {
         for (const c of data) {
-          this.doctor = new Doctor(c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo,c.doctorRating, c.clinic);
+          this.doctor = new Doctor(c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.specialized, c.doctorRating, c.clinic);
           this.addDoctor(this.doctor);
         }
       },
@@ -78,12 +81,58 @@ export class DoctorService {
     return this.listDoctors;
   }
 
+  public getDoctorsTermins(date: string, email: string): string {
+    let params = new HttpParams();
+    params = params.append('date', date);
+    params = params.append('email', email);
+    console.log(params)
+    this.http.get(this.urlDoctor + '/terminString', {params, responseType: 'text'}).subscribe((data: string) => {
+        this.termins = new Array<string>();
+        console.log('Ispod ovde');
+        console.log(data);
+        this.termin = data;
+        this.termins.push(data);
+
+
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    return this.termin;
+  }
+
   public getDoctorss() {
     return this.doctorss;
   }
 
   public setDoctorss(doctorss: Array<Doctor>) {
     this.doctorss = doctorss;
+  }
+
+  public getDoctrosWithSearch(name: string, surname: string, rating: string): Array<Doctor> {
+
+    let params = new HttpParams();
+    params = params.append('name', name);
+    params = params.append('surname', surname);
+    params = params.append('rating', rating);
+    this.doctorsWithSearch = new Array<Doctor>();
+    this.http.get(this.urlDoctor + '/allWithSearch', {params}).subscribe((data: Doctor[]) => {
+        console.log(data)
+        for (const c of data) {
+          this.doctor = new Doctor(c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo,
+            c.specialized, c.doctorRating, c.clinic);
+          this.doctorsWithSearch.push(this.doctor);
+          console.log(this.doctor);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+      );
+
+    return this.doctorsWithSearch;
   }
 
 }

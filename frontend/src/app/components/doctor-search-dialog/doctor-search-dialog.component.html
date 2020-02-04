@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Search for doctors</h2>
+<mat-dialog-content [formGroup]="SearchDoctorGroup">
+  <div>
+    <mat-form-field class="example-full-width">
+      <input required="required" id="name" formControlName="name" matInput placeholder="Doctor name">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <input required="required" id="surname" formControlName="surname" matInput placeholder="Doctor surname">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <input required="required" id="rating" formControlName="rating" matInput placeholder="Doctor rating">
+    </mat-form-field>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="mat-raised-button"(click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>

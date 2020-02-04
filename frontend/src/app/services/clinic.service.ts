@@ -46,13 +46,9 @@ export class ClinicService {
 
   public getAllClinics(): Array<Clinic> {
     this.http.get(this.urlClinic + '/all').subscribe((data: Clinic[]) => {
-      console.log('Ovde');
-      console.log(data);
-      console.log('izmedju');
       for (const c of data) {
-        this.clinic = new Clinic(c.name, c.address, c.description, c.doctors ,c.types, c.clinicRating, c.id);
+        this.clinic = new Clinic(c.name, c.address, c.description, c.doctors , c.types, c.clinicRating, c.id);
         this.addClinic(this.clinic);
-        console.log(this.clinic);
       }
     },
       error => {
