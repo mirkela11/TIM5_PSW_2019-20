@@ -20,6 +20,10 @@ import {MedicalHistoryPatientComponent} from './components/medical-history-patie
 import {MedicalRecordPatientComponent} from './components/medical-record-patient/medical-record-patient.component';
 import {AddClinicAdministratorComponent} from './components/add-clinic-administrator/add-clinic-administrator.component';
 import {NurseDatePickerComponent} from './components/nurse-date-picker/nurse-date-picker.component';
+import {NurseListPatientComponent} from './components/nurse-list-patient/nurse-list-patient.component';
+import {NurseVacationRequestComponent} from './components/nurse-vacation-request/nurse-vacation-request.component';
+import {VacationRequestRegisterComponent} from './components/vacation-request-register/vacation-request-register.component';
+import {DoctorVacationRequestComponent} from './components/doctor-vacation-request/doctor-vacation-request.component';
 
 const routes: Routes = [
   {
@@ -99,6 +103,23 @@ const routes: Routes = [
   {
     path: 'nurse/WorkCalendar',
     component: NurseDatePickerComponent,
+  },
+
+  {
+    path: 'nurse/ListOfPatient',
+    component: NurseListPatientComponent,
+  },
+  {
+    path: 'nurse/VacationRequest',
+    component: NurseVacationRequestComponent,
+  },
+  {
+    path: 'clinical-centre-admin/VacationRequests',
+    component: VacationRequestRegisterComponent,
+  },
+  {
+    path: 'doctor/VacationRequest',
+    component: DoctorVacationRequestComponent,
   },
 
 ];

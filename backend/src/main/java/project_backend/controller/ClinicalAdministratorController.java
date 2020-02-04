@@ -5,10 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project_backend.dtos.ClinicalAdministratorDTO;
-import project_backend.model.ClinicAdministrator;
-import project_backend.model.Patient;
-import project_backend.model.PatientStatus;
-import project_backend.model.User;
+import project_backend.model.*;
 import project_backend.service.ClinicAdminService;
 import project_backend.service.UserService;
 
@@ -74,6 +71,7 @@ public class ClinicalAdministratorController {
             newClinicAdministrator.setName(clinicAdmins.getName());
             newClinicAdministrator.setSurname(clinicAdmins.getSurname());
             newClinicAdministrator.setNumber(clinicAdmins.getNumber());
+            newClinicAdministrator.setStatus(ClinicAdminStatus.ACTIVE);
 
 
             boolean uspesno = clinicAdminService.addClinicAdmin(newClinicAdministrator);

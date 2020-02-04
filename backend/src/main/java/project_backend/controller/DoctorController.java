@@ -5,7 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project_backend.dtos.DoctorDTO;
+import project_backend.model.Doctor;
+import project_backend.model.User;
 import project_backend.model.*;
+
 import project_backend.service.DoctorService;
 import project_backend.service.ExaminationService;
 import project_backend.service.TimeOffDoctorService;
