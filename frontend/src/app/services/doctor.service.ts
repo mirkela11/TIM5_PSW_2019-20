@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {Doctor} from '../model/doctor';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {UserServiceService} from './user-service.service';
 import {Clinic} from '../model/clinic';
 
@@ -16,6 +16,8 @@ export class DoctorService {
   doctor: Doctor;
   editD: Doctor;
   doctorss: Array<Doctor> = new Array<Doctor>();
+  termins: Array<string> = new Array<string>();
+  termin: string;
   constructor(
     private http: HttpClient,
     private userService: UserServiceService
@@ -76,6 +78,28 @@ export class DoctorService {
       }
     );
     return this.listDoctors;
+  }
+
+  public getDoctorsTermins(date: string, email: string): string {
+    let params = new HttpParams();
+    params = params.append('date', date);
+    params = params.append('email', email);
+    console.log(params)
+    this.http.get(this.urlDoctor + '/terminString', {params, responseType: 'text'}).subscribe((data: string) => {
+        this.termins = new Array<string>();
+        console.log('Ispod ovde');
+        console.log(data);
+        this.termin = data;
+        this.termins.push(data);
+
+
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    return this.termin;
   }
 
   public getDoctorss() {

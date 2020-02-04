@@ -1,7 +1,8 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {MatDialog, MatDialogRef, MatTableDataSource} from '@angular/material';
 import {Doctor} from '../../model/doctor';
 import {DoctorService} from '../../services/doctor.service';
+import {DoctorSearchDialogComponent} from '../doctor-search-dialog/doctor-search-dialog.component';
 
 @Component({
   selector: 'app-doctor-list-patient',
@@ -13,7 +14,10 @@ export class DoctorListPatientComponent implements OnInit {
   displayedColumns: string[] = ['Name', 'Surname', 'DoctorRating', 'Price'];
   doctorDataSource: MatTableDataSource<Doctor>;
   doctors: Array<Doctor>;
-  constructor(private doctorService: DoctorService) {
+  @Input() doctorSearchDialog: DoctorSearchDialogComponent;
+  constructor(private doctorService: DoctorService,
+              public searchDialog: MatDialog,
+              private dialogRef: MatDialogRef<DoctorSearchDialogComponent>) {
     this.doctors = doctorService.getDoctorss();
     this.doctorDataSource = new MatTableDataSource(this.doctors);
   }
@@ -27,6 +31,14 @@ export class DoctorListPatientComponent implements OnInit {
     if (this.doctorDataSource.paginator) {
       this.doctorDataSource.paginator.firstPage();
     }
+  }
+
+  searchDoctors() {
+    const dialog = this.searchDialog.open(DoctorSearchDialogComponent);
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 }
 

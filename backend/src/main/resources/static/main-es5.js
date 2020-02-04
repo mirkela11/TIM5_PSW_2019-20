@@ -72,7 +72,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<h2 mat-dialog-title>Clinic search</h2>\r\n\r\n<mat-dialog-content [formGroup]=\"SearchClinicsGroup\">\r\n  <div>\r\n    <mat-form-field class=\"example-full-width\">\r\n      <input required=\"required\" matInput id=\"date\" formControlName = \"date\" [matDatepickerFilter]=\"myFilter\" [matDatepicker]=\"picker\" placeholder=\"Choose a date\">\r\n      <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n      <mat-datepicker #picker></mat-datepicker>\r\n    </mat-form-field>\r\n  </div>\r\n  <div>\r\n    <mat-form-field>\r\n      <mat-select required=\"required\" id=\"type\" formControlName = \"type\" placeholder=\"Select examination type\">\r\n        <mat-option *ngFor=\"let examination_type of types\" value=\"{{examination_type.label}}\">{{examination_type.label}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n  </div>\r\n\r\n</mat-dialog-content>\r\n<mat-dialog-actions>\r\n  <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\r\n  <button class=\"mat-raised-button mat-primary\"(click)=\"save()\">Search</button>\r\n</mat-dialog-actions>\r\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<h2 mat-dialog-title>Search for clinics</h2>\r\n\r\n<mat-dialog-content [formGroup]=\"SearchClinicsGroup\">\r\n  <div>\r\n    <mat-form-field class=\"example-full-width\">\r\n      <input required=\"required\" matInput id=\"date\" formControlName = \"date\" [matDatepickerFilter]=\"myFilter\" [matDatepicker]=\"picker\" placeholder=\"Choose a date\">\r\n      <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n      <mat-datepicker #picker></mat-datepicker>\r\n    </mat-form-field>\r\n  </div>\r\n  <div>\r\n    <mat-form-field>\r\n      <mat-select required=\"required\" id=\"type\" formControlName = \"type\" placeholder=\"Select examination type\">\r\n        <mat-option *ngFor=\"let examination_type of types\" value=\"{{examination_type.label}}\">{{examination_type.label}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n  </div>\r\n\r\n</mat-dialog-content>\r\n<mat-dialog-actions>\r\n  <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\r\n  <button class=\"mat-raised-button mat-primary\"(click)=\"save()\">Search</button>\r\n</mat-dialog-actions>\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/clinics-list-patient/clinics-list.component.html": 
@@ -83,7 +83,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" class=\"mat-elevation-z8\" matSort>\r\n\r\n  <ng-container matColumnDef=\"Name\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic name </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Address\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic address </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.address}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"ClinicRating\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic rating </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinicRating}} </td>\r\n  </ng-container>\r\n  <div *ngIf=\"condition; then thenBlock else elseBlock\"></div>\r\n  <ng-template #elseBlock>\r\n    <ng-container matColumnDef=\"Price\">\r\n      <th  mat-header-cell *matHeaderCellDef> Price </th>\r\n      <td mat-cell *matCellDef=\"let element\"> 0 </td>\r\n    </ng-container>\r\n  </ng-template>\r\n\r\n  <ng-template #thenBlock>\r\n    <ng-container matColumnDef=\"Price\">\r\n      <th  mat-header-cell *matHeaderCellDef> Price </th>\r\n      <td mat-cell *matCellDef=\"let element\"> 0 </td>\r\n    </ng-container>\r\n  </ng-template>\r\n\r\n  <ng-container matColumnDef=\"Doctors\">\r\n    <th mat-header-cell *matHeaderCellDef> Doctors </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-flat-button color=\"warn\" (click)=\"doctorList(element)\"> Doctors </button>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n<button mat-raised-button color=\"primary\" (click)=\"openDialog()\">Making an appointment</button>\r\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" class=\"mat-elevation-z8\" matSort>\r\n\r\n  <ng-container matColumnDef=\"Name\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic name </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Address\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic address </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.address}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"ClinicRating\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic rating </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinicRating}} </td>\r\n  </ng-container>\r\n  <div *ngIf=\"condition; then thenBlock else elseBlock\"></div>\r\n  <ng-template #elseBlock>\r\n    <ng-container matColumnDef=\"Price\">\r\n      <th  mat-header-cell *matHeaderCellDef> Price </th>\r\n      <td mat-cell *matCellDef=\"let element\"> 0 </td>\r\n    </ng-container>\r\n  </ng-template>\r\n\r\n  <ng-template #thenBlock>\r\n    <ng-container matColumnDef=\"Price\">\r\n      <th  mat-header-cell *matHeaderCellDef> Price </th>\r\n      <td mat-cell *matCellDef=\"let element\"> 0 </td>\r\n    </ng-container>\r\n  </ng-template>\r\n\r\n  <ng-container matColumnDef=\"Doctors\">\r\n    <th mat-header-cell *matHeaderCellDef> Doctors </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-flat-button color=\"warn\" (click)=\"doctorList(element)\"> Doctors </button>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n<button mat-raised-button color=\"primary\" (click)=\"openDialog()\">Search</button>\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/doctor-list-patient/doctor-list-patient.component.html": 
@@ -94,7 +94,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\r\n    <mat-form-field>\r\n      <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n    </mat-form-field>\r\n    <table mat-table\r\n           [dataSource]=\"doctorDataSource\" class=\"mat-elevation-z8\" matSort>\r\n\r\n      <ng-container matColumnDef=\"Name\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor name </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"Surname\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor surname </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.surname}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"DoctorRating\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor rating </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.doctorRating}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"Price\">\r\n        <th mat-header-cell *matHeaderCellDef> Price </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.specialized.price}} </td>\r\n      </ng-container>\r\n\r\n\r\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n    </table>\r\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("\r\n    <mat-form-field>\r\n      <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n    </mat-form-field>\r\n    <table mat-table\r\n           [dataSource]=\"doctorDataSource\" class=\"mat-elevation-z8\" matSort>\r\n\r\n      <ng-container matColumnDef=\"Name\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor name </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"Surname\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor surname </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.surname}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"DoctorRating\">\r\n        <th mat-header-cell *matHeaderCellDef> Doctor rating </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.doctorRating}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"Price\">\r\n        <th mat-header-cell *matHeaderCellDef> Price </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.specialized.price}} </td>\r\n      </ng-container>\r\n\r\n\r\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n    </table>\r\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n    <button mat-raised-button color=\"primary\" (click)=\"searchDoctors()\">Search</button>\r\n    <mat-dialog-actions>\r\n      <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\r\n    </mat-dialog-actions>\r\n\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/doctor-profile/doctor-profile.component.html": 
@@ -106,6 +106,17 @@
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8 offset-md-2\">\r\n        <mat-card>\r\n          <h3>Profile</h3>\r\n          <hr>\r\n          <form [formGroup]=\"doctorProfileForm\" (ngSubmit)=\"onSubmit()\">\r\n\r\n            <div class=\"form-group\">\r\n              <mat-label for=\"email\">Email</mat-label>\r\n              <input type=\"email\" readonly=\"readonly\" id=\"email\" formControlName=\"email\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && doctorProfileForm.get('email').errors }\">\r\n\r\n              <div *ngIf=\"submitted && doctorProfileForm.get('email').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"doctorProfileForm.get('email').errors['required']\">Email is required</div>\r\n                <div *ngIf=\"doctorProfileForm.get('email').errors['email']\">Email must be a valid email address</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"password\">Password</label>\r\n              <input type=\"text\" id=\"password\" formControlName=\"password\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && doctorProfileForm.get('password').errors }\">\r\n              <div *ngIf=\"submitted && doctorProfileForm.get('password').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"doctorProfileForm.get('password').errors['required']\">Password is required</div>\r\n                <div *ngIf=\"doctorProfileForm.get('password').errors['minlength']\">Password must be at least 8 characters\r\n                  long</div>\r\n                <div *ngIf=\"doctorProfileForm.get('password').errors['pattern']\">Password must contain at least 1 lowercase,\r\n                  1 uppercase letter\r\n                  and 1 number</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"name\">First Name</label>\r\n              <input type=\"text\" id=\"name\" formControlName=\"name\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && doctorProfileForm.get('name').errors }\" />\r\n              <div *ngIf=\"submitted && doctorProfileForm.get('name').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\" doctorProfileForm.get('name').errors['required']\">First Name is required</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"surname\">Last Name</label>\r\n              <input type=\"text\" id=\"surname\" formControlName=\"surname\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && doctorProfileForm.get('surname').errors }\" />\r\n              <div *ngIf=\"submitted && doctorProfileForm.get('surname').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"doctorProfileForm.get('surname').errors['required']\">Last Name is required</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"number\">Phone Number</label>\r\n              <input type=\"number\" id=\"number\" formControlName=\"number\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && doctorProfileForm.get('number').errors }\" />\r\n              <div *ngIf=\"submitted && doctorProfileForm.get('number').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"doctorProfileForm.get('number').errors['required']\">Phone Number is required</div>\r\n                <div *ngIf=\"doctorProfileForm.get('number').errors['minlength']\">A phone number must have at least 9\r\n                  digits\r\n                </div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"workHoursFrom\">Work hours from</label>\r\n              <input type=\"number\" id=\"workHoursFrom\" formControlName=\"workHoursFrom\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && doctorProfileForm.get('number').errors }\" />\r\n              <div *ngIf=\"submitted && doctorProfileForm.get('number').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"doctorProfileForm.get('number').errors['required']\">Work hours from is required</div>\r\n                <div *ngIf=\"doctorProfileForm.get('number').errors['minlength']\">A work hours must have at least 2\r\n                  digits\r\n                </div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"workHoursTo\">Work hours to</label>\r\n              <input type=\"number\" id=\"workHoursTo\" formControlName=\"workHoursTo\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && doctorProfileForm.get('number').errors }\" />\r\n              <div *ngIf=\"submitted && doctorProfileForm.get('number').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"doctorProfileForm.get('number').errors['required']\">Work hours to is required</div>\r\n                <div *ngIf=\"doctorProfileForm.get('number').errors['minlength']\">A work hours to must have at least 2\r\n                  digits\r\n                </div>\r\n              </div>\r\n            </div>\r\n\r\n            <button mat-raised-button color=\"primary\" class=\"pull-right\">Save</button>\r\n\r\n          </form>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/doctor-search-dialog/doctor-search-dialog.component.html": 
+        /*!***************************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/doctor-search-dialog/doctor-search-dialog.component.html ***!
+          \***************************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<h2 mat-dialog-title>Search for doctors</h2>\n<mat-dialog-content [formGroup]=\"SearchDoctorGroup\">\n  <div>\n    <mat-form-field class=\"example-full-width\">\n      <input required=\"required\" id=\"name\" formControlName=\"name\" matInput placeholder=\"Doctor name\">\n    </mat-form-field>\n  </div>\n  <div>\n    <mat-form-field class=\"example-full-width\">\n      <input required=\"required\" id=\"surname\" formControlName=\"surname\" matInput placeholder=\"Doctor surname\">\n    </mat-form-field>\n  </div>\n  <div>\n    <mat-form-field class=\"example-full-width\">\n      <input required=\"required\" id=\"rating\" formControlName=\"rating\" matInput placeholder=\"Doctor rating\">\n    </mat-form-field>\n  </div>\n\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\n  <button class=\"mat-raised-button mat-primary\"(click)=\"save()\">Save</button>\n</mat-dialog-actions>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/home-page-admin-clinic/home-page-admin-clinic.component.html": 
@@ -797,6 +808,7 @@
             /* harmony import */ var _components_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/clinic-search-dialog/clinic-search-dialog.component */ "./src/app/components/clinic-search-dialog/clinic-search-dialog.component.ts");
             /* harmony import */ var _components_doctor_list_patient_doctor_list_patient_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/doctor-list-patient/doctor-list-patient.component */ "./src/app/components/doctor-list-patient/doctor-list-patient.component.ts");
             /* harmony import */ var _components_nurse_date_picker_nurse_date_picker_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/nurse-date-picker/nurse-date-picker.component */ "./src/app/components/nurse-date-picker/nurse-date-picker.component.ts");
+            /* harmony import */ var _components_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/doctor-search-dialog/doctor-search-dialog.component */ "./src/app/components/doctor-search-dialog/doctor-search-dialog.component.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -827,6 +839,7 @@
                         _components_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_30__["ClinicSearchDialogComponent"],
                         _components_doctor_list_patient_doctor_list_patient_component__WEBPACK_IMPORTED_MODULE_31__["DoctorListPatientComponent"],
                         _components_nurse_date_picker_nurse_date_picker_component__WEBPACK_IMPORTED_MODULE_32__["NurseDatePickerComponent"],
+                        _components_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_33__["DoctorSearchDialogComponent"],
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -847,6 +860,7 @@
                     entryComponents: [
                         _components_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_30__["ClinicSearchDialogComponent"],
                         _components_doctor_list_patient_doctor_list_patient_component__WEBPACK_IMPORTED_MODULE_31__["DoctorListPatientComponent"],
+                        _components_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_33__["DoctorSearchDialogComponent"],
                     ],
                     providers: [],
                     bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -1170,10 +1184,11 @@
         /*!***********************************************************************************!*\
           !*** ./src/app/components/clinic-search-dialog/clinic-search-dialog.component.ts ***!
           \***********************************************************************************/
-        /*! exports provided: ClinicSearchDialogComponent */
+        /*! exports provided: Result, ClinicSearchDialogComponent */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Result", function () { return Result; });
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClinicSearchDialogComponent", function () { return ClinicSearchDialogComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
@@ -1181,6 +1196,12 @@
             /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
             /* harmony import */ var _services_examination_type_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/examination-type.service */ "./src/app/services/examination-type.service.ts");
             /* harmony import */ var _services_clinic_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/clinic.service */ "./src/app/services/clinic.service.ts");
+            var Result = /** @class */ (function () {
+                function Result() {
+                    this.clinics = new Array();
+                }
+                return Result;
+            }());
             var ClinicSearchDialogComponent = /** @class */ (function () {
                 function ClinicSearchDialogComponent(clinicService, formBuilder, examinationTypeService, dialogRef, data) {
                     this.clinicService = clinicService;
@@ -1214,8 +1235,13 @@
                         return;
                     }
                     console.log(this.f.type.value);
+                    var a = new Date(this.f.date.value);
+                    var date = a.toLocaleDateString();
                     this.clinics = this.clinicService.getClinicsWithType(this.f.type.value);
-                    this.dialogRef.close(this.clinics);
+                    this.result = new Result();
+                    this.result.clinics = this.clinics;
+                    this.result.date = date;
+                    this.dialogRef.close(this.result);
                 };
                 ClinicSearchDialogComponent.prototype.close = function () {
                     this.dialogRef.close();
@@ -1273,10 +1299,7 @@
                     this.dialog = dialog;
                     this.doctorsDialog = doctorsDialog;
                     this.displayedColumns = ['Name', 'Address', 'ClinicRating', 'Price', 'Doctors'];
-                    // displayedColumnsDoctor: string[] = ['name', 'surname', 'scheduling'];
-                    // doctordataSource = new MatTableDataSource<Doctor>();
                     this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
-                    // doctors: Array<Doctor> = new Array<Doctor>();
                     this.clinics = new Array();
                     // this.doctors = this.doctorService.getAllDoctors();
                     this.clinics = this.clinicService.getAllClinics();
@@ -1295,9 +1318,12 @@
                     var _this = this;
                     var dialog = this.dialog.open(_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_5__["ClinicSearchDialogComponent"]);
                     dialog.afterClosed().subscribe(function (data) {
-                        _this.clinics = data;
-                        _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
-                        _this.condition = false;
+                        if (data !== undefined) {
+                            _this.clinics = data.clinics;
+                            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](_this.clinics);
+                            _this.condition = false;
+                            _this.tmp = data.date;
+                        }
                     });
                 };
                 ClinicsListComponent.prototype.applyFilter = function (filterValue) {
@@ -1308,6 +1334,11 @@
                 };
                 ClinicsListComponent.prototype.doctorList = function (element) {
                     this.doctorService.setDoctorss(element.doctors);
+                    for (var _i = 0, _a = element.doctors; _i < _a.length; _i++) {
+                        var d = _a[_i];
+                        // this.tmp1 = this.doctorService.getDoctorsTermins(this.tmp, d.email);
+                        // console.log(this.tmp1);
+                    }
                     var dialog = this.doctorsDialog.open(_doctor_list_patient_doctor_list_patient_component__WEBPACK_IMPORTED_MODULE_6__["DoctorListPatientComponent"]);
                 };
                 return ClinicsListComponent;
@@ -1357,9 +1388,12 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
             /* harmony import */ var _services_doctor_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/doctor.service */ "./src/app/services/doctor.service.ts");
+            /* harmony import */ var _doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../doctor-search-dialog/doctor-search-dialog.component */ "./src/app/components/doctor-search-dialog/doctor-search-dialog.component.ts");
             var DoctorListPatientComponent = /** @class */ (function () {
-                function DoctorListPatientComponent(doctorService) {
+                function DoctorListPatientComponent(doctorService, searchDialog, dialogRef) {
                     this.doctorService = doctorService;
+                    this.searchDialog = searchDialog;
+                    this.dialogRef = dialogRef;
                     this.displayedColumns = ['Name', 'Surname', 'DoctorRating', 'Price'];
                     this.doctors = doctorService.getDoctorss();
                     this.doctorDataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](this.doctors);
@@ -1372,11 +1406,22 @@
                         this.doctorDataSource.paginator.firstPage();
                     }
                 };
+                DoctorListPatientComponent.prototype.searchDoctors = function () {
+                    var dialog = this.searchDialog.open(_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_4__["DoctorSearchDialogComponent"]);
+                };
+                DoctorListPatientComponent.prototype.close = function () {
+                    this.dialogRef.close();
+                };
                 return DoctorListPatientComponent;
             }());
             DoctorListPatientComponent.ctorParameters = function () { return [
-                { type: _services_doctor_service__WEBPACK_IMPORTED_MODULE_3__["DoctorService"] }
+                { type: _services_doctor_service__WEBPACK_IMPORTED_MODULE_3__["DoctorService"] },
+                { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] },
+                { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"] }
             ]; };
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+            ], DoctorListPatientComponent.prototype, "doctorSearchDialog", void 0);
             DoctorListPatientComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-doctor-list-patient',
@@ -1484,6 +1529,80 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./doctor-profile.component.css */ "./src/app/components/doctor-profile/doctor-profile.component.css")).default]
                 })
             ], DoctorProfileComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/components/doctor-search-dialog/doctor-search-dialog.component.css": 
+        /*!************************************************************************************!*\
+          !*** ./src/app/components/doctor-search-dialog/doctor-search-dialog.component.css ***!
+          \************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZG9jdG9yLXNlYXJjaC1kaWFsb2cvZG9jdG9yLXNlYXJjaC1kaWFsb2cuY29tcG9uZW50LmNzcyJ9 */");
+            /***/ 
+        }),
+        /***/ "./src/app/components/doctor-search-dialog/doctor-search-dialog.component.ts": 
+        /*!***********************************************************************************!*\
+          !*** ./src/app/components/doctor-search-dialog/doctor-search-dialog.component.ts ***!
+          \***********************************************************************************/
+        /*! exports provided: DoctorSearchDialogComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DoctorSearchDialogComponent", function () { return DoctorSearchDialogComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+            /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+            var DoctorSearchDialogComponent = /** @class */ (function () {
+                function DoctorSearchDialogComponent(formBuilder, dialogRef, data) {
+                    this.formBuilder = formBuilder;
+                    this.dialogRef = dialogRef;
+                }
+                DoctorSearchDialogComponent.prototype.ngOnInit = function () {
+                    this.SearchDoctorGroup = this.formBuilder.group({
+                        name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+                        surname: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+                        rating: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(1), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(1),
+                            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('[0-5]*')]),
+                    });
+                };
+                Object.defineProperty(DoctorSearchDialogComponent.prototype, "f", {
+                    get: function () {
+                        return this.SearchDoctorGroup.controls;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                DoctorSearchDialogComponent.prototype.close = function () {
+                    this.dialogRef.close();
+                };
+                DoctorSearchDialogComponent.prototype.save = function () {
+                    if (this.SearchDoctorGroup.invalid) {
+                        return;
+                    }
+                    console.log('Ispod provera');
+                    console.log(this.f.name.value);
+                    console.log(this.f.surname.value);
+                    console.log(this.f.rating.value);
+                    this.dialogRef.close();
+                };
+                return DoctorSearchDialogComponent;
+            }());
+            DoctorSearchDialogComponent.ctorParameters = function () { return [
+                { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+                { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"] },
+                { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"],] }] }
+            ]; };
+            DoctorSearchDialogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-doctor-search-dialog',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./doctor-search-dialog.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/doctor-search-dialog/doctor-search-dialog.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./doctor-search-dialog.component.css */ "./src/app/components/doctor-search-dialog/doctor-search-dialog.component.css")).default]
+                }),
+                tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"]))
+            ], DoctorSearchDialogComponent);
             /***/ 
         }),
         /***/ "./src/app/components/home-page-admin-clinic/home-page-admin-clinic.component.css": 
@@ -3050,14 +3169,10 @@
                 ClinicService.prototype.getAllClinics = function () {
                     var _this = this;
                     this.http.get(this.urlClinic + '/all').subscribe(function (data) {
-                        console.log('Ovde');
-                        console.log(data);
-                        console.log('izmedju');
                         for (var _i = 0, data_2 = data; _i < data_2.length; _i++) {
                             var c = data_2[_i];
                             _this.clinic = new _model_clinic__WEBPACK_IMPORTED_MODULE_3__["Clinic"](c.name, c.address, c.description, c.doctors, c.types, c.clinicRating, c.id);
                             _this.addClinic(_this.clinic);
-                            console.log(_this.clinic);
                         }
                     }, function (error) {
                         console.log(error);
@@ -3209,6 +3324,7 @@
                     this.urlDoctor = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].doctor;
                     this.listDoctors = new Array();
                     this.doctorss = new Array();
+                    this.termins = new Array();
                     this.getAllDoctors();
                 }
                 DoctorService.prototype.loginDoctor = function (doctor) {
@@ -3260,6 +3376,23 @@
                         console.log(error);
                     });
                     return this.listDoctors;
+                };
+                DoctorService.prototype.getDoctorsTermins = function (date, email) {
+                    var _this = this;
+                    var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpParams"]();
+                    params = params.append('date', date);
+                    params = params.append('email', email);
+                    console.log(params);
+                    this.http.get(this.urlDoctor + '/terminString', { params: params, responseType: 'text' }).subscribe(function (data) {
+                        _this.termins = new Array();
+                        console.log('Ispod ovde');
+                        console.log(data);
+                        _this.termin = data;
+                        _this.termins.push(data);
+                    }, function (error) {
+                        console.log(error);
+                    });
+                    return this.termin;
                 };
                 DoctorService.prototype.getDoctorss = function () {
                     return this.doctorss;
