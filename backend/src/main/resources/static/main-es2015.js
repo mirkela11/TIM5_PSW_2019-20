@@ -1501,6 +1501,12 @@ let DoctorListPatientComponent = class DoctorListPatientComponent {
     }
     searchDoctors() {
         const dialog = this.searchDialog.open(_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_4__["DoctorSearchDialogComponent"]);
+        dialog.afterClosed().subscribe(data => {
+            if (data !== undefined) {
+                this.doctors = data;
+                this.doctorDataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
+            }
+        });
     }
     close() {
         this.dialogRef.close();
@@ -1662,14 +1668,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var _services_doctor_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/doctor.service */ "./src/app/services/doctor.service.ts");
+
 
 
 
 
 let DoctorSearchDialogComponent = class DoctorSearchDialogComponent {
-    constructor(formBuilder, dialogRef, data) {
+    constructor(formBuilder, doctorService, dialogRef, data) {
         this.formBuilder = formBuilder;
+        this.doctorService = doctorService;
         this.dialogRef = dialogRef;
+        this.doctors = new Array();
     }
     ngOnInit() {
         this.SearchDoctorGroup = this.formBuilder.group({
@@ -1689,15 +1699,14 @@ let DoctorSearchDialogComponent = class DoctorSearchDialogComponent {
         if (this.SearchDoctorGroup.invalid) {
             return;
         }
-        console.log('Ispod provera');
-        console.log(this.f.name.value);
-        console.log(this.f.surname.value);
-        console.log(this.f.rating.value);
-        this.dialogRef.close();
+        this.doctors = this.doctorService.getDoctrosWithSearch(this.f.name.value, this.f.surname.value, this.f.rating.value);
+        console.log(this.doctors);
+        this.dialogRef.close(this.doctors);
     }
 };
 DoctorSearchDialogComponent.ctorParameters = () => [
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+    { type: _services_doctor_service__WEBPACK_IMPORTED_MODULE_4__["DoctorService"] },
     { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"],] }] }
 ];
@@ -1707,7 +1716,7 @@ DoctorSearchDialogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./doctor-search-dialog.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/doctor-search-dialog/doctor-search-dialog.component.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./doctor-search-dialog.component.css */ "./src/app/components/doctor-search-dialog/doctor-search-dialog.component.css")).default]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"]))
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"]))
 ], DoctorSearchDialogComponent);
 
 
@@ -3666,6 +3675,7 @@ let DoctorService = class DoctorService {
         this.listDoctors = new Array();
         this.doctorss = new Array();
         this.termins = new Array();
+        this.doctorsWithSearch = new Array();
         this.getAllDoctors();
     }
     loginDoctor(doctor) {
@@ -3735,6 +3745,24 @@ let DoctorService = class DoctorService {
     }
     setDoctorss(doctorss) {
         this.doctorss = doctorss;
+    }
+    getDoctrosWithSearch(name, surname, rating) {
+        let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpParams"]();
+        params = params.append('name', name);
+        params = params.append('surname', surname);
+        params = params.append('rating', rating);
+        this.doctorsWithSearch = new Array();
+        this.http.get(this.urlDoctor + '/allWithSearch', { params }).subscribe((data) => {
+            console.log(data);
+            for (const c of data) {
+                this.doctor = new _model_doctor__WEBPACK_IMPORTED_MODULE_3__["Doctor"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.specialized, c.doctorRating, c.clinic);
+                this.doctorsWithSearch.push(this.doctor);
+                console.log(this.doctor);
+            }
+        }, error => {
+            console.log(error);
+        });
+        return this.doctorsWithSearch;
     }
 };
 DoctorService.ctorParameters = () => [

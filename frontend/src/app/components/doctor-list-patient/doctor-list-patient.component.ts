@@ -35,6 +35,13 @@ export class DoctorListPatientComponent implements OnInit {
 
   searchDoctors() {
     const dialog = this.searchDialog.open(DoctorSearchDialogComponent);
+    dialog.afterClosed().subscribe(data => {
+        if (data !== undefined) {
+         this.doctors = data;
+         this.doctorDataSource = new MatTableDataSource(data);
+        }
+      }
+    );
   }
 
   close() {

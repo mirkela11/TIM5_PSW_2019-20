@@ -17,6 +17,7 @@ export class DoctorService {
   editD: Doctor;
   doctorss: Array<Doctor> = new Array<Doctor>();
   termins: Array<string> = new Array<string>();
+  doctorsWithSearch: Array<Doctor> = new Array<Doctor>();
   termin: string;
   constructor(
     private http: HttpClient,
@@ -108,6 +109,30 @@ export class DoctorService {
 
   public setDoctorss(doctorss: Array<Doctor>) {
     this.doctorss = doctorss;
+  }
+
+  public getDoctrosWithSearch(name: string, surname: string, rating: string): Array<Doctor> {
+
+    let params = new HttpParams();
+    params = params.append('name', name);
+    params = params.append('surname', surname);
+    params = params.append('rating', rating);
+    this.doctorsWithSearch = new Array<Doctor>();
+    this.http.get(this.urlDoctor + '/allWithSearch', {params}).subscribe((data: Doctor[]) => {
+        console.log(data)
+        for (const c of data) {
+          this.doctor = new Doctor(c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo,
+            c.specialized, c.doctorRating, c.clinic);
+          this.doctorsWithSearch.push(this.doctor);
+          console.log(this.doctor);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+      );
+
+    return this.doctorsWithSearch;
   }
 
 }

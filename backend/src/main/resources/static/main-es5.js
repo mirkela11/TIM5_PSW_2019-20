@@ -1407,7 +1407,14 @@
                     }
                 };
                 DoctorListPatientComponent.prototype.searchDoctors = function () {
+                    var _this = this;
                     var dialog = this.searchDialog.open(_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_4__["DoctorSearchDialogComponent"]);
+                    dialog.afterClosed().subscribe(function (data) {
+                        if (data !== undefined) {
+                            _this.doctors = data;
+                            _this.doctorDataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
+                        }
+                    });
                 };
                 DoctorListPatientComponent.prototype.close = function () {
                     this.dialogRef.close();
@@ -1555,10 +1562,13 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
             /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+            /* harmony import */ var _services_doctor_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/doctor.service */ "./src/app/services/doctor.service.ts");
             var DoctorSearchDialogComponent = /** @class */ (function () {
-                function DoctorSearchDialogComponent(formBuilder, dialogRef, data) {
+                function DoctorSearchDialogComponent(formBuilder, doctorService, dialogRef, data) {
                     this.formBuilder = formBuilder;
+                    this.doctorService = doctorService;
                     this.dialogRef = dialogRef;
+                    this.doctors = new Array();
                 }
                 DoctorSearchDialogComponent.prototype.ngOnInit = function () {
                     this.SearchDoctorGroup = this.formBuilder.group({
@@ -1582,16 +1592,15 @@
                     if (this.SearchDoctorGroup.invalid) {
                         return;
                     }
-                    console.log('Ispod provera');
-                    console.log(this.f.name.value);
-                    console.log(this.f.surname.value);
-                    console.log(this.f.rating.value);
-                    this.dialogRef.close();
+                    this.doctors = this.doctorService.getDoctrosWithSearch(this.f.name.value, this.f.surname.value, this.f.rating.value);
+                    console.log(this.doctors);
+                    this.dialogRef.close(this.doctors);
                 };
                 return DoctorSearchDialogComponent;
             }());
             DoctorSearchDialogComponent.ctorParameters = function () { return [
                 { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+                { type: _services_doctor_service__WEBPACK_IMPORTED_MODULE_4__["DoctorService"] },
                 { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"] },
                 { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"],] }] }
             ]; };
@@ -1601,7 +1610,7 @@
                     template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./doctor-search-dialog.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/doctor-search-dialog/doctor-search-dialog.component.html")).default,
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./doctor-search-dialog.component.css */ "./src/app/components/doctor-search-dialog/doctor-search-dialog.component.css")).default]
                 }),
-                tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"]))
+                tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"]))
             ], DoctorSearchDialogComponent);
             /***/ 
         }),
@@ -3325,6 +3334,7 @@
                     this.listDoctors = new Array();
                     this.doctorss = new Array();
                     this.termins = new Array();
+                    this.doctorsWithSearch = new Array();
                     this.getAllDoctors();
                 }
                 DoctorService.prototype.loginDoctor = function (doctor) {
@@ -3400,6 +3410,26 @@
                 DoctorService.prototype.setDoctorss = function (doctorss) {
                     this.doctorss = doctorss;
                 };
+                DoctorService.prototype.getDoctrosWithSearch = function (name, surname, rating) {
+                    var _this = this;
+                    var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpParams"]();
+                    params = params.append('name', name);
+                    params = params.append('surname', surname);
+                    params = params.append('rating', rating);
+                    this.doctorsWithSearch = new Array();
+                    this.http.get(this.urlDoctor + '/allWithSearch', { params: params }).subscribe(function (data) {
+                        console.log(data);
+                        for (var _i = 0, data_6 = data; _i < data_6.length; _i++) {
+                            var c = data_6[_i];
+                            _this.doctor = new _model_doctor__WEBPACK_IMPORTED_MODULE_3__["Doctor"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.specialized, c.doctorRating, c.clinic);
+                            _this.doctorsWithSearch.push(_this.doctor);
+                            console.log(_this.doctor);
+                        }
+                    }, function (error) {
+                        console.log(error);
+                    });
+                    return this.doctorsWithSearch;
+                };
                 return DoctorService;
             }());
             DoctorService.ctorParameters = function () { return [
@@ -3436,8 +3466,8 @@
                 ExaminationsTypeService.prototype.getAllTypes = function () {
                     var _this = this;
                     this.http.get(this.urlExaminationType + '/all').subscribe(function (data) {
-                        for (var _i = 0, data_6 = data; _i < data_6.length; _i++) {
-                            var c = data_6[_i];
+                        for (var _i = 0, data_7 = data; _i < data_7.length; _i++) {
+                            var c = data_7[_i];
                             _this.type = new _model_examinationType__WEBPACK_IMPORTED_MODULE_2__["ExaminationType"](c.label, c.price);
                             _this.addType(_this.type);
                         }
@@ -3525,8 +3555,8 @@
                     var _this = this;
                     this.http.get(this.url + '/all').subscribe(function (data) {
                         _this.listExaminations = new Array();
-                        for (var _i = 0, data_7 = data; _i < data_7.length; _i++) {
-                            var c = data_7[_i];
+                        for (var _i = 0, data_8 = data; _i < data_8.length; _i++) {
+                            var c = data_8[_i];
                             console.log(c);
                             _this.examination = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](_this.whichKindExamination(c.kind.toString()), _this.whichStatusExamination(c.status.toString()), c.type, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
                             _this.listExaminations.push(_this.examination);
@@ -3597,8 +3627,8 @@
                     var _this = this;
                     this.http.get(this.url + '/all').subscribe(function (data) {
                         _this.listMedicalRecord = new Array();
-                        for (var _i = 0, data_8 = data; _i < data_8.length; _i++) {
-                            var c = data_8[_i];
+                        for (var _i = 0, data_9 = data; _i < data_9.length; _i++) {
+                            var c = data_9[_i];
                             // Ostalo je da se doda examinaton_report u konstruktoru
                             _this.medicalRecord = new _model_medicalRecord__WEBPACK_IMPORTED_MODULE_3__["MedicalRecord"](c.id, c.height, c.weight, c.bloodType, c.allergies, c.patient);
                             _this.listMedicalRecord.push(_this.medicalRecord);
@@ -3697,8 +3727,8 @@
                 NurseServiceService.prototype.getAllNurses = function () {
                     var _this = this;
                     this.http.get(this.urlNurse + '/all').subscribe(function (data) {
-                        for (var _i = 0, data_9 = data; _i < data_9.length; _i++) {
-                            var c = data_9[_i];
+                        for (var _i = 0, data_10 = data; _i < data_10.length; _i++) {
+                            var c = data_10[_i];
                             _this.nurse = new _model_nurse__WEBPACK_IMPORTED_MODULE_5__["Nurse"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursTo, c.workHoursFrom);
                             _this.addNurse(_this.nurse);
                         }
@@ -3798,8 +3828,8 @@
                 PatientService.prototype.getAllPatients = function () {
                     var _this = this;
                     this.http.get(this.urlPatient + '/all').subscribe(function (data) {
-                        for (var _i = 0, data_10 = data; _i < data_10.length; _i++) {
-                            var c = data_10[_i];
+                        for (var _i = 0, data_11 = data; _i < data_11.length; _i++) {
+                            var c = data_11[_i];
                             _this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, _this.whichStatus(c.status.toString()));
                             _this.addPatient(_this.patient);
                         }
@@ -3812,8 +3842,8 @@
                     var _this = this;
                     this.http.get(this.urlPatient + '/requests').subscribe(function (data) {
                         _this.tmp = new Array();
-                        for (var _i = 0, data_11 = data; _i < data_11.length; _i++) {
-                            var c = data_11[_i];
+                        for (var _i = 0, data_12 = data; _i < data_12.length; _i++) {
+                            var c = data_12[_i];
                             _this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].AWAITING_APPROVAL);
                             _this.tmp.push(_this.patient);
                             console.log(_this.patient);
@@ -3962,8 +3992,8 @@
                 UserServiceService.prototype.getAllUsers = function () {
                     var _this = this;
                     this.http.get(this.urlUser + '/all').subscribe(function (data) {
-                        for (var _i = 0, data_12 = data; _i < data_12.length; _i++) {
-                            var c = data_12[_i];
+                        for (var _i = 0, data_13 = data; _i < data_13.length; _i++) {
+                            var c = data_13[_i];
                             _this.u = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"](c.email, c.password, _this.whichRole(c.role.toString()));
                             _this.addUser(_this.u);
                         }
