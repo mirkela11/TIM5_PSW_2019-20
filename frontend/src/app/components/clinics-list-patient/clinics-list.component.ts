@@ -8,6 +8,7 @@ import {DoctorService} from '../../services/doctor.service';
 import {ClinicSearchDialogComponent} from '../clinic-search-dialog/clinic-search-dialog.component';
 import {DoctorListPatientComponent} from '../doctor-list-patient/doctor-list-patient.component';
 import {filter} from 'rxjs/operators';
+import {PredefExaminationDialogComponent} from '../predef-examination-dialog/predef-examination-dialog.component';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class ClinicsListComponent implements OnInit {
     private doctorService: DoctorService,
     public dialog: MatDialog,
     public doctorsDialog: MatDialog,
+    public predefExaminaitonDialog: MatDialog,
   ) {
     // this.doctors = this.doctorService.getAllDoctors();
     this.clinics = this.clinicService.getAllClinics();
@@ -80,5 +82,10 @@ export class ClinicsListComponent implements OnInit {
     const dialog = this.doctorsDialog.open(DoctorListPatientComponent);
 
   }
+  predefDialog() {
+    const dialog = this.predefExaminaitonDialog.open(PredefExaminationDialogComponent);
+    dialog.updateSize('1000px', '600');
+  }
+
 
 }
