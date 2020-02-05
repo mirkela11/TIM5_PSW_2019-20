@@ -31,7 +31,7 @@ insert into doctor(id,doctor_rating, email, name, password, phone, status, surna
 insert into time_off_doctor(id,status,type,doctor_id,interval_id) values (120,'APPROVED','HOLIDAY',101,157);
 insert into doctor(id,doctor_rating, email, name, password, phone, status, surname, work_hours_from, work_hours_to,clinic_id, specialized_id) values (102,3.8,'doctor1@email.com','Doctor1','Doctor1234','123467900','ACTIVE','Docic1','08','16',102,101);
 insert into time_off_doctor(id,status,type,doctor_id,interval_id) values (121,'APPROVED','HOLIDAY',102,158);
-insert into doctor(id,doctor_rating, email, name, password, phone, status, surname, work_hours_from, work_hours_to,clinic_id, specialized_id) values (103,4.0,'test@email.com','Marko','Doctor12345','464879178','ACTIVE','Markovic','08','16',101,100);
+insert into doctor(id,doctor_rating, email, name, password, phone, status, surname, work_hours_from, work_hours_to,clinic_id, specialized_id) values (103,4.0,'test@email.com','Marko','Doctor12345','464879178','ACTIVE','Markovic','08','16',102,101);
 insert into users(id, email, password, role) values (102, 'doctor@email.com', 'Doctor123', 1);
 insert into users(id, email, password, role) values (110, 'doctor1@email.com', 'Doctor1234', 1);
 insert into nurse(id, email, name, password, phone, surname, work_hours_from, work_hours_to, clinic_id) values (100,'nurse@email.com', 'Nurse', 'Nurse123','153426010', 'Nursic', '8:00', '16:00', 101);

@@ -41,5 +41,9 @@ public class ExaminationService {
         }
         return false;
     }
+    public void addExamination(Examination e){
+        examinationRepo.save(e);
+    }
+
 
 }

@@ -35,9 +35,6 @@ export class PredefExaminationDialogComponent implements OnInit {
   make(examination) {
     const id = examination.id.toLocaleString();
     const user = this.userService.getLoggedUser();
-    console.log('ISPOD');
-    console.log(id);
-    console.log(user.email);
     this.examinationService.makePredefExamination(id, user.email).subscribe(data => {
       this.examinations = this.examinationService.getAllPredefExaminations();
       this.ExaminationDataSource = new MatTableDataSource(this.examinations);
