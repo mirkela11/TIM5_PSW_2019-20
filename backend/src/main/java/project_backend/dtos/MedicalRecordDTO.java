@@ -1,6 +1,10 @@
 package project_backend.dtos;
 
+import project_backend.model.ExaminationReport;
 import project_backend.model.Patient;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class MedicalRecordDTO {
 
@@ -62,4 +66,5 @@ public class MedicalRecordDTO {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
+
 }

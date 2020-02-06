@@ -12,6 +12,7 @@ import project_backend.service.ExaminationTypeService;
 import project_backend.service.MedicalRecordService;
 import project_backend.service.PatientService;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,8 @@ public class MedicalRecordController {
         return new ResponseEntity<>(tmp, HttpStatus.OK);
     }
 
+
+
     @PostMapping(value = "medicalRecord/edit")
     public String editMedicalRecord(@RequestBody MedicalRecordDTO d){
         MedicalRecord mr = medicalRecordService.findOneById(d.getId());
@@ -87,5 +90,43 @@ public class MedicalRecordController {
 
         return "Greska";
     }
+
+    @GetMapping(value = "/medicalRecord/MedicalRecordForPatient")
+    public ResponseEntity<MedicalRecord> MedicalRecordForPatient(@RequestParam(value = "email", required = true) String email) {
+        Patient p = patientService.getPatient(email);
+        MedicalRecord tmp = null;
+        List<MedicalRecord> izvestaj = medicalRecordService.findAll();
+            for (MedicalRecord e : izvestaj) {
+                if(e.getPatient().getEmail().equals(email)){
+                    tmp = e;
+                }
+            }
+        System.out.println(izvestaj.size());
+        return new ResponseEntity<>(tmp, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/medicalRecord/DateAndTime")
+    public boolean OpenDialog(@RequestParam(value = "interval", required = true) String interval,
+                              @RequestParam(value = "interval1", required = true) String interval1){
+
+        LocalDateTime sada = LocalDateTime.now();
+        System.out.println(sada.toString());
+        String trenutnoVreme = sada.toLocalTime().toString();
+        String trenutniDatum = sada.toLocalDate().toString();
+
+        String [] parts = interval.split(" ");
+        String pocetniDatum = parts[0];
+        String pocetnoVreme = parts[1];
+
+        String [] parts1 = interval1.split(" ");
+        String krajnjiDatum = parts1[0];
+        String krajnjeVreme = parts1[1];
+
+        if(pocetniDatum.equals(trenutniDatum)){
+            
+        }
+        return false;
+    }
+
 
 }

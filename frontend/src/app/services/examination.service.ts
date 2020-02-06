@@ -3,7 +3,8 @@ import {environment} from '../../environments/environment';
 import {Examination} from '../model/examination';
 import {ExaminationKind} from '../model/examinationKind';
 import {ExaminationStatus} from '../model/examinationStatus';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Patient} from '../model/patient';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,9 @@ export class ExaminationService {
   url = environment.baseUrl + environment.examination;
   listExaminations: Array<Examination> = new Array<Examination>();
   examination: Examination;
+  examinationDoctor: Examination;
+  examinationForDoctor: Array<Examination> = new Array<Examination>();
+
   constructor(
     private http: HttpClient,
   ) {
@@ -44,7 +48,7 @@ export class ExaminationService {
         this.listExaminations = new Array<Examination>();
         for (const c of data) {
           console.log(c);
-          this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.type, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
+          this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
           this.listExaminations.push(this.examination)
           console.log(this.examination);
         }
@@ -73,6 +77,30 @@ export class ExaminationService {
     }
 
     return null;
+  }
+
+  public getExaminationsForDoctor(email: string): Array<Examination> {
+
+    let params = new HttpParams();
+    params = params.append('email', email);
+    this.examinationForDoctor = new Array<Examination>();
+    this.http.get(this.url + '/allExaminationsForDoctor', {params}).subscribe((data: Examination[]) => {
+        for (const c of data) {
+          this.examinationDoctor =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
+          this.examinationForDoctor.push(this.examination);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    console.log('Ispod');
+    console.log(this.examinationForDoctor);
+    return this.examinationForDoctor;
+  }
+
+  public getPatientForDoctors() {
+    return this.examinationForDoctor;
   }
 
 }
