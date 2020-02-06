@@ -36,6 +36,8 @@ import { NurseVacationRequestComponent } from './components/nurse-vacation-reque
 import { VacationRequestRegisterComponent } from './components/vacation-request-register/vacation-request-register.component';
 import { DoctorVacationRequestComponent } from './components/doctor-vacation-request/doctor-vacation-request.component';
 import { DoctorSearchDialogComponent } from './components/doctor-search-dialog/doctor-search-dialog.component';
+import { DoctorMedicalRecordComponent } from './components/doctor-medical-record/doctor-medical-record.component';
+import { MedicalRecordDialogComponent } from './components/medical-record-dialog/medical-record-dialog.component';
 
 
 @NgModule({
@@ -93,6 +95,10 @@ import { DoctorSearchDialogComponent } from './components/doctor-search-dialog/d
     DoctorVacationRequestComponent,
     
     DoctorSearchDialogComponent,
+    
+    DoctorMedicalRecordComponent,
+    
+    MedicalRecordDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,6 +122,7 @@ import { DoctorSearchDialogComponent } from './components/doctor-search-dialog/d
     ClinicSearchDialogComponent,
     DoctorListPatientComponent,
     DoctorSearchDialogComponent,
+    MedicalRecordDialogComponent,
 
   ],
   providers: [],

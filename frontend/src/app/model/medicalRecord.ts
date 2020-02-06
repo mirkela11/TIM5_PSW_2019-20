@@ -19,4 +19,11 @@ export class MedicalRecord {
     this.patient = patient;
     this.reports = reports;
   }
+
+  public set(height: number, weight: number, bloodType: string, allergies: string, comment?: string) {
+    this.height = height;
+    this.weight = weight;
+    this.bloodType = bloodType;
+    this.allergies = allergies;
+  }
 }

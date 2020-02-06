@@ -4,6 +4,7 @@ import {Examination} from '../model/examination';
 import {MedicalRecord} from '../model/medicalRecord';
 import {HttpClient} from '@angular/common/http';
 import {ExaminationReport} from '../model/examinationReport';
+import {Nurse} from '../model/nurse';
 
 @Injectable({
   providedIn: 'root'
@@ -54,4 +55,22 @@ export class MedicalRecordService {
     }
   }
 
+  public editMedicalRecord(medicalRecord) {
+    return this.http.post(this.url + '/edit', medicalRecord, {responseType: 'text'});
+  }
+
+  public setMedicalRecord(p: MedicalRecord) {
+
+    for (const p1 of this.listMedicalRecord) {
+      if (p1.id === p.id) {
+        p1.weight = p.weight;
+        p1.bloodType = p.bloodType;
+        p1.allergies = p.allergies;
+        p1.reports = p.reports;
+        p1.height = p.height;
+        p1.patient = p.patient;
+        return;
+      }
+    }
+  }
 }
