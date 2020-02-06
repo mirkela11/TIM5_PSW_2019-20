@@ -2397,13 +2397,15 @@
                     this.setAll();
                 };
                 MedicalRecordPatientComponent.prototype.setAll = function () {
-                    this.height = this.mr.height;
-                    this.weight = this.mr.weight;
-                    this.bloodType = this.mr.bloodType;
-                    this.allergies = this.mr.allergies;
-                    for (var _i = 0, _a = this.mr.examinationReports; _i < _a.length; _i++) {
-                        var r = _a[_i];
-                        this.reports = r.comment + '\n';
+                    if (this.mr !== null) {
+                        this.height = this.mr.height;
+                        this.weight = this.mr.weight;
+                        this.bloodType = this.mr.bloodType;
+                        this.allergies = this.mr.allergies;
+                        for (var _i = 0, _a = this.mr.examinationReports; _i < _a.length; _i++) {
+                            var r = _a[_i];
+                            this.reports = r.comment + '\n';
+                        }
                     }
                 };
                 return MedicalRecordPatientComponent;

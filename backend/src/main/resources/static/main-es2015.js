@@ -2607,12 +2607,14 @@ let MedicalRecordPatientComponent = class MedicalRecordPatientComponent {
         this.setAll();
     }
     setAll() {
-        this.height = this.mr.height;
-        this.weight = this.mr.weight;
-        this.bloodType = this.mr.bloodType;
-        this.allergies = this.mr.allergies;
-        for (const r of this.mr.examinationReports) {
-            this.reports = r.comment + '\n';
+        if (this.mr !== null) {
+            this.height = this.mr.height;
+            this.weight = this.mr.weight;
+            this.bloodType = this.mr.bloodType;
+            this.allergies = this.mr.allergies;
+            for (const r of this.mr.examinationReports) {
+                this.reports = r.comment + '\n';
+            }
         }
     }
 };
