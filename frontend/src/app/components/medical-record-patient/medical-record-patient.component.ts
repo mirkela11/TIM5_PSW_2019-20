@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MedicalRecord} from '../../model/medicalRecord';
 import {MedicalRecordService} from '../../services/medical-record.service';
-import {UserServiceService} from "../../services/user-service.service";
-import {User} from "../../model/user";
+import {UserServiceService} from '../../services/user-service.service';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'app-medical-record-patient',

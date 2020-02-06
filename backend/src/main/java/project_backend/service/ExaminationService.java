@@ -2,11 +2,10 @@ package project_backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import project_backend.model.Examination;
-import project_backend.model.ExaminationStatus;
-import project_backend.model.Patient;
+import project_backend.model.*;
 import project_backend.repository.ExaminationRepo;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -14,6 +13,9 @@ public class ExaminationService {
 
     @Autowired
     private ExaminationRepo examinationRepo;
+
+    @Autowired
+    private MailService mailService;
 
     public List<Examination> findAll()
     {
@@ -40,6 +42,21 @@ public class ExaminationService {
             }
         }
         return false;
+    }
+    public void addExamination(Examination e){
+        examinationRepo.save(e);
+    }
+
+    public void awaitingExamination(Examination examination, Patient patient) {
+        String subject = "Examination is on pending approval";
+        String text = "Your " + examination.getKind().toString() + " with name " + "'" + examination.getExaminationType().getLabel() + "' "  + "is on the waiting list for approval.";
+        mailService.Send(patient.getEmail(), subject, text);
+    }
+
+    public void awaitingExaminationForAdmin(Examination examination, ClinicAdministrator clinicAdministrator) {
+        String subject = "Examination is on pending approval";
+        String text = "You have a " + examination.getKind().toString() + " with name " + "'" + examination.getExaminationType().getLabel() + "' "  + "to approval.";
+        mailService.Send(clinicAdministrator.getEmail(), subject, text);
     }
 
 }

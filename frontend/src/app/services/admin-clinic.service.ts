@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {AdminClinic} from '../model/adminClinic';
 import {UserServiceService} from './user-service.service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Patient} from '../model/patient';
 import {AdminClinicStatus} from '../model/adminClinicStatus';
 
@@ -15,6 +15,7 @@ export class AdminClinicService {
   listAdminClinic: Array<AdminClinic> = new Array<AdminClinic>();
   adminClinic: AdminClinic;
   editAC: AdminClinic;
+  adminClinicsWithClinicId: Array<AdminClinic> = new Array<AdminClinic>();
 
   constructor(
     private http: HttpClient,
@@ -73,8 +74,11 @@ export class AdminClinicService {
   public getAllClinicAdmins(): Array<AdminClinic> {
     this.http.get(this.urlAdminClinic + '/all').subscribe((data: AdminClinic[]) => {
         for (const c of data) {
-          this.adminClinic = new AdminClinic(c.email, c.password, c.name, c.surname, c.number, this.whichStatus(c.status.toString()));
+          this.adminClinic = new AdminClinic(c.email, c.password, c.name, c.surname, c.number, c.clinic, this.whichStatus(c.status.toString()));
           this.addClinicAdmin(this.adminClinic);
+          console.log(c);
+          console.log('Ispod admin klinike');
+          console.log(this.adminClinic);
         }
       },
       error => {
@@ -93,5 +97,21 @@ export class AdminClinicService {
     if (this.getAdminClinic(ac.email) === null) {
       this.listAdminClinic.push(ac);
     }
+  }
+
+  public getAdminClinicsWithClinicId(id: string): AdminClinic[] {
+    let params = new HttpParams();
+    params = params.append('id', id);
+    this.http.get(this.urlAdminClinic + '/adminClinicsWithClinicId', {params}).subscribe((data: AdminClinic[]) => {
+          this.adminClinicsWithClinicId = data;
+          console.log('Admin clinic get ispod');
+          console.log(this.adminClinicsWithClinicId);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    return this.adminClinicsWithClinicId;
   }
 }

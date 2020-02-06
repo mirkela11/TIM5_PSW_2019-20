@@ -55,6 +55,7 @@ export class ClinicSearchDialogComponent implements OnInit {
     }
 
     console.log(this.f.type.value);
+    this.clinicService.setType(this.f.type.value);
     const a = new Date(this.f.date.value);
 
     const date = a.toLocaleDateString();

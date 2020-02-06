@@ -19,6 +19,9 @@ export class DoctorService {
   termins: Array<string> = new Array<string>();
   doctorsWithSearch: Array<Doctor> = new Array<Doctor>();
   termin: string;
+  date: string;
+  doctorForMake: Doctor;
+  intervals: Array<string[]> = new Array<string[]>();
   constructor(
     private http: HttpClient,
     private userService: UserServiceService
@@ -81,18 +84,17 @@ export class DoctorService {
     return this.listDoctors;
   }
 
-  public getDoctorsTermins(date: string, email: string): string {
+  public getDoctorsTermins(date: string, email: string): Array<string> {
     let params = new HttpParams();
     params = params.append('date', date);
     params = params.append('email', email);
     console.log(params)
-    this.http.get(this.urlDoctor + '/terminString', {params, responseType: 'text'}).subscribe((data: string) => {
+    this.http.get(this.urlDoctor + '/terminString', {params}).subscribe((data: string[]) => {
         this.termins = new Array<string>();
         console.log('Ispod ovde');
         console.log(data);
-        this.termin = data;
-        this.termins.push(data);
-
+        this.termins = data;
+        this.intervals.push(this.termins);
 
       },
       error => {
@@ -100,7 +102,7 @@ export class DoctorService {
       }
     );
 
-    return this.termin;
+    return this.termins;
   }
 
   public getDoctorss() {
@@ -133,6 +135,32 @@ export class DoctorService {
       );
 
     return this.doctorsWithSearch;
+  }
+
+  public setExaminationsInterval(intervals: Array<string[]>) {
+    this.intervals = intervals;
+    console.log('ISPOD INTERVALI');
+    console.log(this.intervals);
+  }
+
+  public getExaminationsInterval() {
+    return this.intervals;
+  }
+
+  public setDate(date) {
+    this.date = date;
+  }
+
+  public getDate() {
+    return this.date;
+  }
+
+  public setDoctorForMake(doctor: Doctor) {
+    this.doctorForMake = doctor;
+  }
+
+  public getDoctorForMake() {
+    return this.doctorForMake;
   }
 
 }

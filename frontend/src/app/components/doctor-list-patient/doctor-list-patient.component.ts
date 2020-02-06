@@ -3,6 +3,13 @@ import {MatDialog, MatDialogRef, MatTableDataSource} from '@angular/material';
 import {Doctor} from '../../model/doctor';
 import {DoctorService} from '../../services/doctor.service';
 import {DoctorSearchDialogComponent} from '../doctor-search-dialog/doctor-search-dialog.component';
+import {PatientMakeExaminationComponent} from '../patient-make-examination/patient-make-examination.component';
+
+export class DataTable {
+  termin: string;
+  doctor: Doctor;
+  constructor() {}
+}
 
 @Component({
   selector: 'app-doctor-list-patient',
@@ -10,15 +17,18 @@ import {DoctorSearchDialogComponent} from '../doctor-search-dialog/doctor-search
   styleUrls: ['./doctor-list-patient.component.css']
 })
 export class DoctorListPatientComponent implements OnInit {
-
-  displayedColumns: string[] = ['Name', 'Surname', 'DoctorRating', 'Price'];
+  displayedColumns: string[] = ['Name', 'Surname', 'DoctorRating', 'Price', 'Make'];
   doctorDataSource: MatTableDataSource<Doctor>;
   doctors: Array<Doctor>;
+  date: string;
+  termins: Array<string[]> = new Array<string[]>();
   @Input() doctorSearchDialog: DoctorSearchDialogComponent;
   constructor(private doctorService: DoctorService,
               public searchDialog: MatDialog,
+              public dialog: MatDialog,
               private dialogRef: MatDialogRef<DoctorSearchDialogComponent>) {
     this.doctors = doctorService.getDoctorss();
+    this.termins = doctorService.getExaminationsInterval();
     this.doctorDataSource = new MatTableDataSource(this.doctors);
   }
 
@@ -46,6 +56,15 @@ export class DoctorListPatientComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  make(element) {
+    this.doctorService.setDoctorForMake(element);
+    setTimeout(() => {const dialog = this.searchDialog.open(PatientMakeExaminationComponent); dialog.afterClosed().subscribe(data => {
+      this.dialogRef.close();
+    }); }, 200);
+
+    // const dialog = this.searchDialog.open(PatientMakeExaminationComponent);
   }
 }
 

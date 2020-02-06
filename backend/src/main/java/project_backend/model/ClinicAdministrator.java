@@ -28,8 +28,6 @@ public class ClinicAdministrator {
     @Column(columnDefinition = "VARCHAR(10)", unique = true, nullable = false)
     private String number;
 
-
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Clinic clinic;
 
