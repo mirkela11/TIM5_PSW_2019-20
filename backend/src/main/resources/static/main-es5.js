@@ -2718,18 +2718,22 @@
             /* harmony import */ var _services_examination_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/examination.service */ "./src/app/services/examination.service.ts");
             /* harmony import */ var _services_user_service_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/user-service.service */ "./src/app/services/user-service.service.ts");
             /* harmony import */ var _services_clinic_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../services/clinic.service */ "./src/app/services/clinic.service.ts");
+            /* harmony import */ var _services_admin_clinic_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../services/admin-clinic.service */ "./src/app/services/admin-clinic.service.ts");
             var PatientMakeExaminationComponent = /** @class */ (function () {
-                function PatientMakeExaminationComponent(dialogRef, doctorService, clinicService, formBuilder, examinationServce, userService, data) {
+                function PatientMakeExaminationComponent(dialogRef, doctorService, clinicService, formBuilder, examinationServce, userService, adminClinicService, data) {
                     this.dialogRef = dialogRef;
                     this.doctorService = doctorService;
                     this.clinicService = clinicService;
                     this.formBuilder = formBuilder;
                     this.examinationServce = examinationServce;
                     this.userService = userService;
+                    this.adminClinicService = adminClinicService;
                     this.termins = new Array();
                     this.kinds = new Array();
+                    this.AdminClinics = new Array();
                     this.k = 'Examination';
                     this.k1 = 'Operation';
+                    this.adminsClinic = '';
                     this.doctor = doctorService.getDoctorForMake();
                     this.date = doctorService.getDate();
                     this.termins = doctorService.getDoctorsTermins(this.date, this.doctor.email);
@@ -2739,6 +2743,7 @@
                     this.kinds = new Array();
                     this.kinds.push(this.k);
                     this.kinds.push(this.k1);
+                    this.AdminClinics = adminClinicService.getAdminClinicsWithClinicId(this.clinic.id.toString());
                 }
                 PatientMakeExaminationComponent.prototype.ngOnInit = function () {
                     this.MakeGroup = this.formBuilder.group({
@@ -2759,10 +2764,15 @@
                         return;
                     }
                     var kindTest = this.f.kind.value;
-                    console.log('KIND ISPOD');
-                    console.log(kindTest);
                     var interval = this.f.terminTime.value;
-                    this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString(), kindTest).subscribe(function (data) {
+                    console.log(this.AdminClinics);
+                    for (var _i = 0, _a = this.AdminClinics; _i < _a.length; _i++) {
+                        var a = _a[_i];
+                        this.adminsClinic = this.adminsClinic + a.email + ',';
+                    }
+                    var finalAdminClinic = this.adminsClinic.substring(0, this.adminsClinic.length - 1);
+                    console.log(finalAdminClinic);
+                    this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString(), kindTest, finalAdminClinic).subscribe(function (data) {
                         _this.dialogRef.close();
                     }, function (error) {
                         console.log(error);
@@ -2780,6 +2790,7 @@
                 { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
                 { type: _services_examination_service__WEBPACK_IMPORTED_MODULE_5__["ExaminationService"] },
                 { type: _services_user_service_service__WEBPACK_IMPORTED_MODULE_6__["UserServiceService"] },
+                { type: _services_admin_clinic_service__WEBPACK_IMPORTED_MODULE_8__["AdminClinicService"] },
                 { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"],] }] }
             ]; };
             PatientMakeExaminationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -2788,7 +2799,7 @@
                     template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./patient-make-examination.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/patient-make-examination/patient-make-examination.component.html")).default,
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./patient-make-examination.component.css */ "./src/app/components/patient-make-examination/patient-make-examination.component.css")).default]
                 }),
-                tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](6, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"]))
+                tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](7, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"]))
             ], PatientMakeExaminationComponent);
             /***/ 
         }),
@@ -3395,13 +3406,14 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminClinic", function () { return AdminClinic; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             var AdminClinic = /** @class */ (function () {
-                function AdminClinic(email, password, name, surname, number1, status) {
+                function AdminClinic(email, password, name, surname, number1, clinic, status) {
                     this.email = email;
                     this.password = password;
                     this.name = name;
                     this.surname = surname;
                     this.number = number1;
                     this.status = status;
+                    this.clinic = clinic;
                 }
                 return AdminClinic;
             }());
@@ -3723,6 +3735,7 @@
                     this.userService = userService;
                     this.urlAdminClinic = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].adminClinic;
                     this.listAdminClinic = new Array();
+                    this.adminClinicsWithClinicId = new Array();
                     this.getAllClinicAdmins();
                 }
                 AdminClinicService.prototype.loginAdminClinic = function (adminClinic) {
@@ -3773,8 +3786,11 @@
                     this.http.get(this.urlAdminClinic + '/all').subscribe(function (data) {
                         for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
                             var c = data_1[_i];
-                            _this.adminClinic = new _model_adminClinic__WEBPACK_IMPORTED_MODULE_3__["AdminClinic"](c.email, c.password, c.name, c.surname, c.number, _this.whichStatus(c.status.toString()));
+                            _this.adminClinic = new _model_adminClinic__WEBPACK_IMPORTED_MODULE_3__["AdminClinic"](c.email, c.password, c.name, c.surname, c.number, c.clinic, _this.whichStatus(c.status.toString()));
                             _this.addClinicAdmin(_this.adminClinic);
+                            console.log(c);
+                            console.log('Ispod admin klinike');
+                            console.log(_this.adminClinic);
                         }
                     }, function (error) {
                         console.log(error);
@@ -3788,6 +3804,19 @@
                     if (this.getAdminClinic(ac.email) === null) {
                         this.listAdminClinic.push(ac);
                     }
+                };
+                AdminClinicService.prototype.getAdminClinicsWithClinicId = function (id) {
+                    var _this = this;
+                    var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpParams"]();
+                    params = params.append('id', id);
+                    this.http.get(this.urlAdminClinic + '/adminClinicsWithClinicId', { params: params }).subscribe(function (data) {
+                        _this.adminClinicsWithClinicId = data;
+                        console.log('Admin clinic get ispod');
+                        console.log(_this.adminClinicsWithClinicId);
+                    }, function (error) {
+                        console.log(error);
+                    });
+                    return this.adminClinicsWithClinicId;
                 };
                 return AdminClinicService;
             }());
@@ -4314,7 +4343,7 @@
                     params = params.append('email', email);
                     return this.http.post(this.url + '/makePredefExamination', params);
                 };
-                ExaminationService.prototype.makeExamination = function (date, patientEmail, doctorEmail, type, clinicId, kind) {
+                ExaminationService.prototype.makeExamination = function (date, patientEmail, doctorEmail, type, clinicId, kind, adminsClinic) {
                     var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpParams"]();
                     params = params.append('date', date);
                     params = params.append('patientEmail', patientEmail);
@@ -4322,6 +4351,7 @@
                     params = params.append('type', type);
                     params = params.append('clinicId', clinicId);
                     params = params.append('kind', kind);
+                    params = params.append('adminsClinic', adminsClinic);
                     return this.http.post(this.url + '/addExaminationPatient', params);
                 };
                 return ExaminationService;

@@ -102,7 +102,7 @@ export class ExaminationService {
     return this.http.post(this.url + '/makePredefExamination', params);
   }
 
-  public makeExamination(date: string, patientEmail: string, doctorEmail: string, type: string, clinicId: string, kind: string) {
+  public makeExamination(date: string, patientEmail: string, doctorEmail: string, type: string, clinicId: string, kind: string, adminsClinic: string) {
     let params = new HttpParams();
     params = params.append('date', date);
     params = params.append('patientEmail', patientEmail);
@@ -110,6 +110,7 @@ export class ExaminationService {
     params = params.append('type', type);
     params = params.append('clinicId', clinicId);
     params = params.append('kind', kind);
+    params = params.append('adminsClinic', adminsClinic);
     return this.http.post(this.url + '/addExaminationPatient', params);
   }
 }

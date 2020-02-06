@@ -10,6 +10,9 @@ import {User} from '../../model/user';
 import {UserServiceService} from '../../services/user-service.service';
 import {ClinicService} from '../../services/clinic.service';
 import {Clinic} from '../../model/clinic';
+import {AdminClinicStatus} from '../../model/adminClinicStatus';
+import {AdminClinic} from '../../model/adminClinic';
+import {AdminClinicService} from '../../services/admin-clinic.service';
 
 @Component({
   selector: 'app-patient-make-examination',
@@ -21,6 +24,7 @@ export class PatientMakeExaminationComponent implements OnInit {
   MakeGroup: FormGroup;
   termins: Array<string> = new Array<string>();
   kinds: Array<string> = new Array<string>();
+  AdminClinics: Array<AdminClinic> = new Array<AdminClinic>();
   doctor: Doctor;
   date: string;
   user: User;
@@ -28,6 +32,7 @@ export class PatientMakeExaminationComponent implements OnInit {
   type: string;
   k = 'Examination';
   k1 = 'Operation';
+  adminsClinic = '';
 
   constructor(private dialogRef: MatDialogRef<PatientMakeExaminationComponent>,
               private doctorService: DoctorService,
@@ -35,6 +40,7 @@ export class PatientMakeExaminationComponent implements OnInit {
               private formBuilder: FormBuilder,
               private examinationServce: ExaminationService,
               private userService: UserServiceService,
+              private adminClinicService: AdminClinicService,
               @Inject(MAT_DIALOG_DATA) data) {
       this.doctor = doctorService.getDoctorForMake();
       this.date = doctorService.getDate();
@@ -45,6 +51,7 @@ export class PatientMakeExaminationComponent implements OnInit {
       this.kinds = new Array<string>();
       this.kinds.push(this.k);
       this.kinds.push(this.k1);
+      this.AdminClinics = adminClinicService.getAdminClinicsWithClinicId(this.clinic.id.toString());
   }
 
   ngOnInit() {
@@ -65,10 +72,16 @@ export class PatientMakeExaminationComponent implements OnInit {
     }
 
     const kindTest = this.f.kind.value;
-    console.log('KIND ISPOD');
-    console.log(kindTest);
     const interval = this.f.terminTime.value;
-    this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString(), kindTest).subscribe(data => {
+    console.log(this.AdminClinics)
+    for (const a of this.AdminClinics) {
+      this.adminsClinic = this.adminsClinic + a.email + ',';
+    }
+
+    const finalAdminClinic = this.adminsClinic.substring(0, this.adminsClinic.length - 1);
+    console.log(finalAdminClinic);
+
+    this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString(), kindTest, finalAdminClinic).subscribe(data => {
       this.dialogRef.close();
     }, error => {
       console.log(error);

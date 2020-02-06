@@ -35,6 +35,9 @@ public class ExaminationController {
     @Autowired
     ClinicService clinicService;
 
+    @Autowired
+    ClinicAdminService clinicAdminService;
+
     @GetMapping(value = "/examination/all")
     public ResponseEntity<List<Examination>> allExaminations() {
         return new ResponseEntity<>(examinationService.findAll(), HttpStatus.OK);
@@ -77,13 +80,15 @@ public class ExaminationController {
                                                              @RequestParam(value = "doctorEmail", required = true) String doctorEmail,
                                                              @RequestParam(value = "type", required = true) String type,
                                                              @RequestParam(value = "clinicId", required = true) String clinicId,
-                                                             @RequestParam(value = "kind", required = true) String kind) {
+                                                             @RequestParam(value = "kind", required = true) String kind,
+                                                             @RequestParam(value = "adminsClinic", required = true) String adminsClinic) {
         Doctor doctor = doctorService.getDoctor(doctorEmail);
         Patient patient = patientService.getPatient(patientEmail);
         ExaminationType examinationType = examinationTypeService.findByName(type);
         Interval interval = new Interval();
         Examination e = new Examination();
         Clinic clinic = clinicService.findOneById(Long.parseLong(clinicId));
+        ClinicAdministrator clinicAdministrator = clinicAdminService.getClinicalAdministrator(adminsClinic);
         Set<Doctor> doctors = new HashSet<Doctor>();
 
         String[] parts = date.split(" ");
@@ -105,15 +110,16 @@ public class ExaminationController {
         doctors.add(doctor);
         e.setDoctors(doctors);
         e.setInterval(interval);
+        e.setClinicAdministrator(clinicAdministrator);
 
         if(kind.equals("Examination")) {
             e.setKind(ExaminationKind.EXAMINATION);
         }else
             e.setKind(ExaminationKind.OPERATION);
 
-
         examinationService.addExamination(e);
         this.examinationService.awaitingExamination(e,patient);
+        this.examinationService.awaitingExaminationForAdmin(e,clinicAdministrator);
         return new ResponseEntity<>(e, HttpStatus.OK);
     }
 
