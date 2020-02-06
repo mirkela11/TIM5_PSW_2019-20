@@ -1,7 +1,15 @@
 table {
-  width: 100%;
+  width: 75%;
+  margin-top:50px;
+  margin-left:300px;
 }
 
 th.mat-sort-header-sorted {
   color: black;
+}
+.mat-form-field {
+  font-size: 14px;
+  margin-top:50px;
+  margin-left:300px;
+  width: 75%;
 }

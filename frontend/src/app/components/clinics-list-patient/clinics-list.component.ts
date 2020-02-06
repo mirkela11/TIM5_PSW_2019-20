@@ -1,15 +1,12 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {MatDialog, MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatTableDataSource, MatSort} from '@angular/material';
 import {Clinic} from '../../model/clinic';
 import {ClinicService} from '../../services/clinic.service';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Doctor} from '../../model/doctor';
 import {DoctorService} from '../../services/doctor.service';
 import {ClinicSearchDialogComponent} from '../clinic-search-dialog/clinic-search-dialog.component';
 import {DoctorListPatientComponent} from '../doctor-list-patient/doctor-list-patient.component';
-import {filter} from 'rxjs/operators';
 import {PredefExaminationDialogComponent} from '../predef-examination-dialog/predef-examination-dialog.component';
-import {__await} from 'tslib';
 
 
 @Component({
@@ -19,7 +16,7 @@ import {__await} from 'tslib';
 })
 export class ClinicsListComponent implements OnInit {
 
-  displayedColumns: string[] = ['Name', 'Address', 'ClinicRating', 'Price', 'Doctors'];
+  displayedColumns: string[] = ['Name', 'Address', 'ClinicRating', 'Doctors'];
   clinic: Clinic;
   doctor: Doctor;
   condition: boolean;
@@ -29,6 +26,7 @@ export class ClinicsListComponent implements OnInit {
   arr: Array<string[]> = new Array<string[]>();
   dataSource = new MatTableDataSource<Clinic>();
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   clinics: Array<Clinic> = new Array<Clinic>();
 
   constructor(
@@ -42,17 +40,22 @@ export class ClinicsListComponent implements OnInit {
     this.clinics = this.clinicService.getAllClinics();
     this.all();
     this.condition = true;
+
   }
 
   ngOnInit() {
     this.all();
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
 
   }
 
   all() {
       this.dataSource = new MatTableDataSource(this.clinicService.getAllClinics());
-      // this.doctordataSource = new MatTableDataSource<Doctor>(this.doctorService.getAllDoctors());
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+
+    // this.doctordataSource = new MatTableDataSource<Doctor>(this.doctorService.getAllDoctors());
   }
 
   openDialog() {

@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" class=\"mat-elevation-z8\" matSort>\r\n\r\n  <ng-container matColumnDef=\"Name\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic name </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Address\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic address </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.address}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"ClinicRating\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic rating </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinicRating}} </td>\r\n  </ng-container>\r\n  <div *ngIf=\"condition; then thenBlock else elseBlock\"></div>\r\n  <ng-template #elseBlock>\r\n    <ng-container matColumnDef=\"Price\">\r\n      <th  mat-header-cell *matHeaderCellDef> Price </th>\r\n      <td mat-cell *matCellDef=\"let element\"> 0 </td>\r\n    </ng-container>\r\n  </ng-template>\r\n\r\n  <ng-template #thenBlock>\r\n    <ng-container matColumnDef=\"Price\">\r\n      <th  mat-header-cell *matHeaderCellDef> Price </th>\r\n      <td mat-cell *matCellDef=\"let element\"> 0 </td>\r\n    </ng-container>\r\n  </ng-template>\r\n\r\n  <ng-container matColumnDef=\"Doctors\">\r\n    <th mat-header-cell *matHeaderCellDef> Doctors </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-flat-button color=\"warn\" (click)=\"doctorList(element)\"> Doctors </button>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n<button mat-raised-button color=\"primary\" (click)=\"openDialog()\">Search</button>\r\n<button mat-raised-button color=\"accent\" (click)=\"predefDialog()\">Predef examinations</button>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" matSort class=\"mat-elevation-z8\">\r\n\r\n  <ng-container matColumnDef=\"Name\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Clinic name </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Address\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Clinic address </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.address}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"ClinicRating\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Clinic rating </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinicRating}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Doctors\">\r\n    <th mat-header-cell *matHeaderCellDef> Doctors </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-flat-button color=\"warn\" (click)=\"doctorList(element)\"> Doctors </button>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n<button mat-raised-button color=\"primary\" (click)=\"openDialog()\">Search</button>\r\n<button mat-raised-button color=\"accent\" (click)=\"predefDialog()\">Predef examinations</button>\r\n\r\n");
 
 /***/ }),
 
@@ -253,7 +253,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<table mat-table [dataSource]=\"medicalDataSource\" matSort class=\"mat-elevation-z8\">\r\n\r\n  <ng-container matColumnDef=\"kind\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Kind </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <div *ngIf=\"element.kind === 1; else elseBlock\">Operation</div>\r\n      <ng-template #elseBlock>Examination</ng-template>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"clinic\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Clinic </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinic.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"doctor\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Doctor </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <div *ngFor=\"let doctor of element.doctors\">{{doctor.name}}</div>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table [dataSource]=\"medicalDataSource\" matSort class=\"mat-elevation-z8\">\r\n\r\n  <ng-container matColumnDef=\"Kind\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Kind </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <div *ngIf=\"element.kind === 1; else elseBlock\">Operation</div>\r\n      <ng-template #elseBlock>Examination</ng-template>\r\n    </td>\r\n  </ng-container>\r\n  <ng-container matColumnDef=\"Clinic\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Clinic </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinic.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Doctor\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Doctor </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <div *ngFor=\"let doctor of element.doctors\">{{doctor.name}}</div>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"StartTime\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Start date and time </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.interval.startTime}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"EndTime\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> End date and time </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.interval.endTime}} </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n");
 
 /***/ }),
 
@@ -1509,7 +1509,7 @@ let ClinicsListComponent = class ClinicsListComponent {
         this.dialog = dialog;
         this.doctorsDialog = doctorsDialog;
         this.predefExaminaitonDialog = predefExaminaitonDialog;
-        this.displayedColumns = ['Name', 'Address', 'ClinicRating', 'Price', 'Doctors'];
+        this.displayedColumns = ['Name', 'Address', 'ClinicRating', 'Doctors'];
         this.tmp1 = new Array();
         this.arr = new Array();
         this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
@@ -1522,9 +1522,12 @@ let ClinicsListComponent = class ClinicsListComponent {
     ngOnInit() {
         this.all();
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
     }
     all() {
         this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](this.clinicService.getAllClinics());
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
         // this.doctordataSource = new MatTableDataSource<Doctor>(this.doctorService.getAllDoctors());
     }
     openDialog() {
@@ -1574,6 +1577,9 @@ ClinicsListComponent.ctorParameters = () => [
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
 ], ClinicsListComponent.prototype, "paginator", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSort"], { static: true })
+], ClinicsListComponent.prototype, "sort", void 0);
 ClinicsListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-clinics-list',
@@ -2180,13 +2186,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePagePatientComponent", function() { return HomePagePatientComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_examination_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/examination.service */ "./src/app/services/examination.service.ts");
+/* harmony import */ var _services_user_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/user-service.service */ "./src/app/services/user-service.service.ts");
+
+
 
 
 let HomePagePatientComponent = class HomePagePatientComponent {
-    constructor() { }
+    constructor(examinationService, userService) {
+        this.examinationService = examinationService;
+        this.userService = userService;
+        this.user = this.userService.getLoggedUser();
+        this.tmp = examinationService.getMHforP(this.user.email);
+        this.examinationService.setMHFP(this.tmp);
+    }
     ngOnInit() {
     }
 };
+HomePagePatientComponent.ctorParameters = () => [
+    { type: _services_examination_service__WEBPACK_IMPORTED_MODULE_2__["ExaminationService"] },
+    { type: _services_user_service_service__WEBPACK_IMPORTED_MODULE_3__["UserServiceService"] }
+];
 HomePagePatientComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-home-page-patient',
@@ -2350,6 +2370,8 @@ let LoginComponent = class LoginComponent {
                 if (data !== null) {
                     alert('Successful logged in');
                     this.userService.setLoggedUser(this.user);
+                    this.MRFR = this.medicalRecordService.getMRforP(this.user.email);
+                    this.medicalRecordService.setMRFP(this.MRFR);
                     this.router.navigate(['/patient/home']);
                 }
                 else {
@@ -2455,7 +2477,7 @@ LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("table {\r\n  width: 100%;\r\n}\r\n\r\nth.mat-sort-header-sorted {\r\n  color: black;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tZWRpY2FsLWhpc3RvcnktcGF0aWVudC9tZWRpY2FsLWhpc3RvcnktcGF0aWVudC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBVztBQUNiOztBQUVBO0VBQ0UsWUFBWTtBQUNkIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9tZWRpY2FsLWhpc3RvcnktcGF0aWVudC9tZWRpY2FsLWhpc3RvcnktcGF0aWVudC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGFibGUge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG50aC5tYXQtc29ydC1oZWFkZXItc29ydGVkIHtcclxuICBjb2xvcjogYmxhY2s7XHJcbn1cclxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("table {\r\n  width: 75%;\r\n  margin-top:50px;\r\n  margin-left:300px;\r\n}\r\n\r\nth.mat-sort-header-sorted {\r\n  color: black;\r\n}\r\n\r\n.mat-form-field {\r\n  font-size: 14px;\r\n  margin-top:50px;\r\n  margin-left:300px;\r\n  width: 75%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tZWRpY2FsLWhpc3RvcnktcGF0aWVudC9tZWRpY2FsLWhpc3RvcnktcGF0aWVudC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsVUFBVTtFQUNWLGVBQWU7RUFDZixpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxZQUFZO0FBQ2Q7O0FBQ0E7RUFDRSxlQUFlO0VBQ2YsZUFBZTtFQUNmLGlCQUFpQjtFQUNqQixVQUFVO0FBQ1oiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL21lZGljYWwtaGlzdG9yeS1wYXRpZW50L21lZGljYWwtaGlzdG9yeS1wYXRpZW50LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XHJcbiAgd2lkdGg6IDc1JTtcclxuICBtYXJnaW4tdG9wOjUwcHg7XHJcbiAgbWFyZ2luLWxlZnQ6MzAwcHg7XHJcbn1cclxuXHJcbnRoLm1hdC1zb3J0LWhlYWRlci1zb3J0ZWQge1xyXG4gIGNvbG9yOiBibGFjaztcclxufVxyXG4ubWF0LWZvcm0tZmllbGQge1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICBtYXJnaW4tdG9wOjUwcHg7XHJcbiAgbWFyZ2luLWxlZnQ6MzAwcHg7XHJcbiAgd2lkdGg6IDc1JTtcclxufVxyXG4iXX0= */");
 
 /***/ }),
 
@@ -2488,7 +2510,7 @@ let MedicalHistoryPatientComponent = class MedicalHistoryPatientComponent {
         this.patientService = patientService;
         this.examinationService = examinationService;
         this.userService = userService;
-        this.displayedColumns = ['kind', 'clinic', 'doctor'];
+        this.displayedColumns = ['Kind', 'Clinic', 'Doctor', 'StartTime', 'EndTime'];
         this.medicalDataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
         this.examinations = this.examinationService.getAllExaminations();
         this.tmp = new Array();
@@ -2501,6 +2523,7 @@ let MedicalHistoryPatientComponent = class MedicalHistoryPatientComponent {
         this.all();
     }
     all() {
+        // Ovako ostavljeno posto ovako jedino radi tabela.
         for (const c of this.examinations) {
             if (c.status !== _model_examinationStatus__WEBPACK_IMPORTED_MODULE_6__["ExaminationStatus"].PREDEF_AVAILABLE) {
                 if (c.patient.email === this.user.email) {
@@ -2516,6 +2539,12 @@ MedicalHistoryPatientComponent.ctorParameters = () => [
     { type: _services_examination_service__WEBPACK_IMPORTED_MODULE_4__["ExaminationService"] },
     { type: _services_user_service_service__WEBPACK_IMPORTED_MODULE_5__["UserServiceService"] }
 ];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
+], MedicalHistoryPatientComponent.prototype, "paginator", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSort"], { static: true })
+], MedicalHistoryPatientComponent.prototype, "sort", void 0);
 MedicalHistoryPatientComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-medical-history-patient',
@@ -2570,27 +2599,20 @@ let MedicalRecordPatientComponent = class MedicalRecordPatientComponent {
         this.reports = '';
         this.records = new Array();
         this.loggedUser = this.userService.isLoggedIn();
-        this.records = medicalRecordService.getAllMedicalRecords();
+        this.mr = medicalRecordService.getMRFP();
         this.user = JSON.parse(this.loggedUser);
         this.setAll();
     }
     ngOnInit() {
-        this.records = this.medicalRecordService.getAllMedicalRecords();
         this.setAll();
     }
     setAll() {
-        for (const c of this.records) {
-            if (c.patient.email === this.user.email) {
-                this.mr = c;
-                this.height = this.mr.height;
-                this.weight = this.mr.weight;
-                this.bloodType = this.mr.bloodType;
-                this.allergies = this.mr.allergies;
-                // Ovde da se otkomentarise kad se doda reports iz baza u klasu medicalRecord
-                // for (const r of this.mr.reports) {
-                // this.reports = r.comment + ' ';
-                // }
-            }
+        this.height = this.mr.height;
+        this.weight = this.mr.weight;
+        this.bloodType = this.mr.bloodType;
+        this.allergies = this.mr.allergies;
+        for (const r of this.mr.examinationReports) {
+            this.reports = r.comment + '\n';
         }
     }
 };
@@ -3970,15 +3992,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 class MedicalRecord {
-    constructor(id, height, weight, bloodType, allergies, patient, reports) {
-        this.reports = new Array();
+    constructor(id, height, weight, bloodType, allergies, patient, examinationReports) {
+        this.examinationReports = new Array();
         this.id = id;
         this.height = height;
         this.weight = weight;
         this.bloodType = bloodType;
         this.allergies = allergies;
         this.patient = patient;
-        this.reports = reports;
+        this.examinationReports = examinationReports;
     }
 }
 
@@ -4698,6 +4720,8 @@ let ExaminationService = class ExaminationService {
         this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].examination;
         this.listExaminations = new Array();
         this.predefExaminations = new Array();
+        this.MHFP = new Array();
+        this.tmp = new Array();
         this.getAllExaminations();
     }
     whichKindExamination(kind) {
@@ -4726,10 +4750,8 @@ let ExaminationService = class ExaminationService {
         this.http.get(this.url + '/all').subscribe((data) => {
             this.listExaminations = new Array();
             for (const c of data) {
-                console.log(c);
                 this.examination = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
                 this.listExaminations.push(this.examination);
-                console.log(this.examination);
             }
         }, error => {
             console.log(error);
@@ -4759,13 +4781,33 @@ let ExaminationService = class ExaminationService {
             for (const c of data) {
                 this.examination = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
                 this.predefExaminations.push(this.examination);
-                console.log(this.examination);
             }
         }, error => {
             console.log(error);
         });
         console.log(this.predefExaminations);
         return this.predefExaminations;
+    }
+    getMHforP(email) {
+        let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpParams"]();
+        params = params.append('email', email);
+        this.tmp = new Array();
+        this.http.get(this.url + '/getMHforP', { params }).subscribe((data) => {
+            for (const c of data) {
+                this.examination = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
+                this.tmp.push(this.examination);
+            }
+        }, error => {
+            console.log(error);
+        });
+        this.MHFP = this.tmp;
+        return this.MHFP;
+    }
+    setMHFP(examinations) {
+        this.MHFP = examinations;
+    }
+    getMHFP() {
+        return this.MHFP;
     }
     makePredefExamination(id, email) {
         let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpParams"]();
@@ -4835,7 +4877,9 @@ let MedicalRecordService = class MedicalRecordService {
             this.listMedicalRecord = new Array();
             for (const c of data) {
                 // Ostalo je da se doda examinaton_report u konstruktoru
-                this.medicalRecord = new _model_medicalRecord__WEBPACK_IMPORTED_MODULE_3__["MedicalRecord"](c.id, c.height, c.weight, c.bloodType, c.allergies, c.patient);
+                console.log('Ispod data za medial rekod');
+                console.log(c);
+                this.medicalRecord = new _model_medicalRecord__WEBPACK_IMPORTED_MODULE_3__["MedicalRecord"](c.id, c.height, c.weight, c.bloodType, c.allergies, c.patient, c.examinationReports);
                 this.listMedicalRecord.push(this.medicalRecord);
                 console.log(this.medicalRecord);
             }
@@ -4844,6 +4888,23 @@ let MedicalRecordService = class MedicalRecordService {
         });
         console.log(this.listMedicalRecord);
         return this.listMedicalRecord;
+    }
+    getMRforP(email) {
+        let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpParams"]();
+        params = params.append('email', email);
+        this.http.get(this.url + '/mrForP', { params }).subscribe((data) => {
+            this.MRFP = data;
+            console.log(this.MRFP);
+        }, error => {
+            console.log(error);
+        });
+        return this.MRFP;
+    }
+    getMRFP() {
+        return this.MRFP;
+    }
+    setMRFP(medicalRecord) {
+        this.MRFP = medicalRecord;
     }
     getMedicalRecord(id) {
         if (this.listMedicalRecord.length === 0) {

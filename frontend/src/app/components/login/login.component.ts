@@ -15,6 +15,8 @@ import {PatientStatus} from '../../model/patientStatus';
 import {ExaminationService} from '../../services/examination.service';
 import {MedicalRecordService} from '../../services/medical-record.service';
 import {ExaminationsTypeService} from '../../services/examination-type.service';
+import {MedicalRecord} from '../../model/medicalRecord';
+import {Examination} from '../../model/examination';
 
 export class LoginUser {
   constructor(
@@ -35,6 +37,8 @@ export class LoginComponent implements OnInit {
   private user: User;
   private loginUser: LoginUser;
   private patient: Patient;
+  private MRFR: MedicalRecord;
+  private MHFP: Array<Examination>;
 
   constructor(
     private patientService: PatientService,
@@ -93,6 +97,8 @@ export class LoginComponent implements OnInit {
           if (data !== null) {
             alert('Successful logged in');
             this.userService.setLoggedUser(this.user);
+            this.MRFR = this.medicalRecordService.getMRforP(this.user.email);
+            this.medicalRecordService.setMRFP(this.MRFR);
             this.router.navigate(['/patient/home']);
           } else {
             alert('Login error');
