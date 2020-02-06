@@ -15,6 +15,8 @@ export class ClinicService {
   listClinics: Array<Clinic> = new Array<Clinic>();
   clinic: Clinic;
   clinicsTypes: Array<Clinic> = new Array<Clinic>();
+  type: string;
+  clinicForExamination: Clinic;
   examinationTypes: Array<ExaminationType> = new Array<ExaminationType>();
   constructor( private http: HttpClient, private examinationTypeService: ExaminationsTypeService) {
     this.examinationTypes = examinationTypeService.getAllTypes();
@@ -83,5 +85,20 @@ export class ClinicService {
     return this.clinicsTypes;
   }
 
+  public setType(type: string) {
+    this.type = type;
+  }
+
+  public getType() {
+    return this.type;
+  }
+
+  public setClinicForExamination(clinic: Clinic) {
+    this.clinicForExamination = clinic;
+  }
+
+  public getClinicForExamination() {
+    return this.clinicForExamination;
+  }
 }
 

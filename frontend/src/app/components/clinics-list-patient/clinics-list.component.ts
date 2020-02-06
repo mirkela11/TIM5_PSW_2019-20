@@ -8,6 +8,8 @@ import {DoctorService} from '../../services/doctor.service';
 import {ClinicSearchDialogComponent} from '../clinic-search-dialog/clinic-search-dialog.component';
 import {DoctorListPatientComponent} from '../doctor-list-patient/doctor-list-patient.component';
 import {filter} from 'rxjs/operators';
+import {PredefExaminationDialogComponent} from '../predef-examination-dialog/predef-examination-dialog.component';
+import {__await} from 'tslib';
 
 
 @Component({
@@ -19,19 +21,22 @@ export class ClinicsListComponent implements OnInit {
 
   displayedColumns: string[] = ['Name', 'Address', 'ClinicRating', 'Price', 'Doctors'];
   clinic: Clinic;
-  @Input() doctorListComponent: DoctorListPatientComponent;
   doctor: Doctor;
   condition: boolean;
   tmp: string;
-  tmp1: string;
+  str: string;
+  tmp1: Array<string> = new Array<string>();
+  arr: Array<string[]> = new Array<string[]>();
   dataSource = new MatTableDataSource<Clinic>();
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   clinics: Array<Clinic> = new Array<Clinic>();
+
   constructor(
     private clinicService: ClinicService,
     private doctorService: DoctorService,
     public dialog: MatDialog,
     public doctorsDialog: MatDialog,
+    public predefExaminaitonDialog: MatDialog,
   ) {
     // this.doctors = this.doctorService.getAllDoctors();
     this.clinics = this.clinicService.getAllClinics();
@@ -58,6 +63,7 @@ export class ClinicsListComponent implements OnInit {
          this.dataSource = new MatTableDataSource(this.clinics);
          this.condition = false;
          this.tmp = data.date;
+         this.doctorService.setDate(data.date);
        }
       }
     );
@@ -73,12 +79,22 @@ export class ClinicsListComponent implements OnInit {
 
   doctorList(element: Clinic) {
     this.doctorService.setDoctorss(element.doctors);
+    this.clinicService.setClinicForExamination(element);
+    this.arr = new Array<string[]>();
     for (const d of element.doctors) {
+      this.tmp1 = new Array<string>();
       // this.tmp1 = this.doctorService.getDoctorsTermins(this.tmp, d.email);
-      // console.log(this.tmp1);
     }
+    // this.doctorService.setExaminationsInterval(this.arr);
+    // const dialog = this.doctorsDialog.open(DoctorListPatientComponent);
+    // setTimeout(() => {const dialog = this.doctorsDialog.open(DoctorListPatientComponent);  dialog.updateSize('1000px', '600'); }, 800);
     const dialog = this.doctorsDialog.open(DoctorListPatientComponent);
-
+    dialog.updateSize('1000px', '600');
   }
+  predefDialog() {
+    const dialog = this.predefExaminaitonDialog.open(PredefExaminationDialogComponent);
+    dialog.updateSize('1000px', '600');
+  }
+
 
 }

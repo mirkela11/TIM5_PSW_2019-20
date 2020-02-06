@@ -16,6 +16,7 @@ import project_backend.service.UserService;
 
 import javax.jws.soap.SOAPBinding;
 import javax.print.Doc;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,10 +75,10 @@ public class DoctorController {
     }
 
     @GetMapping(value = "doctor/terminString")
-    public ResponseEntity<String> doctorTerminsByDate(@RequestParam(value = "date", required = true) String date,
+    public ResponseEntity<List<String>> doctorTerminsByDate(@RequestParam(value = "date", required = true) String date,
                                          @RequestParam(value = "email", required = true) String email) {
-        System.out.println(date);
-        String tmp = "09:00,10:00,11:00,12:00";
+        List<String> ret = new ArrayList<>();
+        String tmp = "";
         String[] parts = date.split("/");
         String date_new;
         if(parts[0].equals("10") || parts[0].equals("11") || parts[0].equals("12")) {
@@ -104,62 +105,63 @@ public class DoctorController {
         System.out.println(date_new);
 
         Doctor doctor = doctorService.getDoctor(email);
+        int pocetnoVreme = Integer.parseInt(doctor.getWorkHoursFrom());
+        int krajnjeVreme = Integer.parseInt(doctor.getWorkHoursTo());
+
+        int i = pocetnoVreme;
+        while(i < krajnjeVreme) {
+            String s = Integer.toString(pocetnoVreme);
+            if(pocetnoVreme < 10) {
+                tmp = "0" + Integer.toString(pocetnoVreme) + ":00";
+                ret.add(tmp);
+            }
+            else
+            {
+                tmp = Integer.toString(pocetnoVreme) + ":00";
+                ret.add(tmp);
+            }
+            pocetnoVreme++;
+            i++;
+        }
+
+        boolean flag = false;
         List<Examination> tmpList = examinationService.findAll();
-
+        List<String> pomList = new ArrayList<>();
         for(Examination e : tmpList) {
-            int mesec = e.getInterval().getStartTime().getMonthValue(); // 2
-            int dan = e.getInterval().getStartTime().getDayOfMonth(); // 6
-            int godina = e.getInterval().getStartTime().getYear();
-            String m = "";
-            String d = "";
-            if(mesec < 10) {
-                String tmpM = Integer.toString(mesec);
-                 m = "0" + tmpM;
+            for(Doctor d1: e.getDoctors()) {
+               if(d1.getEmail().equals(email) && e.getInterval().getStartTime().toLocalDate().toString().equals(date_new)) {
+                  String datum = e.getInterval().getStartTime().toLocalDate().toString();
+                  String vreme = e.getInterval().getStartTime().toLocalTime().toString();
+
+                  for(String v : ret) {
+                      if(!v.equals(vreme)) {
+                          pomList.add(v);
+                      }
+                  }
+                    flag = true;
+               }
             }
-            else
-            {
-                m = Integer.toString(mesec);
-            }
-            if(dan < 10)
-            {
-                String tmpD = Integer.toString(dan);
-                 d = "0" + tmpD;
-            }
-            else
-            {
-                d = Integer.toString(dan);
-            }
-            String konacan_datum = Integer.toString(godina) + "-" + m + "-" + d;
-            System.out.println("Konacan izgled datume je " + konacan_datum);
-
-            int sat = e.getInterval().getStartTime().getHour();
-            int minut = e.getInterval().getStartTime().getMinute();
-            String satStr = "";
-            String minutStr = "";
-
-            if(sat < 10)
-                satStr = "0" + Integer.toString(sat);
-            else
-                satStr = Integer.toString(sat);
-
-
-            if(minut < 10)
-                minutStr = "0" + Integer.toString(minut);
-            else
-                minutStr = Integer.toString(minut);
-
-            String konacno_vreme = satStr + ":" + minutStr;
-
-            System.out.println("Konacno vreme je " + konacno_vreme);
 
 
         }
 
+        if(flag == false) {
+            pomList = ret;
+        }
 
 
+        ret = pomList;
+        pomList = new ArrayList<>();
+        for(String s : ret) {
+            String pom = s;
+            s = date_new + " " + pom;
+            pomList.add(s);
 
+        }
 
-        return new ResponseEntity<>(tmp, HttpStatus.OK);
+        ret = pomList;
+
+        return new ResponseEntity<>(ret, HttpStatus.OK);
     }
 
     @GetMapping(value = "doctor/allWithSearch")

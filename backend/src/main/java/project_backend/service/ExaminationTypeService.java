@@ -21,4 +21,18 @@ public class ExaminationTypeService{
         return examinationTypeRepo.findOneById(id);
     }
 
+    public ExaminationType findByName(String label) {
+        List<ExaminationType> tmp = findAll();
+        if(tmp.size() == 0)
+            return null;
+
+        for(ExaminationType p : tmp)
+        {
+            if(p.getLabel().equals(label))
+                return p;
+        }
+
+        return null;
+    }
+
 }

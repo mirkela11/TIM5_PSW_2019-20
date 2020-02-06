@@ -3,7 +3,8 @@ import {environment} from '../../environments/environment';
 import {Examination} from '../model/examination';
 import {ExaminationKind} from '../model/examinationKind';
 import {ExaminationStatus} from '../model/examinationStatus';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {ExaminationType} from '../model/examinationType';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ export class ExaminationService {
   url = environment.baseUrl + environment.examination;
   listExaminations: Array<Examination> = new Array<Examination>();
   examination: Examination;
+  predefExaminations: Array<Examination> = new Array<Examination>();
+  etype: ExaminationType;
   constructor(
     private http: HttpClient,
   ) {
@@ -44,7 +47,7 @@ export class ExaminationService {
         this.listExaminations = new Array<Examination>();
         for (const c of data) {
           console.log(c);
-          this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.type, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
+          this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
           this.listExaminations.push(this.examination)
           console.log(this.examination);
         }
@@ -75,4 +78,39 @@ export class ExaminationService {
     return null;
   }
 
+  public getAllPredefExaminations(): Array<Examination> {
+    this.http.get(this.url + '/allPredefExaminations').subscribe((data: Examination[]) => {
+        this.predefExaminations = new Array<Examination>();
+        for (const c of data) {
+          this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
+          this.predefExaminations.push(this.examination);
+          console.log(this.examination);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    console.log(this.predefExaminations);
+    return this.predefExaminations;
+  }
+
+  public makePredefExamination(id: string, email: string) {
+    let params = new HttpParams();
+    params = params.append('id', id);
+    params = params.append('email', email);
+    return this.http.post(this.url + '/makePredefExamination', params);
+  }
+
+  public makeExamination(date: string, patientEmail: string, doctorEmail: string, type: string, clinicId: string, kind: string, adminsClinic: string) {
+    let params = new HttpParams();
+    params = params.append('date', date);
+    params = params.append('patientEmail', patientEmail);
+    params = params.append('doctorEmail', doctorEmail);
+    params = params.append('type', type);
+    params = params.append('clinicId', clinicId);
+    params = params.append('kind', kind);
+    params = params.append('adminsClinic', adminsClinic);
+    return this.http.post(this.url + '/addExaminationPatient', params);
+  }
 }

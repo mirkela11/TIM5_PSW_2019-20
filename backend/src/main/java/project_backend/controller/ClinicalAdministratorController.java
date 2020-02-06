@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import project_backend.dtos.ClinicalAdministratorDTO;
 import project_backend.model.*;
 import project_backend.service.ClinicAdminService;
+import project_backend.service.ClinicService;
 import project_backend.service.UserService;
 
 import java.util.ArrayList;
@@ -21,6 +22,9 @@ public class ClinicalAdministratorController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ClinicService clinicService;
 
     @PostMapping(value = "admin_clinic/edit")
     public String editDoctor(@RequestBody ClinicalAdministratorDTO d){
@@ -87,6 +91,21 @@ public class ClinicalAdministratorController {
         }
         else
             return "Name already exists";
+    }
+
+    @GetMapping(value = "/admin_clinic/adminClinicsWithClinicId")
+    public ResponseEntity<List<ClinicAdministrator>> adminClinicsWithClinicId(@RequestParam(value = "id", required = true) String id) {
+        List<ClinicAdministrator> ret = new ArrayList<>();
+        List<ClinicAdministrator> tmpList = clinicAdminService.findall();
+        Clinic tmp = clinicService.findOneById(Long.parseLong(id));
+
+        for(ClinicAdministrator a: tmpList) {
+            if(a.getClinic().getId() == tmp.getId()) {
+                ret.add(a);
+            }
+        }
+
+        return  new ResponseEntity<>(ret, HttpStatus.OK);
     }
 
 

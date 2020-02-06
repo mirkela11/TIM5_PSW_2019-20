@@ -139,4 +139,13 @@ export class UserServiceService {
     return this.list;
   }
 
+  public setLoggedUser(user: User) {
+    this.user = user;
+  }
+
+  public getLoggedUser() {
+    return this.user;
+  }
+
+
 }
