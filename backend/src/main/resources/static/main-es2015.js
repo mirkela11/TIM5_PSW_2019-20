@@ -331,7 +331,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h2 mat-dialog-title>Making an appointment</h2>\n<mat-dialog-content [formGroup]=\"MakeGroup\">\n  <div>\n  <mat-form-field>\n    <mat-select required=\"required\" id=\"terminTime\" formControlName = \"terminTime\" placeholder=\"Select date and time\">\n      <mat-option *ngFor=\"let termin of termins\" value=\"{{termin}}\">{{termin}}</mat-option>\n    </mat-select>\n  </mat-form-field>\n  </div>\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\n  <button class=\"mat-raised-button mat-primary\"(click)=\"save()\">Save</button>\n</mat-dialog-actions>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h2 mat-dialog-title>Making an appointment</h2>\n<mat-dialog-content [formGroup]=\"MakeGroup\">\n  <div>\n  <mat-form-field>\n    <mat-select required=\"required\" id=\"terminTime\" formControlName = \"terminTime\" placeholder=\"Select date and time\">\n      <mat-option *ngFor=\"let termin of termins\" value=\"{{termin}}\">{{termin}}</mat-option>\n    </mat-select>\n  </mat-form-field>\n  </div>\n  <div>\n    <mat-form-field>\n      <mat-select required=\"required\" id = \"kind\" formControlName=\"kind\" placeholder=\"Select operation kind\">\n        <mat-option *ngFor=\"let kindd of kinds\" value = \"{{kindd}}\"> {{kindd}}</mat-option>\n      </mat-select>\n    </mat-form-field>\n  </div>\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\n  <button class=\"mat-raised-button mat-primary\"(click)=\"save()\">Save</button>\n</mat-dialog-actions>\n");
 
 /***/ }),
 
@@ -2978,16 +2978,23 @@ let PatientMakeExaminationComponent = class PatientMakeExaminationComponent {
         this.examinationServce = examinationServce;
         this.userService = userService;
         this.termins = new Array();
+        this.kinds = new Array();
+        this.k = 'Examination';
+        this.k1 = 'Operation';
         this.doctor = doctorService.getDoctorForMake();
         this.date = doctorService.getDate();
         this.termins = doctorService.getDoctorsTermins(this.date, this.doctor.email);
         this.user = userService.getLoggedUser();
         this.type = clinicService.getType();
         this.clinic = clinicService.getClinicForExamination();
+        this.kinds = new Array();
+        this.kinds.push(this.k);
+        this.kinds.push(this.k1);
     }
     ngOnInit() {
         this.MakeGroup = this.formBuilder.group({
-            terminTime: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('')
+            terminTime: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+            kind: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('')
         });
     }
     get f() {
@@ -2997,9 +3004,11 @@ let PatientMakeExaminationComponent = class PatientMakeExaminationComponent {
         if (this.MakeGroup.invalid) {
             return;
         }
-        console.log(this.user.email);
+        const kindTest = this.f.kind.value;
+        console.log('KIND ISPOD');
+        console.log(kindTest);
         const interval = this.f.terminTime.value;
-        this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString()).subscribe(data => {
+        this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString(), kindTest).subscribe(data => {
             this.dialogRef.close();
         }, error => {
             console.log(error);
@@ -4730,13 +4739,14 @@ let ExaminationService = class ExaminationService {
         params = params.append('email', email);
         return this.http.post(this.url + '/makePredefExamination', params);
     }
-    makeExamination(date, patientEmail, doctorEmail, type, clinicId) {
+    makeExamination(date, patientEmail, doctorEmail, type, clinicId, kind) {
         let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpParams"]();
         params = params.append('date', date);
         params = params.append('patientEmail', patientEmail);
         params = params.append('doctorEmail', doctorEmail);
         params = params.append('type', type);
         params = params.append('clinicId', clinicId);
+        params = params.append('kind', kind);
         return this.http.post(this.url + '/addExaminationPatient', params);
     }
 };

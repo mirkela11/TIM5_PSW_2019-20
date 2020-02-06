@@ -20,11 +20,14 @@ export class PatientMakeExaminationComponent implements OnInit {
 
   MakeGroup: FormGroup;
   termins: Array<string> = new Array<string>();
+  kinds: Array<string> = new Array<string>();
   doctor: Doctor;
   date: string;
   user: User;
   clinic: Clinic;
   type: string;
+  k = 'Examination';
+  k1 = 'Operation';
 
   constructor(private dialogRef: MatDialogRef<PatientMakeExaminationComponent>,
               private doctorService: DoctorService,
@@ -39,11 +42,15 @@ export class PatientMakeExaminationComponent implements OnInit {
       this.user = userService.getLoggedUser();
       this.type = clinicService.getType();
       this.clinic = clinicService.getClinicForExamination();
+      this.kinds = new Array<string>();
+      this.kinds.push(this.k);
+      this.kinds.push(this.k1);
   }
 
   ngOnInit() {
     this.MakeGroup = this.formBuilder.group({
-      terminTime: new FormControl('')
+      terminTime: new FormControl(''),
+      kind: new FormControl('')
     });
   }
 
@@ -57,9 +64,11 @@ export class PatientMakeExaminationComponent implements OnInit {
       return;
     }
 
-    console.log(this.user.email);
+    const kindTest = this.f.kind.value;
+    console.log('KIND ISPOD');
+    console.log(kindTest);
     const interval = this.f.terminTime.value;
-    this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString()).subscribe(data => {
+    this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString(), kindTest).subscribe(data => {
       this.dialogRef.close();
     }, error => {
       console.log(error);

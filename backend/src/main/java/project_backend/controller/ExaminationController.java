@@ -76,7 +76,8 @@ public class ExaminationController {
                                                              @RequestParam(value = "patientEmail", required = true) String patientEmail,
                                                              @RequestParam(value = "doctorEmail", required = true) String doctorEmail,
                                                              @RequestParam(value = "type", required = true) String type,
-                                                             @RequestParam(value = "clinicId", required = true) String clinicId) {
+                                                             @RequestParam(value = "clinicId", required = true) String clinicId,
+                                                             @RequestParam(value = "kind", required = true) String kind) {
         Doctor doctor = doctorService.getDoctor(doctorEmail);
         Patient patient = patientService.getPatient(patientEmail);
         ExaminationType examinationType = examinationTypeService.findByName(type);
@@ -104,7 +105,15 @@ public class ExaminationController {
         doctors.add(doctor);
         e.setDoctors(doctors);
         e.setInterval(interval);
+
+        if(kind.equals("Examination")) {
+            e.setKind(ExaminationKind.EXAMINATION);
+        }else
+            e.setKind(ExaminationKind.OPERATION);
+
+
         examinationService.addExamination(e);
+        this.examinationService.awaitingExamination(e,patient);
         return new ResponseEntity<>(e, HttpStatus.OK);
     }
 

@@ -2,6 +2,7 @@ package project_backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import project_backend.model.Doctor;
 import project_backend.model.Examination;
 import project_backend.model.ExaminationStatus;
 import project_backend.model.Patient;
@@ -14,6 +15,9 @@ public class ExaminationService {
 
     @Autowired
     private ExaminationRepo examinationRepo;
+
+    @Autowired
+    private MailService mailService;
 
     public List<Examination> findAll()
     {
@@ -45,5 +49,10 @@ public class ExaminationService {
         examinationRepo.save(e);
     }
 
+    public void awaitingExamination(Examination examination, Patient patient) {
+        String subject = "Examination is on pending approval";
+        String text = "Your " + examination.getKind().toString() + " with name " + "'" + examination.getExaminationType().getLabel() + "' "  + "is on the waiting list for approval.";
+        mailService.Send(patient.getEmail(), subject, text);
+    }
 
 }
