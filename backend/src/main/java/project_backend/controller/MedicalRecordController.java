@@ -33,8 +33,6 @@ public class MedicalRecordController {
     @Autowired
     ExaminationService examinationService;
 
-    @Autowired
-    PatientService patientService;
 
     @GetMapping(value = "/medicalRecord/all")
     public ResponseEntity<List<MedicalRecord>> allMedicalRecords() {
