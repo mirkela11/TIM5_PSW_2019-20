@@ -95,10 +95,10 @@ export class MedicalRecordService {
         p1.weight = p.weight;
         p1.bloodType = p.bloodType;
         p1.allergies = p.allergies;
-        p1.reports = p.reports;
+        p1.examinationReports = p.examinationReports;
         p1.height = p.height;
         p1.patient = p.patient;
-        p1.reports = p.reports;
+        p1.examinationReports = p.examinationReports;
         return;
       }
     }

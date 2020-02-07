@@ -38,13 +38,13 @@ export class MedicalRecordDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.setAll();
+    // this.setAll();
     this.medicalRecordForm = this.formBuilder.group({
       height: new FormControl(this.medicalRecord.height),
       weight: new FormControl(this.medicalRecord.weight),
       bloodType: new FormControl(this.medicalRecord.bloodType),
       allergies: new FormControl(this.medicalRecord.allergies),
-      reports: new FormControl(this.medicalRecord.reports)
+      reports: new FormControl(this.medicalRecord.examinationReports)
     });
   }
 
@@ -64,7 +64,7 @@ export class MedicalRecordDialogComponent implements OnInit {
     this.medicalRecord.weight = this.f.weight.value;
     this.medicalRecord.bloodType = this.f.bloodType.value;
     this.medicalRecord.allergies = this.f.allergies.value;
-    this.medicalRecord.reports = this.f.reports.value;
+    this.medicalRecord.examinationReports = this.f.reports.value;
     console.log(this.medicalRecord);
 
     this.editMedicalRecord();
