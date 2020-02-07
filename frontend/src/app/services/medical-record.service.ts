@@ -15,6 +15,7 @@ export class MedicalRecordService {
   listMedicalRecord: Array<MedicalRecord> = new Array<MedicalRecord>();
   medicalRecord: MedicalRecord;
   examiantionReport: ExaminationReport;
+  MRFP: MedicalRecord;
   medicalRecordForPatient: MedicalRecord;
   medicalRecordForDialog: MedicalRecord;
   dialogDate = false;
@@ -34,7 +35,9 @@ export class MedicalRecordService {
         this.listMedicalRecord = new Array<MedicalRecord>();
         for (const c of data) {
           // Ostalo je da se doda examinaton_report u konstruktoru
-          this.medicalRecord = new MedicalRecord(c.id, c.height, c.weight, c.bloodType, c.allergies, c.patient);
+          console.log('Ispod data za medial rekod');
+          console.log(c);
+          this.medicalRecord = new MedicalRecord(c.id, c.height, c.weight, c.bloodType, c.allergies, c.patient, c.examinationReports);
           this.listMedicalRecord.push(this.medicalRecord);
           console.log(this.medicalRecord);
         }
@@ -45,6 +48,29 @@ export class MedicalRecordService {
     );
     console.log(this.listMedicalRecord);
     return this.listMedicalRecord;
+  }
+
+  public getMRforP(email: string): MedicalRecord {
+    let params = new HttpParams();
+    params = params.append('email', email);
+    this.http.get(this.url + '/mrForP', {params}).subscribe((data: MedicalRecord) => {
+          this.MRFP = data;
+          console.log(this.MRFP);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    return this.MRFP;
+
+  }
+
+  public getMRFP() {
+    return this.MRFP;
+  }
+
+  public setMRFP(medicalRecord: MedicalRecord) {
+    this.MRFP = medicalRecord;
   }
 
   public getMedicalRecord(id: number) {

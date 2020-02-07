@@ -38,7 +38,7 @@ insert into users(id, email, password, role) values (102, 'doctor@email.com', 'D
 insert into users(id, email, password, role) values (110, 'doctor1@email.com', 'Doctor1234', 1);
 insert into nurse(id, email, name, password, phone, surname, work_hours_from, work_hours_to, clinic_id) values (100,'nurse@email.com', 'Nurse', 'Nurse123','153426010', 'Nursic', '8:00', '16:00', 101);
 insert into users(id, email, password, role) values (103, 'nurse@email.com', 'Nurse123', 2);
-insert into patient(id, insuranceid, address, city, country, email, name, number, password, status, surname) values (100, 1111111111111, 'Adresa', 'Grad', 'Drzava', 'weca997@gmail.com', 'Patient', '147258321', 'Patient123', 'APPROVED', 'Patientic');
+insert into patient(id, insuranceid, address, city, country, email, name, number, password, status, surname) values (100, 1111111111111, 'Adresa', 'Grad', 'Drzava', 'weca997@gmail.com', 'Patient', '147258321', 'Patient123', 'ACTIVATED', 'Patientic');
 insert into patient(id, insuranceid, address, city, country, email, name, number, password, status, surname) values (101, 2222222222222, 'Tozin Sokak', 'Novi Sad', 'Srbija', 'patient1@email.com', 'Patient1', '123678456', 'Patient1234', 'AWAITING_APPROVAL', 'Patientic1');
 insert into users(id, email, password, role) values (104, 'weca997@gmail.com', 'Patient123', 0);
 insert into users(id, email, password, role) values (105, 'patient1@email.com', 'Patient1234', 0);
@@ -53,7 +53,7 @@ insert into examining(examination_id,doctor_id) values (101,102);
 insert into medical_record(id, allergies, blood_type, height, weight, patient_id) values (100, 'Alergija na med', 'AB+', 178, 80, 100);
 insert into medical_record(id, allergies, blood_type, height, weight, patient_id) values (101, 'Alergija na jagode', 'B-', 185, 82, 101);
 insert into examination_report(id,comment, time_created, diagnose_id, doctor_id, examination_id, medical_record_id) values (100,'Odradjen izvestaj','01.01.2020. 12:30', 120, 101, 100,100);
-insert into examination_report(id,comment, time_created, diagnose_id, doctor_id, examination_id, medical_record_id) values (101,'Izvestaj 2','02.01.2020. 08:30', 121, 102, 100,100);
+insert into examination_report(id,comment, time_created, diagnose_id, doctor_id, examination_id, medical_record_id) values (101,'Izvestaj 2','02.01.2020. 08:30', 121, 102, 100,101);
 
 
 insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,room_id) values (200,4,20,5,'OPERATION','PREDEF_AVAILABLE',101,100,100,150,100,100);

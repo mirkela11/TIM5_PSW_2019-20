@@ -40,6 +40,7 @@ import { DoctorMedicalRecordComponent } from './components/doctor-medical-record
 import { MedicalRecordDialogComponent } from './components/medical-record-dialog/medical-record-dialog.component';
 import {PredefExaminationDialogComponent} from './components/predef-examination-dialog/predef-examination-dialog.component';
 import { PatientMakeExaminationComponent } from './components/patient-make-examination/patient-make-examination.component';
+import { ActivatedAccountPatientComponent } from './components/activated-account-patient/activated-account-patient.component';
 
 
 
@@ -103,6 +104,8 @@ import { PatientMakeExaminationComponent } from './components/patient-make-exami
 
     PatientMakeExaminationComponent,
 
+    ActivatedAccountPatientComponent,
+    
     DoctorMedicalRecordComponent,
 
     MedicalRecordDialogComponent,

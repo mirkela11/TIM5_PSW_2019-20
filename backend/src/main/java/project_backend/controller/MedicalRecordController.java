@@ -3,6 +3,12 @@ package project_backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import project_backend.model.MedicalRecord;
+import project_backend.model.Patient;
 import org.springframework.web.bind.annotation.*;
 import project_backend.dtos.ClinicalAdministratorDTO;
 import project_backend.dtos.MedicalRecordDTO;
@@ -27,11 +33,28 @@ public class MedicalRecordController {
     @Autowired
     ExaminationService examinationService;
 
+    @Autowired
+    PatientService patientService;
+
     @GetMapping(value = "/medicalRecord/all")
     public ResponseEntity<List<MedicalRecord>> allMedicalRecords() {
         return new ResponseEntity<>(medicalRecordService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/medicalRecord/mrForP")
+    public ResponseEntity<MedicalRecord> mrForP(@RequestParam(value = "email", required = true) String email) {
+        MedicalRecord m = null;
+        Patient p = patientService.getPatient(email);
+        List<MedicalRecord> tmp = medicalRecordService.findAll();
+
+        for(MedicalRecord mr : tmp) {
+            if(mr.getPatient().getEmail().equals(p.getEmail()))
+                m = mr;
+        }
+
+        return new ResponseEntity<>(m, HttpStatus.OK);
+    }
+  
     @GetMapping(value = "/patient/allPatientsForDoctor")
     public ResponseEntity<List<Patient>> AllPatientForDoctor(@RequestParam(value = "email", required = true) String email) {
         List<Patient> tmp = new ArrayList<>();

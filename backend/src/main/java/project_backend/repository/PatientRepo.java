@@ -10,7 +10,7 @@ import project_backend.model.PatientStatus;
 import java.util.List;
 
 public interface PatientRepo extends JpaRepository<Patient, Long> {
-
+    Patient findOneById(Long id);
     List<Patient> findByStatus(PatientStatus status);
     List<Patient> findAllByEmail(String email);
     Patient findByEmail(String email);

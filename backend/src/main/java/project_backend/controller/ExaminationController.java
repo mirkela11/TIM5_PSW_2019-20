@@ -147,4 +147,21 @@ public class ExaminationController {
         return new ResponseEntity<>(e, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/examination/getMHforP")
+    public ResponseEntity<List<Examination>> getMHforP(@RequestParam(value = "email", required = true) String email) {
+        List<Examination> tmp = examinationService.findAll();
+        List<Examination> ret = new ArrayList<>();
+
+        for(Examination e : tmp) {
+            if(e.getPatient() != null) {
+                if (e.getPatient().getEmail().equals(email)) {
+                    if (e.getStatus() != ExaminationStatus.AWAITING) {
+                        ret.add(e);
+                    }
+                }
+            }
+        }
+
+        return new ResponseEntity<>(ret, HttpStatus.OK);
+    }
 }

@@ -32,6 +32,8 @@ export class RegistrationComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8),
         Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')]),
+      repeatPassword: new FormControl('', [Validators.required, Validators.minLength(8),
+        Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')]),
       name: new FormControl('', [Validators.required]),
       surname: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
@@ -51,6 +53,11 @@ export class RegistrationComponent implements OnInit {
 
     // Stop here if form is invalid
     if (this.registerForm.invalid) {
+      return;
+    }
+
+    if (this.f.password.value !== this.f.repeatPassword.value) {
+      alert('Repeat password must be like passoword');
       return;
     }
 

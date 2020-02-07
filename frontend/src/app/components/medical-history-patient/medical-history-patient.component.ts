@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Examination} from '../../model/examination';
 import {PatientService} from '../../services/patient.service';
 import {ExaminationService} from '../../services/examination.service';
@@ -14,12 +14,14 @@ import {ExaminationStatus} from '../../model/examinationStatus';
 })
 export class MedicalHistoryPatientComponent implements OnInit {
 
-  displayedColumns: string[] = ['kind', 'clinic', 'doctor'];
+  displayedColumns: string[] = ['Kind', 'Clinic', 'Doctor', 'StartTime', 'EndTime'];
   medicalDataSource = new MatTableDataSource<Examination>();
   examinations: Array<Examination> = this.examinationService.getAllExaminations();
   tmp: Array<Examination> = new Array<Examination>();
   loggedUser: string = this.userService.isLoggedIn();
   user: User;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   tmpStr = this.loggedUser.split(',');
   tmpStr1 = this.tmpStr[0].split(':');
   constructor(private patientService: PatientService, private examinationService: ExaminationService,
@@ -32,6 +34,7 @@ export class MedicalHistoryPatientComponent implements OnInit {
   }
 
   all() {
+    // Ovako ostavljeno posto ovako jedino radi tabela.
     for (const c of this.examinations) {
       if (c.status !== ExaminationStatus.PREDEF_AVAILABLE) {
         if (c.patient.email === this.user.email) {

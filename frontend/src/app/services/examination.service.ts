@@ -21,6 +21,8 @@ export class ExaminationService {
 
   predefExaminations: Array<Examination> = new Array<Examination>();
   etype: ExaminationType;
+  MHFP: Array<Examination> = new Array<Examination>();
+  tmp: Array<Examination> = new Array<Examination>();
   constructor(
     private http: HttpClient,
   ) {
@@ -51,10 +53,8 @@ export class ExaminationService {
     this.http.get(this.url + '/all').subscribe((data: Examination[]) => {
         this.listExaminations = new Array<Examination>();
         for (const c of data) {
-          console.log(c);
           this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
-          this.listExaminations.push(this.examination)
-          console.log(this.examination);
+          this.listExaminations.push(this.examination);
         }
       },
       error => {
@@ -89,7 +89,6 @@ export class ExaminationService {
         for (const c of data) {
           this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
           this.predefExaminations.push(this.examination);
-          console.log(this.examination);
         }
       },
       error => {
@@ -98,6 +97,32 @@ export class ExaminationService {
     );
     console.log(this.predefExaminations);
     return this.predefExaminations;
+  }
+
+  public getMHforP(email: string): Array<Examination> {
+    let params = new HttpParams();
+    params = params.append('email', email);
+    this.tmp = new Array<Examination>();
+    this.http.get(this.url + '/getMHforP', {params}).subscribe((data: Examination[]) => {
+        for (const c of data) {
+          this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
+          this.tmp.push(this.examination);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this.MHFP = this.tmp;
+    return this.MHFP;
+  }
+
+  public setMHFP(examinations: Array<Examination>) {
+    this.MHFP = examinations;
+  }
+
+  public getMHFP() {
+    return this.MHFP;
   }
 
   public makePredefExamination(id: string, email: string) {
@@ -118,6 +143,7 @@ export class ExaminationService {
     params = params.append('adminsClinic', adminsClinic);
     return this.http.post(this.url + '/addExaminationPatient', params);
   }
+
   public getExaminationsForDoctor(email: string): Array<Examination> {
 
     let params = new HttpParams();
@@ -141,5 +167,6 @@ export class ExaminationService {
   public getPatientForDoctors() {
     return this.examinationForDoctor;
   }
+
 
 }
