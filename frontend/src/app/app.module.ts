@@ -38,6 +38,7 @@ import { DoctorVacationRequestComponent } from './components/doctor-vacation-req
 import { DoctorSearchDialogComponent } from './components/doctor-search-dialog/doctor-search-dialog.component';
 import {PredefExaminationDialogComponent} from './components/predef-examination-dialog/predef-examination-dialog.component';
 import { PatientMakeExaminationComponent } from './components/patient-make-examination/patient-make-examination.component';
+import { ActivatedAccountPatientComponent } from './components/activated-account-patient/activated-account-patient.component';
 
 
 
@@ -100,6 +101,8 @@ import { PatientMakeExaminationComponent } from './components/patient-make-exami
     PredefExaminationDialogComponent,
 
     PatientMakeExaminationComponent,
+
+    ActivatedAccountPatientComponent,
   ],
   imports: [
     BrowserModule,

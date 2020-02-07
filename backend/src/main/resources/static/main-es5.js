@@ -31,6 +31,17 @@
             /* harmony default export */ __webpack_exports__["default"] = ("<mat-sidenav-container class=\"sidenav-container\">\r\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\r\n               [mode]=\"(isHandset$ | async) ? 'over' : 'side'\" [opened]=\"(isHandset$ | async) === true\">\r\n\r\n    <mat-toolbar color=\"accent\">Menu</mat-toolbar>\r\n    <mat-nav-list *ngIf = \"isNone()\">\r\n      <a mat-list-item routerLink=\"/login\">Login</a>\r\n      <a mat-list-item routerLink=\"/patient/register\">Register</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isPatient()\">\r\n      <a mat-list-item routerLink=\"/patient/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/patient/medicalRecord\">Medical record</a>\r\n      <a mat-list-item routerLink=\"/patient/medicalHistory\">Medical history</a>\r\n      <a mat-list-item routerLink=\"/patient/clinics\">Clinics</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isDoctor()\">\r\n      <a mat-list-item routerLink=\"/doctor/list_of_patients\">List of patients</a>\r\n      <a mat-list-item routerLink=\"/doctor/exemination\">Exemination</a>\r\n      <a mat-list-item routerLink=\"/doctor/work_calendar\">Work calendar</a>\r\n      <a mat-list-item routerLink=\"/doctor/requests\">Requests</a>\r\n      <a mat-list-item routerLink=\"/doctor/operations\">Operations</a>\r\n      <a mat-list-item routerLink=\"/doctor/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/doctor/VacationRequest\">VacationRequest</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isClinicAdmin()\">\r\n      <a mat-list-item routerLink=\"/admin_clinic/profile\">Profile</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isNurse()\">\r\n      <a mat-list-item routerLink=\"/nurse/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/nurse/ListOfPatient\">List Of Patients</a>\r\n      <a mat-list-item routerLink=\"/nurse/WorkCalendar\">WorkCalendar</a>\r\n      <a mat-list-item routerLink=\"/nurse/VacationRequest\">Vacation requests</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isClinicalCentreAdmin()\">\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/addClinic\">Add Clinic</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/addAdmins\">Add Administrator</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/requests\">Requests</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/VacationRequests\">Vacation Requests</a>\r\n\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n  </mat-sidenav>\r\n  <mat-sidenav-content>\r\n    <mat-toolbar color=\"accent\">\r\n      <button type=\"button\" aria-label=\"Toggle sidenav\" mat-icon-button (click)=\"drawer.toggle()\">\r\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\r\n      </button>\r\n      <span>Clinical Centre</span>\r\n    </mat-toolbar>\r\n    <!-- Add Content Here -->\r\n    <router-outlet></router-outlet>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n");
             /***/ 
         }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/activated-account-patient/activated-account-patient.component.html": 
+        /*!*************************************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/activated-account-patient/activated-account-patient.component.html ***!
+          \*************************************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"success\" class=\"main-content\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8 offset-md-2\">\n        <mat-card>\n          <h3>Account activated successfully!</h3>\n          <hr>\n          <p>Success! Your account is now active.</p>\n          <p>Login page <span><a\n            routerLink=\"/login\">this link</a></span></p>\n        </mat-card>\n      </div>\n    </div>\n  </div>\n</div>\n");
+            /***/ 
+        }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/add-clinic-administrator/add-clinic-administrator.component.html": 
         /*!***********************************************************************************************************************************!*\
           !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/add-clinic-administrator/add-clinic-administrator.component.html ***!
@@ -674,6 +685,7 @@
             /* harmony import */ var _components_nurse_vacation_request_nurse_vacation_request_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/nurse-vacation-request/nurse-vacation-request.component */ "./src/app/components/nurse-vacation-request/nurse-vacation-request.component.ts");
             /* harmony import */ var _components_vacation_request_register_vacation_request_register_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/vacation-request-register/vacation-request-register.component */ "./src/app/components/vacation-request-register/vacation-request-register.component.ts");
             /* harmony import */ var _components_doctor_vacation_request_doctor_vacation_request_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/doctor-vacation-request/doctor-vacation-request.component */ "./src/app/components/doctor-vacation-request/doctor-vacation-request.component.ts");
+            /* harmony import */ var _components_activated_account_patient_activated_account_patient_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/activated-account-patient/activated-account-patient.component */ "./src/app/components/activated-account-patient/activated-account-patient.component.ts");
             var routes = [
                 {
                     path: '',
@@ -706,6 +718,10 @@
                 {
                     path: 'patient/medicalRecord',
                     component: _components_medical_record_patient_medical_record_patient_component__WEBPACK_IMPORTED_MODULE_19__["MedicalRecordPatientComponent"],
+                },
+                {
+                    path: 'patient/activatedAccount/:id',
+                    component: _components_activated_account_patient_activated_account_patient_component__WEBPACK_IMPORTED_MODULE_26__["ActivatedAccountPatientComponent"],
                 },
                 {
                     path: 'doctor/home',
@@ -901,6 +917,7 @@
             /* harmony import */ var _components_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/doctor-search-dialog/doctor-search-dialog.component */ "./src/app/components/doctor-search-dialog/doctor-search-dialog.component.ts");
             /* harmony import */ var _components_predef_examination_dialog_predef_examination_dialog_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/predef-examination-dialog/predef-examination-dialog.component */ "./src/app/components/predef-examination-dialog/predef-examination-dialog.component.ts");
             /* harmony import */ var _components_patient_make_examination_patient_make_examination_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/patient-make-examination/patient-make-examination.component */ "./src/app/components/patient-make-examination/patient-make-examination.component.ts");
+            /* harmony import */ var _components_activated_account_patient_activated_account_patient_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/activated-account-patient/activated-account-patient.component */ "./src/app/components/activated-account-patient/activated-account-patient.component.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -938,6 +955,7 @@
                         _components_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_37__["DoctorSearchDialogComponent"],
                         _components_predef_examination_dialog_predef_examination_dialog_component__WEBPACK_IMPORTED_MODULE_38__["PredefExaminationDialogComponent"],
                         _components_patient_make_examination_patient_make_examination_component__WEBPACK_IMPORTED_MODULE_39__["PatientMakeExaminationComponent"],
+                        _components_activated_account_patient_activated_account_patient_component__WEBPACK_IMPORTED_MODULE_40__["ActivatedAccountPatientComponent"],
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -966,6 +984,69 @@
                     bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
                 })
             ], AppModule);
+            /***/ 
+        }),
+        /***/ "./src/app/components/activated-account-patient/activated-account-patient.component.css": 
+        /*!**********************************************************************************************!*\
+          !*** ./src/app/components/activated-account-patient/activated-account-patient.component.css ***!
+          \**********************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvYWN0aXZhdGVkLWFjY291bnQtcGF0aWVudC9hY3RpdmF0ZWQtYWNjb3VudC1wYXRpZW50LmNvbXBvbmVudC5jc3MifQ== */");
+            /***/ 
+        }),
+        /***/ "./src/app/components/activated-account-patient/activated-account-patient.component.ts": 
+        /*!*********************************************************************************************!*\
+          !*** ./src/app/components/activated-account-patient/activated-account-patient.component.ts ***!
+          \*********************************************************************************************/
+        /*! exports provided: ActivatedAccountPatientComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ActivatedAccountPatientComponent", function () { return ActivatedAccountPatientComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _services_patient_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/patient.service */ "./src/app/services/patient.service.ts");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            var ActivatedAccountPatientComponent = /** @class */ (function () {
+                function ActivatedAccountPatientComponent(patientService, router, activatedRoute) {
+                    this.patientService = patientService;
+                    this.router = router;
+                    this.activatedRoute = activatedRoute;
+                    this.success = false;
+                }
+                ActivatedAccountPatientComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.activatedRoute.paramMap.subscribe(function (params) {
+                        var param = params.get('id');
+                        _this.activatePatient(+param);
+                    });
+                };
+                ActivatedAccountPatientComponent.prototype.activatePatient = function (id) {
+                    var _this = this;
+                    this.patientService.activatePatient(id).subscribe(function () {
+                        _this.success = true;
+                    }, function () {
+                        alert('Your account is already activated');
+                        _this.router.navigate(['http://localhost:8081']);
+                    });
+                };
+                return ActivatedAccountPatientComponent;
+            }());
+            ActivatedAccountPatientComponent.ctorParameters = function () { return [
+                { type: _services_patient_service__WEBPACK_IMPORTED_MODULE_2__["PatientService"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }
+            ]; };
+            ActivatedAccountPatientComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-activated-account-patient',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./activated-account-patient.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/activated-account-patient/activated-account-patient.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./activated-account-patient.component.css */ "./src/app/components/activated-account-patient/activated-account-patient.component.css")).default]
+                })
+            ], ActivatedAccountPatientComponent);
             /***/ 
         }),
         /***/ "./src/app/components/add-clinic-administrator/add-clinic-administrator.component.css": 
@@ -2174,7 +2255,7 @@
                 };
                 LoginComponent.prototype.attemptPatientLogin = function () {
                     var _this = this;
-                    if (this.user.role === _model_role__WEBPACK_IMPORTED_MODULE_6__["Role"].PATIENT && this.loginUser.password === this.user.password && this.patient.status === _model_patientStatus__WEBPACK_IMPORTED_MODULE_12__["PatientStatus"].APPROVED) {
+                    if (this.user.role === _model_role__WEBPACK_IMPORTED_MODULE_6__["Role"].PATIENT && this.loginUser.password === this.user.password && this.patient.status === _model_patientStatus__WEBPACK_IMPORTED_MODULE_12__["PatientStatus"].ACTIVATED) {
                         this.patientService.loginPatient(this.user).subscribe(function (data) {
                             console.log(data);
                             if (data !== null) {
@@ -3689,8 +3770,9 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             var PatientStatus;
             (function (PatientStatus) {
-                PatientStatus[PatientStatus["AWAITING_APPROVAL"] = 0] = "AWAITING_APPROVAL";
-                PatientStatus[PatientStatus["APPROVED"] = 1] = "APPROVED";
+                PatientStatus[PatientStatus["ACTIVATED"] = 0] = "ACTIVATED";
+                PatientStatus[PatientStatus["AWAITING_APPROVAL"] = 1] = "AWAITING_APPROVAL";
+                PatientStatus[PatientStatus["APPROVED"] = 2] = "APPROVED";
             })(PatientStatus || (PatientStatus = {}));
             /***/ 
         }),
@@ -4620,6 +4702,9 @@
                     this.userService.setToken(patient);
                     return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + '/login', patient, { responseType: 'text' });
                 };
+                PatientService.prototype.activatePatient = function (id) {
+                    return this.http.put(this.urlPatient + '/activatePatient', id);
+                };
                 PatientService.prototype.editPatient = function (patient) {
                     return this.http.post(this.urlPatient + '/edit', patient, { responseType: 'text' });
                 };
@@ -4659,8 +4744,11 @@
                     if (status === 'AWAITING_APPROVAL') {
                         return _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].AWAITING_APPROVAL;
                     }
-                    else {
+                    else if (status === 'APPROVED') {
                         return _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].APPROVED;
+                    }
+                    else {
+                        return _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].ACTIVATED;
                     }
                 };
                 PatientService.prototype.getAllPatients = function () {

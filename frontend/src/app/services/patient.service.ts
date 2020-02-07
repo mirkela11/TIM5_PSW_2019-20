@@ -39,6 +39,10 @@ export class PatientService {
     return this.http.post(environment.baseUrl + '/login', patient, {responseType: 'text'});
   }
 
+  public activatePatient(id: number) {
+    return this.http.put(this.urlPatient + '/activatePatient', id);
+  }
+
   public editPatient(patient) {
     return this.http.post(this.urlPatient + '/edit', patient, {responseType: 'text'});
   }
@@ -81,9 +85,12 @@ export class PatientService {
   public whichStatus(status: string) {
     if (status === 'AWAITING_APPROVAL') {
       return PatientStatus.AWAITING_APPROVAL;
-    } else {
+    } else if (status === 'APPROVED') {
       return PatientStatus.APPROVED;
+    } else {
+      return PatientStatus.ACTIVATED;
     }
+
 
   }
 

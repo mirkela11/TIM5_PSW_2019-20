@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
   }
 
   public attemptPatientLogin() {
-    if (this.user.role === Role.PATIENT && this.loginUser.password === this.user.password && this.patient.status === PatientStatus.APPROVED) {
+    if (this.user.role === Role.PATIENT && this.loginUser.password === this.user.password && this.patient.status === PatientStatus.ACTIVATED) {
       this.patientService.loginPatient(this.user).subscribe(
         data => {
           console.log(data);

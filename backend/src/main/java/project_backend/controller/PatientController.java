@@ -13,6 +13,8 @@ import project_backend.service.ExaminationService;
 import project_backend.service.PatientService;
 import project_backend.service.UserService;
 
+import javax.validation.constraints.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +53,11 @@ public class PatientController{
 
             if(uspesno == true || uspesno2 == true) {
                 System.out.println("User with email: " + pat.getEmail() + " is edited");
+
+                if(pat.getStatus() == PatientStatus.APPROVED) {
+                    patientService.SendApprovedEmail(pat.getEmail(),pat.getId());
+                }
+
                 return "Uspesno";
             }
 
@@ -58,6 +65,7 @@ public class PatientController{
                 System.out.println("Error with edit");
                 return "Neuspesno";
             }
+
 
         }
         else
@@ -84,6 +92,20 @@ public class PatientController{
             }
         }
         return new ResponseEntity<>(returnList, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/activatePatient")
+    public ResponseEntity<Patient> activateAccount(@NotNull @RequestBody Long id) {
+        Patient p = patientService.findById(id);
+        System.out.println(p.getEmail() + " email prilikom aktivacije");
+        if (p == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        p.setStatus(PatientStatus.ACTIVATED);
+        patientService.acitvatePatient(p);
+
+        return new ResponseEntity<>(p, HttpStatus.OK);
     }
 
 }

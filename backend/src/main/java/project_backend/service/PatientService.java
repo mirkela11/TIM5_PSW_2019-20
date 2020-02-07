@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import project_backend.model.Patient;
+import project_backend.model.PatientStatus;
 import project_backend.repository.PatientRepo;
 
 import java.util.List;
@@ -16,9 +17,16 @@ public class PatientService {
     @Autowired
     private PatientRepo repo;
 
+    @Autowired
+    private MailService mailService;
+
     public List<Patient> findall()
     {
         return repo.findAll();
+    }
+
+    public Patient findById(Long id) {
+        return repo.findOneById(id);
     }
 
     public List<Patient> findAllByEmail(String email){
@@ -27,6 +35,17 @@ public class PatientService {
 
     public Page<Patient> findAll(Pageable page) {
         return repo.findAll(page);
+    }
+
+    public void acitvatePatient(Patient patient) {
+        List<Patient> tmp = findall();
+        for(Patient p1 : tmp) {
+            if(p1.getEmail().equals(patient.getEmail())) {
+                p1.setStatus(PatientStatus.ACTIVATED);
+                repo.save(p1);
+                break;
+            }
+        }
     }
 
     public boolean addPatient(Patient p){
@@ -80,6 +99,15 @@ public class PatientService {
         }
 
         return false;
+    }
+
+    public void SendApprovedEmail(String patientEmail, Long patientId) {
+        String subject = "Request to register approved";
+        String text = "Your request to reqister is approved by a clinical centre adminsistrator." + System.lineSeparator() +
+                "To activate your account click the following link:" + System.lineSeparator() +
+                "http://localhost:4200/patient/activatedAccount/" + patientId;
+
+        mailService.Send(patientEmail, subject, text);
     }
 
 
