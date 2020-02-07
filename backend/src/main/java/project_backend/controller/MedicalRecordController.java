@@ -122,7 +122,7 @@ public class MedicalRecordController {
                     tmp = e;
                 }
             }
-        System.out.println(izvestaj.size());
+        System.out.println(tmp.toString());
         return new ResponseEntity<>(tmp, HttpStatus.OK);
     }
 

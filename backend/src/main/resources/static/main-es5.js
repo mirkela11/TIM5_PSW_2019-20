@@ -1743,17 +1743,15 @@
                 };
                 DoctorMedicalRecordComponent.prototype.edit = function (element) {
                     var _this = this;
-                    setTimeout(function () {
-                        var medicalRecordForDialog = _this.medicalRecServis.getMedicalRecordForPatient(element.patient.email);
-                        _this.medicalService.setMedicalRecordForDialog(medicalRecordForDialog);
-                    }, 750);
+                    var medicalRecordForDialog = this.medicalRecServis.getMedicalRecordForPatient(element.patient.email);
+                    this.medicalService.setMedicalRecordForDialog(medicalRecordForDialog);
                     this.patientService.setPatient1(element.patient);
                     this.condition = this.medicalService.getLocalDateAndTime(element.interval.startTime, element.interval.endTime);
                     //  setTimeout(() => {
                     if (this.condition === true) {
                         console.log('u kondition sam');
                         console.log(this.condition);
-                        var dialog = this.medReqDialog.open(_medical_record_dialog_medical_record_dialog_component__WEBPACK_IMPORTED_MODULE_6__["MedicalRecordDialogComponent"]);
+                        setTimeout(function () { var dialog = _this.medReqDialog.open(_medical_record_dialog_medical_record_dialog_component__WEBPACK_IMPORTED_MODULE_6__["MedicalRecordDialogComponent"]); }, 1000);
                     }
                     //   }, 200);
                 };
@@ -4864,7 +4862,9 @@
                     var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpParams"]();
                     params = params.append('email', email);
                     this.http.get(this.url + '/MedicalRecordForPatient', { params: params }).subscribe(function (data) {
-                        _this.medicalRecordForPatient = data;
+                        console.log('MEDICAL RECORD DATA ISPOD');
+                        console.log(data);
+                        _this.medicalRecordForPatient = new _model_medicalRecord__WEBPACK_IMPORTED_MODULE_3__["MedicalRecord"](data.id, data.height, data.weight, data.bloodType, data.allergies, data.patient, data.examinationReports);
                     }, function (error) {
                         console.log(error);
                     });

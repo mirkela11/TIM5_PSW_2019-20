@@ -109,7 +109,9 @@ export class MedicalRecordService {
     let params = new HttpParams();
     params = params.append('email', email);
     this.http.get(this.url + '/MedicalRecordForPatient', {params}).subscribe((data: MedicalRecord) => {
-        this.medicalRecordForPatient = data;
+        console.log('MEDICAL RECORD DATA ISPOD');
+        console.log(data);
+        this.medicalRecordForPatient = new MedicalRecord(data.id, data.height, data.weight, data.bloodType, data.allergies, data.patient, data.examinationReports);
       },
       error => {
         console.log(error);
