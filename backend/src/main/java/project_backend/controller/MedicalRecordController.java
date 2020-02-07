@@ -182,5 +182,19 @@ public class MedicalRecordController {
         return false;
     }
 
+    @GetMapping(value = "/medicalRecord/ExaminationRepForP")
+    public ResponseEntity<MedicalRecord> geExaminationRepForPatient(@RequestParam(value = "email", required = true) String email) {
+        Patient p = patientService.getPatient(email);
+        MedicalRecord tmp = null;
+        List<MedicalRecord> izvestaj = medicalRecordService.findAll();
+        for (MedicalRecord e : izvestaj) {
+            if(e.getPatient().getEmail().equals(email)){
+                tmp = e;
+            }
+        }
+        System.out.println(tmp.toString());
+        return new ResponseEntity<>(tmp, HttpStatus.OK);
+    }
+
 
 }
