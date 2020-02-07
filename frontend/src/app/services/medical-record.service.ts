@@ -19,8 +19,10 @@ export class MedicalRecordService {
   medicalRecordForPatient: MedicalRecord;
   medicalRecordForDialog: MedicalRecord;
   dialogDate = false;
+  listExaminationReport: Array<ExaminationReport> = new Array<ExaminationReport>();
+  examinationRepForP: ExaminationReport
 
-  constructor(private http: HttpClient, ) {
+  constructor(private http: HttpClient,) {
     this.getAllMedicalRecords();
   }
 
@@ -54,8 +56,8 @@ export class MedicalRecordService {
     let params = new HttpParams();
     params = params.append('email', email);
     this.http.get(this.url + '/mrForP', {params}).subscribe((data: MedicalRecord) => {
-          this.MRFP = data;
-          console.log(this.MRFP);
+        this.MRFP = data;
+        console.log(this.MRFP);
       },
       error => {
         console.log(error);
@@ -88,6 +90,14 @@ export class MedicalRecordService {
     return this.http.post(this.url + '/edit', medicalRecord, {responseType: 'text'});
   }
 
+  public setExaminationReport(p: ExaminationReport) {
+    for (const p1 of this.listExaminationReport) {
+      if (p1.id === p.id) {
+        p1.comment = p.comment;
+      }
+    }
+  }
+
   public setMedicalRecord(p: MedicalRecord) {
 
     for (const p1 of this.listMedicalRecord) {
@@ -109,7 +119,9 @@ export class MedicalRecordService {
     let params = new HttpParams();
     params = params.append('email', email);
     this.http.get(this.url + '/MedicalRecordForPatient', {params}).subscribe((data: MedicalRecord) => {
-        this.medicalRecordForPatient = data;
+        console.log('MEDICAL RECORD DATA ISPOD');
+        console.log(data);
+        this.medicalRecordForPatient = new MedicalRecord(data.id, data.height, data.weight, data.bloodType, data.allergies, data.patient, data.examinationReports);
       },
       error => {
         console.log(error);
@@ -143,6 +155,15 @@ export class MedicalRecordService {
         console.log(error);
       });
     return this.dialogDate;
+  }
+
+  public setExaminationReportForPatient(examinationReport) {
+    console.log('medicalRecord');
+    this.examinationRepForP = examinationReport;
+  }
+
+  public getExaminationReportForPatient() {
+    return this.examinationRepForP;
   }
 
 }

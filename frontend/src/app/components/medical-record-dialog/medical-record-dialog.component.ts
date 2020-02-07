@@ -8,6 +8,7 @@ import {MedicalRecord} from '../../model/medicalRecord';
 import {MedicalRecordService} from '../../services/medical-record.service';
 import {Nurse} from '../../model/nurse';
 import {Router} from '@angular/router';
+import {ExaminationReport} from '../../model/examinationReport';
 
 @Component({
   selector: 'app-medical-record-dialog',
@@ -20,8 +21,8 @@ export class MedicalRecordDialogComponent implements OnInit {
   records: Array<MedicalRecord>;
   record: Patient;
   medicalRecordForm: FormGroup;
-
-
+  examinationReport: ExaminationReport;
+  comm = '';
   constructor(private formBuilder: FormBuilder,
               private patientService: PatientService,
               private dialogRef: MatDialogRef<MedicalRecordDialogComponent>,
@@ -35,16 +36,23 @@ export class MedicalRecordDialogComponent implements OnInit {
     this.medicalRecord = medicalService.getMedicalRecordForDialog();
     console.log('blabla');
     console.log(this.medicalRecord);
+
+    this.examinationReport = medicalService.getExaminationReportForPatient();
+  //  this.comm = this.examinationReport.comment;
+    console.log('komentar');
+    console.log(this.examinationReport);
   }
 
   ngOnInit() {
     // this.setAll();
+
     this.medicalRecordForm = this.formBuilder.group({
       height: new FormControl(this.medicalRecord.height),
       weight: new FormControl(this.medicalRecord.weight),
       bloodType: new FormControl(this.medicalRecord.bloodType),
       allergies: new FormControl(this.medicalRecord.allergies),
-      reports: new FormControl(this.medicalRecord.examinationReports)
+      reports: new FormControl(this.examinationReport),
+
     });
   }
 
@@ -69,6 +77,9 @@ export class MedicalRecordDialogComponent implements OnInit {
 
     this.editMedicalRecord();
     this.dialogRef.close(this.medicalRecord);
+    for (const c in ExaminationReport) {
+
+    }
   }
 
   private editMedicalRecord() {
