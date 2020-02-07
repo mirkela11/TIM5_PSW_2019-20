@@ -1030,7 +1030,7 @@
                         _this.success = true;
                     }, function () {
                         alert('Your account is already activated');
-                        _this.router.navigate(['http://localhost:8081']);
+                        _this.router.navigate(['']);
                     });
                 };
                 return ActivatedAccountPatientComponent;
@@ -1419,7 +1419,8 @@
                     this.clinicService.setType(this.f.type.value);
                     var a = new Date(this.f.date.value);
                     var date = a.toLocaleDateString();
-                    this.clinics = this.clinicService.getClinicsWithType(this.f.type.value);
+                    console.log(date);
+                    this.clinics = this.clinicService.getClinicsWithType(this.f.type.value, date);
                     this.result = new Result();
                     this.result.clinics = this.clinics;
                     this.result.date = date;
@@ -4002,10 +4003,11 @@
                 ClinicService.prototype.newClinic = function (clinic) {
                     return this.http.post(this.urlClinic + '/clinical-centre-admin/addClinic', clinic);
                 };
-                ClinicService.prototype.getClinicsWithType = function (type) {
+                ClinicService.prototype.getClinicsWithType = function (type, date) {
                     var _this = this;
                     var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpParams"]();
                     params = params.append('type', type);
+                    params = params.append('date', date);
                     this.clinicsTypes = new Array();
                     this.http.get(this.urlClinic + '/allWithTypes', { params: params }).subscribe(function (data) {
                         for (var _i = 0, data_3 = data; _i < data_3.length; _i++) {
@@ -4433,6 +4435,8 @@
                 ExaminationService.prototype.getAllPredefExaminations = function () {
                     var _this = this;
                     this.http.get(this.url + '/allPredefExaminations').subscribe(function (data) {
+                        console.log('data ispod');
+                        console.log(data);
                         _this.predefExaminations = new Array();
                         for (var _i = 0, data_9 = data; _i < data_9.length; _i++) {
                             var c = data_9[_i];

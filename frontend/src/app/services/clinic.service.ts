@@ -63,10 +63,11 @@ export class ClinicService {
   public newClinic(clinic) {
     return this.http.post(this.urlClinic + '/clinical-centre-admin/addClinic', clinic);
   }
-  public getClinicsWithType(type: string): Array<Clinic> {
+  public getClinicsWithType(type: string, date: string): Array<Clinic> {
 
     let params = new HttpParams();
     params = params.append('type', type);
+    params = params.append('date', date);
     this.clinicsTypes = new Array<Clinic>();
     this.http.get(this.urlClinic + '/allWithTypes', {params}).subscribe((data: Clinic[]) => {
         for (const c of data) {
