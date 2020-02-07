@@ -49,27 +49,6 @@ public class VacationService {
         return false;
 
     }
-    public boolean addVacation1(Vacation p){
-        List<Vacation> tmp = findall();
-        if(tmp.size() == 0)
-        {
-            repo.save(p);
-            return true;
-        }
-        for(Vacation p1 : tmp)
-            if(p1.getEmail().equals(p.getEmail()))
-            {
-                return  false;
-            }
-            else
-            {
-                repo.save(p);
-                return true;
-            }
-
-        return false;
-
-    }
 
     public Vacation getVacation(String email){
         List<Vacation> tmp = findall();

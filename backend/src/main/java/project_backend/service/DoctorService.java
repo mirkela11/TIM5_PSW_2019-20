@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import project_backend.model.Doctor;
 import project_backend.repository.DoctorRepo;
 
+import javax.print.Doc;
 import java.util.List;
 @Service
 public class DoctorService {
@@ -26,6 +27,7 @@ public class DoctorService {
     public Page<Doctor> findAll(Pageable page) {
         return repo.findAll(page);
     }
+
 
     public Doctor getDoctor(String email){
         List<Doctor> tmp = findall();

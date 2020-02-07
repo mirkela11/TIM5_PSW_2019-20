@@ -2,6 +2,8 @@ package project_backend.dtos;
 
 import project_backend.model.VacationStatus;
 
+import java.time.LocalDateTime;
+
 public class VacationDTO {
 
 

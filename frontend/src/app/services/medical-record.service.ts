@@ -4,6 +4,7 @@ import {Examination} from '../model/examination';
 import {MedicalRecord} from '../model/medicalRecord';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {ExaminationReport} from '../model/examinationReport';
+import {Nurse} from '../model/nurse';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,9 @@ export class MedicalRecordService {
   medicalRecord: MedicalRecord;
   examiantionReport: ExaminationReport;
   MRFP: MedicalRecord;
+  medicalRecordForPatient: MedicalRecord;
+  medicalRecordForDialog: MedicalRecord;
+  dialogDate = false;
 
   constructor(private http: HttpClient, ) {
     this.getAllMedicalRecords();
@@ -80,5 +84,65 @@ export class MedicalRecordService {
     }
   }
 
+  public editMedicalRecord(medicalRecord) {
+    return this.http.post(this.url + '/edit', medicalRecord, {responseType: 'text'});
+  }
+
+  public setMedicalRecord(p: MedicalRecord) {
+
+    for (const p1 of this.listMedicalRecord) {
+      if (p1.id === p.id) {
+        p1.weight = p.weight;
+        p1.bloodType = p.bloodType;
+        p1.allergies = p.allergies;
+        p1.reports = p.reports;
+        p1.height = p.height;
+        p1.patient = p.patient;
+        p1.reports = p.reports;
+        return;
+      }
+    }
+  }
+
+  public getMedicalRecordForPatient(email: string): MedicalRecord {
+
+    let params = new HttpParams();
+    params = params.append('email', email);
+    this.http.get(this.url + '/MedicalRecordForPatient', {params}).subscribe((data: MedicalRecord) => {
+        this.medicalRecordForPatient = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    console.log('Ispod');
+    console.log(this.medicalRecordForPatient);
+    return this.medicalRecordForPatient;
+  }
+
+  public setMedicalRecordForDialog(medicalRecord) {
+    console.log('medicalRecord');
+    this.medicalRecordForDialog = medicalRecord;
+  }
+
+  public getMedicalRecordForDialog() {
+    return this.medicalRecordForDialog;
+  }
+
+  public getLocalDateAndTime(interval: string, interval1: string): boolean {
+
+    let params = new HttpParams();
+    params = params.append('interval', interval);
+    params = params.append('interval1', interval1);
+
+    this.http.get(this.url + '/DateAndTime', {params}).subscribe((data: boolean) => {
+        this.dialogDate = data;
+        console.log('localDateAndTime');
+      },
+      error => {
+        console.log(error);
+      });
+    return this.dialogDate;
+  }
 
 }

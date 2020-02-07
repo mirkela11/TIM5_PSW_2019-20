@@ -4,14 +4,11 @@ import {ExaminationType} from '../../model/examinationType';
 import {MAT_DIALOG_DATA, MatDialogRef, MatTableDataSource} from '@angular/material';
 import {ExaminationsTypeService} from '../../services/examination-type.service';
 import {Clinic} from '../../model/clinic';
+import {HttpClient} from '@angular/common/http';
 import {ClinicService} from '../../services/clinic.service';
-import DateTimeFormat = Intl.DateTimeFormat;
-import DateTimeFormatOptions = Intl.DateTimeFormatOptions;
+import {DoctorListPatientComponent} from '../doctor-list-patient/doctor-list-patient.component';
+import {ClinicsListComponent} from '../clinics-list-patient/clinics-list.component';
 
-export class Result {
-  clinics: Array<Clinic> = new Array<Clinic>();
-  date: string;
-}
 
 @Component({
   selector: 'app-clinic-search-dialog',
@@ -23,8 +20,6 @@ export class ClinicSearchDialogComponent implements OnInit {
   SearchClinicsGroup: FormGroup;
   clinics: Array<Clinic> = new Array<Clinic>();
   types: Array<ExaminationType> = new Array<ExaminationType>();
-  result: Result
-
   myFilter = (d: Date): boolean => {
     const day = d.getDay();
     // Subota i nedelja se ne radi.
@@ -63,11 +58,7 @@ export class ClinicSearchDialogComponent implements OnInit {
 
     this.clinics = this.clinicService.getClinicsWithType(this.f.type.value);
 
-    this.result = new Result();
-    this.result.clinics = this.clinics;
-    this.result.date = date;
-
-    this.dialogRef.close(this.result);
+    this.dialogRef.close(this.clinics);
   }
 
   close() {
