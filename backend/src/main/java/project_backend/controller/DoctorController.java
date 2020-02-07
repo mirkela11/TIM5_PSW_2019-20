@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import project_backend.dtos.ClinicalAdministratorDTO;
 import project_backend.dtos.DoctorDTO;
 import project_backend.model.Doctor;
 import project_backend.model.User;
@@ -37,6 +38,7 @@ public class DoctorController {
     @PostMapping(value = "doctor/edit")
     public String editDoctor(@RequestBody DoctorDTO d){
         Doctor doct = doctorService.getDoctor(d.getEmail());
+        System.out.println(doct.getEmail());
         User u = userService.getUser(d.getEmail());
 
         if(doct != null){

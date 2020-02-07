@@ -1,0 +1,59 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <mat-card>
+          <h3>Profile</h3>
+          <hr>
+          <form [formGroup]="medicalRecordForm" (ngSubmit)="onSubmit()">
+
+            <div>
+              <mat-form-field class="form-group">
+                <input type="text" id="height" formControlName="height"  class="form-control" matInput placeholder="Height"
+                [ngClass]="{ 'is-invalid': submitted && medicalRecordForm.get('height').errors }">
+                <div *ngIf="submitted && medicalRecordForm.get('height').errors" class="invalid-feedback"></div>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field class="form-group">
+                <input type="text" id="weight" formControlName="weight"  class="form-control" matInput placeholder="Weight"
+                       [ngClass]="{ 'is-invalid': submitted && medicalRecordForm.get('weight').errors }">
+                <div *ngIf="submitted && medicalRecordForm.get('weight').errors" class="invalid-feedback"></div>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field class="form-group">
+                <input type="text" id="bloodType" formControlName="bloodType"  class="form-control" matInput placeholder="Blood Type"
+                       [ngClass]="{ 'is-invalid': submitted && medicalRecordForm.get('bloodType').errors }">
+                <div *ngIf="submitted && medicalRecordForm.get('bloodType').errors" class="invalid-feedback"></div>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field class="form-group">
+                <input type="text" id="allergies" formControlName="allergies"  class="form-control" matInput placeholder="Allergies"
+                       [ngClass]="{ 'is-invalid': submitted && medicalRecordForm.get('allergies').errors }">
+                <div *ngIf="submitted && medicalRecordForm.get('allergies').errors" class="invalid-feedback"></div>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="form-group">
+                <input type="text" id="reports" formControlName="reports"  class="form-control" matInput placeholder="Reports"
+                       [ngClass]="{ 'is-invalid': submitted && medicalRecordForm.get('reports').errors }">
+                <div *ngIf="submitted && medicalRecordForm.get('reports').errors" class="invalid-feedback"></div>
+              </mat-form-field>
+
+            </div>
+            <button  mat-raised-button color="primary" class="pull-right">Save</button>
+
+          </form>
+          <div mat-dialog-actions align="end">
+            <button class="mat-raised-button"(click)="close()">Close</button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

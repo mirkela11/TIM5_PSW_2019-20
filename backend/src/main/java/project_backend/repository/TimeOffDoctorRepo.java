@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface TimeOffDoctorRepo extends JpaRepository<TimeOffDoctor, Long>{
     List<TimeOffDoctor> findAll();
+
+
 }
