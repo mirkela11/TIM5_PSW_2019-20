@@ -1107,7 +1107,7 @@ let ActivatedAccountPatientComponent = class ActivatedAccountPatientComponent {
             this.success = true;
         }, () => {
             alert('Your account is already activated');
-            this.router.navigate(['http://localhost:8081']);
+            this.router.navigate(['']);
         });
     }
 };
@@ -1525,7 +1525,8 @@ let ClinicSearchDialogComponent = class ClinicSearchDialogComponent {
         this.clinicService.setType(this.f.type.value);
         const a = new Date(this.f.date.value);
         const date = a.toLocaleDateString();
-        this.clinics = this.clinicService.getClinicsWithType(this.f.type.value);
+        console.log(date);
+        this.clinics = this.clinicService.getClinicsWithType(this.f.type.value, date);
         this.result = new Result();
         this.result.clinics = this.clinics;
         this.result.date = date;
@@ -4422,9 +4423,10 @@ let ClinicService = class ClinicService {
     newClinic(clinic) {
         return this.http.post(this.urlClinic + '/clinical-centre-admin/addClinic', clinic);
     }
-    getClinicsWithType(type) {
+    getClinicsWithType(type, date) {
         let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpParams"]();
         params = params.append('type', type);
+        params = params.append('date', date);
         this.clinicsTypes = new Array();
         this.http.get(this.urlClinic + '/allWithTypes', { params }).subscribe((data) => {
             for (const c of data) {
@@ -4872,6 +4874,8 @@ let ExaminationService = class ExaminationService {
     }
     getAllPredefExaminations() {
         this.http.get(this.url + '/allPredefExaminations').subscribe((data) => {
+            console.log('data ispod');
+            console.log(data);
             this.predefExaminations = new Array();
             for (const c of data) {
                 this.examination = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);

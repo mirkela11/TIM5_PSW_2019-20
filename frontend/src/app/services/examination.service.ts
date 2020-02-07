@@ -85,6 +85,8 @@ export class ExaminationService {
 
   public getAllPredefExaminations(): Array<Examination> {
     this.http.get(this.url + '/allPredefExaminations').subscribe((data: Examination[]) => {
+        console.log('data ispod');
+        console.log(data);
         this.predefExaminations = new Array<Examination>();
         for (const c of data) {
           this.examination =  new Examination(this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
