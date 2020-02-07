@@ -14,4 +14,5 @@ public interface NurseRepo extends JpaRepository<Nurse, Long> {
     List<Nurse> findAllByEmail(String email);
     Nurse findByEmail(String email);
     Page<Nurse> findAll(Pageable pageable);
+    Nurse findOnyById(Long Id);
 }
