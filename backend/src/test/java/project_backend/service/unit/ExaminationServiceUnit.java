@@ -65,10 +65,11 @@ public class ExaminationServiceUnit{
         Interval i = new Interval();
         i.setStartTime(start);
         i.setEndTime(end);
-
+        Patient p1 = new Patient(1L,"weca997@gmail.com","Password123","Veljko","Vukovic","123456","Stojana Novakovica",
+                "Srbija", "Sabac", "1231231231231");
         examination.setKind(ExaminationKind.EXAMINATION);
         examination.setClinicAdministrator(clinicAdminService.getClinicalAdministrator("nemanja@email.com"));
-        examination.setPatient(patientService.getPatient("weca997@gmail.com"));
+        examination.setPatient(p1);
         examination.setStatus(ExaminationStatus.APPROVED);
         examination.setClinic(clinicService.getClinic("MediaGroup"));
         examination.setInterval(i);
@@ -96,8 +97,10 @@ public class ExaminationServiceUnit{
         i.setStartTime(start);
         i.setEndTime(end);
 
+        Patient p1 = new Patient(1L,"weca997@gmail.com","Password123","Veljko","Vukovic","123456","Stojana Novakovica",
+                "Srbija", "Sabac", "1231231231231");
         examination.setKind(ExaminationKind.EXAMINATION);
-        examination.setPatient(patientService.getPatient("weca997@gmail.com"));
+        examination.setPatient(p1);
         examination.setClinicAdministrator(clinicAdminService.getClinicalAdministrator("nemanja@email.com"));
         examination.setPatient(patientRepo.findOneById(1L));
         examination.setStatus(ExaminationStatus.APPROVED);
