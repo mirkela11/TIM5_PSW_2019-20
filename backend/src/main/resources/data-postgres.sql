@@ -76,3 +76,7 @@ insert into examining(examination_id,doctor_id) values (206,101);
 insert into examining(examination_id,doctor_id) values (207,102);
 insert into examining(examination_id,doctor_id) values (208,103);
 
+
+insert into medicaments(id,description,title,strenght) values (100,'2x na 8h', 'Sinacilin', '1000mg');
+insert into medicaments(id,description,title,strenght) values (101,'1x dnevno', 'Eritromicin', '300mg');
+

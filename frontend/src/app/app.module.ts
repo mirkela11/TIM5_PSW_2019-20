@@ -41,6 +41,8 @@ import { MedicalRecordDialogComponent } from './components/medical-record-dialog
 import {PredefExaminationDialogComponent} from './components/predef-examination-dialog/predef-examination-dialog.component';
 import { PatientMakeExaminationComponent } from './components/patient-make-examination/patient-make-examination.component';
 import { ActivatedAccountPatientComponent } from './components/activated-account-patient/activated-account-patient.component';
+import { DiagnoseComponent } from './components/diagnose/diagnose.component';
+import { MedicamentsComponent } from './components/medicaments/medicaments.component';
 
 
 
@@ -109,6 +111,10 @@ import { ActivatedAccountPatientComponent } from './components/activated-account
     DoctorMedicalRecordComponent,
 
     MedicalRecordDialogComponent,
+
+    DiagnoseComponent,
+
+    MedicamentsComponent,
   ],
   imports: [
     BrowserModule,
