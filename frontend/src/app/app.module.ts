@@ -95,7 +95,7 @@ import { ActivatedAccountPatientComponent } from './components/activated-account
     VacationRequestRegisterComponent,
 
     DoctorVacationRequestComponent,
-    
+
     DoctorSearchDialogComponent,
 
     PredefExaminationDialogComponent,
@@ -103,7 +103,7 @@ import { ActivatedAccountPatientComponent } from './components/activated-account
     PatientMakeExaminationComponent,
 
     ActivatedAccountPatientComponent,
-    
+
     DoctorMedicalRecordComponent,
 
     MedicalRecordDialogComponent,
