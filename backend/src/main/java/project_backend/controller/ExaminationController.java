@@ -93,8 +93,10 @@ public class ExaminationController {
         Patient p = patientService.getPatient(email);
 
         boolean uspesno = examinationService.editPredefBooked(e,p);
-        if(uspesno == true)
+        if(uspesno == true) {
+            examinationService.predefExaminationMail(e, p);
             return new ResponseEntity<>(true, HttpStatus.OK);
+        }
         else
             return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }

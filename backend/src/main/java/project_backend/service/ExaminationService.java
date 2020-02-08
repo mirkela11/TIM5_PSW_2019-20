@@ -59,4 +59,16 @@ public class ExaminationService {
         mailService.Send(clinicAdministrator.getEmail(), subject, text);
     }
 
+    public void predefExaminationMail(Examination examination, Patient patient) {
+        String subject = "Examination is booked";
+        String text = "You successfully booked examination with:" + System.lineSeparator();
+        text = text + "Kind: Examination" + System.lineSeparator();
+        text = text + "Clinic: " + examination.getClinic().getName() + System.lineSeparator();
+        text = text + "Type: " + examination.getExaminationType().getLabel() + System.lineSeparator();
+        text = text + "Date: " + examination.getInterval().getStartTime().toLocalDate().toString() + System.lineSeparator();
+        text = text + "Start time: " + examination.getInterval().getStartTime().toLocalTime().toString() + System.lineSeparator();
+        text = text + "End time: " + examination.getInterval().getEndTime().toLocalTime().toString();
+         mailService.Send(patient.getEmail(), subject, text);
+    }
+
 }
