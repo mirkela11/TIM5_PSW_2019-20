@@ -1,3 +1,5 @@
+import {DateTime} from 'luxon';
+
 
 export class Interval {
   id: number;
@@ -8,6 +10,7 @@ export class Interval {
     this.id = id;
     this.startTime = starTime;
     this.endTime = endTime;
+
   }
 
 }

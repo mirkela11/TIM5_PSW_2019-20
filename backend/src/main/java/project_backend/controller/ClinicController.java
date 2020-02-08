@@ -92,9 +92,12 @@ public class ClinicController{
                         c.getDoctors().remove(d);
                     }
                 }
+                else
+                    c.getDoctors().remove(d);
             }
         }
 
+        System.out.println(tmp.size());
 
         return new ResponseEntity<>(tmp, HttpStatus.OK);
     }

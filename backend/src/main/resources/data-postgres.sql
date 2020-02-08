@@ -30,7 +30,7 @@ insert into clinic_administrator(id, email, name, number, password, status, surn
 insert into users(id, email, password, role) values (150,'asmirkovic97@gmail.com', 'Mirkela97',3);
 insert into clinical_centre_administrator(id, email, name, password, phone, surname) values (100,'zejak@email.com', 'Nikola', 'Zejake123', '789456321', 'Zejak');
 insert into users(id, email, password, role) values (101,'zejak@email.com', 'Zejake123',4);
-insert into doctor(id,doctor_rating, email, name, password, phone, status, surname, work_hours_from, work_hours_to,clinic_id, specialized_id) values (101,4.2,'doctor@email.com','Doctor','Doctor123','123467911','ACTIVE','Docic','08','16',101,101);
+insert into doctor(id,doctor_rating, email, name, password, phone, status, surname, work_hours_from, work_hours_to,clinic_id, specialized_id) values (101,4.2,'doctor@email.com','Doctor','Doctor123','123467911','ACTIVE','Docic','08','16',101,100);
 insert into time_off_doctor(id,status,type,doctor_id,interval_id) values (120,'APPROVED','HOLIDAY',101,157);
 insert into doctor(id,doctor_rating, email, name, password, phone, status, surname, work_hours_from, work_hours_to,clinic_id, specialized_id) values (102,3.8,'doctor1@email.com','Doctor1','Doctor1234','123467900','ACTIVE','Docic1','08','16',102,101);
 insert into doctor(id,doctor_rating, email, name, password, phone, status, surname, work_hours_from, work_hours_to,clinic_id, specialized_id) values (103,4.0,'test@email.com','Marko','Doctor12345','464879178','ACTIVE','Markovic','08','16',102,101);

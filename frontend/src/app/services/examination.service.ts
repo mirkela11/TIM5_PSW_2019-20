@@ -7,6 +7,8 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {ExaminationType} from '../model/examinationType';
 
 import {Patient} from '../model/patient';
+import {Interval} from '../model/interval';
+import {DateTime} from 'luxon';
 
 @Injectable({
   providedIn: 'root'

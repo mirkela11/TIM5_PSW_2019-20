@@ -42,8 +42,6 @@ import {PredefExaminationDialogComponent} from './components/predef-examination-
 import { PatientMakeExaminationComponent } from './components/patient-make-examination/patient-make-examination.component';
 import { ActivatedAccountPatientComponent } from './components/activated-account-patient/activated-account-patient.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -109,6 +107,7 @@ import { ActivatedAccountPatientComponent } from './components/activated-account
     DoctorMedicalRecordComponent,
 
     MedicalRecordDialogComponent,
+
   ],
   imports: [
     BrowserModule,

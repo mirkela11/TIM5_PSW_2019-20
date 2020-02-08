@@ -79,12 +79,11 @@ public class ExaminationController {
                 ret.add(e);
             }
         }
-
         return new ResponseEntity<>(ret, HttpStatus.OK);
     }
 
     @PostMapping(value = "/examination/makePredefExamination")
-    public ResponseEntity<Examination> makePredefExamination(@RequestParam(value = "id", required = true) String id,
+    public ResponseEntity<Boolean> makePredefExamination(@RequestParam(value = "id", required = true) String id,
                                                              @RequestParam(value = "email", required = true) String email) {
         Examination e = new Examination();
         Long idEx = Long.parseLong(id);
@@ -93,13 +92,13 @@ public class ExaminationController {
 
         boolean uspesno = examinationService.editPredefBooked(e,p);
         if(uspesno == true)
-            return new ResponseEntity<>(e, HttpStatus.OK);
+            return new ResponseEntity<>(true, HttpStatus.OK);
         else
-            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping(value = "/examination/addExaminationPatient")
-    public ResponseEntity<Examination> addExaminationPatient(@RequestParam(value = "date", required = true) String date,
+    public ResponseEntity<Boolean> addExaminationPatient(@RequestParam(value = "date", required = true) String date,
                                                              @RequestParam(value = "patientEmail", required = true) String patientEmail,
                                                              @RequestParam(value = "doctorEmail", required = true) String doctorEmail,
                                                              @RequestParam(value = "type", required = true) String type,
@@ -108,10 +107,23 @@ public class ExaminationController {
                                                              @RequestParam(value = "adminsClinic", required = true) String adminsClinic) {
         Doctor doctor = doctorService.getDoctor(doctorEmail);
         Patient patient = patientService.getPatient(patientEmail);
+        Clinic clinic = clinicService.findOneById(Long.parseLong(clinicId));
+
+        System.out.println(date);
+        System.out.println(patientEmail);
+        System.out.println(doctorEmail);
+        System.out.println(type);
+        System.out.println(clinicId);
+        System.out.println(kind);
+        System.out.println(adminsClinic);
+
+        if(patient == null || doctor == null || clinic == null) {
+            return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
+        }
+
         ExaminationType examinationType = examinationTypeService.findByName(type);
         Interval interval = new Interval();
         Examination e = new Examination();
-        Clinic clinic = clinicService.findOneById(Long.parseLong(clinicId));
         ClinicAdministrator clinicAdministrator = clinicAdminService.getClinicalAdministrator(adminsClinic);
         Set<Doctor> doctors = new HashSet<Doctor>();
 
@@ -144,7 +156,7 @@ public class ExaminationController {
         examinationService.addExamination(e);
         this.examinationService.awaitingExamination(e,patient);
         this.examinationService.awaitingExaminationForAdmin(e,clinicAdministrator);
-        return new ResponseEntity<>(e, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/examination/getMHforP")
