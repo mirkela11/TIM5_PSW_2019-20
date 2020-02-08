@@ -5,10 +5,7 @@ import {ExaminationKind} from '../model/examinationKind';
 import {ExaminationStatus} from '../model/examinationStatus';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {ExaminationType} from '../model/examinationType';
-
-import {Patient} from '../model/patient';
-import {Interval} from '../model/interval';
-import {DateTime} from 'luxon';
+import {ExaminationReport} from '../model/examinationReport';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +17,7 @@ export class ExaminationService {
   examination: Examination;
   examinationDoctor: Examination;
   examinationForDoctor: Array<Examination> = new Array<Examination>();
-
+  examinationReport: ExaminationReport;
   predefExaminations: Array<Examination> = new Array<Examination>();
   etype: ExaminationType;
   MHFP: Array<Examination> = new Array<Examination>();

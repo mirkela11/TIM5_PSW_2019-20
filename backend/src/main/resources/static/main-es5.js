@@ -45,7 +45,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<mat-sidenav-container class=\"sidenav-container\">\r\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\r\n               [mode]=\"(isHandset$ | async) ? 'over' : 'side'\" [opened]=\"(isHandset$ | async) === true\">\r\n\r\n    <mat-toolbar color=\"accent\">Menu</mat-toolbar>\r\n    <mat-nav-list *ngIf = \"isNone()\">\r\n      <a mat-list-item routerLink=\"/login\">Login</a>\r\n      <a mat-list-item routerLink=\"/patient/register\">Register</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isPatient()\">\r\n      <a mat-list-item routerLink=\"/patient/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/patient/medicalRecord\">Medical record</a>\r\n      <a mat-list-item routerLink=\"/patient/medicalHistory\">Medical history</a>\r\n      <a mat-list-item routerLink=\"/patient/clinics\">Clinics</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isDoctor()\">\r\n      <a mat-list-item routerLink=\"/doctor/list_of_patients\">List of patients</a>\r\n      <a mat-list-item routerLink=\"/doctor/exemination\">Exemination</a>\r\n      <a mat-list-item routerLink=\"/doctor/work_calendar\">Work calendar</a>\r\n      <a mat-list-item routerLink=\"/doctor/requests\">Requests</a>\r\n      <a mat-list-item routerLink=\"/doctor/operations\">Operations</a>\r\n      <a mat-list-item routerLink=\"/doctor/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/doctor/VacationRequest\">VacationRequest</a>\r\n      <a mat-list-item routerLink=\"/doctor/MedicalRecord\">MedicalRecords</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isClinicAdmin()\">\r\n      <a mat-list-item routerLink=\"/admin_clinic/profile\">Profile</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isNurse()\">\r\n      <a mat-list-item routerLink=\"/nurse/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/nurse/ListOfPatient\">List Of Patients</a>\r\n      <a mat-list-item routerLink=\"/nurse/WorkCalendar\">WorkCalendar</a>\r\n      <a mat-list-item routerLink=\"/nurse/VacationRequest\">Vacation requests</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isClinicalCentreAdmin()\">\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/addClinic\">Add Clinic</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/addAdmins\">Add Administrator</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/requests\">Requests</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/VacationRequests\">Vacation Requests</a>\r\n\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n  </mat-sidenav>\r\n  <mat-sidenav-content>\r\n    <mat-toolbar color=\"accent\">\r\n      <button type=\"button\" aria-label=\"Toggle sidenav\" mat-icon-button (click)=\"drawer.toggle()\">\r\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\r\n      </button>\r\n      <span>Clinical Centre</span>\r\n    </mat-toolbar>\r\n    <!-- Add Content Here -->\r\n    <router-outlet></router-outlet>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n";
+    __webpack_exports__["default"] = "<mat-sidenav-container class=\"sidenav-container\">\r\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\r\n               [mode]=\"(isHandset$ | async) ? 'over' : 'side'\" [opened]=\"(isHandset$ | async) === true\">\r\n\r\n    <mat-toolbar color=\"accent\">Menu</mat-toolbar>\r\n    <mat-nav-list *ngIf = \"isNone()\">\r\n      <a mat-list-item routerLink=\"/login\">Login</a>\r\n      <a mat-list-item routerLink=\"/patient/register\">Register</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isPatient()\">\r\n      <a mat-list-item routerLink=\"/patient/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/patient/medicalRecord\">Medical record</a>\r\n      <a mat-list-item routerLink=\"/patient/medicalHistory\">Medical history</a>\r\n      <a mat-list-item routerLink=\"/patient/clinics\">Clinics</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isDoctor()\">\r\n      <a mat-list-item routerLink=\"/doctor/list_of_patients\">List of patients</a>\r\n      <a mat-list-item routerLink=\"/doctor/exemination\">Exemination</a>\r\n      <a mat-list-item routerLink=\"/doctor/work_calendar\">Work calendar</a>\r\n      <a mat-list-item routerLink=\"/doctor/requests\">Requests</a>\r\n      <a mat-list-item routerLink=\"/doctor/operations\">Operations</a>\r\n      <a mat-list-item routerLink=\"/doctor/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/doctor/VacationRequest\">VacationRequest</a>\r\n      <a mat-list-item routerLink=\"/doctor/MedicalRecord\">MedicalRecords</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isClinicAdmin()\">\r\n      <a mat-list-item routerLink=\"/admin_clinic/profile\">Profile</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isNurse()\">\r\n      <a mat-list-item routerLink=\"/nurse/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/nurse/ListOfPatient\">List Of Patients</a>\r\n      <a mat-list-item routerLink=\"/nurse/WorkCalendar\">WorkCalendar</a>\r\n      <a mat-list-item routerLink=\"/nurse/VacationRequest\">Vacation requests</a>\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n    <mat-nav-list *ngIf=\"isClinicalCentreAdmin()\">\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/profile\">Profile</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/addClinic\">Add Clinic</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/addAdmins\">Add Administrator</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/requests\">Requests</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/VacationRequests\">Vacation Requests</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/addDiagnose\">Add Diagnose</a>\r\n      <a mat-list-item routerLink=\"/clinical-centre-admin/addMedicament\">Add Medicament</a>\r\n\r\n\r\n\r\n\r\n      <a mat-list-item (click)=\"onLogout()\">Logout</a>\r\n    </mat-nav-list>\r\n\r\n  </mat-sidenav>\r\n  <mat-sidenav-content>\r\n    <mat-toolbar color=\"accent\">\r\n      <button type=\"button\" aria-label=\"Toggle sidenav\" mat-icon-button (click)=\"drawer.toggle()\">\r\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\r\n      </button>\r\n      <span>Clinical Centre</span>\r\n    </mat-toolbar>\r\n    <!-- Add Content Here -->\r\n    <router-outlet></router-outlet>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n";
     /***/
   },
 
@@ -105,7 +105,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"main-content\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8 offset-md-2\">\r\n        <mat-card>\r\n          <h3>Add Clinic</h3>\r\n          <hr>\r\n          <form [formGroup]=\"addClinicForm\" (ngSubmit)=\"onSubmit()\">\r\n            <div class=\"form-group\">\r\n              <label for=\"name\">Name</label>\r\n              <input type=\"name\" id=\"name\" formControlName=\"name\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addClinicForm.get('name').errors }\">\r\n\r\n              <div *ngIf=\"submitted && addClinicForm.get('name').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addClinicForm.get('name').errors['required']\">Email is required</div>\r\n                <div *ngIf=\"addClinicForm.get('name').errors['name']\">Email must be a valid email address</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"address\">Address</label>\r\n              <input type=\"text\" id=\"address\" formControlName=\"address\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addClinicForm.get('address').errors }\" />\r\n              <div *ngIf=\"submitted && addClinicForm.get('address').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addClinicForm.get('address').errors['required']\">Address is required</div>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"description\">Description</label>\r\n              <input type=\"text\" id=\"description\" formControlName=\"description\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addClinicForm.get('description').errors }\" />\r\n              <div *ngIf=\"submitted && addClinicForm.get('description').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addClinicForm.get('description').errors['required']\">Country is required</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"grade\">Grade</label>\r\n              <input type=\"grade\" id=\"grade\" formControlName=\"grade\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addClinicForm.get('grade').errors }\" />\r\n              <div *ngIf=\"submitted && addClinicForm.get('grade').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addClinicForm.get('grade').errors['required']\">Phone Number is required</div>\r\n                <div *ngIf=\"addClinicForm.get('grade').errors['minlength']\">A phone number must have at least 9\r\n                  digits\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <button mat-raised-button style=\"position: center\" color=\"primary\" class=\"pull-right\">Save</button>\r\n          </form>\r\n\r\n\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" multiTemplateDataRows\r\n       class=\"mat-elevation-z8\">\r\n  <ng-container matColumnDef=\"{{column}}\" *ngFor=\"let column of displayedColumns\">\r\n    <th mat-header-cell *matHeaderCellDef> {{column}} </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element[column]}} </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let element; columns: displayedColumns;\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: ['expandedDetail']\" class=\"example-detail-row\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n\r\n";
+    __webpack_exports__["default"] = "<div class=\"main-content\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8 offset-md-2\">\r\n        <mat-card>\r\n          <h3>Add Clinic</h3>\r\n          <hr>\r\n          <form [formGroup]=\"addClinicForm\" (ngSubmit)=\"onSubmit()\">\r\n            <div class=\"form-group\">\r\n              <label for=\"name\">Name</label>\r\n              <input type=\"name\" id=\"name\" formControlName=\"name\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addClinicForm.get('name').errors }\">\r\n\r\n              <div *ngIf=\"submitted && addClinicForm.get('name').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addClinicForm.get('name').errors['required']\">Email is required</div>\r\n                <div *ngIf=\"addClinicForm.get('name').errors['name']\">Email must be a valid email address</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"address\">Address</label>\r\n              <input type=\"text\" id=\"address\" formControlName=\"address\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addClinicForm.get('address').errors }\" />\r\n              <div *ngIf=\"submitted && addClinicForm.get('address').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addClinicForm.get('address').errors['required']\">Address is required</div>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"description\">Description</label>\r\n              <input type=\"text\" id=\"description\" formControlName=\"description\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addClinicForm.get('description').errors }\" />\r\n              <div *ngIf=\"submitted && addClinicForm.get('description').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addClinicForm.get('description').errors['required']\">Country is required</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"grade\">Grade</label>\r\n              <input type=\"grade\" id=\"grade\" formControlName=\"grade\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addClinicForm.get('grade').errors }\" />\r\n              <div *ngIf=\"submitted && addClinicForm.get('grade').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addClinicForm.get('grade').errors['required']\">Phone Number is required</div>\r\n                <div *ngIf=\"addClinicForm.get('grade').errors['minlength']\">A phone number must have at least 9\r\n                  digits\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <button mat-raised-button style=\"position: center\" color=\"primary\" class=\"pull-right\">Save</button>\r\n          </form>\r\n\r\n\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" multiTemplateDataRows\r\n       class=\"mat-elevation-z8\">\r\n  <ng-container matColumnDef=\"{{column}}\" *ngFor=\"let column of displayedColumns\">\r\n    <th mat-header-cell *matHeaderCellDef> {{column}} </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element[column]}} </td>\r\n  </ng-container>\r\n\r\n  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let element; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n";
     /***/
   },
 
@@ -166,6 +166,26 @@
 
 
     __webpack_exports__["default"] = "<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" matSort class=\"mat-elevation-z8\">\r\n\r\n  <ng-container matColumnDef=\"Name\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Clinic name </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Address\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Clinic address </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.address}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"ClinicRating\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Clinic rating </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinicRating}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Doctors\">\r\n    <th mat-header-cell *matHeaderCellDef> Doctors </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-flat-button color=\"warn\" (click)=\"doctorList(element)\"> Doctors </button>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n<button mat-raised-button color=\"primary\" (click)=\"openDialog()\">Search</button>\r\n<button mat-raised-button color=\"accent\" (click)=\"predefDialog()\">Predef examinations</button>\r\n\r\n";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/components/diagnose/diagnose.component.html":
+  /*!***************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/diagnose/diagnose.component.html ***!
+    \***************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppComponentsDiagnoseDiagnoseComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<div class=\"main-content\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8 offset-md-2\">\r\n        <mat-card>\r\n          <h3>Add Diagnose</h3>\r\n          <hr>\r\n          <form [formGroup]=\"addDiagnoseForm\" (ngSubmit)=\"onSubmit()\">\r\n            <div class=\"form-group\">\r\n              <label for=\"id\">ID</label>\r\n              <input type=\"text\" id=\"id\" formControlName=\"id\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addDiagnoseForm.get('id').errors }\">\r\n\r\n              <div *ngIf=\"submitted && addDiagnoseForm.get('id').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addDiagnoseForm.get('id').errors['required']\">Id is required</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"title\">Title</label>\r\n              <input type=\"text\" id=\"title\" formControlName=\"title\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addDiagnoseForm.get('title').errors }\" />\r\n              <div *ngIf=\"submitted && addDiagnoseForm.get('title').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addDiagnoseForm.get('title').errors['required']\">Title is required</div>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"description\">Description</label>\r\n              <input type=\"text\" id=\"description\" formControlName=\"description\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addDiagnoseForm.get('description').errors }\" />\r\n              <div *ngIf=\"submitted && addDiagnoseForm.get('description').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addDiagnoseForm.get('description').errors['required']\">Description is required</div>\r\n              </div>\r\n            </div>\r\n            <button mat-raised-button style=\"position: center\" color=\"primary\" class=\"pull-right\">Save</button>\r\n          </form>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" multiTemplateDataRows\r\n       class=\"mat-elevation-z8\">\r\n  <ng-container matColumnDef=\"{{column}}\" *ngFor=\"let column of displayedColumns\">\r\n    <th mat-header-cell *matHeaderCellDef> {{column}} </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element[column]}} </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let element; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n\r\n";
     /***/
   },
 
@@ -466,6 +486,26 @@
 
 
     __webpack_exports__["default"] = "<div class=\"main-content\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8 offset-md-2\">\r\n        <mat-card>\r\n          <h3>Medical Record</h3>\r\n          <hr>\r\n            <form class=\"medicalRecordForm\">\r\n              <div class=\"form-group\">\r\n                <mat-form-field class=\"example-full-width\">\r\n                  <input readonly=\"readonly\" matInput placeholder=\"Height\" value=\"{{height}}\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group\">\r\n                <mat-form-field class=\"example-full-width\">\r\n                  <input readonly=\"readonly\" matInput placeholder=\"Weight\" value=\"{{weight}}\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group\">\r\n                <mat-form-field class=\"example-full-width\">\r\n                  <input readonly=\"readonly\" matInput placeholder=\"Blood type\" value=\"{{bloodType}}\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group\">\r\n                <mat-form-field class=\"toast-top-full-width\">\r\n                  <textarea readonly=\"readonly\" matInput placeholder=\"Allergies\" value=\"{{allergies}}\"></textarea>\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group\">\r\n                <mat-form-field class=\"toast-top-full-width\">\r\n                  <textarea readonly=\"readonly\" matInput placeholder=\"Examination reports\" value=\"{{reports}}\"></textarea>\r\n                </mat-form-field>\r\n              </div>\r\n            </form>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/components/medicaments/medicaments.component.html":
+  /*!*********************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/medicaments/medicaments.component.html ***!
+    \*********************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppComponentsMedicamentsMedicamentsComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<div class=\"main-content\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      < class=\"col-md-8 offset-md-2\">\r\n        <mat-card>\r\n          <h3>Profile</h3>\r\n          <hr>\r\n          <form [formGroup]=\"addMedicamentForm\" (ngSubmit)=\"onSubmit()\">\r\n\r\n            <div class=\"form-group\">\r\n              <mat-label for=\"id\">ID</mat-label>\r\n              <input type=\"text\" id=\"id\" formControlName=\"id\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addMedicamentForm.get('id').errors }\">\r\n\r\n              <div *ngIf=\"submitted && addMedicamentForm.get('id').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addMedicamentForm.get('id').errors['required']\">Email is required</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"description\">Description</label>\r\n              <input type=\"text\" id=\"description\" formControlName=\"description\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addMedicamentForm.get('description').errors }\" />\r\n              <div *ngIf=\"submitted && addMedicamentForm.get('description').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\" addMedicamentForm.get('description').errors['required']\">First Name is required</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"title\">Name</label>\r\n              <input type=\"text\" id=\"title\" formControlName=\"title\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addMedicamentForm.get('title').errors }\">\r\n              <div *ngIf=\"submitted && addMedicamentForm.get('title').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addMedicamentForm.get('title').errors['required']\">Password is required</div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"strenght\">Strenght</label>\r\n              <input type=\"text\" id=\"strenght\" formControlName=\"strenght\" class=\"form-control\"\r\n                     [ngClass]=\"{ 'is-invalid': submitted && addMedicamentForm.get('strenght').errors }\" />\r\n              <div *ngIf=\"submitted && addMedicamentForm.get('strenght').errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"addMedicamentForm.get('strenght').errors['required']\">Last Name is required</div>\r\n              </div>\r\n            </div>\r\n            <button mat-raised-button color=\"primary\" class=\"pull-right\">Save</button>\r\n          </form>\r\n      </mat-card>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table\r\n       [dataSource]=\"dataSource\" multiTemplateDataRows\r\n       class=\"mat-elevation-z8\">\r\n  <ng-container matColumnDef=\"{{column}}\" *ngFor=\"let column of displayedColumns\">\r\n    <th mat-header-cell *matHeaderCellDef> {{column}} </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element[column]}} </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let element; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n";
     /***/
   },
 
@@ -1390,6 +1430,18 @@
     var _components_doctor_medical_record_doctor_medical_record_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(
     /*! ./components/doctor-medical-record/doctor-medical-record.component */
     "./src/app/components/doctor-medical-record/doctor-medical-record.component.ts");
+    /* harmony import */
+
+
+    var _components_diagnose_diagnose_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(
+    /*! ./components/diagnose/diagnose.component */
+    "./src/app/components/diagnose/diagnose.component.ts");
+    /* harmony import */
+
+
+    var _components_medicaments_medicaments_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(
+    /*! ./components/medicaments/medicaments.component */
+    "./src/app/components/medicaments/medicaments.component.ts");
 
     const routes = [{
       path: '',
@@ -1466,6 +1518,12 @@
     }, {
       path: 'doctor/MedicalRecord',
       component: _components_doctor_medical_record_doctor_medical_record_component__WEBPACK_IMPORTED_MODULE_27__["DoctorMedicalRecordComponent"]
+    }, {
+      path: 'clinical-centre-admin/addDiagnose',
+      component: _components_diagnose_diagnose_component__WEBPACK_IMPORTED_MODULE_28__["DiagnoseComponent"]
+    }, {
+      path: 'clinical-centre-admin/addMedicament',
+      component: _components_medicaments_medicaments_component__WEBPACK_IMPORTED_MODULE_29__["MedicamentsComponent"]
     }];
     let AppRoutingModule = class AppRoutingModule {};
     AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
@@ -1881,10 +1939,22 @@
     var _components_activated_account_patient_activated_account_patient_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(
     /*! ./components/activated-account-patient/activated-account-patient.component */
     "./src/app/components/activated-account-patient/activated-account-patient.component.ts");
+    /* harmony import */
+
+
+    var _components_diagnose_diagnose_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(
+    /*! ./components/diagnose/diagnose.component */
+    "./src/app/components/diagnose/diagnose.component.ts");
+    /* harmony import */
+
+
+    var _components_medicaments_medicaments_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(
+    /*! ./components/medicaments/medicaments.component */
+    "./src/app/components/medicaments/medicaments.component.ts");
 
     let AppModule = class AppModule {};
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], _components_login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"], _components_registration_registration_component__WEBPACK_IMPORTED_MODULE_13__["RegistrationComponent"], _components_home_page_patient_home_page_patient_component__WEBPACK_IMPORTED_MODULE_14__["HomePagePatientComponent"], _components_clinics_list_patient_clinics_list_component__WEBPACK_IMPORTED_MODULE_15__["ClinicsListComponent"], _components_patient_profile_patient_profile_component__WEBPACK_IMPORTED_MODULE_16__["PatientProfileComponent"], _components_home_page_doctor_home_page_doctor_component__WEBPACK_IMPORTED_MODULE_17__["HomePageDoctorComponent"], _components_doctor_profile_doctor_profile_component__WEBPACK_IMPORTED_MODULE_18__["DoctorProfileComponent"], _components_nurse_profile_nurse_profile_component__WEBPACK_IMPORTED_MODULE_19__["NurseProfileComponent"], _components_home_page_nurse_home_page_nurse_component__WEBPACK_IMPORTED_MODULE_20__["HomePageNurseComponent"], _components_home_page_admin_clinic_home_page_admin_clinic_component__WEBPACK_IMPORTED_MODULE_21__["HomePageAdminClinicComponent"], _components_admin_clinic_profile_admin_clinic_profile_component__WEBPACK_IMPORTED_MODULE_22__["AdminClinicProfileComponent"], _components_home_page_clinical_centre_administrator_home_page_clinical_centre_administrator_component__WEBPACK_IMPORTED_MODULE_23__["HomePageClinicalCentreAdministratorComponent"], _components_home_home_component__WEBPACK_IMPORTED_MODULE_24__["HomeComponent"], _components_add_clinic_add_clinic_component__WEBPACK_IMPORTED_MODULE_25__["AddClinicComponent"], _components_register_requests_register_requests_component__WEBPACK_IMPORTED_MODULE_26__["RegisterRequestsComponent"], _components_medical_history_patient_medical_history_patient_component__WEBPACK_IMPORTED_MODULE_27__["MedicalHistoryPatientComponent"], _components_medical_record_patient_medical_record_patient_component__WEBPACK_IMPORTED_MODULE_28__["MedicalRecordPatientComponent"], _components_add_clinic_administrator_add_clinic_administrator_component__WEBPACK_IMPORTED_MODULE_29__["AddClinicAdministratorComponent"], _components_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_30__["ClinicSearchDialogComponent"], _components_doctor_list_patient_doctor_list_patient_component__WEBPACK_IMPORTED_MODULE_31__["DoctorListPatientComponent"], _components_nurse_date_picker_nurse_date_picker_component__WEBPACK_IMPORTED_MODULE_32__["NurseDatePickerComponent"], _components_nurse_list_patient_nurse_list_patient_component__WEBPACK_IMPORTED_MODULE_33__["NurseListPatientComponent"], _components_nurse_vacation_request_nurse_vacation_request_component__WEBPACK_IMPORTED_MODULE_34__["NurseVacationRequestComponent"], _components_vacation_request_register_vacation_request_register_component__WEBPACK_IMPORTED_MODULE_35__["VacationRequestRegisterComponent"], _components_doctor_vacation_request_doctor_vacation_request_component__WEBPACK_IMPORTED_MODULE_36__["DoctorVacationRequestComponent"], _components_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_37__["DoctorSearchDialogComponent"], _components_predef_examination_dialog_predef_examination_dialog_component__WEBPACK_IMPORTED_MODULE_40__["PredefExaminationDialogComponent"], _components_patient_make_examination_patient_make_examination_component__WEBPACK_IMPORTED_MODULE_41__["PatientMakeExaminationComponent"], _components_activated_account_patient_activated_account_patient_component__WEBPACK_IMPORTED_MODULE_42__["ActivatedAccountPatientComponent"], _components_doctor_medical_record_doctor_medical_record_component__WEBPACK_IMPORTED_MODULE_38__["DoctorMedicalRecordComponent"], _components_medical_record_dialog_medical_record_dialog_component__WEBPACK_IMPORTED_MODULE_39__["MedicalRecordDialogComponent"]],
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], _components_login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"], _components_registration_registration_component__WEBPACK_IMPORTED_MODULE_13__["RegistrationComponent"], _components_home_page_patient_home_page_patient_component__WEBPACK_IMPORTED_MODULE_14__["HomePagePatientComponent"], _components_clinics_list_patient_clinics_list_component__WEBPACK_IMPORTED_MODULE_15__["ClinicsListComponent"], _components_patient_profile_patient_profile_component__WEBPACK_IMPORTED_MODULE_16__["PatientProfileComponent"], _components_home_page_doctor_home_page_doctor_component__WEBPACK_IMPORTED_MODULE_17__["HomePageDoctorComponent"], _components_doctor_profile_doctor_profile_component__WEBPACK_IMPORTED_MODULE_18__["DoctorProfileComponent"], _components_nurse_profile_nurse_profile_component__WEBPACK_IMPORTED_MODULE_19__["NurseProfileComponent"], _components_home_page_nurse_home_page_nurse_component__WEBPACK_IMPORTED_MODULE_20__["HomePageNurseComponent"], _components_home_page_admin_clinic_home_page_admin_clinic_component__WEBPACK_IMPORTED_MODULE_21__["HomePageAdminClinicComponent"], _components_admin_clinic_profile_admin_clinic_profile_component__WEBPACK_IMPORTED_MODULE_22__["AdminClinicProfileComponent"], _components_home_page_clinical_centre_administrator_home_page_clinical_centre_administrator_component__WEBPACK_IMPORTED_MODULE_23__["HomePageClinicalCentreAdministratorComponent"], _components_home_home_component__WEBPACK_IMPORTED_MODULE_24__["HomeComponent"], _components_add_clinic_add_clinic_component__WEBPACK_IMPORTED_MODULE_25__["AddClinicComponent"], _components_register_requests_register_requests_component__WEBPACK_IMPORTED_MODULE_26__["RegisterRequestsComponent"], _components_medical_history_patient_medical_history_patient_component__WEBPACK_IMPORTED_MODULE_27__["MedicalHistoryPatientComponent"], _components_medical_record_patient_medical_record_patient_component__WEBPACK_IMPORTED_MODULE_28__["MedicalRecordPatientComponent"], _components_add_clinic_administrator_add_clinic_administrator_component__WEBPACK_IMPORTED_MODULE_29__["AddClinicAdministratorComponent"], _components_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_30__["ClinicSearchDialogComponent"], _components_doctor_list_patient_doctor_list_patient_component__WEBPACK_IMPORTED_MODULE_31__["DoctorListPatientComponent"], _components_nurse_date_picker_nurse_date_picker_component__WEBPACK_IMPORTED_MODULE_32__["NurseDatePickerComponent"], _components_nurse_list_patient_nurse_list_patient_component__WEBPACK_IMPORTED_MODULE_33__["NurseListPatientComponent"], _components_nurse_vacation_request_nurse_vacation_request_component__WEBPACK_IMPORTED_MODULE_34__["NurseVacationRequestComponent"], _components_vacation_request_register_vacation_request_register_component__WEBPACK_IMPORTED_MODULE_35__["VacationRequestRegisterComponent"], _components_doctor_vacation_request_doctor_vacation_request_component__WEBPACK_IMPORTED_MODULE_36__["DoctorVacationRequestComponent"], _components_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_37__["DoctorSearchDialogComponent"], _components_predef_examination_dialog_predef_examination_dialog_component__WEBPACK_IMPORTED_MODULE_40__["PredefExaminationDialogComponent"], _components_patient_make_examination_patient_make_examination_component__WEBPACK_IMPORTED_MODULE_41__["PatientMakeExaminationComponent"], _components_activated_account_patient_activated_account_patient_component__WEBPACK_IMPORTED_MODULE_42__["ActivatedAccountPatientComponent"], _components_doctor_medical_record_doctor_medical_record_component__WEBPACK_IMPORTED_MODULE_38__["DoctorMedicalRecordComponent"], _components_medical_record_dialog_medical_record_dialog_component__WEBPACK_IMPORTED_MODULE_39__["MedicalRecordDialogComponent"], _components_diagnose_diagnose_component__WEBPACK_IMPORTED_MODULE_43__["DiagnoseComponent"], _components_medicaments_medicaments_component__WEBPACK_IMPORTED_MODULE_44__["MedicamentsComponent"]],
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_6__["ToastrModule"].forRoot({
         timeOut: 2000,
         positionClass: 'toast-top-right',
@@ -2893,6 +2963,169 @@
   },
 
   /***/
+  "./src/app/components/diagnose/diagnose.component.css":
+  /*!************************************************************!*\
+    !*** ./src/app/components/diagnose/diagnose.component.css ***!
+    \************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppComponentsDiagnoseDiagnoseComponentCss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "div {\r\n  width: 100%;\r\n\r\n}\r\n\r\ntable {\r\n  width: 75%;\r\n  margin-top:50px;\r\n  margin-left:300px;\r\n\r\n}\r\n\r\n.mat-form-field {\r\n  font-size: 14px;\r\n  margin-top:50px;\r\n  margin-left:300px;\r\n  width: 75%;\r\n}\r\n\r\nmat-paginator {\r\n  width: 75%;\r\n  margin-left:300px;\r\n}\r\n\r\ntr.example-detail-row {\r\n  height: 0;\r\n}\r\n\r\ntr.example-element-row:not(.example-expanded-row):hover {\r\n  background: #777;\r\n}\r\n\r\ntr.example-element-row:not(.example-expanded-row):active {\r\n  background: #efefef;\r\n}\r\n\r\n.example-element-row td {\r\n  border-bottom-width: 0;\r\n}\r\n\r\n.example-element-detail {\r\n  overflow: hidden;\r\n  display: -webkit-box;\r\n  display: flex;\r\n}\r\n\r\n.example-element-diagram {\r\n  min-width: 80px;\r\n  border: 2px solid black;\r\n  padding: 8px;\r\n  font-weight: lighter;\r\n  margin: 8px 0;\r\n  height: 104px;\r\n}\r\n\r\n.example-element-name {\r\n  font-weight: bold;\r\n  font-size: 40px;\r\n  line-height: normal;\r\n}\r\n\r\n.example-element-description {\r\n  padding: 16px;\r\n}\r\n\r\n.example-element-description-attribution {\r\n  opacity: 0.5;\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9kaWFnbm9zZS9kaWFnbm9zZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBVzs7QUFFYjs7QUFFQTtFQUNFLFVBQVU7RUFDVixlQUFlO0VBQ2YsaUJBQWlCOztBQUVuQjs7QUFDQTtFQUNFLGVBQWU7RUFDZixlQUFlO0VBQ2YsaUJBQWlCO0VBQ2pCLFVBQVU7QUFDWjs7QUFDQTtFQUNFLFVBQVU7RUFDVixpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxTQUFTO0FBQ1g7O0FBRUE7RUFDRSxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxtQkFBbUI7QUFDckI7O0FBRUE7RUFDRSxzQkFBc0I7QUFDeEI7O0FBRUE7RUFDRSxnQkFBZ0I7RUFDaEIsb0JBQWE7RUFBYixhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsdUJBQXVCO0VBQ3ZCLFlBQVk7RUFDWixvQkFBb0I7RUFDcEIsYUFBYTtFQUNiLGFBQWE7QUFDZjs7QUFFQTtFQUNFLGlCQUFpQjtFQUNqQixlQUFlO0VBQ2YsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0UsYUFBYTtBQUNmOztBQUVBO0VBQ0UsWUFBWTtBQUNkIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9kaWFnbm9zZS9kaWFnbm9zZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiZGl2IHtcclxuICB3aWR0aDogMTAwJTtcclxuXHJcbn1cclxuXHJcbnRhYmxlIHtcclxuICB3aWR0aDogNzUlO1xyXG4gIG1hcmdpbi10b3A6NTBweDtcclxuICBtYXJnaW4tbGVmdDozMDBweDtcclxuXHJcbn1cclxuLm1hdC1mb3JtLWZpZWxkIHtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgbWFyZ2luLXRvcDo1MHB4O1xyXG4gIG1hcmdpbi1sZWZ0OjMwMHB4O1xyXG4gIHdpZHRoOiA3NSU7XHJcbn1cclxubWF0LXBhZ2luYXRvciB7XHJcbiAgd2lkdGg6IDc1JTtcclxuICBtYXJnaW4tbGVmdDozMDBweDtcclxufVxyXG5cclxudHIuZXhhbXBsZS1kZXRhaWwtcm93IHtcclxuICBoZWlnaHQ6IDA7XHJcbn1cclxuXHJcbnRyLmV4YW1wbGUtZWxlbWVudC1yb3c6bm90KC5leGFtcGxlLWV4cGFuZGVkLXJvdyk6aG92ZXIge1xyXG4gIGJhY2tncm91bmQ6ICM3Nzc7XHJcbn1cclxuXHJcbnRyLmV4YW1wbGUtZWxlbWVudC1yb3c6bm90KC5leGFtcGxlLWV4cGFuZGVkLXJvdyk6YWN0aXZlIHtcclxuICBiYWNrZ3JvdW5kOiAjZWZlZmVmO1xyXG59XHJcblxyXG4uZXhhbXBsZS1lbGVtZW50LXJvdyB0ZCB7XHJcbiAgYm9yZGVyLWJvdHRvbS13aWR0aDogMDtcclxufVxyXG5cclxuLmV4YW1wbGUtZWxlbWVudC1kZXRhaWwge1xyXG4gIG92ZXJmbG93OiBoaWRkZW47XHJcbiAgZGlzcGxheTogZmxleDtcclxufVxyXG5cclxuLmV4YW1wbGUtZWxlbWVudC1kaWFncmFtIHtcclxuICBtaW4td2lkdGg6IDgwcHg7XHJcbiAgYm9yZGVyOiAycHggc29saWQgYmxhY2s7XHJcbiAgcGFkZGluZzogOHB4O1xyXG4gIGZvbnQtd2VpZ2h0OiBsaWdodGVyO1xyXG4gIG1hcmdpbjogOHB4IDA7XHJcbiAgaGVpZ2h0OiAxMDRweDtcclxufVxyXG5cclxuLmV4YW1wbGUtZWxlbWVudC1uYW1lIHtcclxuICBmb250LXdlaWdodDogYm9sZDtcclxuICBmb250LXNpemU6IDQwcHg7XHJcbiAgbGluZS1oZWlnaHQ6IG5vcm1hbDtcclxufVxyXG5cclxuLmV4YW1wbGUtZWxlbWVudC1kZXNjcmlwdGlvbiB7XHJcbiAgcGFkZGluZzogMTZweDtcclxufVxyXG5cclxuLmV4YW1wbGUtZWxlbWVudC1kZXNjcmlwdGlvbi1hdHRyaWJ1dGlvbiB7XHJcbiAgb3BhY2l0eTogMC41O1xyXG59XHJcblxyXG4iXX0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/components/diagnose/diagnose.component.ts":
+  /*!***********************************************************!*\
+    !*** ./src/app/components/diagnose/diagnose.component.ts ***!
+    \***********************************************************/
+
+  /*! exports provided: DiagnoseComponent */
+
+  /***/
+  function srcAppComponentsDiagnoseDiagnoseComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DiagnoseComponent", function () {
+      return DiagnoseComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _model_Diagnose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../../model/Diagnose */
+    "./src/app/model/Diagnose.ts");
+    /* harmony import */
+
+
+    var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/material */
+    "./node_modules/@angular/material/esm2015/material.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _services_diagnose_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../../services/diagnose.service */
+    "./src/app/services/diagnose.service.ts");
+
+    let DiagnoseComponent = class DiagnoseComponent {
+      constructor(formbuilder, diagnoseService, router) {
+        this.formbuilder = formbuilder;
+        this.diagnoseService = diagnoseService;
+        this.router = router;
+        this.submitted = false;
+        this.displayedColumns = ['id', 'title', 'description'];
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatTableDataSource"]();
+        this.diagnoses = this.diagnoseService.getAllDiagnoses();
+        this.all();
+      }
+
+      ngOnInit() {
+        this.addDiagnoseForm = this.formbuilder.group({
+          id: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+          title: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+          description: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])
+        });
+        this.all();
+        this.dataSource.paginator = this.paginator;
+      }
+
+      get f() {
+        return this.addDiagnoseForm.controls;
+      }
+
+      onSubmit() {
+        this.submitted = true; // Stop here if form is invalid
+
+        if (this.addDiagnoseForm.invalid) {
+          return;
+        }
+
+        this.diagnose = new _model_Diagnose__WEBPACK_IMPORTED_MODULE_3__["Diagnose"](this.f.id.value, this.f.title.value, this.f.description.value);
+        this.diagnose = new _model_Diagnose__WEBPACK_IMPORTED_MODULE_3__["Diagnose"](this.f.id.value, this.f.title.value, this.f.description.value);
+        this.createDiagnose();
+      }
+
+      createDiagnose() {
+        this.diagnoseService.newDiagnose(this.diagnose).subscribe(data => {
+          this.diagnoseService.addDiagnose(this.diagnose);
+          this.router.navigate(['/clinical-centre-admin/home']);
+        }, error => {
+          alert('Error adding diagnose');
+          console.log(error);
+        });
+      }
+
+      applyFilter(filterValue) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+      }
+
+      all() {
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatTableDataSource"](this.diagnoseService.getAllDiagnoses());
+      }
+
+    };
+
+    DiagnoseComponent.ctorParameters = () => [{
+      type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]
+    }, {
+      type: _services_diagnose_service__WEBPACK_IMPORTED_MODULE_6__["DiagnoseService"]
+    }, {
+      type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
+    }];
+
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatPaginator"], {
+      static: true
+    })], DiagnoseComponent.prototype, "paginator", void 0);
+    DiagnoseComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-diagnose',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./diagnose.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/components/diagnose/diagnose.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./diagnose.component.css */
+      "./src/app/components/diagnose/diagnose.component.css")).default]
+    })], DiagnoseComponent);
+    /***/
+  },
+
+  /***/
   "./src/app/components/doctor-list-patient/doctor-list-patient.component.css":
   /*!**********************************************************************************!*\
     !*** ./src/app/components/doctor-list-patient/doctor-list-patient.component.css ***!
@@ -3173,17 +3406,17 @@
       }
 
       edit(element) {
-        setTimeout(() => {
-          const medicalRecordForDialog = this.medicalRecServis.getMedicalRecordForPatient(element.patient.email);
-          this.medicalService.setMedicalRecordForDialog(medicalRecordForDialog);
-        }, 750);
+        const medicalRecordForDialog = this.medicalRecServis.getMedicalRecordForPatient(element.patient.email);
+        this.medicalService.setMedicalRecordForDialog(medicalRecordForDialog);
         this.patientService.setPatient1(element.patient);
         this.condition = this.medicalService.getLocalDateAndTime(element.interval.startTime, element.interval.endTime); //  setTimeout(() => {
 
         if (this.condition === true) {
           console.log('u kondition sam');
           console.log(this.condition);
-          const dialog = this.medReqDialog.open(_medical_record_dialog_medical_record_dialog_component__WEBPACK_IMPORTED_MODULE_6__["MedicalRecordDialogComponent"]);
+          setTimeout(() => {
+            const dialog = this.medReqDialog.open(_medical_record_dialog_medical_record_dialog_component__WEBPACK_IMPORTED_MODULE_6__["MedicalRecordDialogComponent"]);
+          }, 1000);
         } //   }, 200);
 
       }
@@ -4679,6 +4912,12 @@
     var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _model_examinationReport__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../../model/examinationReport */
+    "./src/app/model/examinationReport.ts");
 
     let MedicalRecordDialogComponent = class MedicalRecordDialogComponent {
       constructor(formBuilder, patientService, dialogRef, medicalService, router, data) {
@@ -4688,12 +4927,17 @@
         this.medicalService = medicalService;
         this.router = router;
         this.submitted = false;
+        this.comm = '';
         this.records = medicalService.getAllMedicalRecords();
         this.record = patientService.getPatient1();
         this.setAll();
         this.medicalRecord = medicalService.getMedicalRecordForDialog();
         console.log('blabla');
         console.log(this.medicalRecord);
+        this.examinationReport = medicalService.getExaminationReportForPatient(); //  this.comm = this.examinationReport.comment;
+
+        console.log('komentar');
+        console.log(this.examinationReport);
       }
 
       ngOnInit() {
@@ -4703,7 +4947,7 @@
           weight: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.medicalRecord.weight),
           bloodType: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.medicalRecord.bloodType),
           allergies: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.medicalRecord.allergies),
-          reports: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.medicalRecord.examinationReports)
+          reports: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.examinationReport)
         });
       }
 
@@ -4729,6 +4973,8 @@
         console.log(this.medicalRecord);
         this.editMedicalRecord();
         this.dialogRef.close(this.medicalRecord);
+
+        for (const c in _model_examinationReport__WEBPACK_IMPORTED_MODULE_7__["ExaminationReport"]) {}
       }
 
       editMedicalRecord() {
@@ -4938,6 +5184,180 @@
       /*! ./medical-record-patient.component.css */
       "./src/app/components/medical-record-patient/medical-record-patient.component.css")).default]
     })], MedicalRecordPatientComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/components/medicaments/medicaments.component.css":
+  /*!******************************************************************!*\
+    !*** ./src/app/components/medicaments/medicaments.component.css ***!
+    \******************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppComponentsMedicamentsMedicamentsComponentCss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "div {\r\n  width: 100%;\r\n\r\n}\r\n\r\ntable {\r\n  width: 75%;\r\n  margin-top:50px;\r\n  margin-left:300px;\r\n\r\n}\r\n\r\n.mat-form-field {\r\n  font-size: 14px;\r\n  margin-top:50px;\r\n  margin-left:300px;\r\n  width: 75%;\r\n}\r\n\r\nmat-paginator {\r\n  width: 75%;\r\n  margin-left:300px;\r\n}\r\n\r\ntr.example-detail-row {\r\n  height: 0;\r\n}\r\n\r\ntr.example-element-row:not(.example-expanded-row):hover {\r\n  background: #777;\r\n}\r\n\r\ntr.example-element-row:not(.example-expanded-row):active {\r\n  background: #efefef;\r\n}\r\n\r\n.example-element-row td {\r\n  border-bottom-width: 0;\r\n}\r\n\r\n.example-element-detail {\r\n  overflow: hidden;\r\n  display: -webkit-box;\r\n  display: flex;\r\n}\r\n\r\n.example-element-diagram {\r\n  min-width: 80px;\r\n  border: 2px solid black;\r\n  padding: 8px;\r\n  font-weight: lighter;\r\n  margin: 8px 0;\r\n  height: 104px;\r\n}\r\n\r\n.example-element-name {\r\n  font-weight: bold;\r\n  font-size: 40px;\r\n  line-height: normal;\r\n}\r\n\r\n.example-element-description {\r\n  padding: 16px;\r\n}\r\n\r\n.example-element-description-attribution {\r\n  opacity: 0.5;\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tZWRpY2FtZW50cy9tZWRpY2FtZW50cy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBVzs7QUFFYjs7QUFFQTtFQUNFLFVBQVU7RUFDVixlQUFlO0VBQ2YsaUJBQWlCOztBQUVuQjs7QUFDQTtFQUNFLGVBQWU7RUFDZixlQUFlO0VBQ2YsaUJBQWlCO0VBQ2pCLFVBQVU7QUFDWjs7QUFDQTtFQUNFLFVBQVU7RUFDVixpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxTQUFTO0FBQ1g7O0FBRUE7RUFDRSxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxtQkFBbUI7QUFDckI7O0FBRUE7RUFDRSxzQkFBc0I7QUFDeEI7O0FBRUE7RUFDRSxnQkFBZ0I7RUFDaEIsb0JBQWE7RUFBYixhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsdUJBQXVCO0VBQ3ZCLFlBQVk7RUFDWixvQkFBb0I7RUFDcEIsYUFBYTtFQUNiLGFBQWE7QUFDZjs7QUFFQTtFQUNFLGlCQUFpQjtFQUNqQixlQUFlO0VBQ2YsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0UsYUFBYTtBQUNmOztBQUVBO0VBQ0UsWUFBWTtBQUNkIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9tZWRpY2FtZW50cy9tZWRpY2FtZW50cy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiZGl2IHtcclxuICB3aWR0aDogMTAwJTtcclxuXHJcbn1cclxuXHJcbnRhYmxlIHtcclxuICB3aWR0aDogNzUlO1xyXG4gIG1hcmdpbi10b3A6NTBweDtcclxuICBtYXJnaW4tbGVmdDozMDBweDtcclxuXHJcbn1cclxuLm1hdC1mb3JtLWZpZWxkIHtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgbWFyZ2luLXRvcDo1MHB4O1xyXG4gIG1hcmdpbi1sZWZ0OjMwMHB4O1xyXG4gIHdpZHRoOiA3NSU7XHJcbn1cclxubWF0LXBhZ2luYXRvciB7XHJcbiAgd2lkdGg6IDc1JTtcclxuICBtYXJnaW4tbGVmdDozMDBweDtcclxufVxyXG5cclxudHIuZXhhbXBsZS1kZXRhaWwtcm93IHtcclxuICBoZWlnaHQ6IDA7XHJcbn1cclxuXHJcbnRyLmV4YW1wbGUtZWxlbWVudC1yb3c6bm90KC5leGFtcGxlLWV4cGFuZGVkLXJvdyk6aG92ZXIge1xyXG4gIGJhY2tncm91bmQ6ICM3Nzc7XHJcbn1cclxuXHJcbnRyLmV4YW1wbGUtZWxlbWVudC1yb3c6bm90KC5leGFtcGxlLWV4cGFuZGVkLXJvdyk6YWN0aXZlIHtcclxuICBiYWNrZ3JvdW5kOiAjZWZlZmVmO1xyXG59XHJcblxyXG4uZXhhbXBsZS1lbGVtZW50LXJvdyB0ZCB7XHJcbiAgYm9yZGVyLWJvdHRvbS13aWR0aDogMDtcclxufVxyXG5cclxuLmV4YW1wbGUtZWxlbWVudC1kZXRhaWwge1xyXG4gIG92ZXJmbG93OiBoaWRkZW47XHJcbiAgZGlzcGxheTogZmxleDtcclxufVxyXG5cclxuLmV4YW1wbGUtZWxlbWVudC1kaWFncmFtIHtcclxuICBtaW4td2lkdGg6IDgwcHg7XHJcbiAgYm9yZGVyOiAycHggc29saWQgYmxhY2s7XHJcbiAgcGFkZGluZzogOHB4O1xyXG4gIGZvbnQtd2VpZ2h0OiBsaWdodGVyO1xyXG4gIG1hcmdpbjogOHB4IDA7XHJcbiAgaGVpZ2h0OiAxMDRweDtcclxufVxyXG5cclxuLmV4YW1wbGUtZWxlbWVudC1uYW1lIHtcclxuICBmb250LXdlaWdodDogYm9sZDtcclxuICBmb250LXNpemU6IDQwcHg7XHJcbiAgbGluZS1oZWlnaHQ6IG5vcm1hbDtcclxufVxyXG5cclxuLmV4YW1wbGUtZWxlbWVudC1kZXNjcmlwdGlvbiB7XHJcbiAgcGFkZGluZzogMTZweDtcclxufVxyXG5cclxuLmV4YW1wbGUtZWxlbWVudC1kZXNjcmlwdGlvbi1hdHRyaWJ1dGlvbiB7XHJcbiAgb3BhY2l0eTogMC41O1xyXG59XHJcblxyXG4iXX0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/components/medicaments/medicaments.component.ts":
+  /*!*****************************************************************!*\
+    !*** ./src/app/components/medicaments/medicaments.component.ts ***!
+    \*****************************************************************/
+
+  /*! exports provided: MedicamentsComponent */
+
+  /***/
+  function srcAppComponentsMedicamentsMedicamentsComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MedicamentsComponent", function () {
+      return MedicamentsComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _services_user_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../services/user-service.service */
+    "./src/app/services/user-service.service.ts");
+    /* harmony import */
+
+
+    var _model_Medicaments__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../../model/Medicaments */
+    "./src/app/model/Medicaments.ts");
+    /* harmony import */
+
+
+    var _services_medicaments_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../../services/medicaments.service */
+    "./src/app/services/medicaments.service.ts");
+    /* harmony import */
+
+
+    var _angular_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/material */
+    "./node_modules/@angular/material/esm2015/material.js");
+
+    let MedicamentsComponent = class MedicamentsComponent {
+      constructor(formBuilder, router, medicamentService, userService) {
+        this.formBuilder = formBuilder;
+        this.router = router;
+        this.medicamentService = medicamentService;
+        this.userService = userService;
+        this.submitted = false;
+        this.medicaments = new Array();
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatTableDataSource"]();
+        this.displayedColumns = ['id', 'title', 'description', 'strenght'];
+        this.medicaments = this.medicamentService.getAllMedicaments();
+        this.all();
+      }
+
+      ngOnInit() {
+        this.addMedicamentForm = this.formBuilder.group({
+          id: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+          title: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+          description: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+          strenght: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])
+        });
+        this.all();
+        this.dataSource.paginator = this.paginator;
+      }
+
+      get f() {
+        return this.addMedicamentForm.controls;
+      }
+
+      onSubmit() {
+        this.submitted = true; // Stop here if form is invalid
+
+        if (this.addMedicamentForm.invalid) {
+          return;
+        }
+
+        this.medicament = new _model_Medicaments__WEBPACK_IMPORTED_MODULE_5__["Medicaments"](this.f.id.value, this.f.title.value, this.f.description.value, this.f.strenght.value);
+        this.medicament = new _model_Medicaments__WEBPACK_IMPORTED_MODULE_5__["Medicaments"](this.f.id.value, this.f.title.value, this.f.description.value, this.f.strenght.value);
+        this.createMedicament();
+      }
+
+      createMedicament() {
+        this.medicamentService.newMedicament(this.medicament).subscribe(data => {
+          this.medicamentService.addMedicament(this.medicament);
+          this.router.navigate(['/clinical-centre-admin/home']);
+        }, error => {
+          alert('Error adding medicament');
+          console.log(error);
+        });
+      }
+
+      applyFilter(filterValue) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+      }
+
+      all() {
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatTableDataSource"](this.medicamentService.getAllMedicaments());
+      }
+
+    };
+
+    MedicamentsComponent.ctorParameters = () => [{
+      type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]
+    }, {
+      type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+    }, {
+      type: _services_medicaments_service__WEBPACK_IMPORTED_MODULE_6__["MedicamentsService"]
+    }, {
+      type: _services_user_service_service__WEBPACK_IMPORTED_MODULE_4__["UserServiceService"]
+    }];
+
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_7__["MatPaginator"], {
+      static: true
+    })], MedicamentsComponent.prototype, "paginator", void 0);
+    MedicamentsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-medicaments',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./medicaments.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/components/medicaments/medicaments.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./medicaments.component.css */
+      "./src/app/components/medicaments/medicaments.component.css")).default]
+    })], MedicamentsComponent);
     /***/
   },
 
@@ -6741,6 +7161,83 @@
   },
 
   /***/
+  "./src/app/model/Diagnose.ts":
+  /*!***********************************!*\
+    !*** ./src/app/model/Diagnose.ts ***!
+    \***********************************/
+
+  /*! exports provided: Diagnose */
+
+  /***/
+  function srcAppModelDiagnoseTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "Diagnose", function () {
+      return Diagnose;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    class Diagnose {
+      constructor(id, title, description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+      }
+
+    }
+    /***/
+
+  },
+
+  /***/
+  "./src/app/model/Medicaments.ts":
+  /*!**************************************!*\
+    !*** ./src/app/model/Medicaments.ts ***!
+    \**************************************/
+
+  /*! exports provided: Medicaments */
+
+  /***/
+  function srcAppModelMedicamentsTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "Medicaments", function () {
+      return Medicaments;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    class Medicaments {
+      constructor(id, title, description, strenght) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.strenght = strenght;
+      }
+
+    }
+    /***/
+
+  },
+
+  /***/
   "./src/app/model/Zahtev.ts":
   /*!*********************************!*\
     !*** ./src/app/model/Zahtev.ts ***!
@@ -7065,6 +7562,43 @@
       ExaminationKind[ExaminationKind["EXAMINATION"] = 0] = "EXAMINATION";
       ExaminationKind[ExaminationKind["OPERATION"] = 1] = "OPERATION";
     })(ExaminationKind || (ExaminationKind = {}));
+    /***/
+
+  },
+
+  /***/
+  "./src/app/model/examinationReport.ts":
+  /*!********************************************!*\
+    !*** ./src/app/model/examinationReport.ts ***!
+    \********************************************/
+
+  /*! exports provided: ExaminationReport */
+
+  /***/
+  function srcAppModelExaminationReportTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ExaminationReport", function () {
+      return ExaminationReport;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    class ExaminationReport {
+      constructor(id, comment) {
+        this.id = id;
+        this.comment = comment;
+      }
+
+    }
     /***/
 
   },
@@ -8082,6 +8616,193 @@
   },
 
   /***/
+  "./src/app/services/diagnose.service.ts":
+  /*!**********************************************!*\
+    !*** ./src/app/services/diagnose.service.ts ***!
+    \**********************************************/
+
+  /*! exports provided: DiagnoseService */
+
+  /***/
+  function srcAppServicesDiagnoseServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DiagnoseService", function () {
+      return DiagnoseService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _model_Diagnose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../model/Diagnose */
+    "./src/app/model/Diagnose.ts");
+    /* harmony import */
+
+
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/common/http */
+    "./node_modules/@angular/common/fesm2015/http.js");
+    /* harmony import */
+
+
+    var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../environments/environment */
+    "./src/environments/environment.ts");
+
+    let DiagnoseService = class DiagnoseService {
+      constructor(http) {
+        this.http = http;
+        this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].diagnose;
+        this.listDiagnoses = new Array();
+        this.getAllDiagnoses();
+      }
+
+      editDiagnose(diagnose) {
+        return this.http.post(this.url + '/edit', diagnose, {
+          responseType: 'text'
+        });
+      }
+
+      getDiagnose(id) {
+        if (this.listDiagnoses.length === 0) {
+          return null;
+        }
+
+        var _iteratorNormalCompletion15 = true;
+        var _didIteratorError15 = false;
+        var _iteratorError15 = undefined;
+
+        try {
+          for (var _iterator15 = this.listDiagnoses[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
+            const u = _step15.value;
+
+            if (u.id === id) {
+              return u;
+            }
+          }
+        } catch (err) {
+          _didIteratorError15 = true;
+          _iteratorError15 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion15 && _iterator15.return != null) {
+              _iterator15.return();
+            }
+          } finally {
+            if (_didIteratorError15) {
+              throw _iteratorError15;
+            }
+          }
+        }
+
+        return null;
+      }
+
+      setDiagnose(d) {
+        var _iteratorNormalCompletion16 = true;
+        var _didIteratorError16 = false;
+        var _iteratorError16 = undefined;
+
+        try {
+          for (var _iterator16 = this.listDiagnoses[Symbol.iterator](), _step16; !(_iteratorNormalCompletion16 = (_step16 = _iterator16.next()).done); _iteratorNormalCompletion16 = true) {
+            const diag = _step16.value;
+
+            if (diag.id === d.id) {
+              diag.title = d.title;
+              diag.description = d.description;
+              return;
+            }
+          }
+        } catch (err) {
+          _didIteratorError16 = true;
+          _iteratorError16 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion16 && _iterator16.return != null) {
+              _iterator16.return();
+            }
+          } finally {
+            if (_didIteratorError16) {
+              throw _iteratorError16;
+            }
+          }
+        }
+      }
+
+      addDiagnose(d) {
+        if (this.getDiagnose(d.id) === null) {
+          this.listDiagnoses.push(d);
+        }
+      }
+
+      newDiagnose(diagnose) {
+        return this.http.post(this.url + '/clinical-centre-admin/addDiagnose', diagnose);
+      }
+
+      getAllDiagnoses() {
+        this.http.get(this.url + '/all').subscribe(data => {
+          var _iteratorNormalCompletion17 = true;
+          var _didIteratorError17 = false;
+          var _iteratorError17 = undefined;
+
+          try {
+            for (var _iterator17 = data[Symbol.iterator](), _step17; !(_iteratorNormalCompletion17 = (_step17 = _iterator17.next()).done); _iteratorNormalCompletion17 = true) {
+              const c = _step17.value;
+              this.diagnose1 = new _model_Diagnose__WEBPACK_IMPORTED_MODULE_2__["Diagnose"](c.id, c.title, c.description);
+              this.addDiagnose(this.diagnose1);
+              console.log(c);
+              console.log('Ispod admin klinike');
+              console.log(this.diagnose1);
+            }
+          } catch (err) {
+            _didIteratorError17 = true;
+            _iteratorError17 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion17 && _iterator17.return != null) {
+                _iterator17.return();
+              }
+            } finally {
+              if (_didIteratorError17) {
+                throw _iteratorError17;
+              }
+            }
+          }
+        }, error => {
+          console.log(error);
+        });
+        return this.listDiagnoses;
+      }
+
+    };
+
+    DiagnoseService.ctorParameters = () => [{
+      type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]
+    }];
+
+    DiagnoseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], DiagnoseService);
+    /***/
+  },
+
+  /***/
   "./src/app/services/doctor.service.ts":
   /*!********************************************!*\
     !*** ./src/app/services/doctor.service.ts ***!
@@ -8168,29 +8889,29 @@
           return null;
         }
 
-        var _iteratorNormalCompletion15 = true;
-        var _didIteratorError15 = false;
-        var _iteratorError15 = undefined;
+        var _iteratorNormalCompletion18 = true;
+        var _didIteratorError18 = false;
+        var _iteratorError18 = undefined;
 
         try {
-          for (var _iterator15 = this.listDoctors[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
-            const u = _step15.value;
+          for (var _iterator18 = this.listDoctors[Symbol.iterator](), _step18; !(_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done); _iteratorNormalCompletion18 = true) {
+            const u = _step18.value;
 
             if (u.email === email) {
               return u;
             }
           }
         } catch (err) {
-          _didIteratorError15 = true;
-          _iteratorError15 = err;
+          _didIteratorError18 = true;
+          _iteratorError18 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion15 && _iterator15.return != null) {
-              _iterator15.return();
+            if (!_iteratorNormalCompletion18 && _iterator18.return != null) {
+              _iterator18.return();
             }
           } finally {
-            if (_didIteratorError15) {
-              throw _iteratorError15;
+            if (_didIteratorError18) {
+              throw _iteratorError18;
             }
           }
         }
@@ -8205,13 +8926,13 @@
       }
 
       setDoctor(d) {
-        var _iteratorNormalCompletion16 = true;
-        var _didIteratorError16 = false;
-        var _iteratorError16 = undefined;
+        var _iteratorNormalCompletion19 = true;
+        var _didIteratorError19 = false;
+        var _iteratorError19 = undefined;
 
         try {
-          for (var _iterator16 = this.listDoctors[Symbol.iterator](), _step16; !(_iteratorNormalCompletion16 = (_step16 = _iterator16.next()).done); _iteratorNormalCompletion16 = true) {
-            const d1 = _step16.value;
+          for (var _iterator19 = this.listDoctors[Symbol.iterator](), _step19; !(_iteratorNormalCompletion19 = (_step19 = _iterator19.next()).done); _iteratorNormalCompletion19 = true) {
+            const d1 = _step19.value;
 
             if (d1.email === d.email) {
               d1.password = d.password;
@@ -8223,16 +8944,16 @@
             }
           }
         } catch (err) {
-          _didIteratorError16 = true;
-          _iteratorError16 = err;
+          _didIteratorError19 = true;
+          _iteratorError19 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion16 && _iterator16.return != null) {
-              _iterator16.return();
+            if (!_iteratorNormalCompletion19 && _iterator19.return != null) {
+              _iterator19.return();
             }
           } finally {
-            if (_didIteratorError16) {
-              throw _iteratorError16;
+            if (_didIteratorError19) {
+              throw _iteratorError19;
             }
           }
         }
@@ -8240,27 +8961,27 @@
 
       getAllDoctors() {
         this.http.get(this.urlDoctor + '/all').subscribe(data => {
-          var _iteratorNormalCompletion17 = true;
-          var _didIteratorError17 = false;
-          var _iteratorError17 = undefined;
+          var _iteratorNormalCompletion20 = true;
+          var _didIteratorError20 = false;
+          var _iteratorError20 = undefined;
 
           try {
-            for (var _iterator17 = data[Symbol.iterator](), _step17; !(_iteratorNormalCompletion17 = (_step17 = _iterator17.next()).done); _iteratorNormalCompletion17 = true) {
-              const c = _step17.value;
+            for (var _iterator20 = data[Symbol.iterator](), _step20; !(_iteratorNormalCompletion20 = (_step20 = _iterator20.next()).done); _iteratorNormalCompletion20 = true) {
+              const c = _step20.value;
               this.doctor = new _model_doctor__WEBPACK_IMPORTED_MODULE_3__["Doctor"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.specialized, c.doctorRating, c.clinic);
               this.addDoctor(this.doctor);
             }
           } catch (err) {
-            _didIteratorError17 = true;
-            _iteratorError17 = err;
+            _didIteratorError20 = true;
+            _iteratorError20 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion17 && _iterator17.return != null) {
-                _iterator17.return();
+              if (!_iteratorNormalCompletion20 && _iterator20.return != null) {
+                _iterator20.return();
               }
             } finally {
-              if (_didIteratorError17) {
-                throw _iteratorError17;
+              if (_didIteratorError20) {
+                throw _iteratorError20;
               }
             }
           }
@@ -8307,28 +9028,28 @@
           params
         }).subscribe(data => {
           console.log(data);
-          var _iteratorNormalCompletion18 = true;
-          var _didIteratorError18 = false;
-          var _iteratorError18 = undefined;
+          var _iteratorNormalCompletion21 = true;
+          var _didIteratorError21 = false;
+          var _iteratorError21 = undefined;
 
           try {
-            for (var _iterator18 = data[Symbol.iterator](), _step18; !(_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done); _iteratorNormalCompletion18 = true) {
-              const c = _step18.value;
+            for (var _iterator21 = data[Symbol.iterator](), _step21; !(_iteratorNormalCompletion21 = (_step21 = _iterator21.next()).done); _iteratorNormalCompletion21 = true) {
+              const c = _step21.value;
               this.doctor = new _model_doctor__WEBPACK_IMPORTED_MODULE_3__["Doctor"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursFrom, c.workHoursTo, c.specialized, c.doctorRating, c.clinic);
               this.doctorsWithSearch.push(this.doctor);
               console.log(this.doctor);
             }
           } catch (err) {
-            _didIteratorError18 = true;
-            _iteratorError18 = err;
+            _didIteratorError21 = true;
+            _iteratorError21 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion18 && _iterator18.return != null) {
-                _iterator18.return();
+              if (!_iteratorNormalCompletion21 && _iterator21.return != null) {
+                _iterator21.return();
               }
             } finally {
-              if (_didIteratorError18) {
-                throw _iteratorError18;
+              if (_didIteratorError21) {
+                throw _iteratorError21;
               }
             }
           }
@@ -8437,27 +9158,27 @@
 
       getAllTypes() {
         this.http.get(this.urlExaminationType + '/all').subscribe(data => {
-          var _iteratorNormalCompletion19 = true;
-          var _didIteratorError19 = false;
-          var _iteratorError19 = undefined;
+          var _iteratorNormalCompletion22 = true;
+          var _didIteratorError22 = false;
+          var _iteratorError22 = undefined;
 
           try {
-            for (var _iterator19 = data[Symbol.iterator](), _step19; !(_iteratorNormalCompletion19 = (_step19 = _iterator19.next()).done); _iteratorNormalCompletion19 = true) {
-              const c = _step19.value;
+            for (var _iterator22 = data[Symbol.iterator](), _step22; !(_iteratorNormalCompletion22 = (_step22 = _iterator22.next()).done); _iteratorNormalCompletion22 = true) {
+              const c = _step22.value;
               this.type = new _model_examinationType__WEBPACK_IMPORTED_MODULE_2__["ExaminationType"](c.label, c.price);
               this.addType(this.type);
             }
           } catch (err) {
-            _didIteratorError19 = true;
-            _iteratorError19 = err;
+            _didIteratorError22 = true;
+            _iteratorError22 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion19 && _iterator19.return != null) {
-                _iterator19.return();
+              if (!_iteratorNormalCompletion22 && _iterator22.return != null) {
+                _iterator22.return();
               }
             } finally {
-              if (_didIteratorError19) {
-                throw _iteratorError19;
+              if (_didIteratorError22) {
+                throw _iteratorError22;
               }
             }
           }
@@ -8479,29 +9200,29 @@
           return null;
         }
 
-        var _iteratorNormalCompletion20 = true;
-        var _didIteratorError20 = false;
-        var _iteratorError20 = undefined;
+        var _iteratorNormalCompletion23 = true;
+        var _didIteratorError23 = false;
+        var _iteratorError23 = undefined;
 
         try {
-          for (var _iterator20 = this.examinationTypes[Symbol.iterator](), _step20; !(_iteratorNormalCompletion20 = (_step20 = _iterator20.next()).done); _iteratorNormalCompletion20 = true) {
-            const u = _step20.value;
+          for (var _iterator23 = this.examinationTypes[Symbol.iterator](), _step23; !(_iteratorNormalCompletion23 = (_step23 = _iterator23.next()).done); _iteratorNormalCompletion23 = true) {
+            const u = _step23.value;
 
             if (u.label === name) {
               return u;
             }
           }
         } catch (err) {
-          _didIteratorError20 = true;
-          _iteratorError20 = err;
+          _didIteratorError23 = true;
+          _iteratorError23 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion20 && _iterator20.return != null) {
-              _iterator20.return();
+            if (!_iteratorNormalCompletion23 && _iterator23.return != null) {
+              _iterator23.return();
             }
           } finally {
-            if (_didIteratorError20) {
-              throw _iteratorError20;
+            if (_didIteratorError23) {
+              throw _iteratorError23;
             }
           }
         }
@@ -8618,27 +9339,27 @@
       getAllExaminations() {
         this.http.get(this.url + '/all').subscribe(data => {
           this.listExaminations = new Array();
-          var _iteratorNormalCompletion21 = true;
-          var _didIteratorError21 = false;
-          var _iteratorError21 = undefined;
+          var _iteratorNormalCompletion24 = true;
+          var _didIteratorError24 = false;
+          var _iteratorError24 = undefined;
 
           try {
-            for (var _iterator21 = data[Symbol.iterator](), _step21; !(_iteratorNormalCompletion21 = (_step21 = _iterator21.next()).done); _iteratorNormalCompletion21 = true) {
-              const c = _step21.value;
+            for (var _iterator24 = data[Symbol.iterator](), _step24; !(_iteratorNormalCompletion24 = (_step24 = _iterator24.next()).done); _iteratorNormalCompletion24 = true) {
+              const c = _step24.value;
               this.examination = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
               this.listExaminations.push(this.examination);
             }
           } catch (err) {
-            _didIteratorError21 = true;
-            _iteratorError21 = err;
+            _didIteratorError24 = true;
+            _iteratorError24 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion21 && _iterator21.return != null) {
-                _iterator21.return();
+              if (!_iteratorNormalCompletion24 && _iterator24.return != null) {
+                _iterator24.return();
               }
             } finally {
-              if (_didIteratorError21) {
-                throw _iteratorError21;
+              if (_didIteratorError24) {
+                throw _iteratorError24;
               }
             }
           }
@@ -8660,29 +9381,29 @@
           return null;
         }
 
-        var _iteratorNormalCompletion22 = true;
-        var _didIteratorError22 = false;
-        var _iteratorError22 = undefined;
+        var _iteratorNormalCompletion25 = true;
+        var _didIteratorError25 = false;
+        var _iteratorError25 = undefined;
 
         try {
-          for (var _iterator22 = this.listExaminations[Symbol.iterator](), _step22; !(_iteratorNormalCompletion22 = (_step22 = _iterator22.next()).done); _iteratorNormalCompletion22 = true) {
-            const e = _step22.value;
+          for (var _iterator25 = this.listExaminations[Symbol.iterator](), _step25; !(_iteratorNormalCompletion25 = (_step25 = _iterator25.next()).done); _iteratorNormalCompletion25 = true) {
+            const e = _step25.value;
 
             if (e.id === id) {
               return e;
             }
           }
         } catch (err) {
-          _didIteratorError22 = true;
-          _iteratorError22 = err;
+          _didIteratorError25 = true;
+          _iteratorError25 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion22 && _iterator22.return != null) {
-              _iterator22.return();
+            if (!_iteratorNormalCompletion25 && _iterator25.return != null) {
+              _iterator25.return();
             }
           } finally {
-            if (_didIteratorError22) {
-              throw _iteratorError22;
+            if (_didIteratorError25) {
+              throw _iteratorError25;
             }
           }
         }
@@ -8695,27 +9416,27 @@
           console.log('data ispod');
           console.log(data);
           this.predefExaminations = new Array();
-          var _iteratorNormalCompletion23 = true;
-          var _didIteratorError23 = false;
-          var _iteratorError23 = undefined;
+          var _iteratorNormalCompletion26 = true;
+          var _didIteratorError26 = false;
+          var _iteratorError26 = undefined;
 
           try {
-            for (var _iterator23 = data[Symbol.iterator](), _step23; !(_iteratorNormalCompletion23 = (_step23 = _iterator23.next()).done); _iteratorNormalCompletion23 = true) {
-              const c = _step23.value;
+            for (var _iterator26 = data[Symbol.iterator](), _step26; !(_iteratorNormalCompletion26 = (_step26 = _iterator26.next()).done); _iteratorNormalCompletion26 = true) {
+              const c = _step26.value;
               this.examination = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
               this.predefExaminations.push(this.examination);
             }
           } catch (err) {
-            _didIteratorError23 = true;
-            _iteratorError23 = err;
+            _didIteratorError26 = true;
+            _iteratorError26 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion23 && _iterator23.return != null) {
-                _iterator23.return();
+              if (!_iteratorNormalCompletion26 && _iterator26.return != null) {
+                _iterator26.return();
               }
             } finally {
-              if (_didIteratorError23) {
-                throw _iteratorError23;
+              if (_didIteratorError26) {
+                throw _iteratorError26;
               }
             }
           }
@@ -8733,27 +9454,27 @@
         this.http.get(this.url + '/getMHforP', {
           params
         }).subscribe(data => {
-          var _iteratorNormalCompletion24 = true;
-          var _didIteratorError24 = false;
-          var _iteratorError24 = undefined;
+          var _iteratorNormalCompletion27 = true;
+          var _didIteratorError27 = false;
+          var _iteratorError27 = undefined;
 
           try {
-            for (var _iterator24 = data[Symbol.iterator](), _step24; !(_iteratorNormalCompletion24 = (_step24 = _iterator24.next()).done); _iteratorNormalCompletion24 = true) {
-              const c = _step24.value;
+            for (var _iterator27 = data[Symbol.iterator](), _step27; !(_iteratorNormalCompletion27 = (_step27 = _iterator27.next()).done); _iteratorNormalCompletion27 = true) {
+              const c = _step27.value;
               this.examination = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
               this.tmp.push(this.examination);
             }
           } catch (err) {
-            _didIteratorError24 = true;
-            _iteratorError24 = err;
+            _didIteratorError27 = true;
+            _iteratorError27 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion24 && _iterator24.return != null) {
-                _iterator24.return();
+              if (!_iteratorNormalCompletion27 && _iterator27.return != null) {
+                _iterator27.return();
               }
             } finally {
-              if (_didIteratorError24) {
-                throw _iteratorError24;
+              if (_didIteratorError27) {
+                throw _iteratorError27;
               }
             }
           }
@@ -8798,27 +9519,27 @@
         this.http.get(this.url + '/allExaminationsForDoctor', {
           params
         }).subscribe(data => {
-          var _iteratorNormalCompletion25 = true;
-          var _didIteratorError25 = false;
-          var _iteratorError25 = undefined;
+          var _iteratorNormalCompletion28 = true;
+          var _didIteratorError28 = false;
+          var _iteratorError28 = undefined;
 
           try {
-            for (var _iterator25 = data[Symbol.iterator](), _step25; !(_iteratorNormalCompletion25 = (_step25 = _iterator25.next()).done); _iteratorNormalCompletion25 = true) {
-              const c = _step25.value;
+            for (var _iterator28 = data[Symbol.iterator](), _step28; !(_iteratorNormalCompletion28 = (_step28 = _iterator28.next()).done); _iteratorNormalCompletion28 = true) {
+              const c = _step28.value;
               this.examinationDoctor = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
               this.examinationForDoctor.push(this.examinationDoctor);
             }
           } catch (err) {
-            _didIteratorError25 = true;
-            _iteratorError25 = err;
+            _didIteratorError28 = true;
+            _iteratorError28 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion25 && _iterator25.return != null) {
-                _iterator25.return();
+              if (!_iteratorNormalCompletion28 && _iterator28.return != null) {
+                _iterator28.return();
               }
             } finally {
-              if (_didIteratorError25) {
-                throw _iteratorError25;
+              if (_didIteratorError28) {
+                throw _iteratorError28;
               }
             }
           }
@@ -8902,6 +9623,7 @@
         this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].medicalRecord;
         this.listMedicalRecord = new Array();
         this.dialogDate = false;
+        this.listExaminationReport = new Array();
         this.getAllMedicalRecords();
       }
 
@@ -8914,13 +9636,13 @@
       getAllMedicalRecords() {
         this.http.get(this.url + '/all').subscribe(data => {
           this.listMedicalRecord = new Array();
-          var _iteratorNormalCompletion26 = true;
-          var _didIteratorError26 = false;
-          var _iteratorError26 = undefined;
+          var _iteratorNormalCompletion29 = true;
+          var _didIteratorError29 = false;
+          var _iteratorError29 = undefined;
 
           try {
-            for (var _iterator26 = data[Symbol.iterator](), _step26; !(_iteratorNormalCompletion26 = (_step26 = _iterator26.next()).done); _iteratorNormalCompletion26 = true) {
-              const c = _step26.value;
+            for (var _iterator29 = data[Symbol.iterator](), _step29; !(_iteratorNormalCompletion29 = (_step29 = _iterator29.next()).done); _iteratorNormalCompletion29 = true) {
+              const c = _step29.value;
               // Ostalo je da se doda examinaton_report u konstruktoru
               console.log('Ispod data za medial rekod');
               console.log(c);
@@ -8929,16 +9651,16 @@
               console.log(this.medicalRecord);
             }
           } catch (err) {
-            _didIteratorError26 = true;
-            _iteratorError26 = err;
+            _didIteratorError29 = true;
+            _iteratorError29 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion26 && _iterator26.return != null) {
-                _iterator26.return();
+              if (!_iteratorNormalCompletion29 && _iterator29.return != null) {
+                _iterator29.return();
               }
             } finally {
-              if (_didIteratorError26) {
-                throw _iteratorError26;
+              if (_didIteratorError29) {
+                throw _iteratorError29;
               }
             }
           }
@@ -8976,29 +9698,29 @@
           return null;
         }
 
-        var _iteratorNormalCompletion27 = true;
-        var _didIteratorError27 = false;
-        var _iteratorError27 = undefined;
+        var _iteratorNormalCompletion30 = true;
+        var _didIteratorError30 = false;
+        var _iteratorError30 = undefined;
 
         try {
-          for (var _iterator27 = this.listMedicalRecord[Symbol.iterator](), _step27; !(_iteratorNormalCompletion27 = (_step27 = _iterator27.next()).done); _iteratorNormalCompletion27 = true) {
-            const e = _step27.value;
+          for (var _iterator30 = this.listMedicalRecord[Symbol.iterator](), _step30; !(_iteratorNormalCompletion30 = (_step30 = _iterator30.next()).done); _iteratorNormalCompletion30 = true) {
+            const e = _step30.value;
 
             if (e.id === id) {
               return e;
             }
           }
         } catch (err) {
-          _didIteratorError27 = true;
-          _iteratorError27 = err;
+          _didIteratorError30 = true;
+          _iteratorError30 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion27 && _iterator27.return != null) {
-              _iterator27.return();
+            if (!_iteratorNormalCompletion30 && _iterator30.return != null) {
+              _iterator30.return();
             }
           } finally {
-            if (_didIteratorError27) {
-              throw _iteratorError27;
+            if (_didIteratorError30) {
+              throw _iteratorError30;
             }
           }
         }
@@ -9010,14 +9732,43 @@
         });
       }
 
-      setMedicalRecord(p) {
-        var _iteratorNormalCompletion28 = true;
-        var _didIteratorError28 = false;
-        var _iteratorError28 = undefined;
+      setExaminationReport(p) {
+        var _iteratorNormalCompletion31 = true;
+        var _didIteratorError31 = false;
+        var _iteratorError31 = undefined;
 
         try {
-          for (var _iterator28 = this.listMedicalRecord[Symbol.iterator](), _step28; !(_iteratorNormalCompletion28 = (_step28 = _iterator28.next()).done); _iteratorNormalCompletion28 = true) {
-            const p1 = _step28.value;
+          for (var _iterator31 = this.listExaminationReport[Symbol.iterator](), _step31; !(_iteratorNormalCompletion31 = (_step31 = _iterator31.next()).done); _iteratorNormalCompletion31 = true) {
+            const p1 = _step31.value;
+
+            if (p1.id === p.id) {
+              p1.comment = p.comment;
+            }
+          }
+        } catch (err) {
+          _didIteratorError31 = true;
+          _iteratorError31 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion31 && _iterator31.return != null) {
+              _iterator31.return();
+            }
+          } finally {
+            if (_didIteratorError31) {
+              throw _iteratorError31;
+            }
+          }
+        }
+      }
+
+      setMedicalRecord(p) {
+        var _iteratorNormalCompletion32 = true;
+        var _didIteratorError32 = false;
+        var _iteratorError32 = undefined;
+
+        try {
+          for (var _iterator32 = this.listMedicalRecord[Symbol.iterator](), _step32; !(_iteratorNormalCompletion32 = (_step32 = _iterator32.next()).done); _iteratorNormalCompletion32 = true) {
+            const p1 = _step32.value;
 
             if (p1.id === p.id) {
               p1.weight = p.weight;
@@ -9031,16 +9782,16 @@
             }
           }
         } catch (err) {
-          _didIteratorError28 = true;
-          _iteratorError28 = err;
+          _didIteratorError32 = true;
+          _iteratorError32 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion28 && _iterator28.return != null) {
-              _iterator28.return();
+            if (!_iteratorNormalCompletion32 && _iterator32.return != null) {
+              _iterator32.return();
             }
           } finally {
-            if (_didIteratorError28) {
-              throw _iteratorError28;
+            if (_didIteratorError32) {
+              throw _iteratorError32;
             }
           }
         }
@@ -9052,7 +9803,9 @@
         this.http.get(this.url + '/MedicalRecordForPatient', {
           params
         }).subscribe(data => {
-          this.medicalRecordForPatient = data;
+          console.log('MEDICAL RECORD DATA ISPOD');
+          console.log(data);
+          this.medicalRecordForPatient = new _model_medicalRecord__WEBPACK_IMPORTED_MODULE_3__["MedicalRecord"](data.id, data.height, data.weight, data.bloodType, data.allergies, data.patient, data.examinationReports);
         }, error => {
           console.log(error);
         });
@@ -9085,6 +9838,15 @@
         return this.dialogDate;
       }
 
+      setExaminationReportForPatient(examinationReport) {
+        console.log('medicalRecord');
+        this.examinationRepForP = examinationReport;
+      }
+
+      getExaminationReportForPatient() {
+        return this.examinationRepForP;
+      }
+
     };
 
     MedicalRecordService.ctorParameters = () => [{
@@ -9094,6 +9856,191 @@
     MedicalRecordService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
     })], MedicalRecordService);
+    /***/
+  },
+
+  /***/
+  "./src/app/services/medicaments.service.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/services/medicaments.service.ts ***!
+    \*************************************************/
+
+  /*! exports provided: MedicamentsService */
+
+  /***/
+  function srcAppServicesMedicamentsServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MedicamentsService", function () {
+      return MedicamentsService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common/http */
+    "./node_modules/@angular/common/fesm2015/http.js");
+    /* harmony import */
+
+
+    var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../../environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var _model_Medicaments__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../model/Medicaments */
+    "./src/app/model/Medicaments.ts");
+
+    let MedicamentsService = class MedicamentsService {
+      constructor(http) {
+        this.http = http;
+        this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].medicaments;
+        this.listMedicaments = new Array();
+        this.getAllMedicaments();
+      }
+
+      editMedicament(medicament) {
+        return this.http.post(this.url + '/edit', medicament, {
+          responseType: 'text'
+        });
+      }
+
+      newMedicament(medicament) {
+        return this.http.post(this.url + '/clinical-centre-admin/addMedicament', medicament);
+      }
+
+      getMedicament(id) {
+        if (this.listMedicaments.length === 0) {
+          return null;
+        }
+
+        var _iteratorNormalCompletion33 = true;
+        var _didIteratorError33 = false;
+        var _iteratorError33 = undefined;
+
+        try {
+          for (var _iterator33 = this.listMedicaments[Symbol.iterator](), _step33; !(_iteratorNormalCompletion33 = (_step33 = _iterator33.next()).done); _iteratorNormalCompletion33 = true) {
+            const u = _step33.value;
+
+            if (u.id === id) {
+              return u;
+            }
+          }
+        } catch (err) {
+          _didIteratorError33 = true;
+          _iteratorError33 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion33 && _iterator33.return != null) {
+              _iterator33.return();
+            }
+          } finally {
+            if (_didIteratorError33) {
+              throw _iteratorError33;
+            }
+          }
+        }
+
+        return null;
+      }
+
+      setMedicament(p) {
+        var _iteratorNormalCompletion34 = true;
+        var _didIteratorError34 = false;
+        var _iteratorError34 = undefined;
+
+        try {
+          for (var _iterator34 = this.listMedicaments[Symbol.iterator](), _step34; !(_iteratorNormalCompletion34 = (_step34 = _iterator34.next()).done); _iteratorNormalCompletion34 = true) {
+            const p1 = _step34.value;
+
+            if (p1.id === p.id) {
+              p1.title = p.title;
+              p1.description = p.description;
+              p1.strenght = p.strenght;
+              return;
+            }
+          }
+        } catch (err) {
+          _didIteratorError34 = true;
+          _iteratorError34 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion34 && _iterator34.return != null) {
+              _iterator34.return();
+            }
+          } finally {
+            if (_didIteratorError34) {
+              throw _iteratorError34;
+            }
+          }
+        }
+      }
+
+      addMedicament(n) {
+        if (this.getMedicament(n.id) === null) {
+          this.listMedicaments.push(n);
+        }
+      }
+
+      getAllMedicaments() {
+        this.http.get(this.url + '/getAllMedicaments').subscribe(data => {
+          var _iteratorNormalCompletion35 = true;
+          var _didIteratorError35 = false;
+          var _iteratorError35 = undefined;
+
+          try {
+            for (var _iterator35 = data[Symbol.iterator](), _step35; !(_iteratorNormalCompletion35 = (_step35 = _iterator35.next()).done); _iteratorNormalCompletion35 = true) {
+              const c = _step35.value;
+              this.medicaments = new _model_Medicaments__WEBPACK_IMPORTED_MODULE_4__["Medicaments"](c.id, c.title, c.description, c.strenght);
+              this.addMedicament(this.medicaments);
+            }
+          } catch (err) {
+            _didIteratorError35 = true;
+            _iteratorError35 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion35 && _iterator35.return != null) {
+                _iterator35.return();
+              }
+            } finally {
+              if (_didIteratorError35) {
+                throw _iteratorError35;
+              }
+            }
+          }
+        }, error => {
+          console.log(error);
+        });
+        return this.listMedicaments;
+      }
+
+    };
+
+    MedicamentsService.ctorParameters = () => [{
+      type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+    }];
+
+    MedicamentsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], MedicamentsService);
     /***/
   },
 
@@ -9180,29 +10127,29 @@
           return null;
         }
 
-        var _iteratorNormalCompletion29 = true;
-        var _didIteratorError29 = false;
-        var _iteratorError29 = undefined;
+        var _iteratorNormalCompletion36 = true;
+        var _didIteratorError36 = false;
+        var _iteratorError36 = undefined;
 
         try {
-          for (var _iterator29 = this.listNurses[Symbol.iterator](), _step29; !(_iteratorNormalCompletion29 = (_step29 = _iterator29.next()).done); _iteratorNormalCompletion29 = true) {
-            const u = _step29.value;
+          for (var _iterator36 = this.listNurses[Symbol.iterator](), _step36; !(_iteratorNormalCompletion36 = (_step36 = _iterator36.next()).done); _iteratorNormalCompletion36 = true) {
+            const u = _step36.value;
 
             if (u.email === email) {
               return u;
             }
           }
         } catch (err) {
-          _didIteratorError29 = true;
-          _iteratorError29 = err;
+          _didIteratorError36 = true;
+          _iteratorError36 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion29 && _iterator29.return != null) {
-              _iterator29.return();
+            if (!_iteratorNormalCompletion36 && _iterator36.return != null) {
+              _iterator36.return();
             }
           } finally {
-            if (_didIteratorError29) {
-              throw _iteratorError29;
+            if (_didIteratorError36) {
+              throw _iteratorError36;
             }
           }
         }
@@ -9211,13 +10158,13 @@
       }
 
       setNurse(p) {
-        var _iteratorNormalCompletion30 = true;
-        var _didIteratorError30 = false;
-        var _iteratorError30 = undefined;
+        var _iteratorNormalCompletion37 = true;
+        var _didIteratorError37 = false;
+        var _iteratorError37 = undefined;
 
         try {
-          for (var _iterator30 = this.listNurses[Symbol.iterator](), _step30; !(_iteratorNormalCompletion30 = (_step30 = _iterator30.next()).done); _iteratorNormalCompletion30 = true) {
-            const p1 = _step30.value;
+          for (var _iterator37 = this.listNurses[Symbol.iterator](), _step37; !(_iteratorNormalCompletion37 = (_step37 = _iterator37.next()).done); _iteratorNormalCompletion37 = true) {
+            const p1 = _step37.value;
 
             if (p1.email === p.email) {
               p1.name = p.name;
@@ -9230,16 +10177,16 @@
             }
           }
         } catch (err) {
-          _didIteratorError30 = true;
-          _iteratorError30 = err;
+          _didIteratorError37 = true;
+          _iteratorError37 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion30 && _iterator30.return != null) {
-              _iterator30.return();
+            if (!_iteratorNormalCompletion37 && _iterator37.return != null) {
+              _iterator37.return();
             }
           } finally {
-            if (_didIteratorError30) {
-              throw _iteratorError30;
+            if (_didIteratorError37) {
+              throw _iteratorError37;
             }
           }
         }
@@ -9253,27 +10200,27 @@
 
       getAllNurses() {
         this.http.get(this.urlNurse + '/all').subscribe(data => {
-          var _iteratorNormalCompletion31 = true;
-          var _didIteratorError31 = false;
-          var _iteratorError31 = undefined;
+          var _iteratorNormalCompletion38 = true;
+          var _didIteratorError38 = false;
+          var _iteratorError38 = undefined;
 
           try {
-            for (var _iterator31 = data[Symbol.iterator](), _step31; !(_iteratorNormalCompletion31 = (_step31 = _iterator31.next()).done); _iteratorNormalCompletion31 = true) {
-              const c = _step31.value;
+            for (var _iterator38 = data[Symbol.iterator](), _step38; !(_iteratorNormalCompletion38 = (_step38 = _iterator38.next()).done); _iteratorNormalCompletion38 = true) {
+              const c = _step38.value;
               this.nurse = new _model_nurse__WEBPACK_IMPORTED_MODULE_5__["Nurse"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursTo, c.workHoursFrom);
               this.addNurse(this.nurse);
             }
           } catch (err) {
-            _didIteratorError31 = true;
-            _iteratorError31 = err;
+            _didIteratorError38 = true;
+            _iteratorError38 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion31 && _iterator31.return != null) {
-                _iterator31.return();
+              if (!_iteratorNormalCompletion38 && _iterator38.return != null) {
+                _iterator38.return();
               }
             } finally {
-              if (_didIteratorError31) {
-                throw _iteratorError31;
+              if (_didIteratorError38) {
+                throw _iteratorError38;
               }
             }
           }
@@ -9403,29 +10350,29 @@
           return null;
         }
 
-        var _iteratorNormalCompletion32 = true;
-        var _didIteratorError32 = false;
-        var _iteratorError32 = undefined;
+        var _iteratorNormalCompletion39 = true;
+        var _didIteratorError39 = false;
+        var _iteratorError39 = undefined;
 
         try {
-          for (var _iterator32 = this.listPatients[Symbol.iterator](), _step32; !(_iteratorNormalCompletion32 = (_step32 = _iterator32.next()).done); _iteratorNormalCompletion32 = true) {
-            const u = _step32.value;
+          for (var _iterator39 = this.listPatients[Symbol.iterator](), _step39; !(_iteratorNormalCompletion39 = (_step39 = _iterator39.next()).done); _iteratorNormalCompletion39 = true) {
+            const u = _step39.value;
 
             if (u.email === email) {
               return u;
             }
           }
         } catch (err) {
-          _didIteratorError32 = true;
-          _iteratorError32 = err;
+          _didIteratorError39 = true;
+          _iteratorError39 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion32 && _iterator32.return != null) {
-              _iterator32.return();
+            if (!_iteratorNormalCompletion39 && _iterator39.return != null) {
+              _iterator39.return();
             }
           } finally {
-            if (_didIteratorError32) {
-              throw _iteratorError32;
+            if (_didIteratorError39) {
+              throw _iteratorError39;
             }
           }
         }
@@ -9434,13 +10381,13 @@
       }
 
       setPatient(p) {
-        var _iteratorNormalCompletion33 = true;
-        var _didIteratorError33 = false;
-        var _iteratorError33 = undefined;
+        var _iteratorNormalCompletion40 = true;
+        var _didIteratorError40 = false;
+        var _iteratorError40 = undefined;
 
         try {
-          for (var _iterator33 = this.listPatients[Symbol.iterator](), _step33; !(_iteratorNormalCompletion33 = (_step33 = _iterator33.next()).done); _iteratorNormalCompletion33 = true) {
-            const p1 = _step33.value;
+          for (var _iterator40 = this.listPatients[Symbol.iterator](), _step40; !(_iteratorNormalCompletion40 = (_step40 = _iterator40.next()).done); _iteratorNormalCompletion40 = true) {
+            const p1 = _step40.value;
 
             if (p1.email === p.email) {
               p1.name = p.name;
@@ -9454,16 +10401,16 @@
             }
           }
         } catch (err) {
-          _didIteratorError33 = true;
-          _iteratorError33 = err;
+          _didIteratorError40 = true;
+          _iteratorError40 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion33 && _iterator33.return != null) {
-              _iterator33.return();
+            if (!_iteratorNormalCompletion40 && _iterator40.return != null) {
+              _iterator40.return();
             }
           } finally {
-            if (_didIteratorError33) {
-              throw _iteratorError33;
+            if (_didIteratorError40) {
+              throw _iteratorError40;
             }
           }
         }
@@ -9481,27 +10428,27 @@
 
       getAllPatients() {
         this.http.get(this.urlPatient + '/all').subscribe(data => {
-          var _iteratorNormalCompletion34 = true;
-          var _didIteratorError34 = false;
-          var _iteratorError34 = undefined;
+          var _iteratorNormalCompletion41 = true;
+          var _didIteratorError41 = false;
+          var _iteratorError41 = undefined;
 
           try {
-            for (var _iterator34 = data[Symbol.iterator](), _step34; !(_iteratorNormalCompletion34 = (_step34 = _iterator34.next()).done); _iteratorNormalCompletion34 = true) {
-              const c = _step34.value;
+            for (var _iterator41 = data[Symbol.iterator](), _step41; !(_iteratorNormalCompletion41 = (_step41 = _iterator41.next()).done); _iteratorNormalCompletion41 = true) {
+              const c = _step41.value;
               this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, this.whichStatus(c.status.toString()));
               this.addPatient(this.patient);
             }
           } catch (err) {
-            _didIteratorError34 = true;
-            _iteratorError34 = err;
+            _didIteratorError41 = true;
+            _iteratorError41 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion34 && _iterator34.return != null) {
-                _iterator34.return();
+              if (!_iteratorNormalCompletion41 && _iterator41.return != null) {
+                _iterator41.return();
               }
             } finally {
-              if (_didIteratorError34) {
-                throw _iteratorError34;
+              if (_didIteratorError41) {
+                throw _iteratorError41;
               }
             }
           }
@@ -9514,28 +10461,28 @@
       getAllRequests() {
         this.http.get(this.urlPatient + '/requests').subscribe(data => {
           this.tmp = new Array();
-          var _iteratorNormalCompletion35 = true;
-          var _didIteratorError35 = false;
-          var _iteratorError35 = undefined;
+          var _iteratorNormalCompletion42 = true;
+          var _didIteratorError42 = false;
+          var _iteratorError42 = undefined;
 
           try {
-            for (var _iterator35 = data[Symbol.iterator](), _step35; !(_iteratorNormalCompletion35 = (_step35 = _iterator35.next()).done); _iteratorNormalCompletion35 = true) {
-              const c = _step35.value;
+            for (var _iterator42 = data[Symbol.iterator](), _step42; !(_iteratorNormalCompletion42 = (_step42 = _iterator42.next()).done); _iteratorNormalCompletion42 = true) {
+              const c = _step42.value;
               this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].AWAITING_APPROVAL);
               this.tmp.push(this.patient);
               console.log(this.patient);
             }
           } catch (err) {
-            _didIteratorError35 = true;
-            _iteratorError35 = err;
+            _didIteratorError42 = true;
+            _iteratorError42 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion35 && _iterator35.return != null) {
-                _iterator35.return();
+              if (!_iteratorNormalCompletion42 && _iterator42.return != null) {
+                _iterator42.return();
               }
             } finally {
-              if (_didIteratorError35) {
-                throw _iteratorError35;
+              if (_didIteratorError42) {
+                throw _iteratorError42;
               }
             }
           }
@@ -9553,27 +10500,27 @@
         this.http.get(this.urlPatient + '/allPatientsForDoctor', {
           params
         }).subscribe(data => {
-          var _iteratorNormalCompletion36 = true;
-          var _didIteratorError36 = false;
-          var _iteratorError36 = undefined;
+          var _iteratorNormalCompletion43 = true;
+          var _didIteratorError43 = false;
+          var _iteratorError43 = undefined;
 
           try {
-            for (var _iterator36 = data[Symbol.iterator](), _step36; !(_iteratorNormalCompletion36 = (_step36 = _iterator36.next()).done); _iteratorNormalCompletion36 = true) {
-              const c = _step36.value;
+            for (var _iterator43 = data[Symbol.iterator](), _step43; !(_iteratorNormalCompletion43 = (_step43 = _iterator43.next()).done); _iteratorNormalCompletion43 = true) {
+              const c = _step43.value;
               this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, c.status);
               this.patientWithDoctor.push(this.patient);
             }
           } catch (err) {
-            _didIteratorError36 = true;
-            _iteratorError36 = err;
+            _didIteratorError43 = true;
+            _iteratorError43 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion36 && _iterator36.return != null) {
-                _iterator36.return();
+              if (!_iteratorNormalCompletion43 && _iterator43.return != null) {
+                _iterator43.return();
               }
             } finally {
-              if (_didIteratorError36) {
-                throw _iteratorError36;
+              if (_didIteratorError43) {
+                throw _iteratorError43;
               }
             }
           }
@@ -9703,29 +10650,29 @@
           return null;
         }
 
-        var _iteratorNormalCompletion37 = true;
-        var _didIteratorError37 = false;
-        var _iteratorError37 = undefined;
+        var _iteratorNormalCompletion44 = true;
+        var _didIteratorError44 = false;
+        var _iteratorError44 = undefined;
 
         try {
-          for (var _iterator37 = this.list[Symbol.iterator](), _step37; !(_iteratorNormalCompletion37 = (_step37 = _iterator37.next()).done); _iteratorNormalCompletion37 = true) {
-            const u = _step37.value;
+          for (var _iterator44 = this.list[Symbol.iterator](), _step44; !(_iteratorNormalCompletion44 = (_step44 = _iterator44.next()).done); _iteratorNormalCompletion44 = true) {
+            const u = _step44.value;
 
             if (u.email === email) {
               return u;
             }
           }
         } catch (err) {
-          _didIteratorError37 = true;
-          _iteratorError37 = err;
+          _didIteratorError44 = true;
+          _iteratorError44 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion37 && _iterator37.return != null) {
-              _iterator37.return();
+            if (!_iteratorNormalCompletion44 && _iterator44.return != null) {
+              _iterator44.return();
             }
           } finally {
-            if (_didIteratorError37) {
-              throw _iteratorError37;
+            if (_didIteratorError44) {
+              throw _iteratorError44;
             }
           }
         }
@@ -9734,13 +10681,13 @@
       }
 
       setUser(u) {
-        var _iteratorNormalCompletion38 = true;
-        var _didIteratorError38 = false;
-        var _iteratorError38 = undefined;
+        var _iteratorNormalCompletion45 = true;
+        var _didIteratorError45 = false;
+        var _iteratorError45 = undefined;
 
         try {
-          for (var _iterator38 = this.list[Symbol.iterator](), _step38; !(_iteratorNormalCompletion38 = (_step38 = _iterator38.next()).done); _iteratorNormalCompletion38 = true) {
-            const p1 = _step38.value;
+          for (var _iterator45 = this.list[Symbol.iterator](), _step45; !(_iteratorNormalCompletion45 = (_step45 = _iterator45.next()).done); _iteratorNormalCompletion45 = true) {
+            const p1 = _step45.value;
 
             if (p1.email === u.email) {
               p1.password = u.password;
@@ -9748,16 +10695,16 @@
             }
           }
         } catch (err) {
-          _didIteratorError38 = true;
-          _iteratorError38 = err;
+          _didIteratorError45 = true;
+          _iteratorError45 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion38 && _iterator38.return != null) {
-              _iterator38.return();
+            if (!_iteratorNormalCompletion45 && _iterator45.return != null) {
+              _iterator45.return();
             }
           } finally {
-            if (_didIteratorError38) {
-              throw _iteratorError38;
+            if (_didIteratorError45) {
+              throw _iteratorError45;
             }
           }
         }
@@ -9837,27 +10784,27 @@
 
       getAllUsers() {
         this.http.get(this.urlUser + '/all').subscribe(data => {
-          var _iteratorNormalCompletion39 = true;
-          var _didIteratorError39 = false;
-          var _iteratorError39 = undefined;
+          var _iteratorNormalCompletion46 = true;
+          var _didIteratorError46 = false;
+          var _iteratorError46 = undefined;
 
           try {
-            for (var _iterator39 = data[Symbol.iterator](), _step39; !(_iteratorNormalCompletion39 = (_step39 = _iterator39.next()).done); _iteratorNormalCompletion39 = true) {
-              const c = _step39.value;
+            for (var _iterator46 = data[Symbol.iterator](), _step46; !(_iteratorNormalCompletion46 = (_step46 = _iterator46.next()).done); _iteratorNormalCompletion46 = true) {
+              const c = _step46.value;
               this.u = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"](c.email, c.password, this.whichRole(c.role.toString()));
               this.addUser(this.u);
             }
           } catch (err) {
-            _didIteratorError39 = true;
-            _iteratorError39 = err;
+            _didIteratorError46 = true;
+            _iteratorError46 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion39 && _iterator39.return != null) {
-                _iterator39.return();
+              if (!_iteratorNormalCompletion46 && _iterator46.return != null) {
+                _iterator46.return();
               }
             } finally {
-              if (_didIteratorError39) {
-                throw _iteratorError39;
+              if (_didIteratorError46) {
+                throw _iteratorError46;
               }
             }
           }
@@ -9987,29 +10934,29 @@
           return null;
         }
 
-        var _iteratorNormalCompletion40 = true;
-        var _didIteratorError40 = false;
-        var _iteratorError40 = undefined;
+        var _iteratorNormalCompletion47 = true;
+        var _didIteratorError47 = false;
+        var _iteratorError47 = undefined;
 
         try {
-          for (var _iterator40 = this.listVacation[Symbol.iterator](), _step40; !(_iteratorNormalCompletion40 = (_step40 = _iterator40.next()).done); _iteratorNormalCompletion40 = true) {
-            const u = _step40.value;
+          for (var _iterator47 = this.listVacation[Symbol.iterator](), _step47; !(_iteratorNormalCompletion47 = (_step47 = _iterator47.next()).done); _iteratorNormalCompletion47 = true) {
+            const u = _step47.value;
 
             if (u.email === email) {
               return u;
             }
           }
         } catch (err) {
-          _didIteratorError40 = true;
-          _iteratorError40 = err;
+          _didIteratorError47 = true;
+          _iteratorError47 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion40 && _iterator40.return != null) {
-              _iterator40.return();
+            if (!_iteratorNormalCompletion47 && _iterator47.return != null) {
+              _iterator47.return();
             }
           } finally {
-            if (_didIteratorError40) {
-              throw _iteratorError40;
+            if (_didIteratorError47) {
+              throw _iteratorError47;
             }
           }
         }
@@ -10022,29 +10969,29 @@
           return null;
         }
 
-        var _iteratorNormalCompletion41 = true;
-        var _didIteratorError41 = false;
-        var _iteratorError41 = undefined;
+        var _iteratorNormalCompletion48 = true;
+        var _didIteratorError48 = false;
+        var _iteratorError48 = undefined;
 
         try {
-          for (var _iterator41 = this.listVacation[Symbol.iterator](), _step41; !(_iteratorNormalCompletion41 = (_step41 = _iterator41.next()).done); _iteratorNormalCompletion41 = true) {
-            const u = _step41.value;
+          for (var _iterator48 = this.listVacation[Symbol.iterator](), _step48; !(_iteratorNormalCompletion48 = (_step48 = _iterator48.next()).done); _iteratorNormalCompletion48 = true) {
+            const u = _step48.value;
 
             if (u.email === email) {
               return u;
             }
           }
         } catch (err) {
-          _didIteratorError41 = true;
-          _iteratorError41 = err;
+          _didIteratorError48 = true;
+          _iteratorError48 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion41 && _iterator41.return != null) {
-              _iterator41.return();
+            if (!_iteratorNormalCompletion48 && _iterator48.return != null) {
+              _iterator48.return();
             }
           } finally {
-            if (_didIteratorError41) {
-              throw _iteratorError41;
+            if (_didIteratorError48) {
+              throw _iteratorError48;
             }
           }
         }
@@ -10059,13 +11006,13 @@
       }
 
       setVacation(p) {
-        var _iteratorNormalCompletion42 = true;
-        var _didIteratorError42 = false;
-        var _iteratorError42 = undefined;
+        var _iteratorNormalCompletion49 = true;
+        var _didIteratorError49 = false;
+        var _iteratorError49 = undefined;
 
         try {
-          for (var _iterator42 = this.listVacation[Symbol.iterator](), _step42; !(_iteratorNormalCompletion42 = (_step42 = _iterator42.next()).done); _iteratorNormalCompletion42 = true) {
-            const p1 = _step42.value;
+          for (var _iterator49 = this.listVacation[Symbol.iterator](), _step49; !(_iteratorNormalCompletion49 = (_step49 = _iterator49.next()).done); _iteratorNormalCompletion49 = true) {
+            const p1 = _step49.value;
 
             if (p1.email === p.email) {
               p1.name = p.name;
@@ -10076,29 +11023,29 @@
             }
           }
         } catch (err) {
-          _didIteratorError42 = true;
-          _iteratorError42 = err;
+          _didIteratorError49 = true;
+          _iteratorError49 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion42 && _iterator42.return != null) {
-              _iterator42.return();
+            if (!_iteratorNormalCompletion49 && _iterator49.return != null) {
+              _iterator49.return();
             }
           } finally {
-            if (_didIteratorError42) {
-              throw _iteratorError42;
+            if (_didIteratorError49) {
+              throw _iteratorError49;
             }
           }
         }
       }
 
       setVacation1(p) {
-        var _iteratorNormalCompletion43 = true;
-        var _didIteratorError43 = false;
-        var _iteratorError43 = undefined;
+        var _iteratorNormalCompletion50 = true;
+        var _didIteratorError50 = false;
+        var _iteratorError50 = undefined;
 
         try {
-          for (var _iterator43 = this.listVacation[Symbol.iterator](), _step43; !(_iteratorNormalCompletion43 = (_step43 = _iterator43.next()).done); _iteratorNormalCompletion43 = true) {
-            const p1 = _step43.value;
+          for (var _iterator50 = this.listVacation[Symbol.iterator](), _step50; !(_iteratorNormalCompletion50 = (_step50 = _iterator50.next()).done); _iteratorNormalCompletion50 = true) {
+            const p1 = _step50.value;
 
             if (p1.email === p.email) {
               p1.name = p.name;
@@ -10109,16 +11056,16 @@
             }
           }
         } catch (err) {
-          _didIteratorError43 = true;
-          _iteratorError43 = err;
+          _didIteratorError50 = true;
+          _iteratorError50 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion43 && _iterator43.return != null) {
-              _iterator43.return();
+            if (!_iteratorNormalCompletion50 && _iterator50.return != null) {
+              _iterator50.return();
             }
           } finally {
-            if (_didIteratorError43) {
-              throw _iteratorError43;
+            if (_didIteratorError50) {
+              throw _iteratorError50;
             }
           }
         }
@@ -10134,27 +11081,27 @@
 
       getAllVacations() {
         this.http.get(this.urlVacation + '/all').subscribe(data => {
-          var _iteratorNormalCompletion44 = true;
-          var _didIteratorError44 = false;
-          var _iteratorError44 = undefined;
+          var _iteratorNormalCompletion51 = true;
+          var _didIteratorError51 = false;
+          var _iteratorError51 = undefined;
 
           try {
-            for (var _iterator44 = data[Symbol.iterator](), _step44; !(_iteratorNormalCompletion44 = (_step44 = _iterator44.next()).done); _iteratorNormalCompletion44 = true) {
-              const c = _step44.value;
+            for (var _iterator51 = data[Symbol.iterator](), _step51; !(_iteratorNormalCompletion51 = (_step51 = _iterator51.next()).done); _iteratorNormalCompletion51 = true) {
+              const c = _step51.value;
               this.zahtev = new _model_Zahtev__WEBPACK_IMPORTED_MODULE_2__["Zahtev"](c.email, c.name, c.surname, c.startingDate, c.finishDate, this.whichStatus(c.status.toString()));
               this.addVacation(this.zahtev);
             }
           } catch (err) {
-            _didIteratorError44 = true;
-            _iteratorError44 = err;
+            _didIteratorError51 = true;
+            _iteratorError51 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion44 && _iterator44.return != null) {
-                _iterator44.return();
+              if (!_iteratorNormalCompletion51 && _iterator51.return != null) {
+                _iterator51.return();
               }
             } finally {
-              if (_didIteratorError44) {
-                throw _iteratorError44;
+              if (_didIteratorError51) {
+                throw _iteratorError51;
               }
             }
           }
@@ -10167,28 +11114,28 @@
       getAllRequests() {
         this.http.get(this.urlVacation + '/VacationRequest').subscribe(data => {
           this.tmp = new Array();
-          var _iteratorNormalCompletion45 = true;
-          var _didIteratorError45 = false;
-          var _iteratorError45 = undefined;
+          var _iteratorNormalCompletion52 = true;
+          var _didIteratorError52 = false;
+          var _iteratorError52 = undefined;
 
           try {
-            for (var _iterator45 = data[Symbol.iterator](), _step45; !(_iteratorNormalCompletion45 = (_step45 = _iterator45.next()).done); _iteratorNormalCompletion45 = true) {
-              const c = _step45.value;
+            for (var _iterator52 = data[Symbol.iterator](), _step52; !(_iteratorNormalCompletion52 = (_step52 = _iterator52.next()).done); _iteratorNormalCompletion52 = true) {
+              const c = _step52.value;
               this.zahtev = new _model_Zahtev__WEBPACK_IMPORTED_MODULE_2__["Zahtev"](c.email, c.name, c.surname, c.startingDate, c.finishDate, _model_ZahtevStatus__WEBPACK_IMPORTED_MODULE_6__["ZahtevStatus"].AWAITING_APPROVAL);
               this.tmp.push(this.zahtev);
               console.log(this.zahtev);
             }
           } catch (err) {
-            _didIteratorError45 = true;
-            _iteratorError45 = err;
+            _didIteratorError52 = true;
+            _iteratorError52 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion45 && _iterator45.return != null) {
-                _iterator45.return();
+              if (!_iteratorNormalCompletion52 && _iterator52.return != null) {
+                _iterator52.return();
               }
             } finally {
-              if (_didIteratorError45) {
-                throw _iteratorError45;
+              if (_didIteratorError52) {
+                throw _iteratorError52;
               }
             }
           }
@@ -10255,7 +11202,9 @@
       examination: '/examination',
       medicalRecord: '/medicalRecord',
       examinationType: '/examinationType',
-      zahtev: '/zahtev'
+      zahtev: '/zahtev',
+      diagnose: '/diagnose',
+      medicaments: '/medicaments'
     };
     /*
      * For easier debugging in development mode, you can import the following file

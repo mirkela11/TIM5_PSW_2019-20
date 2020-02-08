@@ -58,7 +58,9 @@ public class ExaminationController {
 
                 for (Doctor d : e.getDoctors()) {
                      if (d.getEmail().equals(email)) {
-                        tmp.add(e);
+                       if(e.getStatus() == ExaminationStatus.APPROVED) {
+                           tmp.add(e);
+                       }
                      }
                 }
             }

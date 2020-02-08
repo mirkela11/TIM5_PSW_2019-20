@@ -61,10 +61,9 @@ export class DoctorMedicalRecordComponent implements OnInit {
   }
 
   edit(element: Examination) {
-    setTimeout(() => {
-      const medicalRecordForDialog = this.medicalRecServis.getMedicalRecordForPatient(element.patient.email);
-      this.medicalService.setMedicalRecordForDialog(medicalRecordForDialog);
-    }, 750);
+
+    const medicalRecordForDialog = this.medicalRecServis.getMedicalRecordForPatient(element.patient.email);
+    this.medicalService.setMedicalRecordForDialog(medicalRecordForDialog);
     this.patientService.setPatient1(element.patient);
     this.condition = this.medicalService.getLocalDateAndTime(element.interval.startTime, element.interval.endTime);
 
@@ -72,7 +71,7 @@ export class DoctorMedicalRecordComponent implements OnInit {
     if (this.condition === true) {
         console.log('u kondition sam');
         console.log(this.condition);
-        const dialog = this.medReqDialog.open(MedicalRecordDialogComponent);
+        setTimeout(() => {const dialog = this.medReqDialog.open(MedicalRecordDialogComponent); }, 1000);
       }
  //   }, 200);
 
