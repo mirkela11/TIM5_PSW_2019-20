@@ -44,8 +44,6 @@ import { ActivatedAccountPatientComponent } from './components/activated-account
 import { DiagnoseComponent } from './components/diagnose/diagnose.component';
 import { MedicamentsComponent } from './components/medicaments/medicaments.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,7 +97,7 @@ import { MedicamentsComponent } from './components/medicaments/medicaments.compo
     VacationRequestRegisterComponent,
 
     DoctorVacationRequestComponent,
-    
+
     DoctorSearchDialogComponent,
 
     PredefExaminationDialogComponent,
@@ -107,7 +105,7 @@ import { MedicamentsComponent } from './components/medicaments/medicaments.compo
     PatientMakeExaminationComponent,
 
     ActivatedAccountPatientComponent,
-    
+
     DoctorMedicalRecordComponent,
 
     MedicalRecordDialogComponent,
@@ -115,6 +113,7 @@ import { MedicamentsComponent } from './components/medicaments/medicaments.compo
     DiagnoseComponent,
 
     MedicamentsComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -14,4 +14,5 @@ public interface AdminClinicRepo extends JpaRepository<ClinicAdministrator, Long
     List<ClinicAdministrator> findAllByEmail(String email);
     ClinicAdministrator findByEmail(String email);
     Page<ClinicAdministrator> findAll(Pageable pageable);
+    ClinicAdministrator findOneById(Long id);
 }

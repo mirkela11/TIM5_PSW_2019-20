@@ -5,8 +5,6 @@ import {ExaminationKind} from '../model/examinationKind';
 import {ExaminationStatus} from '../model/examinationStatus';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {ExaminationType} from '../model/examinationType';
-
-import {Patient} from '../model/patient';
 import {ExaminationReport} from '../model/examinationReport';
 
 @Injectable({

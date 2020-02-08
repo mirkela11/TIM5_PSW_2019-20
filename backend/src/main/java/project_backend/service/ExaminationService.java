@@ -34,7 +34,7 @@ public class ExaminationService {
             return false;
 
         for(Examination e1 : tmp) {
-            if(e1.getId() == e.getId()) {
+            if(e1.getId() == e.getId() && e.getStatus() == ExaminationStatus.PREDEF_AVAILABLE) {
                 e1.setPatient(p);
                 e1.setStatus(ExaminationStatus.PREDEF_BOOKED);
                 examinationRepo.save(e1);

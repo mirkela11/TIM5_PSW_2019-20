@@ -61,8 +61,11 @@ export class ClinicsListComponent implements OnInit {
   openDialog() {
     const dialog = this.dialog.open(ClinicSearchDialogComponent);
     dialog.afterClosed().subscribe(data => {
+       console.log('DATA ISPOD ZA KLINIKE')
+       console.log(data);
        if (data !== undefined) {
          this.clinics = data.clinics;
+         console.log(this.clinics);
          this.dataSource = new MatTableDataSource(this.clinics);
          this.condition = false;
          this.tmp = data.date;
