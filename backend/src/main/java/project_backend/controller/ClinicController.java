@@ -1,5 +1,7 @@
 package project_backend.controller;
 
+import com.sun.net.httpserver.HttpsParameters;
+import com.sun.net.httpserver.HttpsServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,7 +66,13 @@ public class ClinicController{
     @GetMapping(value = "/clinic/allWithTypes")
     public ResponseEntity<List<Clinic>> allWithType(@RequestParam(value = "type", required = true) String type,
                                                     @RequestParam(value = "date", required = true) String date) {
+
         List<Clinic> tmp = new ArrayList<>();
+
+        if(type.equals("") || date.equals("")) {
+            return new ResponseEntity<>(tmp, HttpStatus.BAD_REQUEST);
+        }
+
         List<TimeOffDoctor> tof = timeOffDoctorService.findAll();
         List<ExaminationType> types = examinationTypeService.findAll();
         for (ExaminationType t : types) {
