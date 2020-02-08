@@ -64,7 +64,6 @@ public class ExaminationServiceTest{
         assertEquals(e.getRoom().getId(), 100);
         assertEquals(e.getNurse().getId(), 100);
 
-
     }
     // Pokusaj cuvanja izmene
     @Test

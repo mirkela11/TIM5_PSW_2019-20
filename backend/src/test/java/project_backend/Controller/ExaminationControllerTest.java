@@ -115,20 +115,35 @@ public class ExaminationControllerTest {
     @Test
     void makeExamination() throws Exception {
 
-        // Patient p = patientService.getPatient("weca997@gmail.com");
-        // Examination examination = examinationService.findOneById(100L);
+
         HttpHeaders headers = new HttpHeaders();
-        //headers.add("id", "206");
-        //headers.set("email","weca997@gmail.com");
         HttpEntity<String> request = new HttpEntity<>(null,headers);
 
         ResponseEntity<Boolean> responseEntity =
-                testRestTemplate.postForEntity("/examination/makePredefExamination?id=100&email=weca997@gmail.com", null ,Boolean.class);
+                testRestTemplate.postForEntity("/examination/addExaminationPatient?date=2020-03-31 15:00&patientEmail=weca997@gmail.com&doctorEmail=test@email.com&type=Pregled sluha&clinicId=102&kind=Examination&adminsClinic=asmirkovic97@gmail.com", null ,Boolean.class);
+
+        Boolean e = responseEntity.getBody();
+        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+        assertEquals(e, true);
+
+    }
+
+    @Test
+    void makeBadExamination() throws Exception {
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(null,headers);
+
+        ResponseEntity<Boolean> responseEntity =
+                testRestTemplate.postForEntity("/examination/addExaminationPatient?date=2020-03-31 15:00&patientEmail=weca997@gmail.com&doctorEmail=test@email.com&type=Pregled sluha&clinicId=300&kind=Examination&adminsClinic=asmirkovic97@gmail.com", null ,Boolean.class);
 
         Boolean e = responseEntity.getBody();
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
         assertEquals(e, false);
 
     }
+
+
 
 }

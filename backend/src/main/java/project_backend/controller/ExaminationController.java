@@ -105,17 +105,10 @@ public class ExaminationController {
                                                              @RequestParam(value = "clinicId", required = true) String clinicId,
                                                              @RequestParam(value = "kind", required = true) String kind,
                                                              @RequestParam(value = "adminsClinic", required = true) String adminsClinic) {
+
         Doctor doctor = doctorService.getDoctor(doctorEmail);
         Patient patient = patientService.getPatient(patientEmail);
         Clinic clinic = clinicService.findOneById(Long.parseLong(clinicId));
-
-        System.out.println(date);
-        System.out.println(patientEmail);
-        System.out.println(doctorEmail);
-        System.out.println(type);
-        System.out.println(clinicId);
-        System.out.println(kind);
-        System.out.println(adminsClinic);
 
         if(patient == null || doctor == null || clinic == null) {
             return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
