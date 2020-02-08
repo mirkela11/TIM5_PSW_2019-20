@@ -68,7 +68,7 @@ public class ClinicAdminService {
             return true;
         }
         for(ClinicAdministrator c1 : tmp)
-            if(c1.getName().equals(ca.getName()))
+            if(c1.getId() == ca.getId())
             {
                 return  false;
             }

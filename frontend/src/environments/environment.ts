@@ -18,6 +18,8 @@ export const environment = {
   medicalRecord: '/medicalRecord',
   examinationType: '/examinationType',
   zahtev: '/zahtev',
+  diagnose: '/diagnose',
+  medicaments: '/medicaments'
 };
 
 /*
