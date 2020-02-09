@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"success\" class=\"main-content\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8 offset-md-2\">\n        <mat-card>\n          <h3>Account activated successfully!</h3>\n          <hr>\n          <p>Success! Your account is now active.</p>\n          <p><span><a href=\"http://localhost:8081\">Login page</a></span></p>\n        </mat-card>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"success\" class=\"main-content\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8 offset-md-2\">\r\n        <mat-card>\r\n          <h3>Account activated successfully!</h3>\r\n          <hr>\r\n          <p>Success! Your account is now active.</p>\r\n          <p><span><a href=\"http://localhost:8081\">Login page</a></span></p>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -2775,7 +2775,6 @@ let LoginComponent = class LoginComponent {
             this.patientService.loginPatient(this.user).subscribe(data => {
                 console.log(data);
                 if (data !== null) {
-                    alert('Successful logged in');
                     this.userService.setLoggedUser(this.user);
                     this.MRFR = this.medicalRecordService.getMRforP(this.user.email);
                     this.medicalRecordService.setMRFP(this.MRFR);

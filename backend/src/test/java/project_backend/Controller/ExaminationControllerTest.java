@@ -34,7 +34,7 @@ public class ExaminationControllerTest {
                 testRestTemplate.getForEntity("/examination/all", List.class);
 
         List<Examination> tmp = responseEntity.getBody();
-        assertEquals(tmp.size(), 11);
+        assertEquals(tmp.size(), 12);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
@@ -44,7 +44,7 @@ public class ExaminationControllerTest {
                 testRestTemplate.getForEntity("/examination/allExaminationsForDoctor?email=doctor@email.com", List.class);
 
         List<Examination> tmp = responseEntity.getBody();
-        assertEquals(tmp.size(), 4);
+        assertEquals(tmp.size(), 2);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertNotNull(tmp);
     }
@@ -107,7 +107,7 @@ public class ExaminationControllerTest {
                 testRestTemplate.getForEntity("/examination/getMHforP?email=weca997@gmail.com",List.class);
 
         List<Examination> tmp = responseEntity.getBody();
-        assertEquals(tmp.size(), 2);
+        assertEquals(tmp.size(), 4);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertNotNull(tmp);
     }

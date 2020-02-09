@@ -95,7 +95,6 @@ export class LoginComponent implements OnInit {
         data => {
           console.log(data);
           if (data !== null) {
-            alert('Successful logged in');
             this.userService.setLoggedUser(this.user);
             this.MRFR = this.medicalRecordService.getMRforP(this.user.email);
             this.medicalRecordService.setMRFP(this.MRFR);
