@@ -13,9 +13,11 @@ export class RoomsService {
   listRooms: Array<Rooms> = new Array<Rooms>();
   listRooms1: Array<Rooms> = new Array<Rooms>();
   flag : Array<Rooms> = new Array<Rooms>();
+  reservation = false;
 
   roomss: Array<Rooms> = new Array<Rooms>();
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              ) {
 
     this.getAllRooms();
   }
@@ -36,7 +38,7 @@ export class RoomsService {
 */
   public async getAllRooms(): Promise<Array<Rooms>> {
     const response: any = await this.http.get(this.url + '/all').toPromise()
-            
+
           return response;
         }
 
@@ -46,7 +48,6 @@ export class RoomsService {
     const response: any = await  this.http.get(this.url + '/getAllRoomsForOperation').toPromise()
     return response;
   }
-
 
 
   public getRoom(id: number) {
@@ -84,6 +85,18 @@ export class RoomsService {
       }
     }
   }
+  public async getLocalDateAndTime(intervalExamination: string, intervalExaminationEnd: string, intervalRoom: string, intervalRoomEnd: string): Promise<boolean> {
 
+    let params = new HttpParams();
+    params = params.append('intervalExamination', intervalExamination);
+    params = params.append('intervalExaminationEnd', intervalExaminationEnd);
+    params = params.append('intervalRoom', intervalRoom);
+    params = params.append('intervalRoomEnd', intervalRoomEnd);
+
+    const response: any = await this.http.get(this.url + '/DateAndTime', {params}).toPromise();
+    return response;
+
+
+  }
 
 }

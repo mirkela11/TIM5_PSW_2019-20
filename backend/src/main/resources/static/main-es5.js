@@ -374,7 +374,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\n</mat-form-field>\n<table mat-table [dataSource]=\"DataSource\" class=\"mat-elevation-z8\">\n\n  <ng-container matColumnDef=\"id\">\n    <th mat-header-cell *matHeaderCellDef> ID </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.id}} </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"label\">\n    <th mat-header-cell *matHeaderCellDef> Room name </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.label}} </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"kind\">\n    <th mat-header-cell *matHeaderCellDef> Kind </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.kind}} </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"clinic\">\n    <th mat-header-cell *matHeaderCellDef> Clinic </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.clinic.name}} </td>\n  </ng-container>\n  <ng-container matColumnDef=\"startTime\">\n    <th mat-header-cell *matHeaderCellDef> Start time </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.interval.startTime}} </td>\n  </ng-container>\n  <ng-container matColumnDef=\"endTime\">\n    <th mat-header-cell *matHeaderCellDef> End time </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.interval.endTime}} </td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n</table>\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\n\n\n\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table [dataSource]=\"DataSource\" class=\"mat-elevation-z8\">\r\n\r\n  <ng-container matColumnDef=\"id\">\r\n    <th mat-header-cell *matHeaderCellDef> ID </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.id}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"label\">\r\n    <th mat-header-cell *matHeaderCellDef> Room name </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.label}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"kind\">\r\n    <th mat-header-cell *matHeaderCellDef> Kind </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.kind}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"clinic\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.clinic.name}} </td>\r\n  </ng-container>\r\n  <ng-container matColumnDef=\"startTime\">\r\n    <th mat-header-cell *matHeaderCellDef> Start time </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.interval.startTime}} </td>\r\n  </ng-container>\r\n  <ng-container matColumnDef=\"endTime\">\r\n    <th mat-header-cell *matHeaderCellDef> End time </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.interval.endTime}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"reserve\">\r\n    <th mat-header-cell *matHeaderCellDef> Edit </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-flat-button color=\"warn\" [disabled]=\"isDisabled\" (click)=\"reserve(element)\"> Reserve </button>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n\r\n</table>\r\n\r\n\r\n\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/patient-make-examination/patient-make-examination.component.html": 
@@ -2511,22 +2511,33 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     this.operationDialog = operationDialog;
                     this.displayedColumns = ['id', 'label', 'kind', 'clinic', 'startTime', 'endTime'];
                     this.listRooms = new Array();
-                    this.list = this.roomsService.getAllRooms();
                     this.listExaminations = this.examinationService.getAllExaminations();
-                    this.listRooms = this.roomsService.getAllRooms();
+                    // this.listRooms = this.roomsService.getAllRooms();
                     console.log('lista');
                     console.log(this.listRooms);
                     this.all();
                 }
                 ListOfRoomsComponent.prototype.ngOnInit = function () {
                     this.all();
-                    this.DataSource.paginator = this.paginator;
                 };
                 ListOfRoomsComponent.prototype.applyFilter = function (filterValue) {
                     this.DataSource.filter = filterValue.trim().toLowerCase();
                 };
                 ListOfRoomsComponent.prototype.all = function () {
-                    this.DataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](this.roomsService.getAllRooms());
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var _a, _b, _c;
+                        return __generator(this, function (_d) {
+                            switch (_d.label) {
+                                case 0:
+                                    _a = this;
+                                    _c = (_b = _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]).bind;
+                                    return [4 /*yield*/, this.roomsService.getAllRooms()];
+                                case 1:
+                                    _a.DataSource = new (_c.apply(_b, [void 0, _d.sent()]))();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
                 };
                 ListOfRoomsComponent.prototype.reserve = function (element) {
                     // this.tmp1 = this.doctorService.getDoctorsTermins(this.tmp, d.email);
@@ -2543,9 +2554,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 { type: _services_examination_service__WEBPACK_IMPORTED_MODULE_4__["ExaminationService"] },
                 { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] }
             ]; };
-            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
-            ], ListOfRoomsComponent.prototype, "paginator", void 0);
             ListOfRoomsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-list-of-rooms',
@@ -3439,17 +3447,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 function OperationListComponent(roomsService, examinationService) {
                     this.roomsService = roomsService;
                     this.examinationService = examinationService;
-                    this.displayedColumns = ['id', 'label', 'kind', 'clinic', 'startTime', 'endTime'];
+                    this.isDisabled = false;
+                    this.displayedColumns = ['id', 'label', 'kind', 'clinic', 'startTime', 'endTime', 'reserve'];
+                    // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
                     this.listRooms = new Array();
-                    this.listExaminations = this.examinationService.getAllExaminations();
+                    this.condition = false;
+                    this.listExaminations = new Array();
                     // this.listRooms = this.roomsService.getAllRoomsForOperation();
                     console.log('lista soba kons');
                     console.log(this.listRooms);
+                    this.listExaminations = this.examinationService.getExaminationForOperation();
                     this.all();
                 }
                 OperationListComponent.prototype.ngOnInit = function () {
                     this.all();
-                    this.DataSource.paginator = this.paginator;
                 };
                 OperationListComponent.prototype.applyFilter = function (filterValue) {
                     this.DataSource.filter = filterValue.trim().toLowerCase();
@@ -3470,15 +3481,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                         });
                     });
                 };
+                OperationListComponent.prototype.reserve = function (element) {
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var _i, _a, c, _b;
+                        return __generator(this, function (_c) {
+                            switch (_c.label) {
+                                case 0:
+                                    _i = 0, _a = this.listExaminations;
+                                    _c.label = 1;
+                                case 1:
+                                    if (!(_i < _a.length)) return [3 /*break*/, 4];
+                                    c = _a[_i];
+                                    _b = this;
+                                    return [4 /*yield*/, this.roomsService.getLocalDateAndTime(c.interval.startTime, c.interval.endTime, element.interval.startTime, element.interval.endTime)];
+                                case 2:
+                                    _b.condition = _c.sent();
+                                    _c.label = 3;
+                                case 3:
+                                    _i++;
+                                    return [3 /*break*/, 1];
+                                case 4:
+                                    console.log(this.condition);
+                                    if (this.condition === true) {
+                                        this.isDisabled = false;
+                                    }
+                                    else {
+                                        this.isDisabled = true;
+                                        alert('Termin je zauzet, izaberite sledeci');
+                                    }
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
+                };
                 return OperationListComponent;
             }());
             OperationListComponent.ctorParameters = function () { return [
                 { type: _services_rooms_service__WEBPACK_IMPORTED_MODULE_3__["RoomsService"] },
                 { type: _services_examination_service__WEBPACK_IMPORTED_MODULE_4__["ExaminationService"] }
             ]; };
-            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
-            ], OperationListComponent.prototype, "paginator", void 0);
             OperationListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-operation-list',
@@ -4196,28 +4237,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     this.strenght = strenght;
                 }
                 return Medicaments;
-            }());
-            /***/ 
-        }),
-        /***/ "./src/app/model/Rooms.ts": 
-        /*!********************************!*\
-          !*** ./src/app/model/Rooms.ts ***!
-          \********************************/
-        /*! exports provided: Rooms */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rooms", function () { return Rooms; });
-            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            var Rooms = /** @class */ (function () {
-                function Rooms(id, label, kind, clinic, interval) {
-                    this.id = id;
-                    this.label = label;
-                    this.kind = kind;
-                    this.clinic = clinic;
-                    this.interval = interval;
-                }
-                return Rooms;
             }());
             /***/ 
         }),
@@ -5240,6 +5259,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].examination;
                     this.listExaminations = new Array();
                     this.examinationForDoctor = new Array();
+                    this.examinationForOperation = new Array();
                     this.predefExaminations = new Array();
                     this.MHFP = new Array();
                     this.tmp = new Array();
@@ -5377,6 +5397,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 ExaminationService.prototype.getPatientForDoctors = function () {
                     return this.examinationForDoctor;
                 };
+                ExaminationService.prototype.getExaminationForOperation = function () {
+                    var _this = this;
+                    this.http.get(this.url + '/allExaminationForOperation').subscribe(function (data) {
+                        _this.examinationForOperation = new Array();
+                        for (var _i = 0, data_13 = data; _i < data_13.length; _i++) {
+                            var c = data_13[_i];
+                            _this.examinationOperation = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](_this.whichKindExamination(c.kind.toString()), _this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
+                            _this.examinationForOperation.push(_this.examinationOperation);
+                            console.log(_this.examinationOperation);
+                        }
+                    }, function (error) {
+                        console.log(error);
+                    });
+                    console.log(this.examinationForOperation);
+                    return this.examinationForOperation;
+                };
                 return ExaminationService;
             }());
             ExaminationService.ctorParameters = function () { return [
@@ -5421,8 +5457,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     var _this = this;
                     this.http.get(this.url + '/all').subscribe(function (data) {
                         _this.listMedicalRecord = new Array();
-                        for (var _i = 0, data_13 = data; _i < data_13.length; _i++) {
-                            var c = data_13[_i];
+                        for (var _i = 0, data_14 = data; _i < data_14.length; _i++) {
+                            var c = data_14[_i];
                             // Ostalo je da se doda examinaton_report u konstruktoru
                             console.log('Ispod data za medial rekod');
                             console.log(c);
@@ -5603,8 +5639,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 MedicamentsService.prototype.getAllMedicaments = function () {
                     var _this = this;
                     this.http.get(this.url + '/getAllMedicaments').subscribe(function (data) {
-                        for (var _i = 0, data_14 = data; _i < data_14.length; _i++) {
-                            var c = data_14[_i];
+                        for (var _i = 0, data_15 = data; _i < data_15.length; _i++) {
+                            var c = data_15[_i];
                             _this.medicaments = new _model_Medicaments__WEBPACK_IMPORTED_MODULE_4__["Medicaments"](c.id, c.title, c.description, c.strenght);
                             _this.addMedicament(_this.medicaments);
                         }
@@ -5689,8 +5725,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 NurseServiceService.prototype.getAllNurses = function () {
                     var _this = this;
                     this.http.get(this.urlNurse + '/all').subscribe(function (data) {
-                        for (var _i = 0, data_15 = data; _i < data_15.length; _i++) {
-                            var c = data_15[_i];
+                        for (var _i = 0, data_16 = data; _i < data_16.length; _i++) {
+                            var c = data_16[_i];
                             _this.nurse = new _model_nurse__WEBPACK_IMPORTED_MODULE_5__["Nurse"](c.email, c.password, c.name, c.surname, c.phone, c.workHoursTo, c.workHoursFrom);
                             _this.addNurse(_this.nurse);
                         }
@@ -5798,8 +5834,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 PatientService.prototype.getAllPatients = function () {
                     var _this = this;
                     this.http.get(this.urlPatient + '/all').subscribe(function (data) {
-                        for (var _i = 0, data_16 = data; _i < data_16.length; _i++) {
-                            var c = data_16[_i];
+                        for (var _i = 0, data_17 = data; _i < data_17.length; _i++) {
+                            var c = data_17[_i];
                             _this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, _this.whichStatus(c.status.toString()));
                             _this.addPatient(_this.patient);
                         }
@@ -5812,8 +5848,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     var _this = this;
                     this.http.get(this.urlPatient + '/requests').subscribe(function (data) {
                         _this.tmp = new Array();
-                        for (var _i = 0, data_17 = data; _i < data_17.length; _i++) {
-                            var c = data_17[_i];
+                        for (var _i = 0, data_18 = data; _i < data_18.length; _i++) {
+                            var c = data_18[_i];
                             _this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, _model_patientStatus__WEBPACK_IMPORTED_MODULE_6__["PatientStatus"].AWAITING_APPROVAL);
                             _this.tmp.push(_this.patient);
                             console.log(_this.patient);
@@ -5830,8 +5866,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     params = params.append('email', email);
                     this.patientWithDoctor = new Array();
                     this.http.get(this.urlPatient + '/allPatientsForDoctor', { params: params }).subscribe(function (data) {
-                        for (var _i = 0, data_18 = data; _i < data_18.length; _i++) {
-                            var c = data_18[_i];
+                        for (var _i = 0, data_19 = data; _i < data_19.length; _i++) {
+                            var c = data_19[_i];
                             _this.patient = new _model_patient__WEBPACK_IMPORTED_MODULE_4__["Patient"](c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country, c.insuranceID, c.status);
                             _this.patientWithDoctor.push(_this.patient);
                         }
@@ -5878,7 +5914,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-            /* harmony import */ var _model_Rooms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/Rooms */ "./src/app/model/Rooms.ts");
             var RoomsService = /** @class */ (function () {
                 function RoomsService(http) {
                     this.http = http;
@@ -5886,6 +5921,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     this.listRooms = new Array();
                     this.listRooms1 = new Array();
                     this.flag = new Array();
+                    this.reservation = false;
                     this.roomss = new Array();
                     this.getAllRooms();
                 }
@@ -5904,22 +5940,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                   }
                 */
                 RoomsService.prototype.getAllRooms = function () {
-                    var _this = this;
-                    this.http.get(this.url + '/all').subscribe(function (data) {
-                        _this.listRooms1 = new Array();
-                        for (var _i = 0, data_19 = data; _i < data_19.length; _i++) {
-                            var c = data_19[_i];
-                            console.log(data);
-                            console.log('ovde sam1');
-                            _this.room = new _model_Rooms__WEBPACK_IMPORTED_MODULE_4__["Rooms"](c.id, c.label, c.kind, c.clinic, c.interval);
-                            _this.listRooms1.push(_this.room);
-                            console.log(_this.room);
-                        }
-                    }, function (error) {
-                        console.log(error);
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var response;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0: return [4 /*yield*/, this.http.get(this.url + '/all').toPromise()];
+                                case 1:
+                                    response = _a.sent();
+                                    return [2 /*return*/, response];
+                            }
+                        });
                     });
-                    console.log(this.listRooms1);
-                    return this.listRooms1;
                 };
                 RoomsService.prototype.getAllRoomsForOperation = function () {
                     return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -5965,6 +5996,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                             return;
                         }
                     }
+                };
+                RoomsService.prototype.getLocalDateAndTime = function (intervalExamination, intervalExaminationEnd, intervalRoom, intervalRoomEnd) {
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var params, response;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpParams"]();
+                                    params = params.append('intervalExamination', intervalExamination);
+                                    params = params.append('intervalExaminationEnd', intervalExaminationEnd);
+                                    params = params.append('intervalRoom', intervalRoom);
+                                    params = params.append('intervalRoomEnd', intervalRoomEnd);
+                                    return [4 /*yield*/, this.http.get(this.url + '/DateAndTime', { params: params }).toPromise()];
+                                case 1:
+                                    response = _a.sent();
+                                    return [2 /*return*/, response];
+                            }
+                        });
+                    });
                 };
                 return RoomsService;
             }());

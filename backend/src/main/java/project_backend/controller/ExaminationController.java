@@ -166,4 +166,20 @@ public class ExaminationController {
 
         return new ResponseEntity<>(ret, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/examination/allExaminationForOperation")
+    public ResponseEntity<List<Examination>> allExaminationForOperation(){
+        List<Examination> pom = examinationService.findAll();
+        List<Examination> ret = new ArrayList<>();
+        for(Examination e : pom)  {
+            if(e.getKind() == ExaminationKind.OPERATION) {
+                if(e.getStatus() == ExaminationStatus.APPROVED) {
+                    ret.add(e);
+                    System.out.println("e je" + e);
+                }
+            }
+        }
+        return new ResponseEntity<>(ret, HttpStatus.OK);
+    }
+
 }

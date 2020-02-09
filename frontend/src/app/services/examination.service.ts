@@ -1,12 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {Examination} from '../model/examination';
 import {ExaminationKind} from '../model/examinationKind';
 import {ExaminationStatus} from '../model/examinationStatus';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {ExaminationType} from '../model/examinationType';
-
-import {Patient} from '../model/patient';
 import {ExaminationReport} from '../model/examinationReport';
 
 @Injectable({
@@ -18,7 +16,9 @@ export class ExaminationService {
   listExaminations: Array<Examination> = new Array<Examination>();
   examination: Examination;
   examinationDoctor: Examination;
+  examinationOperation: Examination;
   examinationForDoctor: Array<Examination> = new Array<Examination>();
+  examinationForOperation: Array<Examination> = new Array<Examination>();
   examinationReport: ExaminationReport;
   predefExaminations: Array<Examination> = new Array<Examination>();
   etype: ExaminationType;
@@ -170,6 +170,12 @@ export class ExaminationService {
   public getPatientForDoctors() {
     return this.examinationForDoctor;
   }
+
+  public async getExaminationForOperation(): Promise<Array<Examination>> {
+    const response: any = await  this.http.get(this.url + '/allExaminationForOperation').toPromise();
+    return response;
+  }
+
 
 
 }

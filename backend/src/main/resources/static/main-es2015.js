@@ -409,7 +409,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\n</mat-form-field>\n<table mat-table [dataSource]=\"DataSource\" class=\"mat-elevation-z8\">\n\n  <ng-container matColumnDef=\"id\">\n    <th mat-header-cell *matHeaderCellDef> ID </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.id}} </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"label\">\n    <th mat-header-cell *matHeaderCellDef> Room name </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.label}} </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"kind\">\n    <th mat-header-cell *matHeaderCellDef> Kind </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.kind}} </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"clinic\">\n    <th mat-header-cell *matHeaderCellDef> Clinic </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.clinic.name}} </td>\n  </ng-container>\n  <ng-container matColumnDef=\"startTime\">\n    <th mat-header-cell *matHeaderCellDef> Start time </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.interval.startTime}} </td>\n  </ng-container>\n  <ng-container matColumnDef=\"endTime\">\n    <th mat-header-cell *matHeaderCellDef> End time </th>\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.interval.endTime}} </td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n</table>\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\n\n\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table [dataSource]=\"DataSource\" class=\"mat-elevation-z8\">\r\n\r\n  <ng-container matColumnDef=\"id\">\r\n    <th mat-header-cell *matHeaderCellDef> ID </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.id}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"label\">\r\n    <th mat-header-cell *matHeaderCellDef> Room name </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.label}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"kind\">\r\n    <th mat-header-cell *matHeaderCellDef> Kind </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.kind}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"clinic\">\r\n    <th mat-header-cell *matHeaderCellDef> Clinic </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.clinic.name}} </td>\r\n  </ng-container>\r\n  <ng-container matColumnDef=\"startTime\">\r\n    <th mat-header-cell *matHeaderCellDef> Start time </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.interval.startTime}} </td>\r\n  </ng-container>\r\n  <ng-container matColumnDef=\"endTime\">\r\n    <th mat-header-cell *matHeaderCellDef> End time </th>\r\n    <td mat-cell *matCellDef=\"let rooms\"> {{rooms.interval.endTime}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"reserve\">\r\n    <th mat-header-cell *matHeaderCellDef> Edit </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-flat-button color=\"warn\" [disabled]=\"isDisabled\" (click)=\"reserve(element)\"> Reserve </button>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n\r\n</table>\r\n\r\n\r\n\r\n");
 
 /***/ }),
 
@@ -2723,22 +2723,22 @@ let ListOfRoomsComponent = class ListOfRoomsComponent {
         this.operationDialog = operationDialog;
         this.displayedColumns = ['id', 'label', 'kind', 'clinic', 'startTime', 'endTime'];
         this.listRooms = new Array();
-        this.list = this.roomsService.getAllRooms();
         this.listExaminations = this.examinationService.getAllExaminations();
-        this.listRooms = this.roomsService.getAllRooms();
+        // this.listRooms = this.roomsService.getAllRooms();
         console.log('lista');
         console.log(this.listRooms);
         this.all();
     }
     ngOnInit() {
         this.all();
-        this.DataSource.paginator = this.paginator;
     }
     applyFilter(filterValue) {
         this.DataSource.filter = filterValue.trim().toLowerCase();
     }
     all() {
-        this.DataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](this.roomsService.getAllRooms());
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.DataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](yield this.roomsService.getAllRooms());
+        });
     }
     reserve(element) {
         // this.tmp1 = this.doctorService.getDoctorsTermins(this.tmp, d.email);
@@ -2754,9 +2754,6 @@ ListOfRoomsComponent.ctorParameters = () => [
     { type: _services_examination_service__WEBPACK_IMPORTED_MODULE_4__["ExaminationService"] },
     { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] }
 ];
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
-], ListOfRoomsComponent.prototype, "paginator", void 0);
 ListOfRoomsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-list-of-rooms',
@@ -3742,17 +3739,20 @@ let OperationListComponent = class OperationListComponent {
     constructor(roomsService, examinationService) {
         this.roomsService = roomsService;
         this.examinationService = examinationService;
-        this.displayedColumns = ['id', 'label', 'kind', 'clinic', 'startTime', 'endTime'];
+        this.isDisabled = false;
+        this.displayedColumns = ['id', 'label', 'kind', 'clinic', 'startTime', 'endTime', 'reserve'];
+        // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
         this.listRooms = new Array();
-        this.listExaminations = this.examinationService.getAllExaminations();
+        this.condition = false;
+        this.listExaminations = new Array();
         // this.listRooms = this.roomsService.getAllRoomsForOperation();
         console.log('lista soba kons');
         console.log(this.listRooms);
+        this.listExaminations = this.examinationService.getExaminationForOperation();
         this.all();
     }
     ngOnInit() {
         this.all();
-        this.DataSource.paginator = this.paginator;
     }
     applyFilter(filterValue) {
         this.DataSource.filter = filterValue.trim().toLowerCase();
@@ -3762,14 +3762,26 @@ let OperationListComponent = class OperationListComponent {
             this.DataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](yield this.roomsService.getAllRoomsForOperation());
         });
     }
+    reserve(element) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            for (const c of this.listExaminations) {
+                this.condition = yield this.roomsService.getLocalDateAndTime(c.interval.startTime, c.interval.endTime, element.interval.startTime, element.interval.endTime);
+            }
+            console.log(this.condition);
+            if (this.condition === true) {
+                this.isDisabled = false;
+            }
+            else {
+                this.isDisabled = true;
+                alert('Termin je zauzet, izaberite sledeci');
+            }
+        });
+    }
 };
 OperationListComponent.ctorParameters = () => [
     { type: _services_rooms_service__WEBPACK_IMPORTED_MODULE_3__["RoomsService"] },
     { type: _services_examination_service__WEBPACK_IMPORTED_MODULE_4__["ExaminationService"] }
 ];
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
-], OperationListComponent.prototype, "paginator", void 0);
 OperationListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-operation-list',
@@ -4596,31 +4608,6 @@ class Medicaments {
         this.title = title;
         this.description = description;
         this.strenght = strenght;
-    }
-}
-
-
-/***/ }),
-
-/***/ "./src/app/model/Rooms.ts":
-/*!********************************!*\
-  !*** ./src/app/model/Rooms.ts ***!
-  \********************************/
-/*! exports provided: Rooms */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rooms", function() { return Rooms; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-
-class Rooms {
-    constructor(id, label, kind, clinic, interval) {
-        this.id = id;
-        this.label = label;
-        this.kind = kind;
-        this.clinic = clinic;
-        this.interval = interval;
     }
 }
 
@@ -5739,6 +5726,7 @@ let ExaminationService = class ExaminationService {
         this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].examination;
         this.listExaminations = new Array();
         this.examinationForDoctor = new Array();
+        this.examinationForOperation = new Array();
         this.predefExaminations = new Array();
         this.MHFP = new Array();
         this.tmp = new Array();
@@ -5866,6 +5854,20 @@ let ExaminationService = class ExaminationService {
     }
     getPatientForDoctors() {
         return this.examinationForDoctor;
+    }
+    getExaminationForOperation() {
+        this.http.get(this.url + '/allExaminationForOperation').subscribe((data) => {
+            this.examinationForOperation = new Array();
+            for (const c of data) {
+                this.examinationOperation = new _model_examination__WEBPACK_IMPORTED_MODULE_3__["Examination"](this.whichKindExamination(c.kind.toString()), this.whichStatusExamination(c.status.toString()), c.examinationType, c.discount, c.doctorRating, c.clinicRating, c.nurse, c.clinic, c.patient, c.doctors, c.id, c.interval);
+                this.examinationForOperation.push(this.examinationOperation);
+                console.log(this.examinationOperation);
+            }
+        }, error => {
+            console.log(error);
+        });
+        console.log(this.examinationForOperation);
+        return this.examinationForOperation;
     }
 };
 ExaminationService.ctorParameters = () => [
@@ -6382,8 +6384,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _model_Rooms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/Rooms */ "./src/app/model/Rooms.ts");
-
 
 
 
@@ -6395,6 +6395,7 @@ let RoomsService = class RoomsService {
         this.listRooms = new Array();
         this.listRooms1 = new Array();
         this.flag = new Array();
+        this.reservation = false;
         this.roomss = new Array();
         this.getAllRooms();
     }
@@ -6413,20 +6414,10 @@ let RoomsService = class RoomsService {
       }
     */
     getAllRooms() {
-        this.http.get(this.url + '/all').subscribe((data) => {
-            this.listRooms1 = new Array();
-            for (const c of data) {
-                console.log(data);
-                console.log('ovde sam1');
-                this.room = new _model_Rooms__WEBPACK_IMPORTED_MODULE_4__["Rooms"](c.id, c.label, c.kind, c.clinic, c.interval);
-                this.listRooms1.push(this.room);
-                console.log(this.room);
-            }
-        }, error => {
-            console.log(error);
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const response = yield this.http.get(this.url + '/all').toPromise();
+            return response;
         });
-        console.log(this.listRooms1);
-        return this.listRooms1;
     }
     getAllRoomsForOperation() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -6463,6 +6454,17 @@ let RoomsService = class RoomsService {
                 return;
             }
         }
+    }
+    getLocalDateAndTime(intervalExamination, intervalExaminationEnd, intervalRoom, intervalRoomEnd) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpParams"]();
+            params = params.append('intervalExamination', intervalExamination);
+            params = params.append('intervalExaminationEnd', intervalExaminationEnd);
+            params = params.append('intervalRoom', intervalRoom);
+            params = params.append('intervalRoomEnd', intervalRoomEnd);
+            const response = yield this.http.get(this.url + '/DateAndTime', { params }).toPromise();
+            return response;
+        });
     }
 };
 RoomsService.ctorParameters = () => [
