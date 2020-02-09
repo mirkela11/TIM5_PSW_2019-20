@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"success\" class=\"main-content\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8 offset-md-2\">\n        <mat-card>\n          <h3>Account activated successfully!</h3>\n          <hr>\n          <p>Success! Your account is now active.</p>\n          <p>Login page <span><a\n            routerLink=\"/login\">this link</a></span></p>\n        </mat-card>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"success\" class=\"main-content\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8 offset-md-2\">\n        <mat-card>\n          <h3>Account activated successfully!</h3>\n          <hr>\n          <p>Success! Your account is now active.</p>\n          <p><span><a href=\"http://localhost:8081\">Login page</a></span></p>\n        </mat-card>\n      </div>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -1197,17 +1197,16 @@ let ActivatedAccountPatientComponent = class ActivatedAccountPatientComponent {
         this.success = false;
     }
     ngOnInit() {
-        this.activatedRoute.paramMap.subscribe((params) => {
-            const param = params.get('id');
-            this.activatePatient(+param);
-        });
+        const id = this.activatedRoute.snapshot.params.id;
+        this.activatePatient(id);
+        console.log('Id je: ' + id);
     }
     activatePatient(id) {
-        this.patientService.activatePatient(id).subscribe(() => {
+        this.patientService.activatePatient(id).subscribe(data => {
             this.success = true;
-        }, () => {
+        }, error => {
             alert('Your account is already activated');
-            this.router.navigate(['']);
+            console.log(error);
         });
     }
 };
@@ -6181,7 +6180,8 @@ let PatientService = class PatientService {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + '/login', patient, { responseType: 'text' });
     }
     activatePatient(id) {
-        return this.http.put(this.urlPatient + '/activatePatient', id);
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json' });
+        return this.http.put(this.urlPatient + '/activatePatient', id, { headers });
     }
     editPatient(patient) {
         return this.http.post(this.urlPatient + '/edit', patient, { responseType: 'text' });
