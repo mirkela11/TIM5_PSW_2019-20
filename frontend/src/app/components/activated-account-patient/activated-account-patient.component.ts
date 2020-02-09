@@ -16,18 +16,17 @@ export class ActivatedAccountPatientComponent implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((params) => {
-      const param = params.get('id');
-      this.activatePatient(+param);
-    });
+   const id = this.activatedRoute.snapshot.params.id;
+   this.activatePatient(id);
+   console.log('Id je: ' + id);
   }
   activatePatient(id: number) {
-    this.patientService.activatePatient(id).subscribe(() => {
+    this.patientService.activatePatient(id).subscribe(data => {
         this.success = true;
       },
-      () => {
+      error => {
         alert('Your account is already activated');
-        this.router.navigate(['']);
+        console.log(error);
       });
   }
 

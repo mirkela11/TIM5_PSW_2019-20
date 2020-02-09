@@ -1,0 +1,16 @@
+<mat-dialog-content [formGroup]="RateFormGroup">
+  <div>
+    <mat-form-field class="example-full-width">
+      <input required="required" id="doctorRating" formControlName="doctorRating" matInput placeholder="Rate a doctor">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <input required="required" id="clinicRating" formControlName="clinicRating" matInput placeholder="Rate a clinic">
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="mat-raised-button"(click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>

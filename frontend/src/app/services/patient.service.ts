@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Patient} from '../model/patient';
 import {UserServiceService} from './user-service.service';
@@ -45,7 +45,10 @@ export class PatientService {
   }
 
   public activatePatient(id: number) {
-    return this.http.put(this.urlPatient + '/activatePatient', id);
+
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    return this.http.put(this.urlPatient + '/activatePatient', id, {headers});
   }
 
   public editPatient(patient) {

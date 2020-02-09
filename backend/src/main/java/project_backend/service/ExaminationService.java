@@ -34,7 +34,7 @@ public class ExaminationService {
             return false;
 
         for(Examination e1 : tmp) {
-            if(e1.getId() == e.getId()) {
+            if(e1.getId() == e.getId() && e.getStatus() == ExaminationStatus.PREDEF_AVAILABLE) {
                 e1.setPatient(p);
                 e1.setStatus(ExaminationStatus.PREDEF_BOOKED);
                 examinationRepo.save(e1);
@@ -57,6 +57,18 @@ public class ExaminationService {
         String subject = "Examination is on pending approval";
         String text = "You have a " + examination.getKind().toString() + " with name " + "'" + examination.getExaminationType().getLabel() + "' "  + "to approval.";
         mailService.Send(clinicAdministrator.getEmail(), subject, text);
+    }
+
+    public void predefExaminationMail(Examination examination, Patient patient) {
+        String subject = "Examination is booked";
+        String text = "You successfully booked examination with:" + System.lineSeparator();
+        text = text + "Kind: Examination" + System.lineSeparator();
+        text = text + "Clinic: " + examination.getClinic().getName() + System.lineSeparator();
+        text = text + "Type: " + examination.getExaminationType().getLabel() + System.lineSeparator();
+        text = text + "Date: " + examination.getInterval().getStartTime().toLocalDate().toString() + System.lineSeparator();
+        text = text + "Start time: " + examination.getInterval().getStartTime().toLocalTime().toString() + System.lineSeparator();
+        text = text + "End time: " + examination.getInterval().getEndTime().toLocalTime().toString();
+         mailService.Send(patient.getEmail(), subject, text);
     }
 
 }

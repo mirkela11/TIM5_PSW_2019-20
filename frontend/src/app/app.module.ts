@@ -47,6 +47,7 @@ import { ListOfRoomsComponent } from './components/list-of-rooms/list-of-rooms.c
 import { OperationListComponent } from './components/operation-list/operation-list.component';
 
 
+import { RateDoctorAndClinicPatientComponent } from './components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +123,9 @@ import { OperationListComponent } from './components/operation-list/operation-li
 
     OperationListComponent,
 
+
+    RateDoctorAndClinicPatientComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -149,6 +153,7 @@ import { OperationListComponent } from './components/operation-list/operation-li
     PatientMakeExaminationComponent,
     MedicalRecordDialogComponent,
     OperationListComponent,
+    RateDoctorAndClinicPatientComponent,
 
   ],
   providers: [],
