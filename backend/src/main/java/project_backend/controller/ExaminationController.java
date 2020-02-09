@@ -1,5 +1,6 @@
 package project_backend.controller;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,9 @@ import project_backend.model.Patient;
 import project_backend.service.ExaminationService;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.print.Doc;
 import javax.sound.midi.SysexMessage;
+import java.io.Console;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -172,5 +175,92 @@ public class ExaminationController {
         }
 
         return new ResponseEntity<>(ret, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/examination/getFlagForRate")
+    public ResponseEntity<Boolean> getFlag(@RequestParam(value = "id", required = true) String id) {
+        boolean ret = false;
+
+        Examination e = examinationService.findOneById(Long.parseLong(id));
+
+        LocalDateTime now = LocalDateTime.now();
+
+        if(now.isAfter(e.getInterval().getEndTime()) && e.getDoctorRating() == 0 && e.getClinicRating() == 0) {
+            ret = true;
+        }
+
+        return new ResponseEntity<>(ret, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/examination/rateDoctorAndClinic")
+    public ResponseEntity<Examination> RateDoctorAndClinic(@RequestParam(value = "examinationId", required = true) String examinationId,
+                                                       @RequestParam(value = "doctorRating", required = true) String doctorRating,
+                                                       @RequestParam(value = "clinicRating", required = true) String clinicRating) {
+        Boolean flag = false;
+        Examination e = examinationService.findOneById(Long.parseLong(examinationId));
+        Clinic c = e.getClinic();
+        Doctor d = new Doctor();
+        for(Doctor d1 : e.getDoctors()) {
+            d = d1;
+        }
+
+        e.setDoctorRating(Integer.parseInt(doctorRating));
+        e.setClinicRating(Integer.parseInt(clinicRating));
+        examinationService.save(e);
+
+        double ocenaKlinike = Integer.parseInt(clinicRating);
+        double ocenaDoktora = Integer.parseInt(doctorRating);
+
+        List<Examination> tmp = examinationService.findAll();
+        List<Examination> forClinic = new ArrayList<>();
+        List<Examination> forDoctor = new ArrayList<>();
+
+        for(Examination examination: tmp) {
+            if(examination.getClinic().getId() == e.getClinic().getId()) {
+                forClinic.add(examination);
+            }
+
+            for(Doctor doctor : examination.getDoctors()) {
+                if(doctor.getId() == d.getId()) {
+                    forDoctor.add(examination);
+                }
+            }
+        }
+
+
+        int i = 0;
+        double rating = 0;
+        if(ocenaKlinike != 0) {
+            for(Examination e1 : forClinic) {
+                if(e1.getClinicRating() != 0) {
+                    rating += e1.getClinicRating();
+                    i++;
+                }
+            }
+        }
+        double o = (rating + ocenaKlinike) / (i+1);
+        c.setClinicRating(o);
+
+        clinicService.save(c);
+        i=0;
+        rating = 0;
+        if(ocenaDoktora != 0) {
+            for(Examination e2 : forDoctor) {
+                if(e2.getDoctorRating() != 0) {
+                    rating = rating + e2.getDoctorRating();
+                    i++;
+                }
+            }
+        }
+
+        o = (rating + ocenaDoktora) / (i+1);
+        d.setDoctorRating(o);
+        doctorService.save(d);
+
+        System.out.println(doctorRating);
+        System.out.println(clinicRating);
+        System.out.println(e.getDoctorRating());
+        System.out.println(e.getClinicRating());
+        return new ResponseEntity<>(e, HttpStatus.OK);
     }
 }

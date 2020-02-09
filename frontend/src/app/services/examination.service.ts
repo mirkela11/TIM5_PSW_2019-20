@@ -22,6 +22,8 @@ export class ExaminationService {
   etype: ExaminationType;
   MHFP: Array<Examination> = new Array<Examination>();
   tmp: Array<Examination> = new Array<Examination>();
+  flag: boolean;
+  examinationForRating: Examination;
   constructor(
     private http: HttpClient,
   ) {
@@ -167,6 +169,33 @@ export class ExaminationService {
 
   public getPatientForDoctors() {
     return this.examinationForDoctor;
+  }
+
+  public async getFlagForRate(id: string): Promise<boolean> {
+    let params = new HttpParams();
+    params = params.append('id', id);
+    this.flag = false;
+
+    const response: any = await this.http.get(this.url + '/getFlagForRate', {params}).toPromise();
+    return response;
+  }
+
+  public setExaminationForRating(examination) {
+    this.examinationForRating = examination;
+  }
+
+  public getExaminationForRating() {
+    return this.examinationForRating;
+  }
+
+  public RateDoctorAndClinic(examinationId: string, doctorRating: string, clinicRating: string) {
+    let params = new HttpParams();
+    params = params.append('examinationId', examinationId);
+    params = params.append('doctorRating', doctorRating);
+    params = params.append('clinicRating', clinicRating);
+
+    return this.http.post(this.url + '/rateDoctorAndClinic', params);
+
   }
 
 

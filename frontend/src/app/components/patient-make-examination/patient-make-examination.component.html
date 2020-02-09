@@ -7,13 +7,6 @@
     </mat-select>
   </mat-form-field>
   </div>
-  <div>
-    <mat-form-field>
-      <mat-select required="required" id = "kind" formControlName="kind" placeholder="Select operation kind">
-        <mat-option *ngFor="let kindd of kinds" value = "{{kindd}}"> {{kindd}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button class="mat-raised-button"(click)="close()">Close</button>

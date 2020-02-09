@@ -445,7 +445,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table [dataSource]=\"medicalDataSource\" matSort class=\"mat-elevation-z8\">\r\n\r\n  <ng-container matColumnDef=\"Kind\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Kind </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <div *ngIf=\"element.kind === 1; else elseBlock\">Operation</div>\r\n      <ng-template #elseBlock>Examination</ng-template>\r\n    </td>\r\n  </ng-container>\r\n  <ng-container matColumnDef=\"Clinic\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Clinic </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinic.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Doctor\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Doctor </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <div *ngFor=\"let doctor of element.doctors\">{{doctor.name}}</div>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"StartTime\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Start date and time </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.interval.startTime}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"EndTime\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> End date and time </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.interval.endTime}} </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n";
+    __webpack_exports__["default"] = "<mat-form-field>\r\n  <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n</mat-form-field>\r\n<table mat-table [dataSource]=\"medicalDataSource\" matSort class=\"mat-elevation-z8\">\r\n\r\n  <ng-container matColumnDef=\"Kind\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Kind </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <div *ngIf=\"element.kind === 1; else elseBlock\">Operation</div>\r\n      <ng-template #elseBlock>Examination</ng-template>\r\n    </td>\r\n  </ng-container>\r\n  <ng-container matColumnDef=\"Clinic\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Clinic </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.clinic.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Doctor\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Doctor </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <div *ngFor=\"let doctor of element.doctors\">{{doctor.name}}</div>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"StartTime\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Start date and time </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.interval.startTime}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"EndTime\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> End date and time </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.interval.endTime}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"Rate\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Rate </th>\r\n    <td mat-cell *matCellDef=\"let element\">\r\n      <button mat-raised-button color=\"warn\" (click)=\"rate(element)\">Rate</button>\r\n    </td>\r\n  </ng-container>\r\n\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n";
     /***/
   },
 
@@ -605,7 +605,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<h2 mat-dialog-title>Making an appointment</h2>\r\n<mat-dialog-content [formGroup]=\"MakeGroup\">\r\n  <div>\r\n  <mat-form-field>\r\n    <mat-select required=\"required\" id=\"terminTime\" formControlName = \"terminTime\" placeholder=\"Select date and time\">\r\n      <mat-option *ngFor=\"let termin of termins\" value=\"{{termin}}\">{{termin}}</mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n  </div>\r\n  <div>\r\n    <mat-form-field>\r\n      <mat-select required=\"required\" id = \"kind\" formControlName=\"kind\" placeholder=\"Select operation kind\">\r\n        <mat-option *ngFor=\"let kindd of kinds\" value = \"{{kindd}}\"> {{kindd}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n  </div>\r\n</mat-dialog-content>\r\n<mat-dialog-actions>\r\n  <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\r\n  <button class=\"mat-raised-button mat-primary\"(click)=\"save()\">Save</button>\r\n</mat-dialog-actions>\r\n";
+    __webpack_exports__["default"] = "<h2 mat-dialog-title>Making an appointment</h2>\r\n<mat-dialog-content [formGroup]=\"MakeGroup\">\r\n  <div>\r\n  <mat-form-field>\r\n    <mat-select required=\"required\" id=\"terminTime\" formControlName = \"terminTime\" placeholder=\"Select date and time\">\r\n      <mat-option *ngFor=\"let termin of termins\" value=\"{{termin}}\">{{termin}}</mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n  </div>\r\n</mat-dialog-content>\r\n<mat-dialog-actions>\r\n  <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\r\n  <button class=\"mat-raised-button mat-primary\"(click)=\"save()\">Save</button>\r\n</mat-dialog-actions>\r\n";
     /***/
   },
 
@@ -646,6 +646,26 @@
 
 
     __webpack_exports__["default"] = "<table mat-table\n       [dataSource]=\"ExaminationDataSource\" class=\"mat-elevation-z8\" matSort>\n\n  <ng-container matColumnDef=\"StartDate\">\n    <th mat-header-cell *matHeaderCellDef> Start date </th>\n    <td mat-cell *matCellDef=\"let element\"> {{element.interval.startTime}} </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"EndDate\">\n    <th mat-header-cell *matHeaderCellDef> End date </th>\n    <td mat-cell *matCellDef=\"let element\"> {{element.interval.endTime}} </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"DoctorName\">\n    <th mat-header-cell *matHeaderCellDef> Doctor name </th>\n    <td mat-cell *matCellDef=\"let element\">\n      <div *ngFor=\"let doctor of element.doctors\">\n        {{doctor.name}}\n      </div>\n    </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"DoctorSurname\">\n    <th mat-header-cell *matHeaderCellDef> Doctor surname </th>\n    <td mat-cell *matCellDef=\"let element\">\n      <div *ngFor=\"let doctor of element.doctors\">\n        {{doctor.surname}}\n      </div>\n    </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"Type\">\n    <th mat-header-cell *matHeaderCellDef> Type </th>\n    <td mat-cell *matCellDef=\"let element\"> {{element.examinationType.label}} </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"Price\">\n    <th mat-header-cell *matHeaderCellDef> Price </th>\n    <td mat-cell *matCellDef=\"let element\"> {{element.examinationType.price}} </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"Discount\">\n    <th mat-header-cell *matHeaderCellDef> Discount </th>\n    <td mat-cell *matCellDef=\"let element\"> {{element.discount}} </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"Make\">\n    <th mat-header-cell *matHeaderCellDef> Make an appointment  </th>\n    <td mat-cell *matCellDef=\"let element\">\n      <button mat-raised-button color=\"primary\" (click)=\"make(element)\">Schedule it</button>\n    </td>\n  </ng-container>\n\n\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n</table>\n<mat-dialog-actions>\n  <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\n</mat-dialog-actions>\n";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component.html":
+  /*!***********************************************************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component.html ***!
+    \***********************************************************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppComponentsRateDoctorAndClinicPatientRateDoctorAndClinicPatientComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<mat-dialog-content [formGroup]=\"RateFormGroup\">\n  <div>\n    <mat-form-field class=\"example-full-width\">\n      <input required=\"required\" id=\"doctorRating\" formControlName=\"doctorRating\" matInput placeholder=\"Rate a doctor\">\n    </mat-form-field>\n  </div>\n  <div>\n    <mat-form-field class=\"example-full-width\">\n      <input required=\"required\" id=\"clinicRating\" formControlName=\"clinicRating\" matInput placeholder=\"Rate a clinic\">\n    </mat-form-field>\n  </div>\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\n  <button class=\"mat-raised-button mat-primary\"(click)=\"save()\">Save</button>\n</mat-dialog-actions>\n";
     /***/
   },
 
@@ -1951,16 +1971,22 @@
     var _components_medicaments_medicaments_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(
     /*! ./components/medicaments/medicaments.component */
     "./src/app/components/medicaments/medicaments.component.ts");
+    /* harmony import */
+
+
+    var _components_rate_doctor_and_clinic_patient_rate_doctor_and_clinic_patient_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(
+    /*! ./components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component */
+    "./src/app/components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component.ts");
 
     let AppModule = class AppModule {};
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], _components_login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"], _components_registration_registration_component__WEBPACK_IMPORTED_MODULE_13__["RegistrationComponent"], _components_home_page_patient_home_page_patient_component__WEBPACK_IMPORTED_MODULE_14__["HomePagePatientComponent"], _components_clinics_list_patient_clinics_list_component__WEBPACK_IMPORTED_MODULE_15__["ClinicsListComponent"], _components_patient_profile_patient_profile_component__WEBPACK_IMPORTED_MODULE_16__["PatientProfileComponent"], _components_home_page_doctor_home_page_doctor_component__WEBPACK_IMPORTED_MODULE_17__["HomePageDoctorComponent"], _components_doctor_profile_doctor_profile_component__WEBPACK_IMPORTED_MODULE_18__["DoctorProfileComponent"], _components_nurse_profile_nurse_profile_component__WEBPACK_IMPORTED_MODULE_19__["NurseProfileComponent"], _components_home_page_nurse_home_page_nurse_component__WEBPACK_IMPORTED_MODULE_20__["HomePageNurseComponent"], _components_home_page_admin_clinic_home_page_admin_clinic_component__WEBPACK_IMPORTED_MODULE_21__["HomePageAdminClinicComponent"], _components_admin_clinic_profile_admin_clinic_profile_component__WEBPACK_IMPORTED_MODULE_22__["AdminClinicProfileComponent"], _components_home_page_clinical_centre_administrator_home_page_clinical_centre_administrator_component__WEBPACK_IMPORTED_MODULE_23__["HomePageClinicalCentreAdministratorComponent"], _components_home_home_component__WEBPACK_IMPORTED_MODULE_24__["HomeComponent"], _components_add_clinic_add_clinic_component__WEBPACK_IMPORTED_MODULE_25__["AddClinicComponent"], _components_register_requests_register_requests_component__WEBPACK_IMPORTED_MODULE_26__["RegisterRequestsComponent"], _components_medical_history_patient_medical_history_patient_component__WEBPACK_IMPORTED_MODULE_27__["MedicalHistoryPatientComponent"], _components_medical_record_patient_medical_record_patient_component__WEBPACK_IMPORTED_MODULE_28__["MedicalRecordPatientComponent"], _components_add_clinic_administrator_add_clinic_administrator_component__WEBPACK_IMPORTED_MODULE_29__["AddClinicAdministratorComponent"], _components_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_30__["ClinicSearchDialogComponent"], _components_doctor_list_patient_doctor_list_patient_component__WEBPACK_IMPORTED_MODULE_31__["DoctorListPatientComponent"], _components_nurse_date_picker_nurse_date_picker_component__WEBPACK_IMPORTED_MODULE_32__["NurseDatePickerComponent"], _components_nurse_list_patient_nurse_list_patient_component__WEBPACK_IMPORTED_MODULE_33__["NurseListPatientComponent"], _components_nurse_vacation_request_nurse_vacation_request_component__WEBPACK_IMPORTED_MODULE_34__["NurseVacationRequestComponent"], _components_vacation_request_register_vacation_request_register_component__WEBPACK_IMPORTED_MODULE_35__["VacationRequestRegisterComponent"], _components_doctor_vacation_request_doctor_vacation_request_component__WEBPACK_IMPORTED_MODULE_36__["DoctorVacationRequestComponent"], _components_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_37__["DoctorSearchDialogComponent"], _components_predef_examination_dialog_predef_examination_dialog_component__WEBPACK_IMPORTED_MODULE_40__["PredefExaminationDialogComponent"], _components_patient_make_examination_patient_make_examination_component__WEBPACK_IMPORTED_MODULE_41__["PatientMakeExaminationComponent"], _components_activated_account_patient_activated_account_patient_component__WEBPACK_IMPORTED_MODULE_42__["ActivatedAccountPatientComponent"], _components_doctor_medical_record_doctor_medical_record_component__WEBPACK_IMPORTED_MODULE_38__["DoctorMedicalRecordComponent"], _components_medical_record_dialog_medical_record_dialog_component__WEBPACK_IMPORTED_MODULE_39__["MedicalRecordDialogComponent"], _components_diagnose_diagnose_component__WEBPACK_IMPORTED_MODULE_43__["DiagnoseComponent"], _components_medicaments_medicaments_component__WEBPACK_IMPORTED_MODULE_44__["MedicamentsComponent"]],
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], _components_login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"], _components_registration_registration_component__WEBPACK_IMPORTED_MODULE_13__["RegistrationComponent"], _components_home_page_patient_home_page_patient_component__WEBPACK_IMPORTED_MODULE_14__["HomePagePatientComponent"], _components_clinics_list_patient_clinics_list_component__WEBPACK_IMPORTED_MODULE_15__["ClinicsListComponent"], _components_patient_profile_patient_profile_component__WEBPACK_IMPORTED_MODULE_16__["PatientProfileComponent"], _components_home_page_doctor_home_page_doctor_component__WEBPACK_IMPORTED_MODULE_17__["HomePageDoctorComponent"], _components_doctor_profile_doctor_profile_component__WEBPACK_IMPORTED_MODULE_18__["DoctorProfileComponent"], _components_nurse_profile_nurse_profile_component__WEBPACK_IMPORTED_MODULE_19__["NurseProfileComponent"], _components_home_page_nurse_home_page_nurse_component__WEBPACK_IMPORTED_MODULE_20__["HomePageNurseComponent"], _components_home_page_admin_clinic_home_page_admin_clinic_component__WEBPACK_IMPORTED_MODULE_21__["HomePageAdminClinicComponent"], _components_admin_clinic_profile_admin_clinic_profile_component__WEBPACK_IMPORTED_MODULE_22__["AdminClinicProfileComponent"], _components_home_page_clinical_centre_administrator_home_page_clinical_centre_administrator_component__WEBPACK_IMPORTED_MODULE_23__["HomePageClinicalCentreAdministratorComponent"], _components_home_home_component__WEBPACK_IMPORTED_MODULE_24__["HomeComponent"], _components_add_clinic_add_clinic_component__WEBPACK_IMPORTED_MODULE_25__["AddClinicComponent"], _components_register_requests_register_requests_component__WEBPACK_IMPORTED_MODULE_26__["RegisterRequestsComponent"], _components_medical_history_patient_medical_history_patient_component__WEBPACK_IMPORTED_MODULE_27__["MedicalHistoryPatientComponent"], _components_medical_record_patient_medical_record_patient_component__WEBPACK_IMPORTED_MODULE_28__["MedicalRecordPatientComponent"], _components_add_clinic_administrator_add_clinic_administrator_component__WEBPACK_IMPORTED_MODULE_29__["AddClinicAdministratorComponent"], _components_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_30__["ClinicSearchDialogComponent"], _components_doctor_list_patient_doctor_list_patient_component__WEBPACK_IMPORTED_MODULE_31__["DoctorListPatientComponent"], _components_nurse_date_picker_nurse_date_picker_component__WEBPACK_IMPORTED_MODULE_32__["NurseDatePickerComponent"], _components_nurse_list_patient_nurse_list_patient_component__WEBPACK_IMPORTED_MODULE_33__["NurseListPatientComponent"], _components_nurse_vacation_request_nurse_vacation_request_component__WEBPACK_IMPORTED_MODULE_34__["NurseVacationRequestComponent"], _components_vacation_request_register_vacation_request_register_component__WEBPACK_IMPORTED_MODULE_35__["VacationRequestRegisterComponent"], _components_doctor_vacation_request_doctor_vacation_request_component__WEBPACK_IMPORTED_MODULE_36__["DoctorVacationRequestComponent"], _components_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_37__["DoctorSearchDialogComponent"], _components_predef_examination_dialog_predef_examination_dialog_component__WEBPACK_IMPORTED_MODULE_40__["PredefExaminationDialogComponent"], _components_patient_make_examination_patient_make_examination_component__WEBPACK_IMPORTED_MODULE_41__["PatientMakeExaminationComponent"], _components_activated_account_patient_activated_account_patient_component__WEBPACK_IMPORTED_MODULE_42__["ActivatedAccountPatientComponent"], _components_doctor_medical_record_doctor_medical_record_component__WEBPACK_IMPORTED_MODULE_38__["DoctorMedicalRecordComponent"], _components_medical_record_dialog_medical_record_dialog_component__WEBPACK_IMPORTED_MODULE_39__["MedicalRecordDialogComponent"], _components_diagnose_diagnose_component__WEBPACK_IMPORTED_MODULE_43__["DiagnoseComponent"], _components_medicaments_medicaments_component__WEBPACK_IMPORTED_MODULE_44__["MedicamentsComponent"], _components_rate_doctor_and_clinic_patient_rate_doctor_and_clinic_patient_component__WEBPACK_IMPORTED_MODULE_45__["RateDoctorAndClinicPatientComponent"]],
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_6__["ToastrModule"].forRoot({
         timeOut: 2000,
         positionClass: 'toast-top-right',
         preventDuplicates: true
       }), _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_7__["LayoutModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_11__["MatNativeDateModule"], _material_module__WEBPACK_IMPORTED_MODULE_12__["DemoMaterialModule"]],
-      entryComponents: [_components_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_30__["ClinicSearchDialogComponent"], _components_doctor_list_patient_doctor_list_patient_component__WEBPACK_IMPORTED_MODULE_31__["DoctorListPatientComponent"], _components_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_37__["DoctorSearchDialogComponent"], _components_predef_examination_dialog_predef_examination_dialog_component__WEBPACK_IMPORTED_MODULE_40__["PredefExaminationDialogComponent"], _components_patient_make_examination_patient_make_examination_component__WEBPACK_IMPORTED_MODULE_41__["PatientMakeExaminationComponent"], _components_medical_record_dialog_medical_record_dialog_component__WEBPACK_IMPORTED_MODULE_39__["MedicalRecordDialogComponent"]],
+      entryComponents: [_components_clinic_search_dialog_clinic_search_dialog_component__WEBPACK_IMPORTED_MODULE_30__["ClinicSearchDialogComponent"], _components_doctor_list_patient_doctor_list_patient_component__WEBPACK_IMPORTED_MODULE_31__["DoctorListPatientComponent"], _components_doctor_search_dialog_doctor_search_dialog_component__WEBPACK_IMPORTED_MODULE_37__["DoctorSearchDialogComponent"], _components_predef_examination_dialog_predef_examination_dialog_component__WEBPACK_IMPORTED_MODULE_40__["PredefExaminationDialogComponent"], _components_patient_make_examination_patient_make_examination_component__WEBPACK_IMPORTED_MODULE_41__["PatientMakeExaminationComponent"], _components_medical_record_dialog_medical_record_dialog_component__WEBPACK_IMPORTED_MODULE_39__["MedicalRecordDialogComponent"], _components_rate_doctor_and_clinic_patient_rate_doctor_and_clinic_patient_component__WEBPACK_IMPORTED_MODULE_45__["RateDoctorAndClinicPatientComponent"]],
       providers: [],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
     })], AppModule);
@@ -4749,13 +4775,20 @@
     var _model_examinationStatus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ../../model/examinationStatus */
     "./src/app/model/examinationStatus.ts");
+    /* harmony import */
+
+
+    var _rate_doctor_and_clinic_patient_rate_doctor_and_clinic_patient_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component */
+    "./src/app/components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component.ts");
 
     let MedicalHistoryPatientComponent = class MedicalHistoryPatientComponent {
-      constructor(patientService, examinationService, userService) {
+      constructor(patientService, examinationService, userService, dialog) {
         this.patientService = patientService;
         this.examinationService = examinationService;
         this.userService = userService;
-        this.displayedColumns = ['Kind', 'Clinic', 'Doctor', 'StartTime', 'EndTime'];
+        this.dialog = dialog;
+        this.displayedColumns = ['Kind', 'Clinic', 'Doctor', 'StartTime', 'EndTime', 'Rate'];
         this.medicalDataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
         this.examinations = this.examinationService.getAllExaminations();
         this.tmp = new Array();
@@ -4763,6 +4796,7 @@
         this.tmpStr = this.loggedUser.split(',');
         this.tmpStr1 = this.tmpStr[0].split(':');
         this.user = JSON.parse(this.loggedUser);
+        this.flag = false;
       }
 
       ngOnInit() {
@@ -4803,6 +4837,37 @@
         this.medicalDataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](this.tmp);
       }
 
+      rate(examination) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
+        /*#__PURE__*/
+        regeneratorRuntime.mark(function _callee() {
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) switch (_context.prev = _context.next) {
+              case 0:
+                this.examinationService.setExaminationForRating(examination);
+                _context.next = 3;
+                return this.examinationService.getFlagForRate(examination.id.toString());
+
+              case 3:
+                this.flag = _context.sent;
+                console.log('FLAG ISPOD');
+                console.log(this.flag);
+                this.openDialog(this.flag);
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }, _callee, this);
+        }));
+      }
+
+      openDialog(flag) {
+        if (flag === true) {
+          const d = this.dialog.open(_rate_doctor_and_clinic_patient_rate_doctor_and_clinic_patient_component__WEBPACK_IMPORTED_MODULE_7__["RateDoctorAndClinicPatientComponent"]);
+        }
+      }
+
     };
 
     MedicalHistoryPatientComponent.ctorParameters = () => [{
@@ -4811,6 +4876,8 @@
       type: _services_examination_service__WEBPACK_IMPORTED_MODULE_4__["ExaminationService"]
     }, {
       type: _services_user_service_service__WEBPACK_IMPORTED_MODULE_5__["UserServiceService"]
+    }, {
+      type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"]
     }];
 
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], {
@@ -5977,7 +6044,6 @@
         this.kinds = new Array();
         this.AdminClinics = new Array();
         this.k = 'Examination';
-        this.k1 = 'Operation';
         this.adminsClinic = '';
         this.doctor = doctorService.getDoctorForMake();
         this.date = doctorService.getDate();
@@ -5985,16 +6051,12 @@
         this.user = userService.getLoggedUser();
         this.type = clinicService.getType();
         this.clinic = clinicService.getClinicForExamination();
-        this.kinds = new Array();
-        this.kinds.push(this.k);
-        this.kinds.push(this.k1);
         this.AdminClinics = adminClinicService.getAdminClinicsWithClinicId(this.clinic.id.toString());
       }
 
       ngOnInit() {
         this.MakeGroup = this.formBuilder.group({
-          terminTime: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
-          kind: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('')
+          terminTime: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('')
         });
       }
 
@@ -6007,7 +6069,6 @@
           return;
         }
 
-        const kindTest = this.f.kind.value;
         const interval = this.f.terminTime.value;
         console.log(this.AdminClinics);
         var _iteratorNormalCompletion5 = true;
@@ -6036,7 +6097,7 @@
 
         const finalAdminClinic = this.adminsClinic.substring(0, this.adminsClinic.length - 1);
         console.log(finalAdminClinic);
-        this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString(), kindTest, finalAdminClinic).subscribe(data => {
+        this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString(), this.k, finalAdminClinic).subscribe(data => {
           this.dialogRef.close();
         }, error => {
           console.log(error);
@@ -6379,6 +6440,145 @@
       /*! ./predef-examination-dialog.component.css */
       "./src/app/components/predef-examination-dialog/predef-examination-dialog.component.css")).default]
     })], PredefExaminationDialogComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component.css":
+  /*!********************************************************************************************************!*\
+    !*** ./src/app/components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component.css ***!
+    \********************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppComponentsRateDoctorAndClinicPatientRateDoctorAndClinicPatientComponentCss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvcmF0ZS1kb2N0b3ItYW5kLWNsaW5pYy1wYXRpZW50L3JhdGUtZG9jdG9yLWFuZC1jbGluaWMtcGF0aWVudC5jb21wb25lbnQuY3NzIn0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component.ts":
+  /*!*******************************************************************************************************!*\
+    !*** ./src/app/components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component.ts ***!
+    \*******************************************************************************************************/
+
+  /*! exports provided: RateDoctorAndClinicPatientComponent */
+
+  /***/
+  function srcAppComponentsRateDoctorAndClinicPatientRateDoctorAndClinicPatientComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "RateDoctorAndClinicPatientComponent", function () {
+      return RateDoctorAndClinicPatientComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _services_examination_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../../services/examination.service */
+    "./src/app/services/examination.service.ts");
+    /* harmony import */
+
+
+    var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/material */
+    "./node_modules/@angular/material/esm2015/material.js");
+
+    let RateDoctorAndClinicPatientComponent = class RateDoctorAndClinicPatientComponent {
+      constructor(formBuilder, examinationService, dialogRef, data) {
+        this.formBuilder = formBuilder;
+        this.examinationService = examinationService;
+        this.dialogRef = dialogRef;
+        this.doctorRate = '';
+        this.clinicRate = '';
+        this.examination = examinationService.getExaminationForRating();
+      }
+
+      ngOnInit() {
+        this.RateFormGroup = this.formBuilder.group({
+          doctorRating: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(1), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(1), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('[0-5]*')]),
+          clinicRating: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(1), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(1), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('[0-5]*')])
+        });
+      }
+
+      get f() {
+        return this.RateFormGroup.controls;
+      }
+
+      close() {
+        this.dialogRef.close();
+      }
+
+      save() {
+        if (this.RateFormGroup.invalid) {
+          return;
+        }
+
+        this.doctorRate = this.f.doctorRating.value;
+        this.clinicRate = this.f.clinicRating.value;
+        console.log(this.doctorRate);
+        console.log(this.clinicRate);
+        this.examinationService.RateDoctorAndClinic(this.examination.id.toString(), this.doctorRate, this.clinicRate).subscribe(data => {
+          this.dialogRef.close();
+        }, error => {
+          console.log(error);
+        });
+      }
+
+    };
+
+    RateDoctorAndClinicPatientComponent.ctorParameters = () => [{
+      type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]
+    }, {
+      type: _services_examination_service__WEBPACK_IMPORTED_MODULE_3__["ExaminationService"]
+    }, {
+      type: _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialogRef"]
+    }, {
+      type: undefined,
+      decorators: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+        args: [_angular_material__WEBPACK_IMPORTED_MODULE_4__["MAT_DIALOG_DATA"]]
+      }]
+    }];
+
+    RateDoctorAndClinicPatientComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-rate-doctor-and-clinic-patient',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./rate-doctor-and-clinic-patient.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./rate-doctor-and-clinic-patient.component.css */
+      "./src/app/components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component.css")).default]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_4__["MAT_DIALOG_DATA"]))], RateDoctorAndClinicPatientComponent);
     /***/
   },
 
@@ -9553,6 +9753,50 @@
 
       getPatientForDoctors() {
         return this.examinationForDoctor;
+      }
+
+      getFlagForRate(id) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
+        /*#__PURE__*/
+        regeneratorRuntime.mark(function _callee2() {
+          var params, response;
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) switch (_context2.prev = _context2.next) {
+              case 0:
+                params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpParams"]();
+                params = params.append('id', id);
+                this.flag = false;
+                _context2.next = 5;
+                return this.http.get(this.url + '/getFlagForRate', {
+                  params
+                }).toPromise();
+
+              case 5:
+                response = _context2.sent;
+                return _context2.abrupt("return", response);
+
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }, _callee2, this);
+        }));
+      }
+
+      setExaminationForRating(examination) {
+        this.examinationForRating = examination;
+      }
+
+      getExaminationForRating() {
+        return this.examinationForRating;
+      }
+
+      RateDoctorAndClinic(examinationId, doctorRating, clinicRating) {
+        let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpParams"]();
+        params = params.append('examinationId', examinationId);
+        params = params.append('doctorRating', doctorRating);
+        params = params.append('clinicRating', clinicRating);
+        return this.http.post(this.url + '/rateDoctorAndClinic', params);
       }
 
     };
