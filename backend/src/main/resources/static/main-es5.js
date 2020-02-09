@@ -4844,16 +4844,17 @@
           return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                this.examinationService.setExaminationForRating(examination);
+                _context.next = 3;
                 return this.examinationService.getFlagForRate(examination.id.toString());
 
-              case 2:
+              case 3:
                 this.flag = _context.sent;
                 console.log('FLAG ISPOD');
                 console.log(this.flag);
                 this.openDialog(this.flag);
 
-              case 6:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -6525,6 +6526,7 @@
         this.dialogRef = dialogRef;
         this.doctorRate = '';
         this.clinicRate = '';
+        this.examination = examinationService.getExaminationForRating();
       }
 
       ngOnInit() {
@@ -6551,6 +6553,11 @@
         this.clinicRate = this.f.clinicRating.value;
         console.log(this.doctorRate);
         console.log(this.clinicRate);
+        this.examinationService.RateDoctorAndClinic(this.examination.id.toString(), this.doctorRate, this.clinicRate).subscribe(data => {
+          this.dialogRef.close();
+        }, error => {
+          console.log(error);
+        });
       }
 
     };
@@ -9780,6 +9787,22 @@
             }
           }, _callee2, this);
         }));
+      }
+
+      setExaminationForRating(examination) {
+        this.examinationForRating = examination;
+      }
+
+      getExaminationForRating() {
+        return this.examinationForRating;
+      }
+
+      RateDoctorAndClinic(examinationId, doctorRating, clinicRating) {
+        let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpParams"]();
+        params = params.append('examinationId', examinationId);
+        params = params.append('doctorRating', doctorRating);
+        params = params.append('clinicRating', clinicRating);
+        return this.http.post(this.url + '/rateDoctorAndClinic', params);
       }
 
     };

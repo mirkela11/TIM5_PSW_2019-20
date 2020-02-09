@@ -28,6 +28,11 @@ public class DoctorService {
         return repo.findAll(page);
     }
 
+    public Doctor findOneById(Long id) {
+        return repo.findOneById(id);
+    }
+
+    public void save(Doctor d) { repo.save(d); }
 
     public Doctor getDoctor(String email){
         List<Doctor> tmp = findall();

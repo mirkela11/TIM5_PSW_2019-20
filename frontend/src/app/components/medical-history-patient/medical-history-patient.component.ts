@@ -51,7 +51,7 @@ export class MedicalHistoryPatientComponent implements OnInit {
   }
 
   async rate(examination) {
-
+    this.examinationService.setExaminationForRating(examination);
     this.flag = await this.examinationService.getFlagForRate(examination.id.toString());
     console.log('FLAG ISPOD');
     console.log(this.flag);

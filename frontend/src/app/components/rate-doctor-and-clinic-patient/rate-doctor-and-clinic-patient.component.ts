@@ -14,10 +14,13 @@ export class RateDoctorAndClinicPatientComponent implements OnInit {
   RateFormGroup: FormGroup;
   doctorRate = '';
   clinicRate = '';
+  examination: Examination;
   constructor(private formBuilder: FormBuilder,
               private examinationService: ExaminationService,
               private dialogRef: MatDialogRef<RateDoctorAndClinicPatientComponent>,
-              @Inject(MAT_DIALOG_DATA) data) { }
+              @Inject(MAT_DIALOG_DATA) data) {
+    this.examination = examinationService.getExaminationForRating();
+  }
 
   ngOnInit() {
     this.RateFormGroup = this.formBuilder.group({
@@ -46,6 +49,12 @@ export class RateDoctorAndClinicPatientComponent implements OnInit {
 
     console.log(this.doctorRate);
     console.log(this.clinicRate);
+    this.examinationService.RateDoctorAndClinic(this.examination.id.toString(), this.doctorRate, this.clinicRate).subscribe(data => {
+      this.dialogRef.close();
+    }, error => {
+        console.log(error);
+    });
+
   }
 
 }
