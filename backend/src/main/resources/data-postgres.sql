@@ -19,6 +19,8 @@ insert into interval(id,end_time,start_time) values (160, '2020.02.27 13:00', '2
 insert into interval(id,end_time,start_time) values (161, '2020.02.28 16:00', '2020.02.28 15:00');
 insert into interval(id,end_time,start_time) values (162, '2020.02.28 11:00', '2020.02.28 10:00');
 insert into interval(id,end_time,start_time) values (163, '2020.02.29 09:00', '2020.02.29 08:00');
+insert into interval(id,end_time,start_time) values (164, '2020.02.06 12:00', '2020.02.06 01:00');
+
 
 
 insert into interval(id,end_time,start_time) values (157, '2020.02.20 08:00', '2020.02.10 16:00');
@@ -49,6 +51,15 @@ insert into room(id,kind,label,clinic_id) values (101,'OPERATION','Room 1',102);
 insert into room(id,kind,label,clinic_id) values (102,'EXAMINATION','Room 3',101);
 insert into room(id,kind,label,clinic_id) values (103,'EXAMINATION','Room 4',102);
 insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,patient_id,room_id) values (100,0,10,0,'OPERATION','APPROVED',101,100,100,155,100,100,100);
+insert into room(id,kind,label,clinic_id,interval_id) values (100,'OPERATION','Room 2',101,151);
+insert into room(id,kind,label,clinic_id,interval_id) values (101,'OPERATION','Room 1',102,153);
+insert into room(id,kind,label,clinic_id,interval_id) values (102,'EXAMINATION','Room 3',101,155);
+insert into room(id,kind,label,clinic_id,interval_id) values (103,'EXAMINATION','Room 4',102,156);
+insert into room(id,kind,label,clinic_id,interval_id) values (104,'OPERATION','Room 5',101,155);
+insert into room(id,kind,label,clinic_id,interval_id) values (105,'OPERATION','Room 6',101,164);
+
+
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,patient_id,room_id) values (100,4,100,5,'OPERATION','APPROVED',101,100,100,155,100,100,100);
 insert into examining(examination_id,doctor_id) values (100,101);
 insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,patient_id,room_id) values (101,0,10,0,'EXAMINATION','APPROVED',102,100,100,151,100,100,101);
 insert into examining(examination_id,doctor_id) values (101,102);
