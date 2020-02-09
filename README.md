@@ -1,4 +1,10 @@
 # TIM5_PSW_2019-20
-Prvo se build-uje front projekat, zatim se dist folder kopira u static folder na back-u
-Pokrenuti front, zatim pokrenuti main iz back-a.
-Radi se na portu 8081.(Localhost:8081)
+Student 1: Veljko Vuković
+Student 2: Nikola Zejak
+Student 3: Nemanja Mirkovic
+
+Pokretanje projekta: 
+1. Na frontendu bildovati projekat (ng build)
+2. Kopiraj sadržaj iz foldera frontend/dist/fronted u folder backend/src/main/resources/static
+3. Pokrenuti i frontend i backend
+4. Program radi na adresi localhost:8081
