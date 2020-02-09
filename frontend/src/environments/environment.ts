@@ -19,7 +19,8 @@ export const environment = {
   examinationType: '/examinationType',
   zahtev: '/zahtev',
   diagnose: '/diagnose',
-  medicaments: '/medicaments'
+  medicaments: '/medicaments',
+  rooms: '/rooms',
 };
 
 /*

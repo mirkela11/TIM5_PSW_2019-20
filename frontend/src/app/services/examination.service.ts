@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {Examination} from '../model/examination';
 import {ExaminationKind} from '../model/examinationKind';
@@ -16,14 +16,14 @@ export class ExaminationService {
   listExaminations: Array<Examination> = new Array<Examination>();
   examination: Examination;
   examinationDoctor: Examination;
+  examinationOperation: Examination;
   examinationForDoctor: Array<Examination> = new Array<Examination>();
+  examinationForOperation: Array<Examination> = new Array<Examination>();
   examinationReport: ExaminationReport;
   predefExaminations: Array<Examination> = new Array<Examination>();
   etype: ExaminationType;
   MHFP: Array<Examination> = new Array<Examination>();
   tmp: Array<Examination> = new Array<Examination>();
-  flag: boolean;
-  examinationForRating: Examination;
   constructor(
     private http: HttpClient,
   ) {
@@ -171,32 +171,11 @@ export class ExaminationService {
     return this.examinationForDoctor;
   }
 
-  public async getFlagForRate(id: string): Promise<boolean> {
-    let params = new HttpParams();
-    params = params.append('id', id);
-    this.flag = false;
-
-    const response: any = await this.http.get(this.url + '/getFlagForRate', {params}).toPromise();
+  public async getExaminationForOperation(): Promise<Array<Examination>> {
+    const response: any = await  this.http.get(this.url + '/allExaminationForOperation').toPromise();
     return response;
   }
 
-  public setExaminationForRating(examination) {
-    this.examinationForRating = examination;
-  }
-
-  public getExaminationForRating() {
-    return this.examinationForRating;
-  }
-
-  public RateDoctorAndClinic(examinationId: string, doctorRating: string, clinicRating: string) {
-    let params = new HttpParams();
-    params = params.append('examinationId', examinationId);
-    params = params.append('doctorRating', doctorRating);
-    params = params.append('clinicRating', clinicRating);
-
-    return this.http.post(this.url + '/rateDoctorAndClinic', params);
-
-  }
 
 
 }

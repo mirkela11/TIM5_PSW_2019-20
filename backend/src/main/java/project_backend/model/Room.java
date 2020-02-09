@@ -22,6 +22,9 @@ public class Room {
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Clinic clinic;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Interval interval;
+
     @JsonIgnore
     @OneToMany(mappedBy = "room", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Examination> examinations = new HashSet<>();
@@ -29,6 +32,14 @@ public class Room {
     public Room()
     {
 
+    }
+
+    public Room(String label, ExaminationKind kind, Clinic clinic, Interval interval, Set<Examination> examinations) {
+        this.label = label;
+        this.kind = kind;
+        this.clinic = clinic;
+        this.interval = interval;
+        this.examinations = examinations;
     }
 
     public Long getId() {
@@ -69,5 +80,13 @@ public class Room {
 
     public void setExaminations(Set<Examination> examinations) {
         this.examinations = examinations;
+    }
+
+    public Interval getInterval() {
+        return interval;
+    }
+
+    public void setInterval(Interval intervalForRooms) {
+        this.interval = intervalForRooms;
     }
 }
