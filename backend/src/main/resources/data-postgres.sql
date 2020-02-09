@@ -7,6 +7,7 @@ insert into examination_type(id, label, price, clinic_id) values (101,'Pregled s
 insert into examination_type(id, label, price, clinic_id) values (102,'Operacija ociju', '1000', 101);
 insert into examination_type(id, label, price, clinic_id) values (103,'Operacija usiju', '1000', 102);
 
+insert into interval(id,end_time,start_time) values (149, '2020.02.03 10:00', '2020.02.03 09:00');
 insert into interval(id,end_time,start_time) values (150, '2020.02.20 10:00', '2020.02.20 09:00');
 insert into interval(id,end_time,start_time) values (151, '2020.02.05 12:00', '2020.02.05 11:00');
 insert into interval(id,end_time,start_time) values (152, '2020.02.21 14:00', '2020.02.21 13:00');
@@ -49,8 +50,10 @@ insert into room(id,kind,label,clinic_id) values (102,'EXAMINATION','Room 3',101
 insert into room(id,kind,label,clinic_id) values (103,'EXAMINATION','Room 4',102);
 insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,patient_id,room_id) values (100,0,10,0,'OPERATION','APPROVED',101,100,100,155,100,100,100);
 insert into examining(examination_id,doctor_id) values (100,101);
-insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,patient_id,room_id) values (101,0,10,0,'EXAMINATION','APPROVED',102,100,100,151,100,100,100);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,patient_id,room_id) values (101,0,10,0,'EXAMINATION','APPROVED',102,100,100,151,100,100,101);
 insert into examining(examination_id,doctor_id) values (101,102);
+insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,patient_id,room_id) values (102,3,10,4,'OPERATION','APPROVED',101,100,100,149,100,100,100);
+insert into examining(examination_id,doctor_id) values (102,101);
 insert into medical_record(id, allergies, blood_type, height, weight, patient_id) values (100, 'Alergija na med', 'AB+', 178, 80, 100);
 insert into medical_record(id, allergies, blood_type, height, weight, patient_id) values (101, 'Alergija na jagode', 'B-', 185, 82, 101);
 insert into examination_report(id,comment, time_created, diagnose_id, doctor_id, examination_id, medical_record_id) values (100,'Odradjen izvestaj','01.01.2020. 12:30', 120, 101, 100,100);

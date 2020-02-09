@@ -396,7 +396,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h2 mat-dialog-title>Making an appointment</h2>\r\n<mat-dialog-content [formGroup]=\"MakeGroup\">\r\n  <div>\r\n  <mat-form-field>\r\n    <mat-select required=\"required\" id=\"terminTime\" formControlName = \"terminTime\" placeholder=\"Select date and time\">\r\n      <mat-option *ngFor=\"let termin of termins\" value=\"{{termin}}\">{{termin}}</mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n  </div>\r\n  <div>\r\n    <mat-form-field>\r\n      <mat-select required=\"required\" id = \"kind\" formControlName=\"kind\" placeholder=\"Select operation kind\">\r\n        <mat-option *ngFor=\"let kindd of kinds\" value = \"{{kindd}}\"> {{kindd}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n  </div>\r\n</mat-dialog-content>\r\n<mat-dialog-actions>\r\n  <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\r\n  <button class=\"mat-raised-button mat-primary\"(click)=\"save()\">Save</button>\r\n</mat-dialog-actions>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h2 mat-dialog-title>Making an appointment</h2>\r\n<mat-dialog-content [formGroup]=\"MakeGroup\">\r\n  <div>\r\n  <mat-form-field>\r\n    <mat-select required=\"required\" id=\"terminTime\" formControlName = \"terminTime\" placeholder=\"Select date and time\">\r\n      <mat-option *ngFor=\"let termin of termins\" value=\"{{termin}}\">{{termin}}</mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n  </div>\r\n</mat-dialog-content>\r\n<mat-dialog-actions>\r\n  <button class=\"mat-raised-button\"(click)=\"close()\">Close</button>\r\n  <button class=\"mat-raised-button mat-primary\"(click)=\"save()\">Save</button>\r\n</mat-dialog-actions>\r\n");
 
 /***/ }),
 
@@ -3680,7 +3680,6 @@ let PatientMakeExaminationComponent = class PatientMakeExaminationComponent {
         this.kinds = new Array();
         this.AdminClinics = new Array();
         this.k = 'Examination';
-        this.k1 = 'Operation';
         this.adminsClinic = '';
         this.doctor = doctorService.getDoctorForMake();
         this.date = doctorService.getDate();
@@ -3688,15 +3687,11 @@ let PatientMakeExaminationComponent = class PatientMakeExaminationComponent {
         this.user = userService.getLoggedUser();
         this.type = clinicService.getType();
         this.clinic = clinicService.getClinicForExamination();
-        this.kinds = new Array();
-        this.kinds.push(this.k);
-        this.kinds.push(this.k1);
         this.AdminClinics = adminClinicService.getAdminClinicsWithClinicId(this.clinic.id.toString());
     }
     ngOnInit() {
         this.MakeGroup = this.formBuilder.group({
             terminTime: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
-            kind: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('')
         });
     }
     get f() {
@@ -3706,7 +3701,6 @@ let PatientMakeExaminationComponent = class PatientMakeExaminationComponent {
         if (this.MakeGroup.invalid) {
             return;
         }
-        const kindTest = this.f.kind.value;
         const interval = this.f.terminTime.value;
         console.log(this.AdminClinics);
         for (const a of this.AdminClinics) {
@@ -3714,7 +3708,7 @@ let PatientMakeExaminationComponent = class PatientMakeExaminationComponent {
         }
         const finalAdminClinic = this.adminsClinic.substring(0, this.adminsClinic.length - 1);
         console.log(finalAdminClinic);
-        this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString(), kindTest, finalAdminClinic).subscribe(data => {
+        this.examinationServce.makeExamination(interval, this.user.email, this.doctor.email, this.type, this.clinic.id.toString(), this.k, finalAdminClinic).subscribe(data => {
             this.dialogRef.close();
         }, error => {
             console.log(error);

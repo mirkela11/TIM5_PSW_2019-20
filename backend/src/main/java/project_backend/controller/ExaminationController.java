@@ -208,8 +208,8 @@ public class ExaminationController {
         e.setClinicRating(Integer.parseInt(clinicRating));
         examinationService.save(e);
 
-        int ocenaKlinike = Integer.parseInt(clinicRating);
-        int ocenaDoktora = Integer.parseInt(doctorRating);
+        double ocenaKlinike = Integer.parseInt(clinicRating);
+        double ocenaDoktora = Integer.parseInt(doctorRating);
 
         List<Examination> tmp = examinationService.findAll();
         List<Examination> forClinic = new ArrayList<>();
@@ -229,7 +229,7 @@ public class ExaminationController {
 
 
         int i = 0;
-        int rating = 0;
+        double rating = 0;
         if(ocenaKlinike != 0) {
             for(Examination e1 : forClinic) {
                 if(e1.getClinicRating() != 0) {
