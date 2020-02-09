@@ -43,6 +43,8 @@ import { PatientMakeExaminationComponent } from './components/patient-make-exami
 import { ActivatedAccountPatientComponent } from './components/activated-account-patient/activated-account-patient.component';
 import { DiagnoseComponent } from './components/diagnose/diagnose.component';
 import { MedicamentsComponent } from './components/medicaments/medicaments.component';
+import { ListOfRoomsComponent } from './components/list-of-rooms/list-of-rooms.component';
+import { OperationListComponent } from './components/operation-list/operation-list.component';
 
 
 
@@ -99,7 +101,7 @@ import { MedicamentsComponent } from './components/medicaments/medicaments.compo
     VacationRequestRegisterComponent,
 
     DoctorVacationRequestComponent,
-    
+
     DoctorSearchDialogComponent,
 
     PredefExaminationDialogComponent,
@@ -107,7 +109,7 @@ import { MedicamentsComponent } from './components/medicaments/medicaments.compo
     PatientMakeExaminationComponent,
 
     ActivatedAccountPatientComponent,
-    
+
     DoctorMedicalRecordComponent,
 
     MedicalRecordDialogComponent,
@@ -115,6 +117,11 @@ import { MedicamentsComponent } from './components/medicaments/medicaments.compo
     DiagnoseComponent,
 
     MedicamentsComponent,
+
+    ListOfRoomsComponent,
+
+    OperationListComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -141,6 +148,7 @@ import { MedicamentsComponent } from './components/medicaments/medicaments.compo
     PredefExaminationDialogComponent,
     PatientMakeExaminationComponent,
     MedicalRecordDialogComponent,
+    OperationListComponent,
 
   ],
   providers: [],

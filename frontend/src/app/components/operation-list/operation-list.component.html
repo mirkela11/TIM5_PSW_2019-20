@@ -1,0 +1,39 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+<table mat-table [dataSource]="DataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let rooms"> {{rooms.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="label">
+    <th mat-header-cell *matHeaderCellDef> Room name </th>
+    <td mat-cell *matCellDef="let rooms"> {{rooms.label}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="kind">
+    <th mat-header-cell *matHeaderCellDef> Kind </th>
+    <td mat-cell *matCellDef="let rooms"> {{rooms.kind}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="clinic">
+    <th mat-header-cell *matHeaderCellDef> Clinic </th>
+    <td mat-cell *matCellDef="let rooms"> {{rooms.clinic.name}} </td>
+  </ng-container>
+  <ng-container matColumnDef="startTime">
+    <th mat-header-cell *matHeaderCellDef> Start time </th>
+    <td mat-cell *matCellDef="let rooms"> {{rooms.interval.startTime}} </td>
+  </ng-container>
+  <ng-container matColumnDef="endTime">
+    <th mat-header-cell *matHeaderCellDef> End time </th>
+    <td mat-cell *matCellDef="let rooms"> {{rooms.interval.endTime}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+

@@ -43,10 +43,10 @@ insert into patient(id, insuranceid, address, city, country, email, name, number
 insert into patient(id, insuranceid, address, city, country, email, name, number, password, status, surname) values (101, 2222222222222, 'Tozin Sokak', 'Novi Sad', 'Srbija', 'patient1@email.com', 'Patient1', '123678456', 'Patient1234', 'AWAITING_APPROVAL', 'Patientic1');
 insert into users(id, email, password, role) values (104, 'weca997@gmail.com', 'Patient123', 0);
 insert into users(id, email, password, role) values (105, 'patient1@email.com', 'Patient1234', 0);
-insert into room(id,kind,label,clinic_id) values (100,'OPERATION','Room 2',101);
-insert into room(id,kind,label,clinic_id) values (101,'OPERATION','Room 1',102);
-insert into room(id,kind,label,clinic_id) values (102,'EXAMINATION','Room 3',101);
-insert into room(id,kind,label,clinic_id) values (103,'EXAMINATION','Room 4',102);
+insert into room(id,kind,label,clinic_id,interval_id) values (100,'OPERATION','Room 2',101,151);
+insert into room(id,kind,label,clinic_id,interval_id) values (101,'OPERATION','Room 1',102,153);
+insert into room(id,kind,label,clinic_id,interval_id) values (102,'EXAMINATION','Room 3',101,155);
+insert into room(id,kind,label,clinic_id,interval_id) values (103,'EXAMINATION','Room 4',102,156);
 insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,patient_id,room_id) values (100,4,100,5,'OPERATION','APPROVED',101,100,100,155,100,100,100);
 insert into examining(examination_id,doctor_id) values (100,101);
 insert into examination(id,clinic_rating,discount,doctor_rating,kind,status,clinic_id,clinic_administrator_id,examination_type_id,interval_id,nurse_id,patient_id,room_id) values (101,2,100,4,'EXAMINATION','APPROVED',102,100,100,151,100,101,100);

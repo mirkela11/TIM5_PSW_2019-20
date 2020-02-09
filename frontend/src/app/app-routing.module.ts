@@ -28,6 +28,7 @@ import {ActivatedAccountPatientComponent} from './components/activated-account-p
 import {DoctorMedicalRecordComponent} from './components/doctor-medical-record/doctor-medical-record.component';
 import {DiagnoseComponent} from './components/diagnose/diagnose.component';
 import {MedicamentsComponent} from './components/medicaments/medicaments.component';
+import {ListOfRoomsComponent} from './components/list-of-rooms/list-of-rooms.component';
 
 
 const routes: Routes = [
@@ -141,6 +142,10 @@ const routes: Routes = [
   {
     path: 'clinical-centre-admin/addMedicament',
     component: MedicamentsComponent,
+  },
+  {
+    path: 'admin_clinic/Rooms',
+    component: ListOfRoomsComponent,
   },
 
 
