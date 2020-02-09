@@ -44,7 +44,7 @@ public class ExaminationServiceTest{
     @Test
     void findAll() {
         List<Examination> examinations =  examinationService.findAll();
-        assertEquals(examinations.size(), 11);
+        assertEquals(examinations.size(), 12);
     }
 
     @Test
@@ -52,9 +52,9 @@ public class ExaminationServiceTest{
         Examination e = examinationService.findOneById(100L);
 
         assertEquals(e.getInterval().getId(), 155);
-        assertEquals(e.getClinicRating(), 4);
+        assertEquals(e.getClinicRating(), 0);
         assertEquals(e.getDiscount(), 10);
-        assertEquals(e.getDoctorRating(), 5);
+        assertEquals(e.getDoctorRating(), 0);
         assertEquals(e.getKind(), ExaminationKind.OPERATION);
         assertEquals(e.getStatus(), ExaminationStatus.APPROVED);
         assertEquals(e.getClinic().getId(), 101);
