@@ -65,7 +65,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div *ngIf=\"success\" class=\"main-content\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8 offset-md-2\">\n        <mat-card>\n          <h3>Account activated successfully!</h3>\n          <hr>\n          <p>Success! Your account is now active.</p>\n          <p>Login page <span><a\n            routerLink=\"/login\">this link</a></span></p>\n        </mat-card>\n      </div>\n    </div>\n  </div>\n</div>\n";
+    __webpack_exports__["default"] = "<div *ngIf=\"success\" class=\"main-content\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8 offset-md-2\">\n        <mat-card>\n          <h3>Account activated successfully!</h3>\n          <hr>\n          <p>Success! Your account is now active.</p>\n          <p><span><a href=\"http://localhost:8081\">Login page</a></span></p>\n        </mat-card>\n      </div>\n    </div>\n  </div>\n</div>\n";
     /***/
   },
 
@@ -2066,18 +2066,17 @@
       }
 
       ngOnInit() {
-        this.activatedRoute.paramMap.subscribe(params => {
-          const param = params.get('id');
-          this.activatePatient(+param);
-        });
+        const id = this.activatedRoute.snapshot.params.id;
+        this.activatePatient(id);
+        console.log('Id je: ' + id);
       }
 
       activatePatient(id) {
-        this.patientService.activatePatient(id).subscribe(() => {
+        this.patientService.activatePatient(id).subscribe(data => {
           this.success = true;
-        }, () => {
+        }, error => {
           alert('Your account is already activated');
-          this.router.navigate(['']);
+          console.log(error);
         });
       }
 
@@ -10574,7 +10573,12 @@
       }
 
       activatePatient(id) {
-        return this.http.put(this.urlPatient + '/activatePatient', id);
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+          'Content-Type': 'application/json'
+        });
+        return this.http.put(this.urlPatient + '/activatePatient', id, {
+          headers
+        });
       }
 
       editPatient(patient) {

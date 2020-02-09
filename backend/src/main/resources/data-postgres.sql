@@ -41,7 +41,7 @@ insert into users(id, email, password, role) values (110, 'doctor1@email.com', '
 insert into nurse(id, email, name, password, phone, surname, work_hours_from, work_hours_to, clinic_id) values (100,'nurse@email.com', 'Nurse', 'Nurse123','153426010', 'Nursic', '8:00', '16:00', 101);
 insert into users(id, email, password, role) values (103, 'nurse@email.com', 'Nurse123', 2);
 insert into patient(id, insuranceid, address, city, country, email, name, number, password, status, surname) values (100, 1111111111111, 'Stojana Novakovica', 'Sabac', 'Srbija', 'weca997@gmail.com', 'Veljko', '147258321', 'Patient123', 'ACTIVATED', 'Vukovic');
-insert into patient(id, insuranceid, address, city, country, email, name, number, password, status, surname) values (101, 2222222222222, 'Tozin Sokak', 'Novi Sad', 'Srbija', 'veljko544@gmail.com', 'Nikola', '123678456', 'Patient1234', 'AWAITING_APPROVAL', 'Vukovic');
+insert into patient(id, insuranceid, address, city, country, email, name, number, password, status, surname) values (101, 2222222222222, 'Tozin Sokak', 'Novi Sad', 'Srbija', 'patient1@email.com', 'Nikola', '123678456', 'Patient1234', 'AWAITING_APPROVAL', 'Vukovic');
 insert into users(id, email, password, role) values (104, 'weca997@gmail.com', 'Patient123', 0);
 insert into users(id, email, password, role) values (105, 'patient1@email.com', 'Patient1234', 0);
 insert into room(id,kind,label,clinic_id) values (100,'OPERATION','Room 2',101);

@@ -94,7 +94,7 @@ public class PatientController{
         return new ResponseEntity<>(returnList, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/activatePatient")
+    @PutMapping(value = "/patient/activatePatient")
     public ResponseEntity<Patient> activateAccount(@NotNull @RequestBody Long id) {
         Patient p = patientService.findById(id);
         System.out.println(p.getEmail() + " email prilikom aktivacije");
