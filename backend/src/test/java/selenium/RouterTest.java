@@ -116,6 +116,8 @@ public class RouterTest {
         browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
+    // Nedovrsen test zakazivanja pregleda
+    /*
     @Test
     public void Test3() {
         WebElement button0 = this.browser.findElement(By.xpath("/html/body/app-root/mat-sidenav-container/mat-sidenav-content/mat-toolbar/button/span/mat-icon"));
@@ -173,7 +175,7 @@ public class RouterTest {
 
         button10.click();
         browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
+    }*/
 
     @AfterMethod
     public void tearDown() {
