@@ -22,6 +22,7 @@ export class ExaminationService {
   etype: ExaminationType;
   MHFP: Array<Examination> = new Array<Examination>();
   tmp: Array<Examination> = new Array<Examination>();
+  flag : boolean;
   constructor(
     private http: HttpClient,
   ) {
@@ -167,6 +168,15 @@ export class ExaminationService {
 
   public getPatientForDoctors() {
     return this.examinationForDoctor;
+  }
+
+  public async getFlagForRate(id: string): Promise<boolean> {
+    let params = new HttpParams();
+    params = params.append('id', id);
+    this.flag = false;
+
+    const response: any = await this.http.get(this.url + '/getFlagForRate', {params}).toPromise();
+    return response;
   }
 
 

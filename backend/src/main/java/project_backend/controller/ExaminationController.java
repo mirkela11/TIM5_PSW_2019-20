@@ -1,5 +1,6 @@
 package project_backend.controller;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import project_backend.service.ExaminationService;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.sound.midi.SysexMessage;
+import java.io.Console;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -169,6 +171,21 @@ public class ExaminationController {
                     }
                 }
             }
+        }
+
+        return new ResponseEntity<>(ret, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/examination/getFlagForRate")
+    public ResponseEntity<Boolean> getFlag(@RequestParam(value = "id", required = true) String id) {
+        boolean ret = false;
+
+        Examination e = examinationService.findOneById(Long.parseLong(id));
+
+        LocalDateTime now = LocalDateTime.now();
+
+        if(now.isAfter(e.getInterval().getEndTime())) {
+            ret = true;
         }
 
         return new ResponseEntity<>(ret, HttpStatus.OK);

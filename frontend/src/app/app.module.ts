@@ -43,6 +43,7 @@ import { PatientMakeExaminationComponent } from './components/patient-make-exami
 import { ActivatedAccountPatientComponent } from './components/activated-account-patient/activated-account-patient.component';
 import { DiagnoseComponent } from './components/diagnose/diagnose.component';
 import { MedicamentsComponent } from './components/medicaments/medicaments.component';
+import { RateDoctorAndClinicPatientComponent } from './components/rate-doctor-and-clinic-patient/rate-doctor-and-clinic-patient.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +115,8 @@ import { MedicamentsComponent } from './components/medicaments/medicaments.compo
 
     MedicamentsComponent,
 
+    RateDoctorAndClinicPatientComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -140,6 +143,7 @@ import { MedicamentsComponent } from './components/medicaments/medicaments.compo
     PredefExaminationDialogComponent,
     PatientMakeExaminationComponent,
     MedicalRecordDialogComponent,
+    RateDoctorAndClinicPatientComponent,
 
   ],
   providers: [],
