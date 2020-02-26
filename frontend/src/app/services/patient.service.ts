@@ -153,6 +153,7 @@ export class PatientService {
   }
 
   public setPatient1(pat: Patient) {
+    console.log('setPatient');
     this.patient1 = pat;
   }
 

@@ -95,6 +95,7 @@ export class MedicalRecordService {
   }
 
   public setMedicalRecordForDialog(medicalRecord) {
+    console.log('medicalRecord');
     this.medicalRecordForDialog = medicalRecord;
   }
 
@@ -110,6 +111,7 @@ export class MedicalRecordService {
 
     this.http.get(this.url + '/DateAndTime', {params}).subscribe((data: boolean) => {
         this.dialogDate = data;
+        console.log('localDateAndTime');
       },
       error => {
         console.log(error);

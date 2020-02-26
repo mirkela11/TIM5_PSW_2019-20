@@ -21,7 +21,7 @@ export class DoctorMedicalRecordComponent implements OnInit {
 
   patient: Patient;
   pat: Array<Examination>;
-  displayedColumns: string[] = ['startTime', 'endTime', 'patientName', 'patientSurname', 'Edit' ];
+  displayedColumns: string[] = ['startTime', 'endTime', 'patientName', 'patientSurname', 'Edit'];
   DataSource: MatTableDataSource<Examination>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   expandedElement: Patient;
@@ -40,6 +40,7 @@ export class DoctorMedicalRecordComponent implements OnInit {
     const user = JSON.parse(userService.isLoggedIn());
 
     this.pat = this.examinationService.getExaminationsForDoctor(user.email);
+    this.condition = false;
     console.log('Ispod1');
     console.log(this.pat);
     this.all();
@@ -60,20 +61,20 @@ export class DoctorMedicalRecordComponent implements OnInit {
   }
 
   edit(element: Examination) {
-    this.condition = this.medicalService.getLocalDateAndTime(element.interval.startTime, element.interval.endTime)
+    setTimeout(() => {
+      const medicalRecordForDialog = this.medicalRecServis.getMedicalRecordForPatient(element.patient.email);
+      this.medicalService.setMedicalRecordForDialog(medicalRecordForDialog);
+    }, 750);
     this.patientService.setPatient1(element.patient);
-    const medicalRecordForDialog = this.medicalRecServis.getMedicalRecordForPatient(element.patient.email);
-    console.log('ovde smo');
-    console.log(medicalRecordForDialog);
-    this.medicalService.setMedicalRecordForDialog(medicalRecordForDialog);
-   // for (Element e: tmp) {
-      // this.tmp1 = this.doctorService.getDoctorsTermins(this.tmp, d.email);
-      // console.log(this.tmp1);
-   // }
-    if(this.condition === true) {
-      setTimeout(() => {
+    this.condition = this.medicalService.getLocalDateAndTime(element.interval.startTime, element.interval.endTime);
+
+  //  setTimeout(() => {
+    if (this.condition === true) {
+        console.log('u kondition sam');
+        console.log(this.condition);
         const dialog = this.medReqDialog.open(MedicalRecordDialogComponent);
-      }, 2000);
-    }
+      }
+ //   }, 200);
+
   }
 }

@@ -106,24 +106,57 @@ public class MedicalRecordController {
     }
 
     @GetMapping(value = "/medicalRecord/DateAndTime")
-    public boolean OpenDialog(@RequestParam(value = "interval", required = true) String interval,
+    public boolean getLocalDateAndTime(@RequestParam(value = "interval", required = true) String interval,
                               @RequestParam(value = "interval1", required = true) String interval1){
 
         LocalDateTime sada = LocalDateTime.now();
         System.out.println(sada.toString());
         String trenutnoVreme = sada.toLocalTime().toString();
         String trenutniDatum = sada.toLocalDate().toString();
+        System.out.println("Sadasnje vreme je" + trenutnoVreme + "a datume je" + trenutniDatum);
 
+        String [] trenutniDatumPodeljeno = trenutniDatum.split("-");
+        String trenutniDan = trenutniDatumPodeljeno[2];
         String [] parts = interval.split(" ");
         String pocetniDatum = parts[0];
         String pocetnoVreme = parts[1];
 
+        String [] podeljeniDatum = pocetniDatum.split("-");
+        String dan = podeljeniDatum[2];
+        System.out.println("Trenutni dan je" + trenutniDan + "a dan je" + dan);
+
         String [] parts1 = interval1.split(" ");
         String krajnjiDatum = parts1[0];
         String krajnjeVreme = parts1[1];
+        System.out.println("Krajnje vreme je " + krajnjeVreme + "a krajnji datum " + krajnjiDatum);
 
-        if(pocetniDatum.equals(trenutniDatum)){
-            
+        int danInt = Integer.parseInt(podeljeniDatum[2]);
+        System.out.println("Dan int : " + danInt);
+        int trenutniDan2 = Integer.parseInt(trenutniDatumPodeljeno[2]);
+
+        if(dan.equals(trenutniDan)){
+            System.out.println("usao u if");
+            String [] pocetnoVremePodeljeno = pocetnoVreme.split(":");
+            int pocetniSati = Integer.parseInt(pocetnoVremePodeljeno[0]);
+            int pocetniMinuti = Integer.parseInt(pocetnoVremePodeljeno[1]);
+            String [] krajnjeVremePodeljeno = krajnjeVreme.split(":");
+            int krajnjiSati = Integer.parseInt(krajnjeVremePodeljeno[0]);
+            int krajnjiMinuti = Integer.parseInt(krajnjeVremePodeljeno[1]);
+
+
+            String [] trenutnoVremePodeljeno = trenutnoVreme.split(":");
+            int trenutniSati = Integer.parseInt(trenutnoVremePodeljeno[0]);
+            int trenutniMinuti = Integer.parseInt(trenutnoVremePodeljeno[1]);
+            System.out.println("Pocetni sati su " + pocetniSati + "a krajnji su " + krajnjiSati);
+            System.out.println("Trenutni sati su " + trenutniSati + "a minuti su " + trenutniMinuti);
+
+
+            if(pocetniSati <= trenutniSati && trenutniSati <= krajnjiSati && trenutniMinuti >= 0 && trenutniMinuti <=59 ){
+                System.out.println("Usao u drugi if");
+                return true;
+            }
+        } else if(danInt <= trenutniDan2){
+            return true;
         }
         return false;
     }
