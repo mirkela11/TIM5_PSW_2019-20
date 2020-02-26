@@ -85,10 +85,6 @@ export class VacationService {
     }
   }
 
-  public editVacation1(zahtev) {
-    return this.http.post(this.urlVacation + '/edit1', zahtev, {responseType: 'text'});
-  }
-
   public setVacation1(p: Zahtev) {
 
     for (const p1 of this.listVacation) {

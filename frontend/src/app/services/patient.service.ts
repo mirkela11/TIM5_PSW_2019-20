@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Patient} from '../model/patient';
 import {UserServiceService} from './user-service.service';
@@ -7,6 +7,8 @@ import {PatientStatus} from '../model/patientStatus';
 import {Examination} from '../model/examination';
 import {ExaminationKind} from '../model/examinationKind';
 import {ExaminationStatus} from '../model/examinationStatus';
+import {Clinic} from '../model/clinic';
+import {Doctor} from '../model/doctor';
 
 
 @Injectable({
@@ -16,7 +18,10 @@ export class PatientService {
 
   urlPatient = environment.baseUrl + environment.patient;
   listPatients: Array<Patient> = new Array<Patient>();
+  patientWithDoctor: Array<Patient> = new Array<Patient>();
+  patients: Array<Patient> = new Array<Patient>();
   patient: Patient;
+  patient1: Patient;
   editP: Patient;
   tmp: Array<Patient>;
   listExaminations: Array<Examination>;
@@ -117,6 +122,39 @@ export class PatientService {
     );
     console.log(this.tmp);
     return this.tmp;
+  }
+
+  public getPatientsForDoctor(email: string): Array<Patient> {
+
+    let params = new HttpParams();
+    params = params.append('email', email);
+    this.patientWithDoctor = new Array<Patient>();
+    this.http.get(this.urlPatient + '/allPatientsForDoctor', {params}).subscribe((data: Patient[]) => {
+        for (const c of data) {
+          this.patient = new Patient(c.email, c.password, c.name, c.surname, c.number, c.address, c.city, c.country , c.insuranceID, c.status);
+          this.patientWithDoctor.push(this.patient);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    console.log('Ispod');
+    console.log(this.patientWithDoctor);
+    return this.patientWithDoctor;
+  }
+
+  public getPatientForDoctors() {
+    return this.patientWithDoctor;
+  }
+
+  public getPatient1() {
+    return this.patient1;
+  }
+
+  public setPatient1(pat: Patient) {
+    console.log('setPatient');
+    this.patient1 = pat;
   }
 
 }

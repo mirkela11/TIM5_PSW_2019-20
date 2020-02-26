@@ -7,12 +7,18 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import project_backend.model.*;
 import project_backend.service.*;
+import org.springframework.web.bind.annotation.*;
+import project_backend.model.Doctor;
+import project_backend.model.Examination;
+import project_backend.model.Patient;
+import project_backend.service.ExaminationService;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.sound.midi.SysexMessage;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -42,6 +48,24 @@ public class ExaminationController {
     public ResponseEntity<List<Examination>> allExaminations() {
         return new ResponseEntity<>(examinationService.findAll(), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/examination/allExaminationsForDoctor")
+    public ResponseEntity<List<Examination>> AllExaminationForDoctor(@RequestParam(value = "email", required = true) String email) {
+        List<Examination> tmp = new ArrayList<>();
+        List<Examination> pregledi = examinationService.findAll();
+        if(email != null){
+            for (Examination e : pregledi) {
+
+                for (Doctor d : e.getDoctors()) {
+                     if (d.getEmail().equals(email)) {
+                        tmp.add(e);
+                     }
+                }
+            }
+        }
+        return new ResponseEntity<>(tmp, HttpStatus.OK);
+    }
+
 
     @GetMapping(value = "/examination/allPredefExaminations")
     public ResponseEntity<List<Examination>> allPredefExaminations() {

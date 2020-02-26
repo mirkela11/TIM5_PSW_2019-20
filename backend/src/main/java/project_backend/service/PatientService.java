@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import project_backend.model.MedicalRecord;
 import project_backend.model.Patient;
 import project_backend.repository.PatientRepo;
 
@@ -81,6 +82,25 @@ public class PatientService {
 
         return false;
     }
+
+    public boolean editMedicalRecord(Patient p) {
+        List<Patient> tmp = findall();
+        if(tmp.size() == 0)
+            return false;
+
+        for(Patient p1 : tmp)
+        {
+            if(p.getEmail().equals(p1.getEmail())) {
+                p1.setMedialRecord(p.getMedialRecord());
+                repo.save(p1);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
 
 
 }

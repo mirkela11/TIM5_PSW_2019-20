@@ -24,6 +24,7 @@ import {NurseListPatientComponent} from './components/nurse-list-patient/nurse-l
 import {NurseVacationRequestComponent} from './components/nurse-vacation-request/nurse-vacation-request.component';
 import {VacationRequestRegisterComponent} from './components/vacation-request-register/vacation-request-register.component';
 import {DoctorVacationRequestComponent} from './components/doctor-vacation-request/doctor-vacation-request.component';
+import {DoctorMedicalRecordComponent} from './components/doctor-medical-record/doctor-medical-record.component';
 
 
 const routes: Routes = [
@@ -121,6 +122,10 @@ const routes: Routes = [
   {
     path: 'doctor/VacationRequest',
     component: DoctorVacationRequestComponent,
+  },
+  {
+    path: 'doctor/MedicalRecord',
+    component: DoctorMedicalRecordComponent,
   },
 
 ];
